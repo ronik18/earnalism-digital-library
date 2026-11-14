@@ -11,6 +11,15 @@ with the exact scored master. Preserve story-specific silence and review scope;
 an audiobook music licence or accepted dry narration does not establish AV rights
 or acceptance of a new final soundtrack.
 
+Within the consolidated [single Colab orchestrator](../../../docs/earnalism_orchestrator.md),
+use the existing source-bound director, planner and renderer as the score stage.
+Resolve the complete content, actual narration and measured cue clock before
+choosing moods, levels and transitions. Reuse exact accepted KEEP passages and
+cleared stems; a narration change invalidates its old score/timing lineage.
+Continuous science body music and purposeful literary silence retain their
+separate content rules. A missing suitable composer or cleared finite stem is a
+concrete missing input, not a reason to relabel an unsupported music palette.
+
 Prepare the requested scored audiobook or narrow musical repair with the existing
 narration and measured clock. Keep the result private unless the current task
 separately authorizes the supported publication workflow. Explicit invocation:

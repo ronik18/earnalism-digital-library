@@ -10,6 +10,20 @@ For a complete cinematic book edition, coordinate through the repository's
 existing release governor. Reuse this skill's narration/quality evidence within
 scope; audio-only acceptance does not qualify pictures, captions or AV rights.
 
+For the instruction-driven [single Colab orchestrator](../../../docs/earnalism_orchestrator.md),
+resolve **The Earnalism Voice** through an exact trained profile: base/model
+revision, checkpoint SHA, actual runtime, supported controls and per-language
+acceptance. Use the inference-only adapter; never rerun a training/evaluation CLI
+that emits fixed experimental takes for a new book. Retain trained-but-unqualified
+prototypes for authorized auditions, while full-title generation requires the
+applicable actual profile acceptance. No stock/base voice may masquerade as the
+trained brand. Reuse accepted exact recordings rather than regenerate them.
+
+Apply the current title/owner editorial policy. Newly authorized automated jobs
+may use `automated-editorial-2026-11-11` through the existing evaluator/runtime;
+historical receipts, stricter requested targets, Bengali campaign gates and active
+human holds remain binding. Automatic diagnostics are not fabricated human grades.
+
 Complete the authorized outcome. Prefer retained healthy audio, narrow repairs and the next executable dependency over new generation or another plan. A skill invocation adds no rights, spend, private access, allocation, synthesis, retry or customer-debit authority.
 
 ## Resume from actual state
@@ -36,7 +50,7 @@ Use the installed `$earnalism-book-production` skill only when Reader or cover a
 
 Resolve applicable title/language policy and any stricter requested target. Require the authoritative complete text/order, exact first/last words, no missing/duplicated/reordered content, commercial audio/model/voice/score rights for the intended use and territory, correct covers, applicable ASR/manuscript threshold, audio-derived/measured text sync where the selected path actually consumes it, with no estimated or stale cues, accepted metadata, exact upload/checksums/retention and the actual endpoint/browser contract. Bengali campaign ASR remains >=9.7. Do not replace policy with a new universal zero-error, two-recognizer or posterior threshold.
 
-Require genuine full-title listening with every applicable dimension, overall, confidence and fatal-flag gate. Robotic texture, mechanical cadence, list-reading rhythm, choppy joins and fallback TTS remain blocking. An owner mean target applies separately to each named book; no pooled or fabricated scores. Share the complete exact **final scored edition** for actual owner review before release. One full scored review can assess narration and music together; retain dry stems for diagnostics without demanding a duplicate full dry review. A pilot, muted decode, ASR or a high overall score cannot clear an unverified full edition or a material wording defect.
+Require genuine full-title editorial/listening evidence with every applicable dimension, overall, confidence and fatal-flag gate under the selected current policy. Robotic texture, mechanical cadence, list-reading rhythm, choppy joins and fallback TTS remain blocking. An owner mean target applies separately to each named book; no pooled or fabricated scores. Share the complete exact **final scored edition** for owner review when requested or required by the applicable policy or a material defect. One full scored review can assess narration and music together; retain dry stems for diagnostics without demanding a duplicate full dry review. A pilot, muted decode, ASR or a high overall score cannot clear an unverified full edition or a material wording defect.
 
 For a verified standalone audio-only Listener that does not consume text timing, record **NOT_APPLICABLE**, never sync PASS. Bind the exact candidate and reviewed consumer sources through `scripts/release_acceptance.py` and `sync_acceptance_policy.json`; keep read-along, highlighting, captions/text-linked navigation disabled and make no sync claims. Unknown consumer evidence remains held. Cue-dependent production and consumers still require measured sync. Package/sidecar integrity, exact duration, chapter/segment media offsets, coverage, fidelity, playback and accounting are unchanged.
 

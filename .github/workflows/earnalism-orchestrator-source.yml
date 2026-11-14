@@ -1,0 +1,59 @@
+name: Earnalism single notebook source
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/earnalism_orchestrator.py'
+      - 'scripts/earnalism_voice.py'
+      - 'scripts/earnalism_voice_runtime/**'
+      - 'scripts/earnalism_media_adapters.py'
+      - 'scripts/test_earnalism_*.py'
+      - 'scripts/build_earnalism_orchestrator_colab.py'
+      - 'scripts/test_build_earnalism_orchestrator_colab.py'
+      - 'notebooks/Earnalism_Production_Orchestrator*'
+      - 'docs/earnalism_orchestrator.md'
+      - '.agents/skills/earnalism-book-audiovisual/**'
+      - '.agents/skills/earnalism-audiobook-go-live/**'
+      - '.agents/skills/earnalism-audiobook-score/**'
+      - 'skills/earnalism-audiobook-go-live/**'
+      - 'skills/earnalism-video/**'
+      - '.github/workflows/earnalism-orchestrator-source.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/earnalism_*'
+      - 'scripts/earnalism_voice_runtime/**'
+      - 'scripts/build_earnalism_orchestrator_colab.py'
+      - 'notebooks/Earnalism_Production_Orchestrator*'
+      - '.github/workflows/earnalism-orchestrator-source.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  orchestrator:
+    name: orchestrator source Python ${{ matrix.python }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install local media test tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core fonts-noto-core
+          python -m pip install Pillow==11.2.1
+      - name: Verify the distributed notebook against its exact source
+        run: python scripts/build_earnalism_orchestrator_colab.py --check
+      - name: Exercise orchestration and inference control without model access
+        run: |
+          python -m unittest scripts.test_earnalism_orchestrator scripts.test_earnalism_voice scripts.test_earnalism_media_adapters scripts.test_build_earnalism_orchestrator_colab -v
+          node skills/earnalism-video/software/src/test_render_browser.mjs
+          node skills/earnalism-video/software/src/test_prepare_render_runtime.mjs

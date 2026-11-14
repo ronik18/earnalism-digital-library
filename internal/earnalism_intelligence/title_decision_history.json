@@ -18078,5 +18078,43 @@
     "production_ready": false,
     "published": false,
     "next_generated_prompt": "Preserve the retained licensed cache, exact soundtrack, source/locks/logs and owner-selected visual style. Resolve storage through owner-provided free space or an explicitly scoped safe action; the pending setup-only question uses a conservative 3 GB free-space target, not a vendor or owner-wide policy. After the actual reply and a fresh capacity check permit setup, install the exact author-compatibility hash lock and run credential-stripped CPU-only package consistency/import checks. Do not load model weights, generate speech, train, allocate GPU, spend or publish under the consumed pilot grants."
+  },
+  "single_colab_production_orchestrator_20261114": {
+    "at": "2026-11-14T17:57:27.307060+00:00",
+    "title": "The Earnalism production orchestrator",
+    "state": "SOFTWARE_SOURCE_VALIDATED_MODEL_AND_FULL_CONTENT_QUALIFICATION_REMAIN_SEPARATE",
+    "entrypoint": "notebooks/Earnalism_Production_Orchestrator.ipynb",
+    "source_contract": "docs/earnalism_orchestrator.md",
+    "scope": "Generic source and skill refinements only; private projects, recordings, checkpoints and account evidence excluded",
+    "capabilities": [
+      "instruction routing for EN/BN books and registered ordered EverydayScience topics",
+      "fixed trained-voice/media adapters and exact source lineage",
+      "private checksum-verified resume and affected-stage feedback invalidation",
+      "original runtime scope and consumed-attempt preservation",
+      "existing release governor; no automatic publication"
+    ],
+    "local_validation": {
+      "focused_python_tests": 71,
+      "result": "PASS",
+      "browser_resolver": "PASS_SOURCE_ONLY_NO_BROWSER_LAUNCH",
+      "model_or_new_training_or_cloud_execution": false,
+      "renderer_setup": "PASS_PINNED_SETUP_CACHE_AND_DEADLINE_SOURCE_TESTS_NO_INSTALL_OR_BROWSER_LAUNCH"
+    },
+    "reusable_lessons": [
+      "Training/reload lineage is distinct from language/performance acceptance",
+      "Bengali grapheme/word boundaries must remain intact across narration units",
+      "Bootstrap wheels and cached interpreters require actual immutable/live verification",
+      "A source base pin includes unchanged dependencies and the actual imported namespace",
+      "Qualification snippets cannot be used as complete production narration",
+      "Persist early setup/shutdown history immutably and retain failed/unknown intents",
+      "Torso movement, expression and facial continuity are independent review dimensions",
+      "Science renderer dependencies and browser bytes use the same original clock and verified private cache",
+      "Keep a known requested voice direction separate from the exact title; reject ambiguous book/edition instructions before project discovery"
+    ],
+    "private_media_published": false,
+    "production_voice_acceptance_created": false,
+    "full_content_production_ready": false,
+    "bengali_release_authority_counters_reader_only_and_active_holds_unchanged": true,
+    "next_generated_prompt": "Use the single instruction-driven Colab notebook with the actual private project registry, exact trained voice/runtime assets, current applicable acceptance and existing bounded execution scope. Resolve missing measured/content/qualification evidence, preserve all holds and healthy outputs, and use the existing exact-candidate release path. No perfection, new spending or publication is inferred."
   }
 }
