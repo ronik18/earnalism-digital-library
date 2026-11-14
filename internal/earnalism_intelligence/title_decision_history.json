@@ -17592,5 +17592,132 @@
     "state": "LOCAL_TESTS_PASS_CI_PENDING",
     "native_observations_consumed": 6,
     "new_paid_acceptance_attempts": 0
+  },
+  "book_audiovisual_pipeline_20261114": {
+    "schema": "earnalism.book_av_pipeline_handoff.v1",
+    "at": "2026-11-13T20:27:17.374878+00:00",
+    "date": "2026-11-14",
+    "run_key": "book_audiovisual_pipeline_20261114",
+    "title": "The Open Window",
+    "state": "LOCAL_SOFTWARE_VALIDATED_PRIVATE_DIRECTION_ONLY",
+    "validation": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/cinematic-book-pilot-20261114/PIPELINE-VALIDATION.json",
+      "sha256": "11b9127d01b33f51fff50ae9e813386bfffbf12b893ff2cac637a7a6d60fbf1d"
+    },
+    "source_base_sha": "fff7f8b971cdb26b324ba2587245145689783bd4",
+    "tests_passed": 144,
+    "new_provider_calls": 0,
+    "new_narration": false,
+    "new_spend_usd": 0,
+    "model_weights_trained": false,
+    "production_ready": false,
+    "publication_performed": false,
+    "preserve": "Existing six-file work, original narration/score, title holds, all campaign/provider counters and Bengali Reader-only/audio-hidden state.",
+    "learning": "Use canonical language/title evidence including Bengali combining marks; bind actual source-to-PCM-to-AAC/caption delivery lineage. Real media tamper tests caught gaps that hashes plus duration alone could not prove. Correct package import identity preserves source-drift enforcement.",
+    "score_learning": "no-new-learning; retained scoring lessons reused without new media or listening findings.",
+    "historical_next_generated_prompt": "Use $earnalism-book-audiovisual for The Open Window from cinematic-book-pilot-20261114/PILOT-DIRECTION.json. Preserve the exact retained narration and score. Resolve audiovisual-use rights and real caption timing, prepare the 18 scenes with original cleared art and reviewed natural-action clips within confirmed compute authority, render privately, and gather the one complete final candidate/destination review. Preserve existing title holds and all provider counters. Integrate the tested code only after resolving the existing focused-PR slot; do not mark production-ready or LIVE from fixtures.",
+    "next_generated_prompt": "Continue from the latest owner-authorized in-house motion training run and current canonical source. Reuse the recovered historical pipeline/pilot evidence and private media, preserve all existing title holds, owner KEEP decisions, campaign/provider counters and original audio, and record only actual new results. No full audiovisual or publication acceptance is inferred.",
+    "recovery": {
+      "source": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/source-recovery-20261114/intelligence-records/HISTORICAL-ENTRIES.json",
+        "sha256": "ecc86b3c442638092104cbff575dcf86e3c9d7db610d1ca3f9386c83c4cd436e"
+      },
+      "source_integration": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/source-recovery-20261114/INTEGRATION-VALIDATION.json",
+        "sha256": "f4a1c4720c646b090aeed4ed9840c78eb6d855be87a11fc0cdeb78e284604748"
+      },
+      "source_commit": "3e83392508fb4fc36ea46afccf4cfdb17495a51a",
+      "scope": "Historical run facts restored from retained immutable reports and original tool-call construction; current source has been recovered and committed. Later owner instructions govern continuation; no historical allowance, hold, counter or review is renewed."
+    },
+    "retained_owner_keep_history_key": "open_window_sredni_owner_keep_feedback_20261114"
+  },
+  "open_window_private_cinematic_pilot_20261114": {
+    "schema": "earnalism.private_book_av_title_handoff.v1",
+    "date": "2026-11-14",
+    "at": "2026-11-13T21:34:11.967549+00:00",
+    "run_key": "open_window_private_cinematic_pilot_20261114",
+    "title": "The Open Window",
+    "state": "FULL_PRIVATE_ILLUSTRATED_PILOT_CREATED_PENDING_FULL_AV_REVIEW_AND_NATURAL_MOTION_ROUTE",
+    "result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-private-pilot-20261114-v1/RUN-RESULT.json",
+      "sha256": "43c9c0c448b019a204705a72e6348a45fe5d0985bd8b973ef630e0989e04bb84"
+    },
+    "original_dry_narration_sha256": "dc2388473bf44a571265cf1e230e846c1d5282434b7c9cc8f5d182c9887cba66",
+    "resulting_movie_sha256": "048e213cd7db7a54ab56d68a1a04bf6aea7d6f2e7288a25f7a8d7b9694100a32",
+    "review_manifest_sha256": "a8d07d18dc17e4862dee969e95e425cae4fa2078f03da9b3e9ae1e82705cd036",
+    "actual_feedback_source": "Codex automatic/static-frame and real-player observations; no new owner listening verdict.",
+    "fix_preserve": "Three original art continuity corrections; source/caption whitespace display, exact scorePCM, END presentationPTS and wholecanvas contrast fixes; all original narration/scoreassets unchanged.",
+    "actual_verification": "98focused tests; complete final-file decode/PCM/AAC lineage; real nativecaption/playback/seek/end/replay/phoneviewport checks. Full movie listening/AV acceptance UNPERFORMED.",
+    "learning_scope": "Evidence-backed software/production lessons retained in docs and tests; no modelweights trained.",
+    "bengali_campaign_counters_holds_and_reader_only_state_changed": false,
+    "new_narration": false,
+    "publication_performed": false,
+    "production_ready": false,
+    "historical_next_generated_prompt": "Review the complete exact private Open Window movie with captions and credits. Return timestamped actual findings and passages to preserve through the local feedback export. Resolve the pending five-shot natural-motion route within its actual confirmed compute authority; preserve the exact narration and score.",
+    "next_generated_prompt": "Continue from the latest owner-authorized in-house motion training run and current canonical source. Reuse the recovered historical pipeline/pilot evidence and private media, preserve all existing title holds, owner KEEP decisions, campaign/provider counters and original audio, and record only actual new results. No full audiovisual or publication acceptance is inferred.",
+    "recovery": {
+      "source": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/source-recovery-20261114/intelligence-records/HISTORICAL-ENTRIES.json",
+        "sha256": "ecc86b3c442638092104cbff575dcf86e3c9d7db610d1ca3f9386c83c4cd436e"
+      },
+      "source_integration": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/source-recovery-20261114/INTEGRATION-VALIDATION.json",
+        "sha256": "f4a1c4720c646b090aeed4ed9840c78eb6d855be87a11fc0cdeb78e284604748"
+      },
+      "source_commit": "3e83392508fb4fc36ea46afccf4cfdb17495a51a",
+      "scope": "Historical run facts restored from retained immutable reports and original tool-call construction; current source has been recovered and committed. Later owner instructions govern continuation; no historical allowance, hold, counter or review is renewed.",
+      "field_correction": "Historical input_narration_sha256 held the scored master hash; renamed input_scored_audio_sha256. Original dry narration hash retained separately; original historical object preserved privately."
+    },
+    "input_scored_audio_sha256": "ce54502bcd93b49a800f645ab19cf754372e12e69cba7399fe43ced097939ccf",
+    "retained_owner_keep_history_key": "open_window_sredni_owner_keep_feedback_20261114",
+    "source_fidelity": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-private-pilot-20261114-v1/SOURCE-FIDELITY-APPLICABILITY.json",
+      "sha256": "1afa0f3cbe18416b6514fcbae2fbf3f0d4edebc484f490827db0db67fe49123f"
+    },
+    "rights_applicability": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-private-pilot-20261114-v1/AV-RIGHTS-APPLICABILITY.json",
+      "sha256": "d01567f351140f85c0302a45a94e699059055f9f34f2dd44b9960132595e7f5e"
+    },
+    "exact_source_vs_PCM_and_AAC_lineage": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-private-pilot-20261114-v1/evidence/AV-TECHNICAL-RECEIPT.json",
+      "sha256": "f516e57d55a79c05bd7ea87bcb81632eba59fc6e99a6d156e1bff502b4fe65ed"
+    }
+  },
+  "earnalism_original_motion_model_20261114": {
+    "date": "2026-11-14",
+    "scope": "In-house original 2D skeletal motion research; Open Window soundtrack/film unchanged",
+    "state": "SCRATCH_MODEL_TRAINED_PRIVATE_RESEARCH_GPU_IMPORT_AND_SHUTDOWN_VERIFIED",
+    "gpu_probe": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/GPU-PROBE-RECEIPT.json",
+      "sha256": "3290aed4b341653a0b2716b22547f545d1b4fa0fb1db54a201a88af8f635e039"
+    },
+    "selected_cpu_checkpoint": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/SELECTED-RESEARCH-CHECKPOINT.json",
+      "sha256": "a23f52dc090010935ef920d0e4a1b93a08c1fa5a03499bf09037121834c3ac00"
+    },
+    "controlled_feedback_study": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/V2-CONTROLLED-FEEDBACK-STUDY.json",
+      "sha256": "1c58fec89d8020f2f38c117c63ff04555155b7ec89aec6570aa1d26fb75ca8db"
+    },
+    "source_policy_commit": "08af4626",
+    "source_recovery": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/source-recovery-20261114/INTEGRATION-VALIDATION.json",
+      "sha256": "f4a1c4720c646b090aeed4ed9840c78eb6d855be87a11fc0cdeb78e284604748"
+    },
+    "learning": "A synthetic teacher can be learned accurately and still show crouched gait or unsupported sitting. Fix measured data/interaction defects, compare a fixed held-out split, retain raw contact/target/temporal errors and render actual network predictions. Verify training, durable export and runtime shutdown separately. Checkout drift is reconciliation, not a blanket implementation stop.",
+    "original_book_audio_score_and_film_unchanged": true,
+    "production_ready": false,
+    "natural_human_acting_acceptance": "UNPERFORMED_WITH_KNOWN_LIMITATIONS",
+    "new_paid_memberships_or_product_purchases": 0,
+    "bengali_campaign_holds_budgets_counters_and_release_unchanged": true,
+    "next_generated_prompt": "Complete exact-head source PR checks for the audiovisual/model changes; keep the first Open Window film private, retain its exact audio and score, and qualify actual content-specific character motion plus full audiovisual review before any GO LIVE decision.",
+    "previous_result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/RUN-RESULT.json",
+      "sha256": "025fe0abe4d004f24f8ce1a611c16381bb6657c65ab967030c981b2b10e5c844"
+    },
+    "gpu_export_and_runtime_resolution": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/GPU-ARCHIVE-IMPORT-RECEIPT.json",
+      "sha256": "b8ec4321c995a19879f398c98c71da05f5afdc47483fc0880e31fe6a1521d20e"
+    }
   }
 }

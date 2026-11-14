@@ -83,6 +83,16 @@ player. A successfully decoded file alone does not prove this consumer works.
 
 ## Learn from actual feedback
 
+For owner-requested in-house model work, use the narrow, scratch-trained
+[original motion model](../../../docs/original_motion_model.md). Prefer the
+existing local CPU path when it is sufficient; use actual qualified CUDA for a
+separately authorized GPU probe. Retain weights/data/source, independent held-out
+metrics and visible action evidence. Synthetic teacher accuracy does not qualify
+natural acting. Keep experimental predictions separate from the accepted film
+and preserve its exact narration/score. Do not use a paid generator or pretrained
+model as an undisclosed substitute. Allocation, export and shutdown each need
+actual evidence; a training log alone is not a durable checkpoint receipt.
+
 Bind feedback to the input candidate hash, reviewer/source, time/frame scope,
 observed finding, fix/preserve decisions and resulting candidate. Automatic
 diagnostics retain their real scope; never call them owner listening. Use one

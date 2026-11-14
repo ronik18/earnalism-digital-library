@@ -198,6 +198,11 @@ created by this pipeline.
 
 ## Readiness terminology
 
+For optional original-model training and actual learned rig motion, see
+[the in-house motion model](original_motion_model.md). It is a private research
+stage with separate data, weights and visual evidence. It grants no automatic
+release acceptance or replacement of selected book audio or pictures.
+
 - **Software validated locally:** affected tests and real fixture rendering ran.
 - **Private candidate prepared:** actual complete media exists with known scope.
 - **Qualified pending decision:** all applicable primary evidence is genuine and
