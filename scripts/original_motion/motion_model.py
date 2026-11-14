@@ -478,15 +478,23 @@ def predict(model_dir, output_dir, *, action='walk', duration=3., fps=30, seed=9
         interaction_target={'kind':'seat','x':float(start_x),'surface_y':float(.55*(body[0]+body[1])),
                             'width':float(.45*(body[0]+body[1]+body[4]+body[7])),
                             'declared_before_model_inference':True}
-    times=np.arange(round(duration*fps),dtype=np.float32)/fps
+    # Cover the requested interval on the actual delivery frame grid. Retain the
+    # requested inference-case duration separately; never truncate source audio
+    # or label fractional seconds as a different encoded frame count.
+    frame_count=math.ceil(duration*fps-1e-9)
+    times=np.arange(frame_count,dtype=np.float32)/fps
     x,root_x=inputs_for_case(body,case,times);raw=numpy_predict(weights,x);state=np.clip(raw,LOWER,UPPER);joints=forward_kinematics(state,np.broadcast_to(body,(len(x),8)),root_x)
     if not np.isfinite(joints).all():raise ValueError('Nonfinite learned pose')
     output.mkdir(parents=True)
+    # Retain the inference implementation inside the immutable prediction output.
+    # A later checkout update must not invalidate the producer source reference.
+    (output/'inference-source.py').write_bytes(Path(__file__).read_bytes())
     np.savez_compressed(output/'prediction.npz',joints=joints,time_seconds=times,inputs=x,raw_predicted_state=raw,predicted_state=state,root_x=root_x,body=body)
-    p={'schema':'earnalism.learned_motion_prediction.v1','action':action,'fps':fps,'duration_seconds':duration,
+    p={'schema':'earnalism.learned_motion_prediction.v1','action':action,'fps':fps,'duration_seconds':frame_count/fps,
+       'requested_duration_seconds':duration,
        'joint_names':JOINTS,'hierarchy':HIERARCHY,'coordinate_system':'x right, y up, metres; ground y=0',
        'prediction_file':ref(output/'prediction.npz'),'model':ref(model_dir/'weights.npz'),'training_report':ref(model_dir/'training-report.json'),
-       'source_code':ref(Path(__file__)),'training_source':verified['training_source'],
+       'source_code':ref(output/'inference-source.py'),'training_source':verified['training_source'],
        'model_manifest':ref(model_dir/'model.json'),'seed':seed,'case':case,'body':dict(zip(BODY_NAMES,body.tolist())),
        'teacher_version':teacher_version,'interaction_target':interaction_target,
        'provenance':{'prediction_source':'trained_model_inference','teacher_fallback':False,'inverse_kinematics_fallback':False,'root_translation':'Explicit user path, not learned','state_limits':'Fixed anatomical angle/height clipping; raw states retained','training_domain':'Original procedural synthetic2D skeletal motion'},
