@@ -2,6 +2,33 @@
 from pathlib import Path
 import hashlib,json,base64,argparse,ast,re
 sha=lambda b:hashlib.sha256(b).hexdigest()
+VISIBLE_ARCHIVE_MAX_BYTES=8*1024**2
+
+def recover_visible_data_link(href,destination,*,expected_bytes,expected_sha256):
+ """Decode an already-observed visible href offline; never fetch or inspect a page.
+
+ The caller supplies the independently observed archive size and digest. This
+ establishes byte delivery only; normal safe ZIP/member import remains pending.
+ """
+ dest=Path(destination)
+ if dest.exists() or dest.is_symlink():raise FileExistsError(dest)
+ if type(expected_bytes) is not int or not 0<expected_bytes<=VISIBLE_ARCHIVE_MAX_BYTES:raise ValueError('Visible archive size must be between 1 byte and 8 MiB')
+ if not isinstance(expected_sha256,str) or not re.fullmatch('[a-f0-9]{64}',expected_sha256):raise ValueError('Expected archive SHA256 required')
+ prefix='data:application/zip;base64,'
+ if not isinstance(href,str) or not href.startswith(prefix):raise ValueError('Exact visible ZIP data href required')
+ # Check the bound before copying/decoding the payload. Do not accept a whole
+ # HTML/snapshot, remote URL, folded base64, or executable recovery expression.
+ if len(href)-len(prefix)!=4*((expected_bytes+2)//3):raise ValueError('Visible archive encoded size mismatch')
+ encoded=href[len(prefix):]
+ try:raw=base64.b64decode(encoded,validate=True)
+ except ValueError:raise ValueError('Invalid visible archive base64') from None
+ if base64.b64encode(raw).decode('ascii')!=encoded:raise ValueError('Noncanonical visible archive base64')
+ if len(raw)!=expected_bytes or sha(raw)!=expected_sha256:raise ValueError('Visible archive hash/size mismatch')
+ # Exclusive creation also rejects a destination/symlink introduced after the
+ # initial check. Verification failures leave no output and never overwrite.
+ with dest.open('xb') as handle:handle.write(raw)
+ return {'archive_sha256':expected_sha256,'archive_bytes':len(raw),'visible_href_sha256':sha(href.encode('ascii')),'source_kind':'already_observed_visible_data_href','source_executed':False,'network_accessed':False,'media_qualification':'PENDING_NORMAL_ARCHIVE_IMPORT'}
+
 def export(archive,destination,chunk_bytes=196608):
  data=Path(archive).read_bytes();p=Path(destination);p.mkdir(parents=True,exist_ok=False);rows=[]
  for i,start in enumerate(range(0,len(data),chunk_bytes)):

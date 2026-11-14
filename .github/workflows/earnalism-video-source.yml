@@ -57,4 +57,4 @@ jobs:
       - name: Exercise source-audio and warm-queue regressions without model access
         working-directory: skills/earnalism-video
         run: |
-          python -m unittest software.audiobook_visuals.test_pipeline software.wan22.test_workflow software.wan22.test_batch software.wan22.test_build_batch_colab -v
+          python -m unittest software.audiobook_visuals.test_pipeline software.wan22.test_workflow software.wan22.test_batch software.wan22.test_build_batch_colab software.tests.test_colab_transfer software.tests.test_visible_data_link_recovery -v
