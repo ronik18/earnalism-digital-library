@@ -5,6 +5,17 @@ description: Resume or prepare Earnalism audiobooks using retained media, automa
 
 # Earnalism audiobook release
 
+The consolidated [single Colab orchestrator](../../docs/earnalism_orchestrator.md)
+uses this workflow's actual voice and acceptance evidence. Resolve **The Earnalism
+Voice** by exact base/model revision, trained checkpoint, pinned runtime and
+per-language qualification; training/reload evidence alone is not premium narration
+acceptance. Use the inference-only adapter with source-bound spoken text, separate
+unspoken performance captions and supported controls. Do not repeat fixed training
+or evaluation takes for a new title, silently fall back to stock/base audio, or
+claim that a branded name qualifies an English/Bengali voice. Retain accepted
+healthy recordings and cumulative failed/unknown attempts. A genuinely authorized
+qualification audition remains distinct from accepted full-title generation.
+
 Read the current title checkpoint, applicable AGENTS.md and actual owner scope.
 Use the existing campaign journal and cumulative counters. Reuse accepted exact
 assets and unchanged evidence; never regenerate healthy audio to satisfy a
