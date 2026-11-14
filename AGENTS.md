@@ -24,6 +24,18 @@ one-branch/one-open-PR restrictions and conflicting internally invented gates.
 
 - Make routine engineering decisions and continue each authorized next step without
   repeated permission requests. Prepare legitimate PRs and normal authorized integration.
+- Owner amendment, 14 November 2026: a checkout behind `origin/main` is a
+  reconciliation task, never a blanket implementation stop. Inspect ownership,
+  dirty files and ancestry; fetch main and fast-forward a clean owned checkout
+  when possible. Continue disjoint work while reconciling overlaps by intent.
+  A real conflict blocks only its dependent action. Use the isolated preparation
+  path below when the canonical checkout is unavailable or occupied. Before the
+  final normal commit/push, reconcile with freshly fetched main and inspect/test
+  the combined result. Preserve unrelated divergent remote history by using a
+  scoped PR branch when pushing the preferred branch would require a rewrite.
+  Keep uncommitted source and run evidence in durable hash-verified storage;
+  `/tmp` and ephemeral GPU disks must never be their only copy. This amendment
+  grants no additional spending, release or deployment authority.
 - Use parallel preparation with serial integration (owner-directed amendment,
   27 October 2026). Give each implementation lane its own isolated worktree and
   branch, with one writer per worktree. Existing reviewed candidates retain their
