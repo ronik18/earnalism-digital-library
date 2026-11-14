@@ -1,7 +1,5 @@
-import {createRequire} from 'node:module';
+import {resolveRenderBrowser, resolveRenderPublic} from '../src/render-browser.mjs';
 import {loadRenderLibraries} from '../src/render-runtime.mjs';
-// This package exposes CommonJS. Node24's ESM bridge stalled during the
-// observed import; its public require() entry completes without that bridge.
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 import {assertTimeline} from './model.mjs';
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -9,10 +7,10 @@ const [propsFile,out,format='SkyColourLandscape',stillFrame]=process.argv.slice(
 if(!propsFile||!out)throw Error('Usage: node sky_colour/render.mjs props.json output SkyColourLandscape|SkyColourShorts|SkyColourCleanShorts|CoverLandscape|CoverShorts [frame,...]');
 if(fs.existsSync(out))throw Error('Refusing overwrite '+out);
 const inputProps=JSON.parse(fs.readFileSync(propsFile,'utf8'));if(!format.startsWith('Cover'))assertTimeline(inputProps);
-const browserExecutable='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const browserExecutable=resolveRenderBrowser();
 console.log('Bundling '+format);
 const {selectComposition,renderMedia,renderStill,bundle,runtimeRoot}=await loadRenderLibraries(base);
-const serveUrl=await bundle({entryPoint:path.join(base,'sky_colour/index.tsx'),publicDir:path.join(base,'refraction/public'),rootDir:runtimeRoot});
+const serveUrl=await bundle({entryPoint:path.join(base,'sky_colour/index.tsx'),publicDir:resolveRenderPublic(base),rootDir:runtimeRoot});
 console.log('Bundle ready; selecting '+format);
 const composition=await selectComposition({serveUrl,id:format,inputProps,browserExecutable});fs.mkdirSync(path.dirname(path.resolve(out)),{recursive:true});
 console.log('Composition ready: '+composition.durationInFrames+' frames');

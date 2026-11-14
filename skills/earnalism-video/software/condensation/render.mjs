@@ -1,5 +1,5 @@
-import {bundle} from '@remotion/bundler';
-import {selectComposition, renderMedia, renderStill} from '@remotion/renderer';
+import {resolveRenderBrowser, resolveRenderPublic} from '../src/render-browser.mjs';
+import {loadRenderLibraries} from '../src/render-runtime.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -20,9 +20,10 @@ if (!format.startsWith('Cover')) {
   }
   if (Math.abs(end - inputProps.duration) > .1) throw Error('Body duration does not match scene timeline');
 }
-const browserExecutable = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const browserExecutable = resolveRenderBrowser();
+const {bundle, selectComposition, renderMedia, renderStill, runtimeRoot} = await loadRenderLibraries(base);
 // Reuse the exact approved emblem/end-ident files without modifying or recopying them.
-const serveUrl = await bundle({entryPoint: path.join(base, 'condensation/index.tsx'), publicDir: path.join(base, 'refraction/public')});
+const serveUrl = await bundle({entryPoint: path.join(base, 'condensation/index.tsx'), publicDir: resolveRenderPublic(base), rootDir: runtimeRoot});
 const composition = await selectComposition({serveUrl, id: format, inputProps, browserExecutable});
 fs.mkdirSync(path.dirname(path.resolve(out)), {recursive: true});
 if (stillFrame !== undefined) {
