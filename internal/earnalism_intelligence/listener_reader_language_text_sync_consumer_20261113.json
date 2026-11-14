@@ -4,11 +4,11 @@
   "scope": "Current standalone /listener/:slug audio-only consumer with one-Play paid preparation and server-bounded public previews. Read-along, highlighting, captions and text-linked audio navigation remain retired. This source applicability does not establish recording fidelity, rights, playback, accounting or native recovery acceptance.",
   "sources": {
     "frontend/src/App.js": "dfbe8bc37376a637347ade885a2f3631b2c416b56ffa2a70132b9bb8cbcb3842",
-    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "34cd565399db2fc3814895c623eff1f277929cb025edfceae6f40960e483766d",
+    "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx": "b2310aca32e82a7443588f279ccb86c7cc7f9bc0a6f121eca3e4d34d14f2f1bc",
     "frontend/src/experiences-v2/listener/ListenerExperienceV2.jsx": "f58d924929cc830abb662db5bd097698dc99e8ed055e6cfabafbae07b0550c73",
     "frontend/src/lib/audioPackageManifest.js": "927ccfb5647f4a38233314cb9e9536ff30960eb4471efb145522f410697b8c04",
     "frontend/src/lib/audiobookPlayback.js": "2e412d32e025800fa1c66c6011c40a6c911e5042eb8d3e6fd76d0d6f1488128d",
-    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "b2b3cd8670e5e89626bd7a179005962c475424be0401e51ffd7cb6df002bb5ae",
+    "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx": "2742103512caf904775fcc4161ec07cce1edfad10c497a93e2410f3a4ca21ff1",
     "frontend/src/experiences-v2/shared/ReleaseTruthAdapter.js": "3b380696dca220da6ff2544fceb0b0214f19f729e964a5cb4c6aa68efcb7fff6",
     "frontend/src/pages/Reader.jsx": "cb105fc855ef544798fc9a3e9eaef28eba9c0ed7f162ff5c8fd2a609c10c269c",
     "frontend/src/lib/audioReleaseSafety.js": "c5fadd8f6fb3a36800b7b5a96b7608078436d26f2afc99630820ad29936ddd6f",
