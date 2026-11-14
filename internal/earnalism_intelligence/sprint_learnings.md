@@ -3449,3 +3449,6 @@ The bounded instruction parser keeps the known requested voice separate from the
 
 ## P0 Reader startup — 2026-11-15
 Read links must target the Reader route. PREVIEW_REQUIRES_PASS is a server boundary that eligible signed-in readers can recover through one normal admission, never a transfer/retry. Reader font readiness must not await unrelated global fonts. Listener metadata requests need bounded waits. Source tests do not prove live mobile latency.
+
+### 2026-11-15 — Public Library counts
+Count live catalogue editions separately from preparation cards and initially paginated cards. Historical processing scope is not a current publication receipt. Public API observed 97 unique LIVE_APPROVED editions; no release status changed.

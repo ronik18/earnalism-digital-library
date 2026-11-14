@@ -85,6 +85,7 @@ test("each approved audiobook appears once and links to its protected Listener",
     expect(cards[0].querySelector(`a[href="/listener/${slug}"]`).textContent).toBe("Listen");
   }
   expect(container.querySelectorAll(".reference-book-tile")).toHaveLength(2);
+  expect(container.textContent).toContain("2 live editions");
 });
 test("changing one facet preserves a different legacy facet and exposes legacy stage", async () => {
   api.get.mockResolvedValue({data: require("../lib/__fixtures__/libraryCatalogue.public.json")});
@@ -184,4 +185,11 @@ test("the 60-second transport deadline fails closed until one explicit retry, wi
     expect(container.querySelector('a[href="/reader/frankenstein"]')).toBeNull();
     expect(count()).toBe(2);
   } finally { jest.useRealTimers(); }
+});
+
+test("Library count separates live editions from preparation cards", async () => {
+  api.get.mockResolvedValue({ data: [reader()] });
+  await mount(["/library"]);
+  const status = [...container.querySelectorAll("[role=status]")].find(e => e.textContent.includes("live edition"));
+  expect(status.textContent).toMatch(/^1 live edition · \d+ in preparation$/);
 });
