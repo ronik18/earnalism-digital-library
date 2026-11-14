@@ -225,3 +225,6 @@ retained candidate is a pilot, and a successful pilot is required before scaling
 
 
 Actual private-pilot learning, 14 November 2026: the owner rejected the three new Cedar takes as still robotic. They remain historical evidence and do not qualify a replacement. No Wan model setup or inference occurred: large JSON/plain outputs were externalized in the saved notebook, so output transport remained unqualified and the original generation headroom expired. Test the complete export envelope on CPU before allocating a future GPU. Releasing the one runtime does not restore its consumed start; revised voice settings and any new compute require their own bounded authority.
+
+
+Subsequent actual CPU control recovered the output path:24separate bounded stdout cells survived notebooksave and officialDriveHTTPSretrieval; strict local decode verified the exact8MiBharmless archive. Its CPUruntime was released with original limits preserved. Use this demonstrated envelope for the prepared export successor, while keeping actual model execution, media import and visual quality unqualified until observed. The owner-rejected narration remains held; preparing a changed probe does not renew its consumed responses.

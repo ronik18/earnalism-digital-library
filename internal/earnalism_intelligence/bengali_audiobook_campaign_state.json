@@ -1186,5 +1186,36 @@
     "published": false,
     "next_generated_prompt": "Complete a harmless full-envelope durable transfer on CPU before seeking another GPU start; prepare changed natural Indian-English performance probe from retained owner rejection. Do not repeat the rejected settings, generate or publish under consumed authority.",
     "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true
+  },
+  "open_window_cpu_transfer_recovered_20261114": {
+    "at": "2026-11-14T10:53:57.590245+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; previous findings and consumed allowances remain.",
+    "transport": "ACTUAL_8_MIB_CHUNKED_STDOUT_ROUNDTRIP_PASS",
+    "transport_proof": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/ACTUAL-CPU-TRANSFER-PROOF.json",
+      "sha256": "152214514e0c1913218ab147d5972e3180df3e4b40a3e551d049b4c3bf44bb1a"
+    },
+    "actual_archive_bytes": 8388608,
+    "actual_archive_sha256": "50d8a4b70be6baf44702c5d7f1d5a791c7b6172cdf88e21a075e0644b6eba456",
+    "actual_notebook_bytes": 11216331,
+    "actual_notebook_sha256": "abaaa14f0b37a83bd178fe73592936cfb15c40d1aa5d9ddad2f505cc8bb1e602",
+    "chunk_count": 24,
+    "max_actual_stdout_cell_bytes": 481066,
+    "cpu_runtime": "DISCONNECTED_VERIFIED",
+    "billing": "UNVERIFIED_NOT_CLAIMED_FREE; CPU supporting work under original3CUaggregate and unchanged deadline",
+    "voice_revision_prepared_disabled": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-revision-v3/ONE-RESPONSE-READY-v3.json",
+      "sha256": "c16e1c3bfda7a285fc55e6de11913347c52a34e30980b44a26130327fa67c1ee"
+    },
+    "new_provider_responses_authorized": 0,
+    "new_gpu_starts_authorized": 0,
+    "gpu_model_or_motion_qualification": false,
+    "model_weights_trained": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Use the actual8MiBCPUtransport proof to prepare the disabled Wan export successor, preserving source job and one-start/deadline controls. Independently review the changed one-response natural Indian-English probe; seek only its concrete new scope after preparation. Preserve all rejected takes, original soundtrack, owner KEEP preferences and consumed authority."
   }
 }
