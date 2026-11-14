@@ -238,3 +238,21 @@ The single additional L4 allocation generated and durably imported one native 12
 The seven-chunk final archive initially lacked two saved stdout chunks. Strict decoding rejected that copy. Emitting only the missing immutable transfer parts and saving again recovered the exact archive without another model start. Verify the complete required chunk set before delivery; a final summary output alone does not prove all parts were saved. The normal importer then checked the original job, model, members and actual video. The runtime was released and saved execution flags disabled.
 
 Private context uses the exact retained soundtrack PCM frames [18144000,18386000), corresponding to 378–383.041667 seconds. Its WAV remains the lossless reference; browser AAC is explicitly a preview derivative, and video packets are copied unchanged. Full source masters and owner KEEP passages remain intact. Playback, frame seeking, replay and audio focus were observed in the local player; heard emotional fit and full-title readiness were not inferred. No publication was authorized or performed.
+
+### Retained local voice runtime: preparation outcome
+
+The in-house route found 11 retained model/tokenizer files with matching provenance
+and recorded commercial licence allowance. Reuse these exact bytes and validate
+legitimate cache links against the retained inventory; remote access
+acknowledgement for a new download is a separate question. The exact official
+Parler/audiotools source compatibility lock resolves the demonstrated protobuf
+dependency conflict while preserving the direct package versions. Resolution
+does not establish a working runtime: installation failed for insufficient disk
+space, and automatic approval review rejected the retry before execution because
+filling the disk could disrupt unrelated user data. Only this attempt's disposable
+cache was removed. Preserve the source, lock, logs, model assets and media, check
+actual capacity before another installation, and retain failed checks when writing
+successor results. The disabled adapter and its fixture tests qualify preparation
+only; no model loading, speech generation, training, voice acceptance or renewed
+pilot authority followed. The title history entry
+`open_window_inhouse_runtime_setup_handoff_20261114` links the exact receipts.

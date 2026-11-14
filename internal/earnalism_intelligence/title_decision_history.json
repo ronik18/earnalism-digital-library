@@ -18045,5 +18045,38 @@
     },
     "prior_Selfish_Giant_17_responses": "Remain separately consumed by existing history reference; no reset.",
     "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_changed": false
+  },
+  "open_window_inhouse_runtime_setup_handoff_20261114": {
+    "at": "2026-11-14T13:33:43.345981+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English setup handoff only; prior human narration+visual revision stays ACTIVE.",
+    "runtime_preparation": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/runtime-restore-v1/RUNTIME-PREPARATION-RESULT-v1.json",
+      "sha256": "a62cc9c3c9afe47a81cc9473a0ce1ae2c277017000878ccbbc65eb744dbba662"
+    },
+    "retained_cache_context": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/RETAINED-CACHE-CONTEXT-ADDENDUM-v1.json",
+      "sha256": "c5b18e930a6f4062e25b80629280b2a05191d9871962f8fbb6e6af5ffeee8c2d"
+    },
+    "owned_cache_rollback": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-recovery-v4/runtime-restore-v1/OWNED-CACHE-ROLLBACK-RECEIPT.json",
+      "sha256": "96fb05699521983d6b00519d612cac308458cca76bca8d8a9bd60654dc47ee23"
+    },
+    "adapter_lock_readiness_references": "runtime_preparation: /adapter_v2; /official_author_compatibility_successor/lock; /actual_runtime_check. These are prepared/failed checks, not runtime or voice qualification.",
+    "retained_assets": "11 existing model/tokenizer files (~3.77 GB), revision 7b527af5ee8ed1f9a28d80b19703ed9bb8ba10ca; reuse recorded Apache-2.0 commercial allowance. No new remote acknowledgement gate for retained bytes.",
+    "dependency_outcome": "All 11 direct pins exist. Official-author exact Parler/audiotools source compatibility lock resolves the demonstrated protobuf dependency conflict; install then failed ENOSPC. No completed runtime/import qualification.",
+    "retry_outcome": "Automatic approval review rejected the serial/hardlink install retry before execution because roughly 488 MiB free risked unrelated user data; no workaround executed.",
+    "rollback_outcome": "Removed only the newly created disposable uv-cache; source, locks, logs, retained model/tokenizers, media and prior evidence preserved.",
+    "free_bytes_at_rollback_receipt": 1075724288,
+    "pending_setup_only_reply": true,
+    "capacity_target": "3,000,000,000 free bytes is the Integration Lane conservative preparation target, not universal vendor/owner policy. Recheck actual free space before any retry.",
+    "new_model_load_inference_training_GPU_or_spend": false,
+    "prior_consumption_or_authority_renewed": false,
+    "narration_and_torso_fear_revision_resolved": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Preserve the retained licensed cache, exact soundtrack, source/locks/logs and owner-selected visual style. Resolve storage through owner-provided free space or an explicitly scoped safe action; the pending setup-only question uses a conservative 3 GB free-space target, not a vendor or owner-wide policy. After the actual reply and a fresh capacity check permit setup, install the exact author-compatibility hash lock and run credential-stripped CPU-only package consistency/import checks. Do not load model weights, generate speech, train, allocate GPU, spend or publish under the consumed pilot grants."
   }
 }
