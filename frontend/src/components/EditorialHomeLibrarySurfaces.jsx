@@ -313,6 +313,8 @@ export function ReferenceLibrarySurface({
   const live = filteredBooks.filter((book) => availabilityOfBook(book) === "reader-ready");
   const comingSoon = filteredBooks.filter((book) => !isLive(book));
   const approvedAudio = filteredBooks.filter((book) => availabilityOfBook(book) === "approved-audiobook");
+  const liveCount = live.length + approvedAudio.length;
+  const catalogueCountLabel = `${liveCount} live ${liveCount === 1 ? "edition" : "editions"}${comingSoon.length ? ` · ${comingSoon.length} in preparation` : ""}`;
   const catalogueUnavailable = catalogueState === "unavailable";
   const catalogueIsEmpty = catalogueState === "empty";
   const shelves = [
@@ -392,7 +394,7 @@ export function ReferenceLibrarySurface({
         </div>
       </header>
       <div className="reference-library__results-bar">
-        <p role="status" aria-live="polite" aria-atomic="true">{loading ? "Finding your next read…" : catalogueUnavailable ? "The Library is temporarily unavailable." : `${resultLabel}${query ? " found" : " to explore"}`}</p>
+        <p role="status" aria-live="polite" aria-atomic="true">{loading ? "Finding your next read…" : catalogueUnavailable ? "The Library is temporarily unavailable." : `${catalogueCountLabel}${query ? " found" : ""}`}</p>
         {activeFilters.length > 0 && <div className="reference-active-filters" aria-label="Active filters">{activeFilters.map(([key,,label]) => <button key={key} type="button" aria-label={`Remove ${label} filter`} onClick={() => { update(key,"all"); requestAnimationFrame(() => searchRef.current?.focus()); }}>{label}<X aria-hidden="true" /></button>)}<button type="button" className="reference-clear-filters" onClick={clearFilters}>Clear filters</button></div>}
       </div>
       <div className="reference-library__content" id="library-collection">
