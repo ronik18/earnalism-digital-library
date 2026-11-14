@@ -1137,5 +1137,14 @@
       "sha256": "f941d2eb4a222fe0f653950071a730e07b03ba2c626565d658debfd7944d24e6"
     },
     "campaign_release_or_counters_changed": false
+  },
+  "open_window_source_motion_trials_20261114": {
+    "state": "PRIVATE_SOURCE_BOUND_MOTION_TRIALS_REVIEWED_WITH_ACTING_LIMITS_FULL_AV_PENDING",
+    "title_history_key": "open_window_source_motion_trials_20261114",
+    "result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-character-motion-trials-20261114-v1/RUN-RESULT.json",
+      "sha256": "91ea98d1d94dac861738b3a278285f67f8ae28752141f26f2c3ac3e8334cce37"
+    },
+    "campaign_holds_counters_provider_budget_and_release_unchanged": true
   }
 }

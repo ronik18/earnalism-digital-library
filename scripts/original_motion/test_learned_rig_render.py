@@ -1,6 +1,7 @@
 """Original tiny synthetic renderer fixtures; never real trained-motion proof."""
 import copy
 import json
+import shutil
 from pathlib import Path
 import tempfile
 import time
@@ -190,6 +191,35 @@ class LearnedRigRenderTests(unittest.TestCase):
         self.manifest['provenance']['prediction_source']='trained_model_inference';self.save()
         with self.assertRaises(ValueError):
             load_prediction(self.path)
+
+    def test_fractional_inference_duration_covers_source_and_loads_on_frame_grid(self):
+        try:
+            from . import motion_model as m
+        except ImportError:
+            import motion_model as m
+        self.make_small_trained_prediction()
+        model_dir=self.root/'trained';model_dir.mkdir()
+        shutil.copy2(self.model,model_dir/'weights.npz')
+        shutil.copy2(self.training,model_dir/'training-report.json')
+        def ref(path):return {'path':str(path),'sha256':digest(path)}
+        (model_dir/'model.json').write_text(json.dumps({
+            'schema':'earnalism.conditional_skeletal_motion_model.v1','research_only':True,
+            'model':ref(model_dir/'weights.npz'),'training_report':ref(model_dir/'training-report.json'),
+            'architecture':[len(m.FEATURES),16,16,len(m.STATE_NAMES)],
+            'features':m.FEATURES,'state_names':m.STATE_NAMES,'joint_names':m.JOINTS,
+            'hierarchy':m.HIERARCHY,'activation':'tanh,tanh,linear','actions':m.ACTIONS}))
+        out=self.root/'fractional'
+        prediction=m.predict(model_dir,out,action='look',duration=1.001,fps=24)
+        actual=load_prediction(out/'prediction.json')
+        self.assertEqual(len(actual['joints']),25)
+        self.assertEqual(prediction['duration_seconds'],25/24)
+        self.assertEqual(prediction['requested_duration_seconds'],1.001)
+        self.assertEqual(prediction['case']['duration_seconds'],1.001)
+        self.assertGreaterEqual(actual['duration_seconds'],1.001)
+        self.assertLess(actual['duration_seconds']-1.001,1/24)
+        retained=Path(prediction['source_code']['path'])
+        self.assertEqual(retained.parent,out.resolve())
+        self.assertEqual(retained.read_bytes(),Path(m.__file__).read_bytes())
 
     def test_actual_trained_checkpoint_replays_and_forged_joint_pixels_reject(self):
         self.make_small_trained_prediction()

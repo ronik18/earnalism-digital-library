@@ -32,6 +32,45 @@ the actual model prediction, not replace it with the teacher, a pose fixture or
 camera movement on a still image. Preserve raw predictions separately from fixed
 anatomical clipping and any presentation treatment.
 
+Fractional inference durations cover the requested interval with a ceiling on the
+delivery frame grid. `duration_seconds` reports the actual frame count/FPS;
+`requested_duration_seconds` and the inference case retain the requested clock.
+The source recording keeps its native sample length. Each new prediction retains
+its own `inference-source.py`, so a later checkout update cannot invalidate that
+producer reference.
+
+### Disclosed contact and interaction derivatives
+
+`scripts.original_motion.contact_retarget` makes a separate mechanical derivative
+from a numerically replayed trained prediction. It preserves raw files and weights.
+The default explicitly authors support phases, fixed support anchors, a small
+temporal filter/reach ceiling and endpoint root easing. Analytic two-bone IK keeps
+bone lengths and prevents floor penetration; this is not new learned motion.
+
+```bash
+python3 -m scripts.original_motion.contact_retarget --prediction /PRIVATE/new-walk-prediction/prediction.json --output /PRIVATE/new-grounded-derivative
+```
+
+Its Python `derive` API also accepts explicit `seated_context` geometry, an actual
+same-body learned-sit reference, lap rests and a `window_point` target. These can
+replace substantial arm/lower-body motion and must not be called small neural
+corrections. The derivative records changed channels and raw/derived drift,
+penetration, speed, acceleration and displacement with their actual comparison
+scope. `load_verified_derivative` replays both the raw NN and deterministic
+constraints and recomputes all reported measurements and raw validation evidence.
+It rejects altered arrays, forged metrics or claims of acting/release acceptance.
+Keep the implementation and all referenced files immutable with each private run.
+The strict pure-NN renderer does not accept this different derivative schema.
+
+Open Window trials demonstrate why contact metrics alone are insufficient: an
+initial hooked hand did not indicate the window, detached face art broke the neck,
+standing-rest arms dangled in a seated composition, and a planar head tilt did not
+perform the source's seated turn. Review actual source-cue frames, then the complete
+action and phone-size delivery. Authored gaze, expression and silhouette/yaw
+corrections belong to the illustrated renderer's disclosure, not the NN report.
+Do not substitute a different illustration style for painterly continuity without
+retaining that limitation. These private studies do not qualify the complete film.
+
 The self-contained Colab notebook embeds the frozen first trainer, verifies its
 hash, requires an actual CUDA/autograd probe and exports weights/data/predictions
 with an artifact index. It uses preinstalled Torch and mounts no Drive tree.

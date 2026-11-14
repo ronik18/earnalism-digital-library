@@ -3391,3 +3391,9 @@ Later resolution in the same run: after owner unlock, ordinary Colab controls sh
 ## 14 November 2026 — AV decoder portability
 
 Hosted Ubuntu FFmpeg6 exposed terminal AAC padding rejected by the macOS-qualified END decoder; renderer tests also assumed /private/tmp. Use platform temp paths and exact packet-certified presentation boundaries, preserving audible samples and real timeline gaps. Local negative/equivalence tests pass; actual Linux qualification remains pending. Reference `book_av_portability_20261114`. Original book media and all campaign counters/holds unchanged.
+
+## 14 November 2026 — source-bound Open Window motion trials
+
+Four private excerpts preserve 47.431s of exact native score PCM and measured cues; A/B media share one encoded soundtrack. Actual frames resolved detached necks, a hooked window gesture, dangling seated hands and tilt substituted for the source-required seated turn. Contact/yaw/hand/context repairs remain explicitly authored, distinct from raw NN inference. Validate reported metrics as well as pose arrays, ceil fractional frame clocks without trimming native audio, and retain immutable producer source. Independent sampled visual review inspected 357 decoded frames. The broad shudder, alternate illustration style and unproven natural/premium acting remain a plateau; full musical listening and the complete final AV decision remain open. No new training, provider/GPU allocation, score edit or publication.
+
+Reference: title history `open_window_source_motion_trials_20261114`; result `/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-character-motion-trials-20261114-v1/RUN-RESULT.json` (SHA256 `91ea98d1d94dac861738b3a278285f67f8ae28752141f26f2c3ac3e8334cce37`). Original narration, full score/film, owner KEEP passages and Bengali holds/counters are unchanged. Score: no-new-learning.
