@@ -18094,7 +18094,7 @@
       "existing release governor; no automatic publication"
     ],
     "local_validation": {
-      "focused_python_tests": 69,
+      "focused_python_tests": 71,
       "result": "PASS",
       "browser_resolver": "PASS_SOURCE_ONLY_NO_BROWSER_LAUNCH",
       "model_or_new_training_or_cloud_execution": false,
@@ -18108,7 +18108,8 @@
       "Qualification snippets cannot be used as complete production narration",
       "Persist early setup/shutdown history immutably and retain failed/unknown intents",
       "Torso movement, expression and facial continuity are independent review dimensions",
-      "Science renderer dependencies and browser bytes use the same original clock and verified private cache"
+      "Science renderer dependencies and browser bytes use the same original clock and verified private cache",
+      "Keep a known requested voice direction separate from the exact title; reject ambiguous book/edition instructions before project discovery"
     ],
     "private_media_published": false,
     "production_voice_acceptance_created": false,

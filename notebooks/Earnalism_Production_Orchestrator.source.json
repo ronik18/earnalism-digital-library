@@ -1,10 +1,10 @@
 {
   "schema": "earnalism.orchestrator_notebook_source.v1",
   "base_revision": "e6c65b84f18eab3573f1822d2e8f6c98d1a880d2",
-  "capsule_sha256": "f5261e29a37d0931478b76fe3500be9d85e4966f338fcc88d9129cf881236505",
-  "capsule_bytes": 118030,
+  "capsule_sha256": "dd9c993807432dde790ed25ae491768f7e3211d0e8cb5c0661ddaa4767514fb9",
+  "capsule_bytes": 118591,
   "files": {
-    "scripts/earnalism_orchestrator.py": "bb8a96a250d46af30a2978c39afd114ba63aecf2b65c560e1c6f55729e45e1ec",
+    "scripts/earnalism_orchestrator.py": "ab22d7a5edb41f12e5b1b8a3f003869571f1ce08fbf43465e45acdb27b1b11c8",
     "scripts/earnalism_voice.py": "341ec31149e2a4dd17605c54aaf846675f92ef3ad5aae1061f016780520084a7",
     "scripts/earnalism_media_adapters.py": "d877041a17a74220d6668b77e1e5c7c699eff0e1eaf2f632db1660c55e112195",
     "skills/earnalism-video/software/src/render-browser.mjs": "fa55a3edfe6458dfd6721e63eb6a844ed82c624cd51e2d598205fe14d0208191",
@@ -26,11 +26,11 @@
     ".agents/skills/earnalism-audiobook-go-live/SKILL.md": "766982d033a6c4d89d1b96add5f5d5ee26036e1b1433cbb44d5a08bbbff5891b",
     "skills/earnalism-audiobook-go-live/SKILL.md": "c86c61ee73e5b60da54c69d679088220f32de5a136c180879cb835547aa42138",
     "skills/earnalism-video/SKILL.md": "17cb27c14fd6f1f9acc7cb040db796d64fbd073d04fed2d6b0ffd9248be18e58",
-    "docs/earnalism_orchestrator.md": "448da4c955d11fbab4ce6c7eeb28ed842e07bb8b8756dfea3c377db20c74f8ce",
+    "docs/earnalism_orchestrator.md": "78b9101f679a4b7a321bc73c8b85961a08c884bf12d2ca41f08daa65fa8ec16e",
     "scripts/earnalism_voice_runtime/parler.py": "a4a8f12a744ebfda247783a9e5d0aea7eaed82a85e72f68836b5811da5be463e",
     "scripts/earnalism_voice_runtime/setup.py": "a996513f05e61e072f750f8c63e1ce63eddde4faf0163115aad3d3810a51c215"
   },
-  "notebook_sha256": "9d7c364973ca382d87763b467d73637a2739fb428535b5ff5a968bff326f1224",
+  "notebook_sha256": "8e03c6286cd67ca5145cd6865c32228d90a6a7c63923d36f235292e31fec4378",
   "builder_sha256": "9bcad577c218620f03be73665a8912aea0e5eed18eb9f30a34274e4876dd5a44",
   "execution_default": false,
   "private_media_embedded": false,

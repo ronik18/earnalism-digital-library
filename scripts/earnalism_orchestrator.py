@@ -190,7 +190,27 @@ def parse_instruction(instruction: str) -> dict:
             raise ValueError("name an EverydayScience topic after 'topic -', or request the next registered topic")
         return {"kind": "science", "series": "EverydayScience", "title": title,
                 "language": None, "next": requested_next, "publication_requested": False}
-    match = re.search(r"(?:(Bengali|English)\s+)?book\s*[-–—:]\s*(.+)", text, re.I)
+    # This is a bounded input grammar, not a general prose/title guesser. Keep
+    # the demonstrated optional voice direction separate from the exact title;
+    # narration still needs its real trained profile, qualification and scope.
+    voice = re.search(r"\s+using\s+The\s+Earnalism\s+Voice\s*[.!]?\s*$", text, re.I)
+    if voice:
+        text = text[:voice.start()].rstrip()
+    if (re.search(r"\b(?:Bengali\s+(?:and|or|/)\s+English|English\s+(?:and|or|/)\s+Bengali)\s+book\b", text, re.I)
+            or re.search(r"\s+(?:and|or)\s+(?:(?:the\s+)?(?:Bengali|English)\s+)?book\b", text, re.I)):
+        raise ValueError("request one exact book and language/edition at a time")
+    matches = list(re.finditer(r"(?:(Bengali|English)\s+)?book\s*[-–—:]\s*(.+)", text, re.I))
+    # A second explicit book clause is ambiguous even when it appears within
+    # the greedy first match's captured tail.
+    if len(re.findall(r"\bbook\s*[-–—:]", text, re.I)) > 1:
+        raise ValueError("request one exact book and language/edition at a time")
+    match = matches[0] if matches else None
+    if match is None:
+        match = re.fullmatch(
+            r"(?:Build|Prepare|Create)\s+"
+            r"(?:(?:(?:the\s+)?GO\s+LIVE\s+ready\s+)?(?:output\s+for\s+(?:the\s+)?)?"
+            r"audiovisual(?:\s+cinematic(?:\s+version)?)?\s+for\s+(?:the\s+)?)?"
+            r"(?:(Bengali|English)\s+)?book\s+(.+)", text, re.I)
     if not match:
         raise ValueError("use 'book - TITLE', 'Bengali book - TITLE', or 'next EverydayScience topic'")
     title = match.group(2).strip(" \t\r\n\"'“”")
@@ -199,8 +219,11 @@ def parse_instruction(instruction: str) -> dict:
     language = {"bengali": "bn", "english": "en"}.get((match.group(1) or "").lower())
     if language is None and re.search(r"[\u0980-\u09ff]", title):
         language = "bn"
-    return {"kind": "book", "title": title, "language": language, "next": False,
-            "publication_requested": False}
+    request = {"kind": "book", "title": title, "language": language, "next": False,
+               "publication_requested": False}
+    if voice:
+        request["requested_voice"] = "TheEarnalismVoice"
+    return request
 
 
 def _registry(path: Path) -> dict:

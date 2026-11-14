@@ -13,6 +13,11 @@ Build the next audiovisual for the EverydayScience topic for theearnalism social
 Build the GO LIVE ready output for the audiovisual cinematic version for the Bengali book - Bicharak
 ```
 
+The bounded book grammar also accepts `Build the GO LIVE ready audiovisual for
+Bengali book Bicharak using The Earnalism Voice`. The known terminal voice
+direction stays separate from the exact title; multiple books/editions are not
+silently combined, and other trailing clauses are not guessed away.
+
 “GO LIVE ready” requests preparation and the existing readiness evaluation.
 The notebook does not publish. Source/AV rights, actual content/voice quality,
 measured timing, protected delivery and destination authority retain their

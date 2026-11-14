@@ -71,6 +71,44 @@ class OrchestratorTests(unittest.TestCase):
         self.assertFalse(report["production_ready"])
         self.assertEqual(before, sorted(str(p) for p in self.workspace.rglob("*")))
 
+    def test_natural_bengali_instruction_keeps_exact_title_and_known_voice_direction(self):
+        examples = (
+            "Build the GO LIVE ready audiovisual for Bengali book Bicharak using The Earnalism Voice",
+            "Build the GO LIVE ready audiovisual for Bengali book - Bicharak using The Earnalism Voice",
+            "Build the GO LIVE ready output for the audiovisual cinematic version for the Bengali book - Bicharak using The Earnalism Voice",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            workspace = Path(tmp)
+            with patch.object(engine, "_dispatch") as dispatch, patch.object(engine, "_runtime") as runtime:
+                for instruction in examples:
+                    result = engine.plan(instruction, workspace)
+                    self.assertEqual(result["request"]["title"], "Bicharak")
+                    self.assertEqual(result["request"]["language"], "bn")
+                    self.assertEqual(result["request"]["requested_voice"], "TheEarnalismVoice")
+                    self.assertEqual(result["state"], "MISSING_INPUT")
+                    self.assertIsNone(result["project"])
+                    self.assertFalse(result["publication_performed"])
+                    self.assertFalse(result["model_weights_trained"])
+                    self.assertEqual(list(workspace.iterdir()), [])
+                dispatch.assert_not_called()
+                runtime.assert_not_called()
+
+    def test_instruction_does_not_guess_multiple_editions_or_arbitrary_prose(self):
+        for instruction in (
+            "Something I read mentions Bengali book Bicharak",
+            "Build audiovisual for Bengali and English book - Bicharak",
+            "Build Bengali book Bicharak and English book The Selfish Giant",
+            "Build book - Bicharak; book - The Selfish Giant",
+            "Build Bengali book using The Earnalism Voice",
+        ):
+            with self.subTest(instruction=instruction), self.assertRaises(ValueError):
+                engine.parse_instruction(instruction)
+        # A different trailing instruction is never silently removed or mapped
+        # to the known branded voice; it cannot select Bicharak by accident.
+        different = engine.parse_instruction("Build Bengali book Bicharak using voice B")
+        self.assertEqual(different["title"], "Bicharak using voice B")
+        self.assertNotIn("requested_voice", different)
+
     def test_shared_science_branding_and_runtime_changes_invalidate_visuals(self):
         root = self.workspace/"maintained-source-fixture"
         files = ["scripts/earnalism_orchestrator.py", "scripts/earnalism_media_adapters.py",

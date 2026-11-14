@@ -3441,6 +3441,8 @@ Next generated prompt: Preserve the retained licensed cache, exact soundtrack, s
 
 ## 14 November 2026 — one instruction-driven production notebook
 
-Source checkpoint `single_colab_production_orchestrator_20261114` unifies exact-project routing, trained-voice identity, measured dynamic score, finite book/science renderers, persistent stage reuse and the existing release governor. Sixty-nine focused software tests and source-only browser selection/setup checks pass. Automatic pinned renderer setup shares the original deadline and reuses only verified package/browser bytes; no install, browser launch or media qualification occurred.
+Source checkpoint `single_colab_production_orchestrator_20261114` unifies exact-project routing, trained-voice identity, measured dynamic score, finite book/science renderers, persistent stage reuse and the existing release governor. Seventy-one focused software tests and source-only browser selection/setup checks pass. Automatic pinned renderer setup shares the original deadline and reuses only verified package/browser bytes; no install, browser launch or media qualification occurred.
 
 Retain actual training and runtime provenance without calling it voice acceptance. Protect Bengali marks/joiners and full-source narration coverage; distinguish qualification snippets from full books. Verify bootstrap wheels, cached interpreters, base dependencies and imported code. Preserve failed/unknown attempts and immutable startup/shutdown history. Record body movement, expression and facial identity independently. Private content, account evidence, production holds and all operation counters remain outside this source refinement.
+
+The bounded instruction parser keeps the known requested voice separate from the title and refuses multi-book/edition ambiguity; a fresh missing-registry Bengali forward check discovered the correct history without executing or creating acceptance.
