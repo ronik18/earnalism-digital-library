@@ -30,6 +30,12 @@ Use for an authorized analytics audit or a planned content experiment. This is a
 - A fresh capture can contain stale audience, retention or Earn counters. Keep each displayed cutoff/processing notice; do not reconcile incompatible rollups by arithmetic or infer best posting hours from an unavailable heatmap. Current subscriber totals, historical eligibility counters and observed revenue are separate measures.
 - Keep discovery, retention and conversion distinct. Extra reach may dilute follows per reach while increasing total follows; higher completion may mean less useful watch time on a shorter video. Show both absolute outcomes and rate tradeoffs.
 
+## Compare successive snapshots and diagnose in evidence order
+
+Treat a change in cumulative counts as a net change in reported counters, not an interval retention rate, exact fixed-age history or proof of new unique people. Unchanged counters with an unknown processing cutoff are an observed reporting plateau, not confirmed zero distribution. Preserve actual capture age, missed deadlines and recovered access as separate observations. Compare averages or percentages only when each widget's metric, public origin, window and processing scope are compatible; otherwise show the raw values side by side and suppress a behavioural change claim. Do not subtract cumulative averages to estimate an interval average.
+
+Diagnose only as far as exposed evidence allows: distribution/recommendation access and counters → native initial choice/skip → retention curve → payoff/share/return response. Low reach alone does not identify a weak hook, voice, hashtag, setting or AI-content defect. An average duration cannot locate a drop-off. When native evidence is missing, propose one bounded creative hypothesis rather than assign a cause. Different platform rankings, tiny denominators, QA/replays and changed topic/voice/runtime prevent a universal winner; keep each platform's frozen primary and thresholds. A creator anecdote may motivate a new test, never replace an exposed experiment's scorecard.
+
 ## Predeclare one controlled test
 
 Use [the experiment template](templates/growth-experiment.template.json); fill only what the question needs before exposure.
