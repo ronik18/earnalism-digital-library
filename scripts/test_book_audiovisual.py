@@ -218,6 +218,12 @@ class BookAVPlannerTests(unittest.TestCase):
             by_language={c['language']:c for c in english_packet['retained_candidates']}
             self.assertIn('reuse_disposition',by_language['en'])
             self.assertNotIn('reuse_disposition',by_language['bn'])
+            unresolved=plan('A Book',history)
+            self.assertEqual(unresolved['language'],'UNRESOLVED_REQUIRES_EDITION')
+            self.assertEqual(unresolved['state'],'EDITION_REQUIRED')
+            self.assertIsNone(unresolved['current_owner_revision'])
+            self.assertIsNone(unresolved['preferred_retained_candidate'])
+            self.assertTrue(all('reuse_disposition' not in c for c in unresolved['retained_candidates']))
             records['bn_revision']={'title':'A Book','language':'bn','at':'2026-11-14T08:00:00Z',
                                     'owner_revision':{**revision,'source_ref':'Bengali-edition owner feedback',
                                                       'narration_requirement':'Selected Bengali narrator'}}

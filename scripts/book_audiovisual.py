@@ -110,7 +110,6 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
         raise ValueError('a nonempty book title is required')
     history = json.loads(history_path.read_text(encoding='utf-8'))
     matched, candidates, seen, owner_revisions = [], [], set(), []
-    inferred_language = None
     known_title_languages = set()
     for locator, record, date in records(history):
         identities = [record.get(k) for k in ('title', 'name', 'slug', 'book_slug', 'title_slug')]
@@ -124,7 +123,6 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
             record_language = record['language']
         elif any(isinstance(v, str) and re.search('[\u0980-\u09ff]', v) for v in identities):
             record_language = 'bn'
-        inferred_language = record_language or inferred_language
         if record_language:
             known_title_languages.add(record_language)
         matched.append({'record': locator, 'date': date,
@@ -178,11 +176,14 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
     # Scope findings and resolutions to the requested edition's language. A
     # generic revision may inherit only an unambiguous matching-title context;
     # never borrow the requested language to reinterpret an English finding.
+    known_title_languages.update(c['language'] for c in candidates if c['language'] in {'en', 'bn'})
+    known_title_languages.update(r['language'] for r in owner_revisions if r['language'] in {'en', 'bn'})
     context_language = next(iter(known_title_languages)) if len(known_title_languages) == 1 else None
+    edition_language = language or context_language
     owner_revisions = [{**revision, 'language': revision['language'] or context_language}
                        for revision in owner_revisions]
-    owner_revisions = [revision for revision in owner_revisions if revision['language'] is not None
-                       and (language is None or revision['language'] == language)]
+    owner_revisions = [revision for revision in owner_revisions if edition_language is not None
+                       and revision['language'] == edition_language]
     # Later owner findings supersede historical acceptance for the current
     # candidate. Keep originals and proofs; do not suggest rejected narration
     # merely because its bytes still match. This is discovery, not a release gate.
@@ -196,7 +197,7 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
                 candidate['reuse_disposition'] = 'HISTORICAL_ONLY_OWNER_NARRATION_REVISION'
     retained = next((c for c in candidates if c['retained_bytes_verified']
                      and 'narration' not in changes
-                     and (language is None or c['language'] == language)), None)
+                     and edition_language is not None and c['language'] == edition_language), None)
     next_prompt = (f'Resume {title} from its current exact edition and title checkpoint. '
                    'Preserve verified retained narration and scoring. Resolve full source, '
                    'audiovisual adaptation/model/voice/music/visual rights and measured timing; '
@@ -213,13 +214,18 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
         if 'visual' in changes:
             next_prompt += 'Replace rejected visual treatment with source-bound cinematic actions. '
         next_prompt += 'This packet grants no synthesis, spending, GPU allocation or publication authority.'
+    if edition_language is None:
+        next_prompt = (f'Resolve the exact English or Bengali edition of {title} before selecting retained '
+                       'audio or applying edition-specific owner feedback. Preserve all candidates and findings. '
+                       'This packet grants no synthesis, spending, GPU allocation or publication authority.')
     return {'schema': 'earnalism.book_av_action_packet.v1', 'title': title,
-            'language': language or inferred_language or 'UNRESOLVED_REQUIRES_EDITION',
+            'language': edition_language or 'UNRESOLVED_REQUIRES_EDITION',
             'history': {'path': str(history_path), 'sha256': digest(history_path)},
             'matched_records': matched, 'retained_candidates': candidates,
             'current_owner_revision': latest_revision,
             'preferred_retained_candidate': retained,
-            'state': 'OWNER_REVISION_REQUIRED' if active_revision else 'PRIVATE_PREPARATION_REQUIRED',
+            'state': ('EDITION_REQUIRED' if edition_language is None else
+                      'OWNER_REVISION_REQUIRED' if active_revision else 'PRIVATE_PREPARATION_REQUIRED'),
             'actions': [
                 {'skill': SKILLS[0], 'action': 'Resolve exact edition, complete source, covers and audiovisual rights through existing admin workflow.'},
                 {'skill': SKILLS[1], 'action': ('Prepare replacement narration matching active owner voice/accent constraints; archive rejected recordings and qualify the actual audition under remaining authority.' if 'narration' in changes else 'Reuse eligible exact narration; otherwise qualify language/theme voices under existing authority. Bengali never falls back to English.')},
