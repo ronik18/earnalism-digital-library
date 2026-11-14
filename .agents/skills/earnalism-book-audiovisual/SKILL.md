@@ -1,9 +1,18 @@
 ---
 name: earnalism-book-audiovisual
-description: Coordinate Earnalism book, audiobook, score and video skills into a private Bengali or English cinematic book edition, with retained feedback and exact-candidate release checks.
+description: Coordinate Earnalism book, voice, score and video workflows through one instruction-driven Colab orchestrator for English/Bengali cinematic books and registered EverydayScience episodes, with retained feedback and exact-candidate release checks.
 ---
 
 # Earnalism cinematic books
+
+For the owner's consolidated production workflow, use the single
+[Earnalism Production Orchestrator notebook](../../../notebooks/Earnalism_Production_Orchestrator.ipynb)
+and [its runtime contract](../../../docs/earnalism_orchestrator.md). Accept the
+book/topic instruction once, resolve the exact private project and applicable
+skills, and resume the same stage journal. Do not create another notebook per
+voice, score or motion component. Registered EverydayScience jobs use their actual
+topic adapter, dynamic source-bound score and the common compositor; an unknown
+next episode is a missing queue entry, not permission to invent its identity.
 
 Turn a requested Bengali or English book into a complete, reviewable audiovisual
 edition. Coordinate `$earnalism-book-production`, `$earnalism-audiobook-go-live`,
@@ -36,6 +45,13 @@ voice planner cannot qualify Bengali or silently replace an owner's chosen voice
 Unqualified voices remain candidates. A natural-human quality target is not a
 claim that synthetic narration is a human recording; actual human narration needs
 its own recording, consent and licence provenance.
+
+Resolve **The Earnalism Voice** by its actual model/base revision, trained
+checkpoint, runtime and language-specific acceptance. A branded name, successful
+training or fresh reload does not establish naturalness, expression or English
+qualification. Keep actual trained prototypes available for authorized
+qualification without silently substituting a stock voice or promoting them to
+full-book acceptance. One orchestration request creates no new compute budget.
 
 Use existing scoring tools with the exact narration, measured clock and cleared
 finite instrumental sources. Preserve purposeful literary silence and liked
@@ -100,6 +116,16 @@ bounded correction with a concrete finish line, preserving previous assets.
 Invalidate only affected downstream evidence as described in the AV workflow.
 Stop speculative trials once demonstrated defects are resolved; retain a plateau
 and use the existing human-narration/licensed-import escalation when appropriate.
+
+Keep content-specific feedback in the private project registry/journal. Reuse
+unchanged, checksum-verified stage outputs; invalidate the affected stage and its
+real dependants when narration, music, visuals or acceptance changes. Preserve
+failed/unknown attempt intents before any new operation. Treat improved torso
+movement, fearful expression and facial identity as separate observations; one
+improvement cannot clear another demonstrated defect. Promote a reusable code or
+skill lesson through focused tests and the Integration Lane, excluding private
+media, model weights and account records. This supports improving first-attempt
+results over time without promising perfection or silently training weights.
 
 At coherent handoff record material results by reference to one entry in existing
 title history, decision ledger, sprint learnings and relevant campaign state.

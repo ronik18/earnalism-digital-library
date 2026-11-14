@@ -7,6 +7,26 @@ Owner refinement — 10 November 2026: video-body logo and text use the original
 
 Use for Earnalism video generation, refinement and delivery. Follow [GO LIVE](references/GO_LIVE.md): primary checks govern release; optional growth studies never become extra approvals. Make ordinary creative and engineering decisions independently, without user forms. Ask only for genuinely missing topic/access, new spending authorization or the one final candidate decision.
 
+For the owner's consolidated content workflow, use the
+[single production Colab notebook](../../notebooks/Earnalism_Production_Orchestrator.ipynb)
+and [runtime contract](../../docs/earnalism_orchestrator.md). The same notebook
+coordinates actual registered book/science adapters, trained-voice profiles,
+measured score, motion, composition and review. Its requested branded voice takes
+precedence over historical B/Ryan defaults only through a real matching profile;
+do not relabel stock narration or infer qualification. Resolve “next” from the
+persisted ordered queue, never a directory name or dated proposal. Unsupported
+topics need their own accurate adapter rather than a renamed lunar explanation.
+
+Use the shared Linux/macOS browser resolver for portable Remotion production.
+Render registered science animations as silent body assets; the common
+source-bound compositor consumes the dynamically scored soundtrack and appends the
+exact approved END once. Preserve independent aspect compositions and bound private
+brand assets. Keep identity, contact, torso/action and expression findings separate;
+clearer body motion does not clear facial drift or weak emotion. Record each actual
+finding against the exact clip/frame range, repair only affected stages and retain
+all demonstrated defects through review. Cache reuse and retained feedback improve
+future attempts; they do not constitute model-weight training or guaranteed quality.
+
 Apply the [unified social brand](references/SOCIAL_BRAND.md) to every new brief and social package: display name `theearnalism`, handle `@theearnalism`, the bundled matching profile icon, shared bio and canonical links. Preserve the distinct approved video lockup/END assets. Treat dated platform name restrictions as exceptions to verify, not completed changes or authorization to retry.
 
 Read [visual storytelling](references/VISUAL_STORYTELLING.md) for every new episode or visual refinement: research-led pictorial scenes, topic-specific colour and depth, purposeful animation, and phone-size visual review. For refinements, use its [priority sequence](references/VISUAL_STORYTELLING.md#refinement-priorities) and verify the visible result before promoting a lesson into a default. Avoid defaulting to small icons on empty backgrounds.
