@@ -228,3 +228,13 @@ Actual private-pilot learning, 14 November 2026: the owner rejected the three ne
 
 
 Subsequent actual CPU control recovered the output path:24separate bounded stdout cells survived notebooksave and officialDriveHTTPSretrieval; strict local decode verified the exact8MiBharmless archive. Its CPUruntime was released with original limits preserved. Use this demonstrated envelope for the prepared export successor, while keeping actual model execution, media import and visual quality unqualified until observed. The owner-rejected narration remains held; preparing a changed probe does not renew its consumed responses.
+
+### Revised Open Window pilots: observed outcome
+
+The separately approved revised Cedar take completed once and was rejected by the owner as still robotic. Preserve its source, raw response and usage; it remains excluded from narration selection. The prepared human/licensed-recording packet is a recovery route, not a received recording or voice-quality qualification. A local open-model route can be prepared independently, with its actual assets, access terms, licences and future execution scope unresolved until verified.
+
+The single additional L4 allocation generated and durably imported one native 1280×704, 121-frame, 24 fps shot. The owner selected its visual style and requested stronger torso movement and fear. All-frame review found a readable head turn but weak upper-torso rotation at frames25–60 (1.042–2.500 seconds). Preserve the entire deficient span; technical success and selected style do not establish complete natural acting.
+
+The seven-chunk final archive initially lacked two saved stdout chunks. Strict decoding rejected that copy. Emitting only the missing immutable transfer parts and saving again recovered the exact archive without another model start. Verify the complete required chunk set before delivery; a final summary output alone does not prove all parts were saved. The normal importer then checked the original job, model, members and actual video. The runtime was released and saved execution flags disabled.
+
+Private context uses the exact retained soundtrack PCM frames [18144000,18386000), corresponding to 378–383.041667 seconds. Its WAV remains the lossless reference; browser AAC is explicitly a preview derivative, and video packets are copied unchanged. Full source masters and owner KEEP passages remain intact. Playback, frame seeking, replay and audio focus were observed in the local player; heard emotional fit and full-title readiness were not inferred. No publication was authorized or performed.
