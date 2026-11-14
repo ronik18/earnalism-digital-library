@@ -5,11 +5,16 @@ description: Produce or resume Earnalism audiobooks through the supported title 
 
 # Earnalism audiobook GO LIVE
 
+For a complete cinematic book edition, coordinate through the repository's
+[`earnalism-book-audiovisual`](../earnalism-book-audiovisual/SKILL.md) skill and
+existing release governor. Reuse this skill's narration/quality evidence within
+scope; audio-only acceptance does not qualify pictures, captions or AV rights.
+
 Complete the authorized outcome. Prefer retained healthy audio, narrow repairs and the next executable dependency over new generation or another plan. A skill invocation adds no rights, spend, private access, allocation, synthesis, retry or customer-debit authority.
 
 ## Resume from actual state
 
-Read applicable AGENTS.md, the current title checkpoint, relevant active policy/campaign/provider-memory records and actual owner instructions. Resolve the current edition and source before archived locators. Keep one Integration Lane for canonical edits, rights/release decisions, merge, deployment and LIVE declarations; follow its clean/aligned checkout rule or an explicit exception. Other titles may progress privately in parallel within their own authority and shared-resource limits.
+Read applicable AGENTS.md, the current title checkpoint, relevant active policy/campaign/provider-memory records and actual owner instructions. Resolve the current edition and source before archived locators. Keep one Integration Lane for canonical edits, rights/release decisions, merge, deployment and LIVE declarations; follow its current progress-preserving reconciliation policy, retaining existing work while resolving source drift. Other titles may progress privately in parallel within their own authority and shared-resource limits.
 
 Use **one gate matrix and one cumulative operation journal**, reusing the existing records rather than introducing a second controller. [Campaign execution](references/campaign-execution.md) defines the action dependencies, evidence reuse and attempt rules. Update only changed facts and the next action. Existing immutable proofs remain references; do not recreate them as approval packages.
 

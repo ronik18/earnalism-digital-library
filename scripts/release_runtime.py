@@ -591,6 +591,11 @@ def promote(
     execute: bool = False,
     promoter: HttpProductionPromoter | None = None,
 ) -> dict[str, Any]:
+    if "audiovisual" in manifest:
+        raise RuntimeBlocked(
+            "Audiovisual publication requires a supported video destination adapter; "
+            "the audiobook promoter cannot publish video"
+        )
     if (
         staging_receipt.get("passed") is not True
         or staging_receipt.get("release_eligible") is not False

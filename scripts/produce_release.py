@@ -39,9 +39,9 @@ except ImportError:  # package-style test imports
 
 
 try:
-    from release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check
-except ImportError:
-    from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check
+    from scripts.release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check, audiovisual_acceptance
+except ImportError:  # direct script execution without the repository on sys.path
+    from release_acceptance import automated_check_accepted, classify_quality_findings, validate_sync_not_applicable, automated_candidate_blockers, validate_bound_automated_check, audiovisual_acceptance
 
 from backend.domain.editorial_release_policy import (
     uses_automated_editorial_policy, routine_review_not_applicable, AUTOMATED_EDITORIAL_CHECKS,
@@ -465,7 +465,9 @@ def evaluate(
             sample_binding=sample_binding,
         )
     quality_findings = classify_quality_findings(manifest)
-    automated_pass = all(automated_check_accepted(manifest, name, item) for name, item in automated.items()) and not quality_findings["blockers"]
+    audiovisual = audiovisual_acceptance(manifest, root)
+    automated_pass = (all(automated_check_accepted(manifest, name, item) for name, item in automated.items())
+                      and not quality_findings["blockers"] and not audiovisual["blockers"])
     human_pass = automated_editorial or (reader_gate["status"] == "PASS" and audio_gate["status"] == "PASS")
     return {
         "slug": slug,
@@ -483,11 +485,13 @@ def evaluate(
         },
         "automated_checks": automated,
         "quality_findings": quality_findings,
+        "audiovisual": audiovisual,
         "release_status": (
             "READY_FOR_GO_LIVE" if automated_pass and human_pass else "BLOCKED"
         ),
         "next_action": (
-            "run automatic production promotion"
+            ("complete the supported video destination/manual publication handoff; local qualification is not LIVE"
+             if 'audiovisual' in manifest else "run automatic production promotion")
             if automated_pass and human_pass
             else "resolve the first BLOCKED or PENDING check"
         ),
@@ -509,6 +513,10 @@ def execute_go_live(
         raise ValueError("automatic GO LIVE requires READY_FOR_GO_LIVE")
     if report.get("manifest_sha256") != canonical_hash(manifest):
         raise ValueError("release manifest changed after evaluation")
+    if 'audiovisual' in manifest:
+        # The existing promoter publishes library audio. It cannot truthfully
+        # claim that video has reached an independently named destination.
+        raise ValueError("Audiovisual publication requires a supported video destination adapter; the audiobook promoter cannot publish video")
     automated_editorial = uses_automated_editorial_policy(manifest)
     if not automated_editorial and (reader_approval is None or audio_approval is None):
         raise ValueError(

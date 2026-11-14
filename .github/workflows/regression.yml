@@ -550,6 +550,11 @@ jobs:
       - name: Validate content-aware audiobook scoring and mixing
         run: python3 -m unittest scripts.test_audiobook_score scripts.test_audiobook_score_renderer -v
 
+      - name: Validate private book audiovisual and learned-rig source
+        run: |
+          python3 -m pip install numpy==2.2.6 Pillow==11.2.1
+          python3 -m unittest scripts.test_book_audiovisual scripts.test_book_av_render scripts.original_motion.test_motion_model scripts.original_motion.test_learned_rig_render -v
+
       - name: Validate retained successor editorial admission
         run: python3 -m unittest discover -s internal/audiobook_lab/scripts -p test_open_window_successor_acceptance.py -v
 

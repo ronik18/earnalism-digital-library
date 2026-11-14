@@ -1,0 +1,4 @@
+interface:
+  display_name: "Earnalism Cinematic Books"
+  short_description: "Coordinate cinematic book production and feedback"
+  default_prompt: "Use $earnalism-book-audiovisual to prepare a complete Bengali or English cinematic book edition with retained feedback and exact-candidate release checks."
