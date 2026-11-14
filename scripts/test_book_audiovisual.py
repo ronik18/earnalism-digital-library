@@ -213,7 +213,11 @@ class BookAVPlannerTests(unittest.TestCase):
             packet=plan('A Book',history,'bn')
             self.assertEqual(packet['preferred_retained_candidate']['sha256'],digest(bn))
             self.assertIsNone(packet['current_owner_revision'])
-            self.assertEqual(plan('A Book',history,'en')['state'],'OWNER_REVISION_REQUIRED')
+            english_packet=plan('A Book',history,'en')
+            self.assertEqual(english_packet['state'],'OWNER_REVISION_REQUIRED')
+            by_language={c['language']:c for c in english_packet['retained_candidates']}
+            self.assertIn('reuse_disposition',by_language['en'])
+            self.assertNotIn('reuse_disposition',by_language['bn'])
             records['bn_revision']={'title':'A Book','language':'bn','at':'2026-11-14T08:00:00Z',
                                     'owner_revision':{**revision,'source_ref':'Bengali-edition owner feedback',
                                                       'narration_requirement':'Selected Bengali narrator'}}

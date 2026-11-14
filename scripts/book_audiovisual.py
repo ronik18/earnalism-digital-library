@@ -192,7 +192,8 @@ def plan(title: str, history_path: Path, language: str | None = None) -> dict:
     changes = set(active_revision['required_changes']) if active_revision else set()
     if 'narration' in changes:
         for candidate in candidates:
-            candidate['reuse_disposition'] = 'HISTORICAL_ONLY_OWNER_NARRATION_REVISION'
+            if candidate['language'] == active_revision['language']:
+                candidate['reuse_disposition'] = 'HISTORICAL_ONLY_OWNER_NARRATION_REVISION'
     retained = next((c for c in candidates if c['retained_bytes_verified']
                      and 'narration' not in changes
                      and (language is None or c['language'] == language)), None)
