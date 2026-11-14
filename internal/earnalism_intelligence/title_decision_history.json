@@ -17719,5 +17719,16 @@
       "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/GPU-ARCHIVE-IMPORT-RECEIPT.json",
       "sha256": "b8ec4321c995a19879f398c98c71da05f5afdc47483fc0880e31fe6a1521d20e"
     }
+  },
+  "book_av_portability_20261114": {
+    "date": "2026-11-14",
+    "scope": "Private book AV source compatibility, not title release",
+    "state": "LOCAL_PASS_HOSTED_FFMPEG6_QUALIFICATION_PENDING",
+    "result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/CI-PORTABILITY-FIX.json",
+      "sha256": "f941d2eb4a222fe0f653950071a730e07b03ba2c626565d658debfd7944d24e6"
+    },
+    "learning": "Test paths must use the platform temp directory. FFmpeg versions can expose nonpresented AAC padding differently: certify the exact final access-unit presentation from integer packet/frame metadata, preserve every presented sample and timestamp gap, and reject unknown or contradictory boundaries. A macOS pass is not Linux qualification.",
+    "bengali_campaign_counters_holds_and_release_unchanged": true
   }
 }

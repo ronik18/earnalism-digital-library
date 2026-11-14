@@ -321,7 +321,9 @@ def _decode_end_pcm(path, output):
 
     A raw PCM muxer concatenates decoded frames and discards timestamp gaps.
     Reconstruct those *existing* silent presentation intervals explicitly; do
-    not move sound, stretch samples, trim frames or invent trailing padding.
+    not move sound, stretch samples or invent trailing padding. Some older
+    AAC decoders expose the final access unit's non-presented codec padding;
+    exclude it only when the final packet certifies the exact presentation end.
     """
     output = Path(output)
     if output.exists():
@@ -329,7 +331,7 @@ def _decode_end_pcm(path, output):
     probe = json.loads(_run(["ffprobe", "-v", "error", *PROTOCOLS,
                             "-format_whitelist", MEDIA_FORMATS, "-select_streams", "a:0",
                             "-show_streams", "-show_frames", "-show_entries",
-                            "stream=codec_type,sample_rate,channels,channel_layout,time_base,duration_ts:frame=pts,nb_samples",
+                            "stream=codec_type,codec_name,sample_rate,channels,channel_layout,time_base,start_pts,duration_ts:frame=pts,nb_samples,duration,pkt_duration,side_data_list",
                             "-of", "json", path]))
     stream = _stream(probe, "audio")
     if (stream.get("sample_rate") != "48000" or stream.get("channels") != 2
@@ -343,8 +345,9 @@ def _decode_end_pcm(path, output):
     if duration.denominator != 1 or duration != 144000 or base <= 0:
         raise ValueError("END presentation timeline must be exactly three seconds")
     mapping, gaps, cursor, physical_frames = [], [], 0, 0
+    decoded_physical_frames, decoder_padding = 0, None
     frames = _items(probe.get("frames"), "END decoded audio frames", 1, 10000)
-    for frame in frames:
+    for index, frame in enumerate(frames):
         pts = frame.get("pts")
         count = frame.get("nb_samples")
         if (isinstance(pts, bool) or not isinstance(pts, int)
@@ -354,19 +357,71 @@ def _decode_end_pcm(path, output):
         if start.denominator != 1:
             raise ValueError("END PTS is not on the native 48k sample grid")
         start = int(start)
+        presented_count = count
         if start < cursor or start + count > 144000:
-            raise ValueError("END decoded frames overlap or exceed the approved timeline")
+            # Retain exact integer evidence for decoder/demuxer compatibility
+            # failures, without logging source paths or making any trim.
+            packets = json.loads(_run(["ffprobe", "-v", "error", *PROTOCOLS,
+                "-format_whitelist", MEDIA_FORMATS, "-select_streams", "a:0",
+                "-show_packets", "-show_entries", "packet=pts,dts,duration,side_data_list",
+                "-of", "json", path])).get("packets", [])
+            diagnostic = {"stream": stream, "frame": frame, "cursor": cursor,
+                          "first_packet": packets[:1], "last_packets": packets[-3:]}
+            # FFmpeg 6 MOV demuxing exposes the exact last packet duration but
+            # does not export its terminal AAC discard padding. Its decoder
+            # consequently returns all 1024 samples. Packet PTS + duration,
+            # not container length alone or a tolerance, certifies which of
+            # those samples are actually presented by the approved file.
+            packet = packets[-1] if packets else {}
+            packet_duration = packet.get("duration")
+            packet_end = ((packet["pts"] + packet_duration) * base * 48000
+                          if (isinstance(packet.get("pts"), int)
+                              and not isinstance(packet.get("pts"), bool)
+                              and isinstance(packet_duration, int)
+                              and not isinstance(packet_duration, bool)) else None)
+            certified = (stream.get("codec_name") == "aac" and index == len(frames) - 1
+                         and start >= cursor and 0 <= start < 144000 and count == 1024
+                         and packet.get("pts") == pts and packet_end == 144000
+                         and 0 < packet_duration * base * 48000 < count)
+            for key in ("duration", "pkt_duration"):
+                if key in frame:
+                    certified = certified and frame[key] == packet_duration
+            padding = start + count - 144000
+            for side in packet.get("side_data_list", []):
+                if side.get("side_data_type") == "Skip Samples":
+                    certified = (certified and side.get("skip_samples") == 0
+                                 and side.get("discard_padding") == padding)
+            for side in frame.get("side_data_list", []):
+                if side.get("side_data_type", "").casefold() == "skip samples":
+                    # ffprobe versions may expose only the frame side-data
+                    # type; any numeric skip/discard evidence must agree.
+                    if "skip_samples" in side:
+                        certified = certified and side["skip_samples"] == 0
+                    if "discard_padding" in side:
+                        certified = certified and side["discard_padding"] == padding
+            if not certified:
+                raise ValueError("END decoded frames overlap or exceed the approved timeline; "
+                                 + json.dumps(diagnostic, sort_keys=True, separators=(",", ":")))
+            presented_count = 144000 - start
+            decoder_padding = {"frames": padding, "packet_pts": pts,
+                               "packet_duration": packet_duration,
+                               "time_base": stream["time_base"],
+                               "basis": "final_aac_packet_presentation_duration"}
         if start > cursor:
             gaps.append({"start_frame": cursor, "end_frame": start})
-        mapping.append({"start_frame": start, "frames": count})
-        cursor = start + count
-        physical_frames += count
+        mapped = {"start_frame": start, "frames": presented_count}
+        if count != presented_count:
+            mapped["decoded_frames"] = count
+        mapping.append(mapped)
+        cursor = start + presented_count
+        physical_frames += presented_count
+        decoded_physical_frames += count
     if cursor != 144000:
         raise ValueError("END final decoded frame must reach the exact timeline end; no invented tail")
     with tempfile.TemporaryDirectory(prefix=".end-timeline-", dir=output.parent) as temporary:
         physical = Path(temporary) / "physical.pcm"
         physical_size = _decode_pcm(path, physical)
-        if physical_size != physical_frames * 6:
+        if physical_size != decoded_physical_frames * 6:
             raise ValueError("END decoded physical sample count differs from measured frame map")
         physical_sha = digest(physical)
         with physical.open("rb") as source, output.open("xb") as target:
@@ -374,11 +429,15 @@ def _decode_end_pcm(path, output):
             for frame in mapping:
                 if frame["start_frame"] > cursor:
                     target.write(bytes((frame["start_frame"] - cursor) * 6))
-                target.write(source.read(frame["frames"] * 6))
+                decoded = source.read(frame.get("decoded_frames", frame["frames"]) * 6)
+                target.write(decoded[:frame["frames"] * 6])
                 cursor = frame["start_frame"] + frame["frames"]
             if source.read(1):
                 raise ValueError("Unmapped END samples remain")
     return {"physical_frames": physical_frames, "playable_frames": 144000,
+            "decoded_physical_frames": decoded_physical_frames,
+            "decoder_padding_frames": decoded_physical_frames - physical_frames,
+            "decoder_padding": decoder_padding,
             "gap_frames": 144000 - physical_frames, "gaps": gaps,
             "decoded_frame_count": len(mapping), "physical_pcm_sha256": physical_sha,
             "timeline_pcm_sha256": digest(output),

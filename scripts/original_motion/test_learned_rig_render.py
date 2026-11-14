@@ -16,7 +16,7 @@ except ImportError:
 
 class LearnedRigRenderTests(unittest.TestCase):
     def setUp(self):
-        temporary=tempfile.TemporaryDirectory(prefix='rig-render-tests-',dir='/private/tmp')
+        temporary=tempfile.TemporaryDirectory(prefix='rig-render-tests-')
         self.addCleanup(temporary.cleanup)
         self.root=Path(temporary.name)
         self.pose=np.array([[0,.9],[0,1.48],[0,1.7],[-.19,1.44],[-.3,1.15],[-.32,.95],

@@ -1128,5 +1128,14 @@
     },
     "campaign_counters_or_release_changed": false,
     "next_generated_prompt": "Complete exact-head source PR checks for the audiovisual/model changes; keep the first Open Window film private, retain its exact audio and score, and qualify actual content-specific character motion plus full audiovisual review before any GO LIVE decision."
+  },
+  "book_av_portability_20261114": {
+    "state": "LOCAL_PASS_HOSTED_FFMPEG6_QUALIFICATION_PENDING",
+    "title_history_key": "book_av_portability_20261114",
+    "result": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/CI-PORTABILITY-FIX.json",
+      "sha256": "f941d2eb4a222fe0f653950071a730e07b03ba2c626565d658debfd7944d24e6"
+    },
+    "campaign_release_or_counters_changed": false
   }
 }

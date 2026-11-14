@@ -10,10 +10,12 @@ import struct
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import wave
 import zlib
 
 from scripts.book_av_render import _decode_end_pcm, _decode_pcm, digest, display_caption_text, render, validate
+from scripts import book_av_render
 
 
 def write_json(path, data):
@@ -322,7 +324,11 @@ class BookAVRenderTests(unittest.TestCase):
         _decode_pcm(clip, physical_path)
         # All non-gap audio bytes survive in order, and the silent gap stays
         # at its original presentation location rather than shifting the sting.
-        self.assertEqual(actual[:24576 * 6] + actual[29696 * 6:], physical_path.read_bytes())
+        physical = physical_path.read_bytes()
+        padding = result["decoder_padding_frames"]
+        if padding:
+            physical = physical[:-padding * 6]
+        self.assertEqual(actual[:24576 * 6] + actual[29696 * 6:], physical)
         self.assertNotEqual(actual[29696 * 6:30720 * 6], bytes(1024 * 6))
         self.assertEqual(result["timeline_pcm_sha256"], digest(output))
 
@@ -334,6 +340,87 @@ class BookAVRenderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "native 48k stereo"):
             _decode_end_pcm(clip, output)
         self.assertFalse(output.exists())
+
+    def test_legacy_aac_padding_preserves_every_presented_sample(self):
+        clip = self.root / "END-landscape.mp4"
+        # Export real unskipped AAC decoder output. Remove only its separately
+        # certified initial priming frame to emulate FFmpeg 6's default decode:
+        # that decoder applies initial skip but exposes the final whole frame.
+        manual = json.loads(subprocess.run(["ffprobe", "-v", "error", "-flags2", "+skip_manual",
+            "-select_streams", "a:0", "-show_streams", "-show_frames", "-of", "json", str(clip)],
+            capture_output=True, check=True).stdout)
+        self.assertEqual(manual["frames"][0]["pts"], -1024)
+        self.assertEqual(manual["frames"][0]["nb_samples"], 1024)
+        manual["frames"] = manual["frames"][1:]
+        self.assertEqual(manual["frames"][-1]["nb_samples"], 1024)
+        manual["frames"][-1].pop("side_data_list", None)
+        packets = json.loads(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a:0",
+            "-show_packets", "-of", "json", str(clip)], capture_output=True, check=True).stdout)
+        first_skip = packets["packets"][0]["side_data_list"][0]
+        self.assertEqual(first_skip["skip_samples"], 1024)
+        self.assertEqual(packets["packets"][-1]["pts"], 143360)
+        self.assertEqual(packets["packets"][-1]["duration"], 640)
+        # FFmpeg 6 has the exact packet duration, without terminal skip data.
+        packets["packets"][-1].pop("side_data_list", None)
+        raw = media(["-flags2", "+skip_manual", "-i", str(clip), "-map", "0:a:0",
+                     "-ac", "2", "-ar", "48000", "-c:a", "pcm_s24le", "-f", "s24le", "pipe:1"])[1024 * 6:]
+        self.assertEqual(len(raw), (144000 + 384) * 6)
+        original_run = book_av_render._run
+
+        def legacy_probe(args, **kwargs):
+            if "-show_frames" in args:
+                return json.dumps(manual)
+            if "-show_packets" in args:
+                return json.dumps(packets)
+            return original_run(args, **kwargs)
+
+        def legacy_decode(path, output):
+            Path(output).write_bytes(raw)
+            return len(raw)
+
+        output = self.root / "legacy-presented.pcm"
+        with patch.object(book_av_render, "_run", side_effect=legacy_probe), patch.object(
+                book_av_render, "_decode_pcm", side_effect=legacy_decode):
+            result = _decode_end_pcm(clip, output)
+        self.assertEqual(result["decoder_padding_frames"], 384)
+        self.assertEqual(result["decoded_physical_frames"], 144384)
+        self.assertEqual(result["physical_frames"], 144000)
+        self.assertEqual(output.read_bytes(), raw[:-384 * 6])
+        # Current decoders already apply terminal discard; these bytes must be
+        # identical rather than a replacement fade, time stretch or silence.
+        expected = self.root / "current-presented.pcm"
+        current = _decode_end_pcm(clip, expected)
+        self.assertEqual(current["playable_frames"], 144000)
+        self.assertEqual(output.read_bytes(), expected.read_bytes())
+
+        cases = {
+            "missing_packet_duration": lambda p: p["packets"][-1].pop("duration"),
+            "wrong_packet_pts": lambda p: p["packets"][-1].update(pts=143359),
+            "wrong_packet_end": lambda p: p["packets"][-1].update(duration=639),
+            "contradictory_discard": lambda p: p["packets"][-1].update(side_data_list=[
+                {"side_data_type": "Skip Samples", "skip_samples": 0, "discard_padding": 383}]),
+        }
+        original_packets = deepcopy(packets)
+        for name, change in cases.items():
+            with self.subTest(name=name):
+                packets = deepcopy(original_packets)
+                change(packets)
+                rejected = self.root / f"reject-{name}.pcm"
+                with patch.object(book_av_render, "_run", side_effect=legacy_probe), patch.object(
+                        book_av_render, "_decode_pcm", side_effect=legacy_decode) as decode:
+                    with self.assertRaisesRegex(ValueError, "exceed the approved timeline"):
+                        _decode_end_pcm(clip, rejected)
+                    decode.assert_not_called()
+                self.assertFalse(rejected.exists())
+
+        packets = deepcopy(original_packets)
+        manual["frames"][-1]["side_data_list"] = [
+            {"side_data_type": "Skip samples", "skip_samples": 0, "discard_padding": 383}]
+        with patch.object(book_av_render, "_run", side_effect=legacy_probe), patch.object(
+                book_av_render, "_decode_pcm", side_effect=legacy_decode) as decode:
+            with self.assertRaisesRegex(ValueError, "exceed the approved timeline"):
+                _decode_end_pcm(clip, self.root / "reject-frame-discard.pcm")
+            decode.assert_not_called()
 
     def test_light_canvas_changes_actual_header_pixels_without_logo_backing(self):
         self.job["outputs"] = self.job["outputs"][:1]

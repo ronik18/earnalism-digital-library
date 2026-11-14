@@ -3387,3 +3387,7 @@ Actual T4 scratch training completed 4,000 steps; the executed notebook and metr
 Reference: title history `earnalism_original_motion_model_20261114`; result `/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/RUN-RESULT.json`. Original Open Window narration, score, film, owner KEEP feedback and Bengali holds/counters are preserved.
 
 Later resolution in the same run: after owner unlock, ordinary Colab controls showed no active sessions. Official Drive HTTPS retrieval of the saved notebook retained the exact GPU ZIP; all26 indexed files and archive checksum verified locally. No retraining, additional allocation or blocked browser data-URL retry. See `/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/in-house-motion-model-20261114/FINAL-RUN-RESULT.json`.
+
+## 14 November 2026 — AV decoder portability
+
+Hosted Ubuntu FFmpeg6 exposed terminal AAC padding rejected by the macOS-qualified END decoder; renderer tests also assumed /private/tmp. Use platform temp paths and exact packet-certified presentation boundaries, preserving audible samples and real timeline gaps. Local negative/equivalence tests pass; actual Linux qualification remains pending. Reference `book_av_portability_20261114`. Original book media and all campaign counters/holds unchanged.
