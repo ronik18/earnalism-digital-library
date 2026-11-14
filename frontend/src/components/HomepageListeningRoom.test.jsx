@@ -2,7 +2,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import HomepageListeningRoom from "./HomepageListeningRoom";
 
-jest.mock("../lib/controlledLaunch", () => ({ PUBLIC_AUDIO_EXPOSURE_ENABLED: true }));
+jest.mock("../lib/controlledLaunch", () => ({ ...jest.requireActual("../lib/controlledLaunch"), PUBLIC_AUDIO_EXPOSURE_ENABLED: true }));
 jest.mock("react-router-dom", () => {
   const mockReact = require("react");
   return {
@@ -61,6 +61,7 @@ describe("HomepageListeningRoom release-aware presentation", () => {
     expect(html).toContain("APPROVED LISTENING EDITION");
     expect(html).toContain('aria-label="Listen to Approved Story"');
     expect(html).toContain(">Listen</a>");
+    expect(html).toContain('href="/reader/approved-story">Read</a>');
     expect(html).not.toContain("<audio");
   });
 

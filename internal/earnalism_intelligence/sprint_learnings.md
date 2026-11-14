@@ -3446,3 +3446,6 @@ Source checkpoint `single_colab_production_orchestrator_20261114` unifies exact-
 Retain actual training and runtime provenance without calling it voice acceptance. Protect Bengali marks/joiners and full-source narration coverage; distinguish qualification snippets from full books. Verify bootstrap wheels, cached interpreters, base dependencies and imported code. Preserve failed/unknown attempts and immutable startup/shutdown history. Record body movement, expression and facial identity independently. Private content, account evidence, production holds and all operation counters remain outside this source refinement.
 
 The bounded instruction parser keeps the known requested voice separate from the title and refuses multi-book/edition ambiguity; a fresh missing-registry Bengali forward check discovered the correct history without executing or creating acceptance.
+
+## P0 Reader startup — 2026-11-15
+Read links must target the Reader route. PREVIEW_REQUIRES_PASS is a server boundary that eligible signed-in readers can recover through one normal admission, never a transfer/retry. Reader font readiness must not await unrelated global fonts. Listener metadata requests need bounded waits. Source tests do not prove live mobile latency.

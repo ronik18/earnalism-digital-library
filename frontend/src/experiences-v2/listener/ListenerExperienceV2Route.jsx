@@ -115,7 +115,7 @@ export default function ListenerExperienceV2Route() {
     let cancelled = false;
     setBook(null);
     setLoadError("");
-    userApi.get(readerManifestPath(slug, { transportCanary: true })).then((response) => {
+    userApi.get(readerManifestPath(slug, { transportCanary: true }), { timeout: 15000 }).then((response) => {
       if (cancelled || !ownsLifecycle(generation)) return;
       const value = response.data || {};
       setBook({ ...(value.book || {}), _readerManifest: { audio: value.audio || {}, access: value.access || {} } });
@@ -141,6 +141,7 @@ export default function ListenerExperienceV2Route() {
     let cancelled = false;
     setAudioManifest(null);
     userApi.get(packageManifestUrl, {
+      timeout: 15000,
       headers: {
         "X-Reading-Pass-Session": lease.sessionId,
         "X-Reading-Pass-Lease": lease.token,
