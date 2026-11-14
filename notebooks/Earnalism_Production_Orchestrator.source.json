@@ -1,0 +1,30 @@
+{
+  "schema": "earnalism.orchestrator_notebook_source.v1",
+  "base_revision": "e6c65b84f18eab3573f1822d2e8f6c98d1a880d2",
+  "capsule_sha256": "b4993ba329c78cefc75f96697ee9923f6a833efe95bd9108d176af392ec2947e",
+  "capsule_bytes": 76468,
+  "files": {
+    "scripts/earnalism_orchestrator.py": "5e12b3ad5d404e8ecf7a28ce15c8660233e93ffd35c2b7254daf7dfcd6b264ff",
+    "scripts/earnalism_voice.py": "341ec31149e2a4dd17605c54aaf846675f92ef3ad5aae1061f016780520084a7",
+    "scripts/earnalism_media_adapters.py": "36748a960738d86f1ece0a7926c6c18e3cdc99e2f431f8366436c1820cd992e9",
+    "skills/earnalism-video/software/src/render-browser.mjs": "fa55a3edfe6458dfd6721e63eb6a844ed82c624cd51e2d598205fe14d0208191",
+    "skills/earnalism-video/software/thermal_touch/render.mjs": "263e86acc6f3776b21e0e8a7b3f7d34c28e86349943c6590f6d1fae0e1419601",
+    "skills/earnalism-video/software/condensation/render.mjs": "40e2efeadf4d1c396466312989b234b8186664076d1a2987c9c33f47bdd53b68",
+    "skills/earnalism-video/software/sky_colour/render.mjs": "fe43d93908bc23a8cfd09e06c484e03bde09a238a7dae1a2753be28a38327b8e",
+    "skills/earnalism-video/software/sky_colour/render-batch.mjs": "c7c722196fc2af5ec902a1e19f8a175786c77ece44360d31f42836f1084a1cc1",
+    "skills/earnalism-video/software/rainbow/render-batch.mjs": "635e412368e4bf0e194cdbfbfb7968b048dcef3193bde13afbcc129e23f4492e",
+    ".agents/skills/earnalism-book-audiovisual/SKILL.md": "95c4e688d2bea856bfa8bcf81109454c8ca3a82d38d2bde7cb31cc0597bf091d",
+    ".agents/skills/earnalism-audiobook-score/SKILL.md": "a691014e14bc4df0d7711e5f681e5319e3ad17cadd8c879e8801fa5a6e129e7a",
+    ".agents/skills/earnalism-audiobook-go-live/SKILL.md": "766982d033a6c4d89d1b96add5f5d5ee26036e1b1433cbb44d5a08bbbff5891b",
+    "skills/earnalism-audiobook-go-live/SKILL.md": "c86c61ee73e5b60da54c69d679088220f32de5a136c180879cb835547aa42138",
+    "skills/earnalism-video/SKILL.md": "17cb27c14fd6f1f9acc7cb040db796d64fbd073d04fed2d6b0ffd9248be18e58",
+    "docs/earnalism_orchestrator.md": "59b9c5366d1994aaa1a3071d6664a2d0df581ab6af3e92fbf3c9b834781582f6",
+    "scripts/earnalism_voice_runtime/parler.py": "a4a8f12a744ebfda247783a9e5d0aea7eaed82a85e72f68836b5811da5be463e",
+    "scripts/earnalism_voice_runtime/setup.py": "a996513f05e61e072f750f8c63e1ce63eddde4faf0163115aad3d3810a51c215"
+  },
+  "notebook_sha256": "bdf588a32b99a8f025893796c7a8d091a5929edd12a972e02fbd363a6bf7c578",
+  "builder_sha256": "11a2c15572f7d64dfcc45776afc9f0516b0bfaf1648a15e06244379d4dbad1d0",
+  "execution_default": false,
+  "private_media_embedded": false,
+  "model_or_training_qualification": false
+}

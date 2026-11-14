@@ -104,3 +104,10 @@ The full Open Window/Sredni review (`open_window_sredni_full_context_signal_revi
 **Evidence:** Owner-requested Bicharak v3-to-v4 piano softening, `bicharak_owner_piano_softening_20261113` in title history. A calibrated retained instrumental stem supported a smooth local music delta; independent checks confirmed unchanged PCM outside the correction and the requested reduction. The owner subsequently confirmed, “The piano rise at 18:36 sounds good now,” and selected the unchanged v4 as the final private version (`bicharak_final_private_v4_20261113`). This is an owner-accepted example of a focused music-only repair with the narration and surrounding score preserved; its6dB reduction and3.4-second envelope remain specific to that performance.
 
 **Reusable lesson:** When feedback concerns one musical rise and the surrounding mix should remain intact, prefer a local instrumental gain edit over whole-file remastering when the retained stems support it. Bind the exact source hashes and compare unchanged material. Choose depth and envelope for the actual note and feedback; this case does not prescribe universal settings. Re-encoded MP3 identity differs from preservation of the lossless master.
+
+
+## Reuse the score through the single production orchestrator
+
+**Evidence:** `single_colab_production_orchestrator_20261114` source integration and its focused stale-lineage/real FFmpeg score-and-compositor tests.
+
+**Reusable lesson:** Bind full content, narration, measured timing, finite cleared stems and current direction into one score stage. A visual-only correction preserves healthy scoring; new narration requires its new measured clock. Carry accepted KEEP passages at their actual candidate/time scope. Reject unsupported generic music palettes rather than manufacturing continuity. Cached output integrity and signal/transition checks remain distinct from heard emotional fit; feedback records do not train model weights or create listening acceptance.
