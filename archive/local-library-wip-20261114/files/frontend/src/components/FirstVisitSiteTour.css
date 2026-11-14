@@ -1,0 +1,260 @@
+.site-tour {
+  --site-tour-dark: var(--brand-burgundy-deep);
+  --site-tour-dark-soft: color-mix(in srgb, var(--site-tour-dark) 46%, transparent);
+  --site-tour-dark-faint: color-mix(in srgb, var(--site-tour-dark) 18%, transparent);
+  --site-tour-gold: var(--brand-gold);
+  --site-tour-gold-soft: color-mix(in srgb, var(--site-tour-gold) 34%, transparent);
+  --site-tour-gold-faint: color-mix(in srgb, var(--site-tour-gold) 12%, transparent);
+  --site-tour-ink-soft: var(--brand-charcoal-soft);
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.site-tour__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: var(--site-tour-dark-soft);
+  backdrop-filter: blur(2px);
+  cursor: default;
+  pointer-events: auto;
+}
+
+.site-tour--has-target .site-tour__scrim {
+  background: var(--site-tour-dark-faint);
+}
+
+.site-tour__spotlight {
+  position: fixed;
+  z-index: 91;
+  border: 1px solid var(--site-tour-gold-soft);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 9999px color-mix(in srgb, var(--site-tour-dark) 46%, transparent),
+    0 18px 52px color-mix(in srgb, var(--site-tour-ink-soft) 22%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--brand-ivory) 20%, transparent);
+  pointer-events: none;
+  transition: top 220ms ease, left 220ms ease, width 220ms ease, height 220ms ease;
+}
+
+.site-tour__panel {
+  position: fixed;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1rem, 5vh, 3rem);
+  z-index: 92;
+  width: min(392px, calc(100vw - 2rem));
+  border: 1px solid var(--site-tour-gold-faint);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--brand-ivory) 98%, transparent), color-mix(in srgb, var(--brand-ivory) 96%, transparent)),
+    var(--brand-ivory);
+  box-shadow:
+    0 28px 80px color-mix(in srgb, var(--site-tour-dark) 34%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--brand-ivory) 32%, transparent) inset;
+  color: var(--brand-charcoal);
+  outline: none;
+  padding: 1.1rem;
+  pointer-events: auto;
+}
+
+.site-tour__topline,
+.site-tour__actions,
+.site-tour__nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-tour__topline {
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.site-tour__badge {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.45rem;
+  color: var(--brand-gold-deep);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-tour__icon-button,
+.site-tour__nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid var(--brand-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-ivory) 46%, transparent);
+  color: var(--brand-burgundy);
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.site-tour__icon-button {
+  width: 34px;
+  height: 34px;
+}
+
+.site-tour__nav-button {
+  width: 38px;
+  height: 38px;
+}
+
+.site-tour__icon-button:hover,
+.site-tour__nav-button:hover:not(:disabled) {
+  border-color: var(--brand-gold);
+  background: color-mix(in srgb, var(--site-tour-gold) 12%, transparent);
+  color: var(--brand-burgundy-deep);
+}
+
+.site-tour__nav-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.36;
+}
+
+.site-tour__progress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  margin-top: 1.05rem;
+}
+
+.site-tour__progress-dot {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--brand-gold-soft-alpha-22);
+}
+
+.site-tour__progress-dot--active {
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-burgundy-soft));
+}
+
+.site-tour__count {
+  margin: 1.1rem 0 0;
+  color: var(--brand-charcoal-soft);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.site-tour__title {
+  margin: 0.45rem 0 0;
+  color: var(--brand-burgundy);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 2.55rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.site-tour__body {
+  margin: 0.85rem 0 0;
+  color: var(--brand-charcoal-soft);
+  font-size: 0.94rem;
+  font-weight: 300;
+  line-height: 1.72;
+}
+
+.site-tour__actions {
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.site-tour__nav {
+  gap: 0.45rem;
+}
+
+.site-tour__skip {
+  border: 0;
+  background: transparent;
+  color: var(--brand-charcoal-soft);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.site-tour__skip:hover {
+  color: var(--brand-burgundy);
+}
+
+.site-tour__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid var(--brand-burgundy);
+  border-radius: 999px;
+  background: var(--brand-burgundy);
+  color: var(--brand-ivory);
+  gap: 0.42rem;
+  padding: 0 1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.site-tour__primary:hover {
+  border-color: var(--brand-burgundy-deep);
+  background: var(--brand-burgundy-deep);
+  transform: translateY(-1px);
+}
+
+.site-tour__icon-button:focus-visible,
+.site-tour__nav-button:focus-visible,
+.site-tour__skip:focus-visible,
+.site-tour__primary:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .site-tour__panel {
+    right: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    width: calc(100vw - 1.5rem);
+    max-height: min(72vh, 520px);
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .site-tour__actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .site-tour__nav {
+    justify-content: space-between;
+  }
+
+  .site-tour__primary {
+    flex: 1 1 auto;
+  }
+
+  .site-tour__skip {
+    min-height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-tour__spotlight,
+  .site-tour__icon-button,
+  .site-tour__nav-button,
+  .site-tour__skip,
+  .site-tour__primary {
+    transition-duration: 1ms;
+  }
+}
