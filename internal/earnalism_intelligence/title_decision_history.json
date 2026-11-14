@@ -17747,5 +17747,173 @@
     "production_ready": false,
     "bengali_campaign_holds_counters_provider_budget_and_release_unchanged": true,
     "next_generated_prompt": "Review the four private source-bound Open Window trials and complete retained film through the exact review player; return timestamped listening/visual findings bound to DELIVERY-RECEIPT8d06ebbfe6be718c5a4c4b8d79ee5f1880f566e58dbdcc61f95058b2b25b6946. Preserve narration, score and owner KEEP. Resolve the demonstrated natural-acting/style plateau before selecting a complete final motion candidate; retain the existing release controller and one consolidated destination-bound GO LIVE decision. No new provider/GPU/spending is authorized."
+  },
+  "open_window_owner_cinematic_revision_20261114": {
+    "at": "2026-11-14T10:01:21.133482+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_PENDING_PILOT_ACCEPTANCE",
+    "scope": "Current private Open Window audiovisual revision only; unrelated title approvals, public registry/audio flags and all historical media/evidence are unchanged.",
+    "owner_revision": {
+      "schema": "earnalism.book_av_owner_revision.v1",
+      "status": "ACTIVE",
+      "source": "human",
+      "source_ref": "Owner narration and animation findings in this Codex chat, 14 November 2026; the exact scoped feedback receipts are retained in the evidence record.",
+      "required_changes": [
+        "narration",
+        "visual"
+      ],
+      "narration_requirement": "Indian-English, expressive and natural; use the latest retained English identity Cedar for this source-specific audition. Voice B, current Ryan narration and automatic fallback are excluded from this private revision.",
+      "visual_requirement": "Use the latest earnalism-video workflow for rich source-bound cinematic character actions. The owner-rejected vector skeletal trials remain historical assets and cannot qualify the replacement treatment.",
+      "evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-REVISION-REQUIREMENTS.json",
+        "sha256": "94d107c4f5f5e73da7b3a345606463cab825ddad2c114cdded265f94093c5a69"
+      }
+    },
+    "voice_pilot": {
+      "manifest": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/DISABLED-PILOT-JOB.json",
+        "sha256": "e2a8708760253aff0b540fa69d76eb69ecb4730b0cf771954b12f8cda544d14d"
+      },
+      "operator": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/open_window_cedar_pilot_operator_v2.py",
+        "sha256": "b70d9177b36479f2269827c1ecd9123ab80318e99f7ae647a260462f1a2c8e3d"
+      },
+      "authority": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-PILOT-APPROVAL.json",
+        "sha256": "fea5ed2849551e0705532f3a415c6aeaf7fd5f0e2dd3f0e3dfc603e7b2b06658"
+      },
+      "provider": "owner_openai_realtime",
+      "model": "gpt-realtime-2.1-mini",
+      "voice": "cedar",
+      "target_accent": "Indian English",
+      "new_authorized_responses": 3,
+      "new_responses_consumed": 3,
+      "remaining_response_slots": 0,
+      "attempts_each": 1,
+      "max_new_API_USD": 0.5,
+      "token_price_estimate_USD": 0.0216242,
+      "billing_invoice_verified": false,
+      "selected_source_words": 159,
+      "duration_seconds_total": 50.45,
+      "results": [
+        {
+          "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/open-window-pilot-ledger/ow-indian-pilot-01.result.json",
+          "sha256": "da750b9232599fd1df31d231f6cfb7f4e0d1ec1148fdf683f3e9a1440a857ed2"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/open-window-pilot-ledger/ow-indian-pilot-02.result.json",
+          "sha256": "e6091e8485be626e5e1cd9e480914832cea91362c4e0214d4ec4fdb0ee8aa0f0"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/open-window-pilot-ledger/ow-indian-pilot-03.result.json",
+          "sha256": "e57fd7c6e41981281499f4d0fdb5bb06820800a4aa39314a93a9f94901345a47"
+        }
+      ],
+      "producer_status": "THREE_DRY_PILOT_RESPONSES_COMPLETE_PROVIDER_TRANSCRIPT_WORD_CHECKS_PASSED",
+      "indian_accent_and_naturalness_listening": "UNPERFORMED",
+      "independent_ASR_full_title_and_final_scored_review": "UNPERFORMED_NOT_INFERRED",
+      "prior_Selfish_Giant_attempts_consumed": 17,
+      "prior_context": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/PRIOR-ATTEMPT-CONTEXT.json",
+        "sha256": "33ca69819aee3be287291d7f8767e69325bf029da465ee3ab95ff12600109c3e"
+      },
+      "prior_allowance_reused_or_reset": false,
+      "retries_or_full_book_authorized": false
+    },
+    "motion_pilot": {
+      "job": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/seated-turn-benchmark-v1/job.json",
+        "sha256": "84cc4e78ead3fbaa1a0c55a11f4b6df989cf1af29adea77f84d6c1f3971ec7a4"
+      },
+      "source_onset_review": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/visual-lane/FRAMTON-SOLO-ONSET-ACTUAL-REVIEW.json",
+        "sha256": "ec27baa0f034ce4c4aa7be833432e4a7b23e299dcdaba54f3966c77b9cb86bf5"
+      },
+      "authority": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/OWNER-PILOT-APPROVAL.json",
+        "sha256": "fea5ed2849551e0705532f3a415c6aeaf7fd5f0e2dd3f0e3dfc603e7b2b06658"
+      },
+      "authorized_GPU_starts_max": 1,
+      "authorized_wall_seconds_max": 2700,
+      "authorized_existing_Colab_CU_max": 3,
+      "runtime_qualification": "NOT_OBSERVED_BY_HISTORY_PREPARATION_LANE",
+      "natural_action_acceptance": "UNPERFORMED_NOT_INFERRED"
+    },
+    "music_and_timing": "Preserve original mixes, cleared stems and liked musical passages as source-bound preferences. Replacement speech requires newly measured captions and a rebuilt score/scene clock; old absolute cues do not qualify the new recording.",
+    "historical_Ryan_acceptance_globally_revoked": false,
+    "bengali_campaign_holds_counters_budgets_reader_only_state_and_release_unchanged": true,
+    "production_ready": false,
+    "publication_approval_or_performed": false,
+    "next_generated_prompt": "Complete only the already authorized Open Window seated-turn benchmark within the exact job, one GPU start, 45-minute and 3-existing-CU ceilings. Assess the actual Cedar Indian-English dry pilot and native motion results; preserve old masters, rejected trials, music stems and owner KEEP preferences. Do not generate a full book, retry the three consumed voice responses, expand motion or publish under this pilot scope. A future selected narration requires fresh measured captions and score/scene timing before complete final audiovisual review."
+  },
+  "open_window_owner_cedar_rejection_and_closed_gpu_20261114": {
+    "at": "2026-11-14T10:36:59.352802+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; no Bengali campaign acceptance, public mutation or unrelated voice revocation.",
+    "actual_pilot_outcome": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/ACTUAL-PILOT-OUTCOME.json",
+      "sha256": "5e326c24c70fc5efe16161c853907ecdc933f6075d5f74fd51acdfb48cdb1fe7"
+    },
+    "owner_verdict": "Still robotic; revise performance",
+    "new_voice_responses_consumed": 3,
+    "new_voice_responses_remaining": 0,
+    "gpu_starts_consumed": 1,
+    "gpu_starts_remaining": 0,
+    "gpu_runtime": "DISCONNECTED_VERIFIED",
+    "motion_generated": false,
+    "transfer_qualified": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Complete a harmless full-envelope durable transfer on CPU before seeking another GPU start; prepare changed natural Indian-English performance probe from retained owner rejection. Do not repeat the rejected settings, generate or publish under consumed authority.",
+    "owner_revision": {
+      "schema": "earnalism.book_av_owner_revision.v1",
+      "status": "ACTIVE",
+      "source": "human",
+      "source_ref": "Owner clickable reply call_1f679e711d3d49e392fee41228fcc7d3:0: Still robotic; revise performance; original animation rejection remains active.",
+      "required_changes": [
+        "narration",
+        "visual"
+      ],
+      "narration_requirement": "Natural expressive Indian English using the latest skill workflow. New Cedar pilot performance was rejected; preserve raw takes and prepare changed performance direction before any newly authorized probe. Voice B, Ryan and fallback remain excluded for this private revision.",
+      "visual_requirement": "Use the latest earnalism-video workflow for rich source-bound cinematic character actions. The owner-rejected vector skeletal trials remain historical assets and cannot qualify the replacement treatment.",
+      "evidence": {
+        "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/ACTUAL-PILOT-OUTCOME.json",
+        "sha256": "5e326c24c70fc5efe16161c853907ecdc933f6075d5f74fd51acdfb48cdb1fe7"
+      }
+    }
+  },
+  "open_window_cpu_transfer_recovered_20261114": {
+    "at": "2026-11-14T10:53:57.590245+00:00",
+    "title": "The Open Window",
+    "language": "en",
+    "state": "OWNER_REVISION_REQUIRED",
+    "scope": "Private English Open Window only; previous findings and consumed allowances remain.",
+    "transport": "ACTUAL_8_MIB_CHUNKED_STDOUT_ROUNDTRIP_PASS",
+    "transport_proof": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/ACTUAL-CPU-TRANSFER-PROOF.json",
+      "sha256": "152214514e0c1913218ab147d5972e3180df3e4b40a3e551d049b4c3bf44bb1a"
+    },
+    "actual_archive_bytes": 8388608,
+    "actual_archive_sha256": "50d8a4b70be6baf44702c5d7f1d5a791c7b6172cdf88e21a075e0644b6eba456",
+    "actual_notebook_bytes": 11216331,
+    "actual_notebook_sha256": "abaaa14f0b37a83bd178fe73592936cfb15c40d1aa5d9ddad2f505cc8bb1e602",
+    "chunk_count": 24,
+    "max_actual_stdout_cell_bytes": 481066,
+    "cpu_runtime": "DISCONNECTED_VERIFIED",
+    "billing": "UNVERIFIED_NOT_CLAIMED_FREE; CPU supporting work under original3CUaggregate and unchanged deadline",
+    "voice_revision_prepared_disabled": {
+      "path": "/Users/ronikbasak/.codex/visualizations/2026/11/13/01a1d685-34a5-7cf2-9d90-72614ba8ace3/open-window-owner-revision-20261114-v1/voice-lane/performance-revision-v3/ONE-RESPONSE-READY-v3.json",
+      "sha256": "c16e1c3bfda7a285fc55e6de11913347c52a34e30980b44a26130327fa67c1ee"
+    },
+    "new_provider_responses_authorized": 0,
+    "new_gpu_starts_authorized": 0,
+    "gpu_model_or_motion_qualification": false,
+    "model_weights_trained": false,
+    "production_ready": false,
+    "published": false,
+    "next_generated_prompt": "Use the actual8MiBCPUtransport proof to prepare the disabled Wan export successor, preserving source job and one-start/deadline controls. Independently review the changed one-response natural Indian-English probe; seek only its concrete new scope after preparation. Preserve all rejected takes, original soundtrack, owner KEEP preferences and consumed authority."
   }
 }

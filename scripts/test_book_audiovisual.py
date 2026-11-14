@@ -197,6 +197,118 @@ class BookAVTests(unittest.TestCase):
 
 
 class BookAVPlannerTests(unittest.TestCase):
+    def test_owner_revision_and_resolution_do_not_cross_languages(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);en=root/'en.mp3';bn=root/'bn.mp3'
+            en.write_bytes(b'English retained');bn.write_bytes(b'Bengali retained')
+            history=root/'history.json'
+            revision={'schema':'earnalism.book_av_owner_revision.v1','source':'human',
+                      'source_ref':'English-edition owner feedback','status':'ACTIVE',
+                      'required_changes':['narration'],'narration_requirement':'Cedar Indian English'}
+            records={'en':{'title':'A Book','language':'en','candidate_path':str(en),'candidate_sha256':digest(en)},
+                     'bn':{'title':'A Book','language':'bn','candidate_path':str(bn),'candidate_sha256':digest(bn)},
+                     'en_revision':{'title':'A Book','language':'en','at':'2026-11-14T09:00:00Z',
+                                    'owner_revision':revision}}
+            history.write_text(json.dumps(records))
+            packet=plan('A Book',history,'bn')
+            self.assertEqual(packet['preferred_retained_candidate']['sha256'],digest(bn))
+            self.assertIsNone(packet['current_owner_revision'])
+            english_packet=plan('A Book',history,'en')
+            self.assertEqual(english_packet['state'],'OWNER_REVISION_REQUIRED')
+            by_language={c['language']:c for c in english_packet['retained_candidates']}
+            self.assertIn('reuse_disposition',by_language['en'])
+            self.assertNotIn('reuse_disposition',by_language['bn'])
+            unresolved=plan('A Book',history)
+            self.assertEqual(unresolved['language'],'UNRESOLVED_REQUIRES_EDITION')
+            self.assertEqual(unresolved['state'],'EDITION_REQUIRED')
+            self.assertIsNone(unresolved['current_owner_revision'])
+            self.assertIsNone(unresolved['preferred_retained_candidate'])
+            self.assertTrue(all('reuse_disposition' not in c for c in unresolved['retained_candidates']))
+            records['bn_revision']={'title':'A Book','language':'bn','at':'2026-11-14T08:00:00Z',
+                                    'owner_revision':{**revision,'source_ref':'Bengali-edition owner feedback',
+                                                      'narration_requirement':'Selected Bengali narrator'}}
+            records['en_revision']['owner_revision']={**revision,'status':'RESOLVED'}
+            history.write_text(json.dumps(records))
+            packet=plan('A Book',history,'bn')
+            self.assertEqual(packet['state'],'OWNER_REVISION_REQUIRED')
+            self.assertEqual(packet['current_owner_revision']['record'],'history.bn_revision')
+            self.assertEqual(packet['current_owner_revision']['language'],'bn')
+            self.assertIsNone(packet['preferred_retained_candidate'])
+            self.assertEqual(plan('A Book',history,'en')['preferred_retained_candidate']['sha256'],digest(en))
+
+    def test_generic_owner_revision_needs_explicit_or_unambiguous_language_context(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);en=root/'en.mp3';bn=root/'bn.mp3'
+            en.write_bytes(b'English retained');bn.write_bytes(b'Bengali retained')
+            history=root/'history.json'
+            revision={'schema':'earnalism.book_av_owner_revision.v1','source':'human',
+                      'source_ref':'English owner feedback','status':'ACTIVE','language':'en',
+                      'required_changes':['narration']}
+            records={'en':{'title':'A Book','language':'en','candidate_path':str(en),'candidate_sha256':digest(en)},
+                     'bn':{'title':'A Book','language':'bn','candidate_path':str(bn),'candidate_sha256':digest(bn)},
+                     'revision':{'title':'A Book','at':'2026-11-14T09:00:00Z','owner_revision':revision}}
+            history.write_text(json.dumps(records))
+            self.assertEqual(plan('A Book',history,'en')['state'],'OWNER_REVISION_REQUIRED')
+            self.assertIsNotNone(plan('A Book',history,'bn')['preferred_retained_candidate'])
+            records['revision']['owner_revision'].pop('language')
+            history.write_text(json.dumps(records))
+            self.assertIsNone(plan('A Book',history,'bn')['current_owner_revision'])
+            records.pop('bn')
+            history.write_text(json.dumps(records))
+            self.assertEqual(plan('A Book',history,'en')['state'],'OWNER_REVISION_REQUIRED')
+            self.assertEqual(plan('A Book',history,'en')['current_owner_revision']['language'],'en')
+            records['revision']['language']='bn'
+            records['revision']['owner_revision']['language']='en'
+            history.write_text(json.dumps(records))
+            with self.assertRaisesRegex(ValueError,'language conflicts'):
+                plan('A Book',history,'en')
+
+    def test_active_owner_revision_supersedes_matching_old_narration_without_deleting_it(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);audio=root/'old.mp3';audio.write_bytes(b'retained but owner rejected')
+            history=root/'history.json'
+            records={'prior':{'title':'A Book','date':'2026-11-13','language':'en',
+                              'candidate_path':str(audio),'candidate_sha256':digest(audio)},
+                     'revision':{'title':'A Book','at':'2026-11-14T09:00:00Z','language':'en',
+                       'owner_revision':{'schema':'earnalism.book_av_owner_revision.v1','source':'human',
+                         'source_ref':'owner message','status':'ACTIVE','required_changes':['narration','visual'],
+                         'narration_requirement':'Indian English, exclude Voice B'}}}
+            history.write_text(json.dumps(records))
+            packet=plan('A Book',history,'en')
+            self.assertIsNone(packet['preferred_retained_candidate'])
+            self.assertEqual(packet['state'],'OWNER_REVISION_REQUIRED')
+            self.assertTrue(packet['retained_candidates'][0]['retained_bytes_verified'])
+            self.assertIn('HISTORICAL_ONLY',packet['retained_candidates'][0]['reuse_disposition'])
+            self.assertIn('Indian English',packet['current_owner_revision']['narration_requirement'])
+            self.assertIn('replacement narration',packet['next_generated_prompt'])
+            self.assertIn('rebuild the scored mix',packet['actions'][2]['action'])
+            self.assertEqual(audio.read_bytes(),b'retained but owner rejected')
+            # A later explicit resolution ends this hold without erasing history.
+            records['resolution']={'title':'A Book','at':'2026-11-14T10:00:00Z',
+                                   'owner_revision':{**records['revision']['owner_revision'],'status':'RESOLVED'}}
+            history.write_text(json.dumps(records))
+            packet=plan('A Book',history,'en')
+            self.assertIsNotNone(packet['preferred_retained_candidate'])
+            self.assertNotIn('replacement narration',packet['next_generated_prompt'])
+
+    def test_visual_only_revision_preserves_narration_and_nonhuman_claim_cannot_override_owner(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);audio=root/'old.mp3';audio.write_bytes(b'unchanged narration')
+            history=root/'history.json'
+            records={'prior':{'title':'A Book','language':'en','candidate_path':str(audio),'candidate_sha256':digest(audio)},
+                     'revision':{'title':'A Book','date':'2026-11-14',
+                       'owner_revision':{'schema':'earnalism.book_av_owner_revision.v1','source':'human',
+                         'source_ref':'owner message','status':'ACTIVE','required_changes':['visual']}}}
+            history.write_text(json.dumps(records))
+            packet=plan('A Book',history,'en')
+            self.assertIsNotNone(packet['preferred_retained_candidate'])
+            self.assertNotIn('replacement narration',packet['next_generated_prompt'])
+            self.assertIn('Reuse qualified scored edition',packet['actions'][2]['action'])
+            records['revision']['owner_revision']['source']='automatic'
+            history.write_text(json.dumps(records))
+            with self.assertRaisesRegex(ValueError,'explicit human source'):
+                plan('A Book',history,'en')
+
     def test_caption_feedback_keeps_unchanged_audio_evidence(self):
         record = feedback({'candidate_sha256': 'a'*64, 'source': 'automatic',
             'source_ref': 'synthetic private-player contract test; not owner feedback',
