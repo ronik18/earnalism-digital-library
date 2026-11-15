@@ -268,14 +268,15 @@ describe("AuthProvider and Account lifecycle", () => {
     await mounted.cleanup();
   });
 
-  test("a recoverable startup timeout reaches the login state without deleting its token", async () => {
+  test("a recoverable startup timeout remains unresolved with an explicit retry and retains its token", async () => {
     localStorage.setItem(USER_TOKEN_KEY, "recoverable-token");
     mockUserApiGet.mockRejectedValue(new Error("timeout"));
 
     const mounted = render(<AuthProvider><AuthProbe /></AuthProvider>);
     await flush();
-    expect(mounted.container.querySelector('[data-testid="user-id"]')?.textContent).toBe("false");
+    expect(mounted.container.querySelector('[data-testid="user-id"]')?.textContent).toBe("null");
     expect(localStorage.getItem(USER_TOKEN_KEY)).toBe("recoverable-token");
+    expect(mounted.container.querySelector('[role="alert"]').textContent).toContain("Retry sign-in check");
     await mounted.cleanup();
   });
 

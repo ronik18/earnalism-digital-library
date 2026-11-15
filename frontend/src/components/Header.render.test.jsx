@@ -1,6 +1,7 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 
+let mockAuthUser = false;
 let mockLocation = { pathname: "/", search: "", hash: "" };
 
 jest.mock("react-router-dom", () => {
@@ -22,7 +23,7 @@ jest.mock("../context/SettingsContext", () => ({
   useSettings: () => ({ social: {} }),
 }));
 jest.mock("../context/AuthContext", () => ({
-  useAuth: () => ({ user: false }),
+  useAuth: () => ({ user: mockAuthUser }),
 }));
 
 import Header from "./Header";
@@ -39,7 +40,7 @@ function renderHeader(Component = Header, props = {}) {
 }
 
 describe("owner-approved Header composition", () => {
-  afterEach(() => { document.body.innerHTML = ""; mockLocation = { pathname: "/", search: "", hash: "" }; });
+  afterEach(() => { mockAuthUser = false; document.body.innerHTML = ""; mockLocation = { pathname: "/", search: "", hash: "" }; });
 
   test.each(["/", "/library", "/book/a-ghost-story", "/reader/a-ghost-story", "/pricing", "/account", "/login", "/privacy"])("uses the identical primary header shell on %s", (pathname) => {
     mockLocation = { pathname, search: "", hash: "" };
@@ -127,4 +128,14 @@ describe("owner-approved Header composition", () => {
     expect(footer.hasAttribute("inert")).toBe(false);
     cleanup();
   });
+});
+
+
+test.each([[null,"Checking account…","/account"],[false,"Sign In","/login"],[{id:"reader"},"Account","/account"]])("shared header renders verified/anonymous/unresolved auth distinctly (%s)",(user,label,href)=>{
+  mockAuthUser=user;
+  const {container,cleanup}=renderHeader();
+  const account=container.querySelector('.premium-header-nav--desktop a[href="'+href+'"]');
+  expect(account).not.toBeNull(); expect(account.textContent).toContain(label);
+  if(user===null) expect(container.querySelector('.premium-header-nav--desktop a[href="/login"]')).toBeNull();
+  cleanup(); mockAuthUser=false;
 });

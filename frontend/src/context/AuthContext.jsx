@@ -7,6 +7,11 @@ function isConfirmedInvalidUserAuth(error) {
   return error?.response?.status === 401;
 }
 
+function isTemporaryUserAuthFailure(error) {
+  const status = error?.response?.status;
+  return !status || status === 408 || status === 429 || status >= 500;
+}
+
 function profileWithCurrentBalance(current, incoming, preserveBalance) {
   const identity = current?.id || current?.email;
   if (preserveBalance && identity && identity === (incoming?.id || incoming?.email)) {
@@ -19,6 +24,8 @@ export function AuthProvider({ children }) {
   // null=loading, false=anonymous, object=signed in
   const [admin, setAdmin] = useState(null);
   const [user, setUser] = useState(null);
+  const [userVerificationUnavailable, setUserVerificationUnavailable] = useState(false);
+  const retryUserVerificationRef = useRef(null);
   const mountedRef = useRef(false);
   const userAuthGenerationRef = useRef(0);
   const userBalanceRevisionRef = useRef(0);
@@ -60,7 +67,10 @@ export function AuthProvider({ children }) {
           // simply because startup verification did not finish. A confirmed 401
           // remains fail-closed and clears the local user credential.
           if (isConfirmedInvalidUserAuth(error)) localStorage.removeItem(USER_TOKEN_KEY);
-          setUser(false);
+          if (isTemporaryUserAuthFailure(error)) {
+            setUserVerificationUnavailable(true);
+            setUser(null);
+          } else setUser(false);
         });
     }
   }, []);
@@ -79,6 +89,7 @@ export function AuthProvider({ children }) {
   // ---- Reader user ----
   const userSignup = useCallback(async (name, email, password) => {
     const generation = ++userAuthGenerationRef.current;
+    setUserVerificationUnavailable(false);
     const { data } = await userApi.post("/users/signup", { name, email, password });
     if (!mountedRef.current || generation !== userAuthGenerationRef.current) {
       throw new Error("A newer authentication request superseded this sign-up.");
@@ -89,6 +100,7 @@ export function AuthProvider({ children }) {
   }, []);
   const userLogin = useCallback(async (email, password) => {
     const generation = ++userAuthGenerationRef.current;
+    setUserVerificationUnavailable(false);
     const { data } = await userApi.post("/users/login", { email, password });
     if (!mountedRef.current || generation !== userAuthGenerationRef.current) {
       throw new Error("A newer authentication request superseded this sign-in.");
@@ -102,6 +114,7 @@ export function AuthProvider({ children }) {
     if (googleAttemptRef.current) return googleAttemptRef.current;
     const generation = ++userAuthGenerationRef.current;
     setUser(null);
+    setUserVerificationUnavailable(false);
     const attempt = (async () => {
       try {
         const { data } = await userApi.post("/auth/google", { credential }, {
@@ -130,6 +143,7 @@ export function AuthProvider({ children }) {
   }, []);
   const userLogout = useCallback(() => {
     ++userAuthGenerationRef.current;
+    setUserVerificationUnavailable(false);
     const token = localStorage.getItem(USER_TOKEN_KEY);
     // Best-effort server logout; ignore network errors (token is already client-side).
     try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true, skipAuthRefresh: true, timeout: 15000, headers: token ? { Authorization: `Bearer ${token}` } : {} }).catch(() => { /* fire-and-forget */ }); }
@@ -151,6 +165,7 @@ export function AuthProvider({ children }) {
         || !isUserAuthSessionCurrent(sessionVersion)
         || !localStorage.getItem(USER_TOKEN_KEY)
       ) return null;
+      setUserVerificationUnavailable(false);
       setUser((current) => profileWithCurrentBalance(current, data, balanceRevision !== userBalanceRevisionRef.current));
       return data;
     } catch (error) {
@@ -159,28 +174,49 @@ export function AuthProvider({ children }) {
         && generation === userAuthGenerationRef.current
         && isUserAuthSessionCurrent(sessionVersion)
         && !error.authSuperseded
-        && isConfirmedInvalidUserAuth(error)
       ) {
-        localStorage.removeItem(USER_TOKEN_KEY);
-        setUser(false);
+        if (isConfirmedInvalidUserAuth(error)) {
+          localStorage.removeItem(USER_TOKEN_KEY);
+          setUserVerificationUnavailable(false);
+          setUser(false);
+        } else if (isTemporaryUserAuthFailure(error)) {
+          setUserVerificationUnavailable(true);
+        } else {
+          setUserVerificationUnavailable(false);
+          setUser(false);
+        }
       }
       return null;
     }
   }, []);
+  const retryUserVerification = useCallback(() => {
+    if (retryUserVerificationRef.current) return retryUserVerificationRef.current;
+    if (!localStorage.getItem(USER_TOKEN_KEY)) {
+      setUserVerificationUnavailable(false);
+      setUser(false);
+      return Promise.resolve(null);
+    }
+    setUserVerificationUnavailable(false);
+    // A retained credential is not proof of authentication. Protected routes
+    // remain in their existing loading/closed state until /users/me succeeds.
+    const attempt = refreshUser().finally(() => { retryUserVerificationRef.current = null; });
+    retryUserVerificationRef.current = attempt;
+    return attempt;
+  }, [refreshUser]);
   useEffect(() => {
     const restoreSession = (event) => {
       if (!event.persisted) return;
-      const generation = ++userAuthGenerationRef.current;
+      ++userAuthGenerationRef.current;
       if (!localStorage.getItem(USER_TOKEN_KEY)) {
+        setUserVerificationUnavailable(false);
         setUser(false);
         return;
       }
       // A back/forward-cache restore can revive an anonymous React tree even
       // though a later document established a session. Verify before routing.
       setUser(null);
-      refreshUser().then((profile) => {
-        if (mountedRef.current && generation === userAuthGenerationRef.current && !profile) setUser(false);
-      });
+      setUserVerificationUnavailable(false);
+      void refreshUser();
     };
     window.addEventListener("pageshow", restoreSession);
     return () => window.removeEventListener("pageshow", restoreSession);
@@ -197,17 +233,21 @@ export function AuthProvider({ children }) {
 
   // Memoise the context value so consumers don't re-render on every parent render.
   const value = useMemo(() => ({
-    admin, user,
+    admin, user, userVerificationUnavailable,
     // backwards-compatible aliases (Admin pages used `login`/`logout`)
     login: adminLogin, logout: adminLogout,
     adminLogin, adminLogout,
     userSignup, userLogin, userGoogleLogin, userLogout,
-    refreshUser, setUserBalance,
-  }), [admin, user, adminLogin, adminLogout, userSignup, userLogin, userGoogleLogin, userLogout, refreshUser, setUserBalance]);
+    refreshUser, retryUserVerification, setUserBalance,
+  }), [admin, user, userVerificationUnavailable, retryUserVerification, adminLogin, adminLogout, userSignup, userLogin, userGoogleLogin, userLogout, refreshUser, setUserBalance]);
 
   return (
     <AuthContext.Provider value={value}>
       {children}
+      {userVerificationUnavailable && <aside role="alert" className="fixed bottom-4 left-4 right-4 z-[100] mx-auto max-w-xl rounded-lg border border-gold-400 bg-beige-50 p-4 text-charcoal shadow-lg">
+        <p>We couldn’t verify your sign-in. Check your connection and try again.</p>
+        <button type="button" className="btn-secondary mt-3" onClick={retryUserVerification}>Retry sign-in check</button>
+      </aside>}
     </AuthContext.Provider>
   );
 }

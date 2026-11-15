@@ -49,8 +49,8 @@ export default function Header({ onNavigatePath } = {}) {
       .filter((item) => item.Icon)
   ), [social]);
   const isAuthed = !!user && typeof user === "object";
-  const accountHref = isAuthed ? "/account" : "/login";
-  const accountLabel = isAuthed ? "Account" : "Sign In";
+  const accountHref = isAuthed || user === null ? "/account" : "/login";
+  const accountLabel = user === null ? "Checking account…" : isAuthed ? "Account" : "Sign In";
   const navigationItems = PUBLIC_NAV_ITEMS;
 
   useEffect(() => {

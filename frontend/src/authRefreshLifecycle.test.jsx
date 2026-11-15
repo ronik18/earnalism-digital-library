@@ -150,7 +150,8 @@ test("a retryable refresh outage fails closed without erasing the credential", a
   global.fetch.mockResolvedValue(refreshResponse(null, 503));
   adapter.mockImplementation(async (config) => { throw failure(config); });
   await mount();
-  expect(container.textContent).toBe("false");
+  expect(auth.user).toBeNull();
+  expect(container.querySelector('[role="alert"]').textContent).toContain("Retry sign-in check");
   expect(localStorage.getItem(USER_TOKEN_KEY)).toBe("expired-access");
   expect(global.fetch).toHaveBeenCalledTimes(1);
   expect(adapter).toHaveBeenCalledTimes(1);
@@ -253,4 +254,72 @@ test("a delayed profile cannot overwrite a newer validated reader balance", asyn
   await act(async () => { auth.setUserBalance(42, "reader-one"); });
   await act(async () => { profile.resolve(response(profileConfig, reader("reader-one", 120))); await refreshing; });
   expect(container.textContent).toBe("reader-one:42");
+});
+
+test.each([undefined,408,429,503])("temporary startup failure %s retains a closed, retryable session and saved progress", async status => {
+  localStorage.setItem("earnalism:reader-position:fixture", "retained-progress");
+  let calls = 0;
+  adapter.mockImplementation(async config => {
+    if (++calls === 1) { if (status) throw failure(config,status); throw new Error("transport offline"); }
+    return response(config, reader());
+  });
+  await mount();
+  expect(auth.user).toBeNull();
+  expect(auth.userVerificationUnavailable).toBe(true);
+  expect(localStorage.getItem(USER_TOKEN_KEY)).toBe("expired-access");
+  const button = container.querySelector('[role="alert"] button');
+  await act(async () => button.click());
+  await flush();
+  expect(auth.user).toEqual(reader());
+  expect(container.querySelector('[role="alert"]')).toBeNull();
+  expect(localStorage.getItem("earnalism:reader-position:fixture")).toBe("retained-progress");
+  expect(adapter).toHaveBeenCalledTimes(2);
+  expect(global.fetch).not.toHaveBeenCalled();
+});
+
+test("duplicate retry clicks share one verification, with no automatic retry loop", async () => {
+  const pending = deferred();
+  adapter.mockRejectedValueOnce(new Error("offline")).mockImplementation(() => pending.promise);
+  await mount();
+  let first, second;
+  await act(async () => { first=auth.retryUserVerification(); second=auth.retryUserVerification(); });
+  expect(first).toBe(second); expect(adapter).toHaveBeenCalledTimes(2);
+  await act(async () => { pending.reject(new Error("still offline")); await first; });
+  await flush();
+  expect(auth.user).toBeNull(); expect(auth.userVerificationUnavailable).toBe(true);
+  expect(adapter).toHaveBeenCalledTimes(2);
+});
+
+test("terminal refresh rejection after a recovery attempt still signs out without extending the session", async () => {
+  adapter.mockRejectedValueOnce(new Error("offline")).mockImplementation(async config => { throw failure(config); });
+  global.fetch.mockResolvedValue(refreshResponse(null,401));
+  await mount();
+  await act(async () => { await auth.retryUserVerification(); });
+  expect(auth.user).toBe(false); expect(auth.userVerificationUnavailable).toBe(false);
+  expect(localStorage.getItem(USER_TOKEN_KEY)).toBeNull();
+  expect(global.fetch).toHaveBeenCalledTimes(1);
+  expect(adapter).toHaveBeenCalledTimes(2);
+});
+
+test("back-forward restore outage stays retryable instead of manufacturing a logout", async () => {
+  adapter.mockImplementationOnce(async config=>response(config,reader())).mockRejectedValueOnce(new Error("offline"))
+    .mockImplementation(async config=>response(config,reader()));
+  await mount();
+  const event = new Event("pageshow"); Object.defineProperty(event,"persisted",{value:true});
+  await act(async()=>window.dispatchEvent(event)); await flush();
+  expect(auth.user).toBeNull(); expect(auth.userVerificationUnavailable).toBe(true);
+  await act(async()=>{ await auth.retryUserVerification(); });
+  expect(auth.user).toEqual(reader());
+  expect(adapter).toHaveBeenCalledTimes(3);
+});
+
+test("logout supersedes pending verification recovery and cannot resurrect a profile or error", async () => {
+  const pending=deferred();
+  adapter.mockRejectedValueOnce(new Error("offline")).mockImplementation(config=>config.url==="/users/logout"?Promise.resolve(response(config,{})):pending.promise);
+  await mount();
+  let retry; await act(async()=>{retry=auth.retryUserVerification();});
+  await act(async()=>auth.userLogout());
+  await act(async()=>{pending.resolve(response({},reader()));await retry;});
+  expect(auth.user).toBe(false); expect(auth.userVerificationUnavailable).toBe(false);
+  expect(localStorage.getItem(USER_TOKEN_KEY)).toBeNull();
 });

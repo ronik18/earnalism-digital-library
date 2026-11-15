@@ -17,13 +17,13 @@ describe("premium header navigation", () => {
     expect(navigation).toContain('{ key: "reading-pass", to: "/pricing", label: "Reading Pass" }');
     expect(navigation).toContain('{ key: "journal", to: "/journal", label: "Blog" }');
     expect(navigation).toContain('{ key: "about", to: "/about", label: "About" }');
-    expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
+    expect(source).toContain('const accountHref = isAuthed || user === null ? "/account" : "/login"');
     expect(source).not.toMatch(/href=["']#|to=["']#|javascript:/i);
   });
 
   test("uses the canonical nav, one search interaction, and Sign In or Account", () => {
     expect(source).toContain('role="search" data-testid="nav-search"');
-    expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
+    expect(source).toContain('const accountHref = isAuthed || user === null ? "/account" : "/login"');
     expect(source).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
     expect(source).not.toContain('data-testid="header-cta-library"');
     expect(source.match(/data-testid="header-cta-library"/g) || []).toHaveLength(0);
