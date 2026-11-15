@@ -130,6 +130,7 @@ REGISTRY_PATH = ""  # Empty selects PRIVATE_WORKSPACE/projects.json.
 RUNTIME_AUTHORITY_PATH = "/content/earnalism-runtime-authority.json"
 CONNECT_PRIVATE_DRIVE = False  # Explicit interactive Google permission, if needed.
 AUTO_DISCONNECT_OWN_RUNTIME = True
+QUALIFY_PRE_STORAGE_DRIVER = False  # Opt-in driver lookup; never model qualification.
 FEEDBACK_PATH = ""  # Optional exact-candidate feedback JSON in the private workspace.
 '''
     guard = '''import json, math, pathlib, threading, time
@@ -226,9 +227,42 @@ registry = pathlib.Path(REGISTRY_PATH).expanduser() if REGISTRY_PATH else worksp
 print({"private_workspace": str(workspace), "project_registry_present": registry.is_file(),
        "private_visibility": "Use the owner-only Drive project folder; path presence alone is not a sharing audit."})
 '''
+    driver_entry_name = "scripts/earnalism_voice_runtime/pre_drive_loader_entry.py"
+    driver_entry = source[driver_entry_name]
+    pre_storage = f'''def qualify_pre_storage_driver():
+    # Embedded reviewed source runs before any Drive connection or Git download.
+    if not EXECUTE or not QUALIFY_PRE_STORAGE_DRIVER:
+        return None
+    import base64, hashlib, types
+    if (not isinstance(runtime_authority, dict)
+            or runtime_authority.get("owner_authorized") is not True
+            or runtime_guard is None or not runtime_guard.is_alive()):
+        raise RuntimeError("An actual original-clock shutdown guard is required before driver lookup")
+    supplied = runtime_authority.get("pre_storage_driver_scope")
+    if not isinstance(supplied, dict):
+        raise RuntimeError("Supply the actual approved pre_storage_driver_scope; this option creates no grant")
+    scope = dict(supplied)
+    for key in ("allocation_started_at", "original_deadline_epoch"):
+        actual = runtime_context[key]
+        if runtime_authority.get(key) != actual or (key in scope and scope[key] != actual):
+            raise RuntimeError("Driver lookup cannot replace the original allocation clock")
+        scope[key] = actual
+    scope["shutdown_guard_armed"] = runtime_guard.is_alive()
+    raw_entry = base64.b64decode({base64.b64encode(driver_entry).decode()!r}, validate=True)
+    if hashlib.sha256(raw_entry).hexdigest() != {hashlib.sha256(driver_entry).hexdigest()!r}:
+        raise RuntimeError("Pre-storage entry source changed")
+    entry = types.ModuleType("_earnalism_reviewed_pre_storage_entry")
+    entry.__file__ = "<reviewed-pre-storage-entry>"
+    exec(compile(raw_entry, entry.__file__, "exec"), entry.__dict__)
+    output = pathlib.Path("/content")/("earnalism-pre-storage-driver-" + str(time.time_ns()))
+    receipt = entry.run(scope, output)
+    if receipt.get("state") != "FRESH_MINIMALENV_DRIVER_LOOKUP_PASS_NOT_TORCH_OR_TTS_QUALIFICATION":
+        raise RuntimeError("Driver lookup failed; stop before storage, package or model work")
+    return receipt
+'''
     # Definitions keep setup and execution inside one finally-controlled operation.
     helpers = inspect.getsource(check_base_source) + "\n" + inspect.getsource(check_import_namespace)
-    bootstrap = "def prepare_reviewed_software():\n" + textwrap.indent(helpers + "\n" + bootstrap, "    ") + "    return source_root\n"
+    bootstrap = "def prepare_reviewed_software():\n" + textwrap.indent(helpers + "\n" + bootstrap, "    ") + "    return source_root\n\n" + pre_storage
     workspace = "def connect_private_workspace():\n" + textwrap.indent(workspace, "    ") + "    return workspace, registry\n"
     execute = '''workspace = pathlib.Path(PRIVATE_WORKSPACE).expanduser().resolve()
 def retain_notebook_event(kind, payload):
@@ -246,6 +280,8 @@ def retain_notebook_event(kind, payload):
     return {"event_path":str(event_path),"event_sha256":hashlib.sha256(raw).hexdigest()}
 result = None
 try:
+    if EXECUTE and globals().get("QUALIFY_PRE_STORAGE_DRIVER", False):
+        qualify_pre_storage_driver()
     workspace, registry = connect_private_workspace()
     admitted_runtime_authority = None
     if EXECUTE:

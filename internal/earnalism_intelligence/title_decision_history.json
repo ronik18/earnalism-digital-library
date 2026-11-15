@@ -18116,5 +18116,24 @@
     "full_content_production_ready": false,
     "bengali_release_authority_counters_reader_only_and_active_holds_unchanged": true,
     "next_generated_prompt": "Use the single instruction-driven Colab notebook with the actual private project registry, exact trained voice/runtime assets, current applicable acceptance and existing bounded execution scope. Resolve missing measured/content/qualification evidence, preserve all holds and healthy outputs, and use the existing exact-candidate release path. No perfection, new spending or publication is inferred."
+  },
+  "colab_pre_storage_runtime_preparation_20261115": {
+    "at": "2026-11-15T04:30:00.924061+00:00",
+    "title": "The Earnalism production orchestrator / private Open Window revision",
+    "state": "REUSABLE_SOURCE_PREPARED_GPU_AND_VOICE_QUALIFICATION_SEPARATE",
+    "scope": "Generic runtime helpers, notebook and guidance; frozen private experiment retained separately",
+    "source_contract": "docs/earnalism_orchestrator.md",
+    "lessons": [
+      "Check the actual isolated provider driver lookup before Drive OAuth and large staging",
+      "Bind a preload to the actual provider library bytes; keep stripped worker credentials unchanged",
+      "Preserve the original allocation clock through replacements and authentication",
+      "Prepare positional capacity before snapshots; retain the old prefix and frozen state",
+      "Retain source tests, actual runtime evidence and perceived voice acceptance as separate facts"
+    ],
+    "private_revision_outcome": "No new model load, training updates, revised scenes or scene reviews in this private revision scope; its prior authority is closed",
+    "production_ready": false,
+    "published": false,
+    "bengali_campaign_holds_counters_budgets_and_reader_only_state_unchanged": true,
+    "next_generated_prompt": "Use the saved single notebook and private resource index. Resume only from actual applicable authority and exact artifacts; qualify the driver before storage authentication, preserve the original deadline and unchanged soundtrack/style, and retain unresolved voice and visual findings."
   }
 }

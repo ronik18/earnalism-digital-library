@@ -53,6 +53,14 @@ qualification. Keep actual trained prototypes available for authorized
 qualification without silently substituting a stock voice or promoting them to
 full-book acceptance. One orchestration request creates no new compute budget.
 
+For the isolated Colab worker, qualify the existing provider's driver lookup
+before interactive Drive authentication or large transfers. The opt-in
+pre-storage check uses the original allocation deadline and armed guard; it
+creates no runtime or retry authority. An exact-library preload preserves the
+credential-stripped worker environment. A CPU shared-library test or successful
+driver lookup is not Torch/CUDA compute, model, training or narration acceptance.
+See the [runtime contract](../../../docs/earnalism_orchestrator.md) for the entry.
+
 Use existing scoring tools with the exact narration, measured clock and cleared
 finite instrumental sources. Preserve purposeful literary silence and liked
 passages; the short science-video default of continuous body music does not

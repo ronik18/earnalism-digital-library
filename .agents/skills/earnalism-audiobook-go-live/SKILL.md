@@ -19,6 +19,14 @@ prototypes for authorized auditions, while full-title generation requires the
 applicable actual profile acceptance. No stock/base voice may masquerade as the
 trained brand. Reuse accepted exact recordings rather than regenerate them.
 
+
+For an isolated Colab voice worker, use the optional pre-Drive driver lookup in
+[the runtime contract](../../../docs/earnalism_orchestrator.md) before authentication/transfers.
+Resolve and hash the actual loaded provider library; never guess a driver path
+or expand the worker's credential environment. Preserve the original deadline
+and consumed attempts. Driver lookup and positional-table preparation are
+prerequisites, not evidence of model training or acceptable speech.
+
 Apply the current title/owner editorial policy. Newly authorized automated jobs
 may use `automated-editorial-2026-11-11` through the existing evaluator/runtime;
 historical receipts, stricter requested targets, Bengali campaign gates and active

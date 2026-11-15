@@ -99,6 +99,29 @@ while native calls run. Resource observations do not prove model memory fit.
 Fake tests prove these source contracts only. This implementation grants no
 activation, training, synthesis, allocation or publication; Bicharak stays held.
 
+For the CPython 3.12 Linux Colab worker, `QUALIFY_PRE_STORAGE_DRIVER` is an
+optional, execution-disabled prerequisite check before Drive authentication.
+Supply its actual approved scope in the runtime envelope; the notebook binds
+that scope to its existing original allocation clock and live shutdown guard.
+The embedded source runs without a package download or Drive mount. A failed
+lookup stops before private storage access, model setup or narration.
+
+`scripts/earnalism_voice_runtime/provider_driver_bootstrap.py` resolves the
+already loaded provider library through `/proc/self/maps` and binds its exact
+path, size and hash. It installs a single owned-venv preload without passing
+`LD_LIBRARY_PATH` or account credentials into the worker. Changed library bytes
+terminate startup. `pre_drive_loader_entry.py` checks a fresh, stripped-environment
+interpreter and emits a small retainable receipt. These checks do not import
+Torch, load a model, train, allocate a GPU or qualify CUDA compute. Their CPU and
+mock tests do not establish successful execution on a Colab GPU.
+
+The separate opt-in `position_table.py` utility prepares sufficient sinusoidal
+position capacity before snapshots and training/inference, retaining the original
+prefix and frozen state. It is not wired into the existing inference adapter or
+its qualified profiles. Preserve the original frozen experiment source and
+private evidence when promoting reusable helpers; no source refactor renews an
+expired execution scope or qualifies a rejected voice.
+
 Scoring uses the complete source, real narration clock, contextual direction and
 cleared finite stems through `audiobook_score`. Transitions, levels and deliberate
 silence follow the actual content. Accepted KEEP passages remain candidate-bound.
