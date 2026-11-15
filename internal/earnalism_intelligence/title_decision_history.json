@@ -18144,5 +18144,15 @@
     "new_model_training_or_publication": false,
     "bengali_campaign_holds_counters_and_reader_only_state_unchanged": true,
     "next_generated_prompt": "Verify exact-head hosted regression and notebook source checks, then merge the reviewed source normally and save the merged commit-bound private Drive index."
+  },
+  "p0_reader_expired_lease_visual_preview_20261115": {
+    "at": "2026-11-15T05:25:17.792320+00:00",
+    "event": "p0_reader_expired_lease_and_visual_preview_admission",
+    "title_history_key": "p0_reader_expired_lease_visual_preview_20261115",
+    "scope": "One foreground reauthorization after lease expiry; one measured visual-preview admission for a verified normal member with time",
+    "billing_role_preview_limits_and_histories_preserved": true,
+    "model_work_or_capture": false,
+    "production_deployed": false,
+    "status": "SOURCE_QUALIFICATION_IN_PROGRESS"
   }
 }
