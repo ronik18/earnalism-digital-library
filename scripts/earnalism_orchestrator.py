@@ -19,6 +19,7 @@ Feedback changes recipes/checkpoints; it never claims to train model weights.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from datetime import datetime, timezone
 import fcntl
@@ -40,6 +41,7 @@ if str(ROOT) not in sys.path:
 from scripts import book_audiovisual
 
 REGISTRY_SCHEMA = "earnalism.production_registry.v1"
+BATCH_SCHEMA = "earnalism.production_batch.v1"
 RUNTIME_SCHEMA = "earnalism.orchestrator_runtime.v1"
 STAGES = ("source", "narration", "timing", "score", "visuals", "compose", "review", "release-ready")
 DEPENDENCIES = {
@@ -182,20 +184,23 @@ def parse_instruction(instruction: str) -> dict:
     if not isinstance(instruction, str) or not instruction.strip() or len(instruction) > 4000:
         raise ValueError("a nonempty production instruction of at most 4000 characters is required")
     text = instruction.strip()
+    voice = re.search(r"\s+using\s+The\s+Earnalism\s+Voice\s*[.!]?\s*$", text, re.I)
+    if voice:
+        text = text[:voice.start()].rstrip()
     if re.search(r"everyday\s*science", text, re.I):
         requested_next = bool(re.search(r"\bnext\b", text, re.I))
         match = re.search(r"(?:topic|episode)\s*[-–—:]\s*(.+)", text, re.I)
         title = match.group(1).strip(" \t\r\n\"'“”") if match else None
         if not requested_next and not title:
             raise ValueError("name an EverydayScience topic after 'topic -', or request the next registered topic")
-        return {"kind": "science", "series": "EverydayScience", "title": title,
-                "language": None, "next": requested_next, "publication_requested": False}
+        request = {"kind": "science", "series": "EverydayScience", "title": title,
+                   "language": None, "next": requested_next, "publication_requested": False}
+        if voice:
+            request["requested_voice"] = "TheEarnalismVoice"
+        return request
     # This is a bounded input grammar, not a general prose/title guesser. Keep
     # the demonstrated optional voice direction separate from the exact title;
     # narration still needs its real trained profile, qualification and scope.
-    voice = re.search(r"\s+using\s+The\s+Earnalism\s+Voice\s*[.!]?\s*$", text, re.I)
-    if voice:
-        text = text[:voice.start()].rstrip()
     if (re.search(r"\b(?:Bengali\s+(?:and|or|/)\s+English|English\s+(?:and|or|/)\s+Bengali)\s+book\b", text, re.I)
             or re.search(r"\s+(?:and|or)\s+(?:(?:the\s+)?(?:Bengali|English)\s+)?book\b", text, re.I)):
         raise ValueError("request one exact book and language/edition at a time")
@@ -450,7 +455,8 @@ def _software(stage, spec=None):
     }
     if stage == "visuals" and spec.get("kind") == "science-animation":
         folder = {"thermal-touch": "thermal_touch", "condensation": "condensation",
-                  "sky-colour": "sky_colour", "rainbow": "rainbow"}.get(spec.get("science"))
+                  "sky-colour": "sky_colour", "rainbow": "rainbow",
+                  "metal-rust": "metal_rust"}.get(spec.get("science"))
         if folder:
             base = ROOT / "skills/earnalism-video/software" / folder
             relative[stage] += [str(path.relative_to(ROOT)) for path in base.rglob("*")
@@ -460,6 +466,8 @@ def _software(stage, spec=None):
                 "src/BrandWatermark.tsx", "src/branding.mjs", "src/social-safe-area.mjs",
                 "src/render-browser.mjs", "src/render-runtime.mjs", "src/prepare-render-runtime.mjs",
                 "package.json", "package-lock.json")]
+            if spec.get("science") == "metal-rust":
+                relative[stage].append("skills/earnalism-video/software/metal_rust/contract.json")
     return {name: _sha(ROOT / name) for name in ["scripts/earnalism_orchestrator.py", *relative[stage]]
             if (ROOT / name).is_file()}
 
@@ -923,6 +931,228 @@ def run(instruction, workspace, registry_path=None, execute=False, authority_pat
         return report
 
 
+def _batch_ref(path):
+    return {"path": str(path), "sha256": _sha(path), "bytes": path.stat().st_size}
+
+
+def _batch_summary(item, result, plan_path, result_path=None):
+    """Keep full private recipes, manuscripts and adapter details off stdout."""
+    project = result.get("project") or {}
+    blockers = result.get("blockers") or []
+    return {"id": item["id"], "project_id": result.get("project_id") or project.get("id"),
+            "state": result.get("state", "PRIVATE_INPUT_REQUIRED"),
+            "production_ready": result.get("production_ready") is True,
+            "blocker_count": len(blockers),
+            "first_blocker": str(blockers[0])[:240] if blockers else None,
+            "executed_stage_count": len(result.get("executed_stages") or []),
+            "reused_stage_count": len(result.get("reused_stages") or []),
+            "plan": _batch_ref(plan_path),
+            "result": _batch_ref(result_path) if result_path else None}
+
+
+def _batch_authorities(mapping, selected, workspace, runtime_context, execute):
+    if not isinstance(mapping, dict) or set(mapping) - set(selected):
+        raise ValueError("batch authorities must map only selected fixed project ids to bound files")
+    _no_commands(mapping)
+    paths, scopes, clocks = {}, set(), set()
+    for project_id, descriptor in mapping.items():
+        path = _ref_path(descriptor, workspace)
+        if not _inside(path, (workspace,)):
+            raise ValueError("batch runtime authorities must remain in the private workspace")
+        paths[project_id] = path
+        if not execute:
+            continue
+        runtime = _runtime(path, selected[project_id], workspace, runtime_context)
+        clock = tuple(runtime.get(key) for key in (
+            "allocation_started_at", "original_deadline_epoch", "observed_units_per_hour",
+            "approved_compute_units", "free_runtime_confirmed"))
+        clocks.add(clock)
+        # Distinct project-bound envelopes cannot reset/reuse one immutable
+        # scope ledger. The existing run() remains the sole reservation writer.
+        if runtime["scope_ref"] in scopes:
+            raise ValueError("different batch projects cannot reuse one immutable runtime scope")
+        scopes.add(runtime["scope_ref"])
+        name = hashlib.sha256(runtime["scope_ref"].encode()).hexdigest()
+        ledger_path = workspace / ".orchestrator" / "authorities" / (name + ".json")
+        if ledger_path.is_file() and _load(ledger_path).get("authority_sha256") != runtime["sha256"]:
+            raise ValueError("preserve the original scope/clock/counters; changed authority cannot reset them")
+    if len(clocks) > 1:
+        raise ValueError("batch runtimes must share the original allocation clock, rate and compute cap")
+    return paths
+
+
+def batch(input_path, workspace, registry_path=None, workers=2, execute=False,
+          authorities_path=None, runtime_context=None) -> dict:
+    """Parallel read-only plans; serial existing run() with unchanged locks.
+
+    Every invocation keeps its own full private reports. There is no speculative
+    plan cache, model API client, authority creation or publication dispatcher.
+    """
+    if type(workers) is not int or not 1 <= workers <= 4:
+        raise ValueError("batch preparation workers must be an integer from 1 to 4")
+    workspace = _private_workspace(workspace)
+    input_path = Path(input_path).expanduser().resolve()
+    registry_path = (Path(registry_path).expanduser().resolve() if registry_path
+                     else workspace / "projects.json")
+    if not _inside(input_path, (workspace,)) or not _inside(registry_path, (workspace,)):
+        raise ValueError("batch input and registry must remain in the private workspace")
+    value = _load(input_path)
+    if (not isinstance(value, dict) or value.get("schema") != BATCH_SCHEMA
+            or set(value) != {"schema", "id", "items"}
+            or not isinstance(value.get("id"), str) or not ID.fullmatch(value["id"])
+            or not isinstance(value.get("items"), list) or not value["items"]):
+        raise ValueError("batch needs earnalism.production_batch.v1, a safe id and nonempty items")
+    _no_commands(value)
+    registry = _registry(registry_path) if registry_path.is_file() else None
+    item_ids, project_ids, selected, identities = set(), set(), {}, {}
+    # Finish structural parsing and duplicate-project admission before workers,
+    # private report creation or any call to run(). Aliases may select one id.
+    for item in value["items"]:
+        if (not isinstance(item, dict) or set(item) != {"id", "instruction"}
+                or not isinstance(item.get("id"), str) or not ID.fullmatch(item["id"])):
+            raise ValueError("each batch item needs only a safe id and explicit instruction")
+        if item["id"] in item_ids:
+            raise ValueError("duplicate batch item id")
+        item_ids.add(item["id"])
+        request = parse_instruction(item["instruction"])
+        if request["next"] or not request.get("title"):
+            raise ValueError("batch items must name exact titles; next-queue selection is not supported")
+        candidates = _select(request, registry, workspace) if registry else []
+        project = candidates[0] if len(candidates) == 1 else None
+        identities[item["id"]] = project["id"] if project else None
+        if project:
+            if project["id"] in project_ids:
+                raise ValueError("duplicate selected project id in batch")
+            project_ids.add(project["id"])
+            selected[project["id"]] = project
+    if authorities_path is not None:
+        authorities_path = Path(authorities_path).expanduser().resolve()
+        if not _inside(authorities_path, (workspace,)):
+            raise ValueError("batch authority mapping must remain in the private workspace")
+        mapping = _load(authorities_path)
+    else:
+        mapping = {}
+    authorities = _batch_authorities(mapping, selected, workspace, runtime_context, execute)
+    if (_canonical(_load(input_path)) != _canonical(value)
+            or registry is not None and _canonical(_registry(registry_path)) != _canonical(registry)):
+        raise ValueError("batch input or registry changed during admission; replan")
+    source = _batch_ref(input_path)
+    registry_ref = _batch_ref(registry_path) if registry_path.is_file() else {
+        "path": str(registry_path), "sha256": None}
+    identity = {"batch": source, "registry": registry_ref}
+    fingerprint = _canonical(identity)
+    root = _local_path(f"batches/{value['id']}/{fingerprint}", workspace, workspace, output=True)
+    root.mkdir(parents=True, exist_ok=True)
+    mode = "execute" if execute else "prepare"
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
+    attempt = Path(tempfile.mkdtemp(prefix=f"{mode}-{stamp}-", dir=root))
+    _write(attempt / "input-identity.json", identity)
+
+    def current_inputs():
+        observed = {}
+        for key, path in (("batch_sha256", input_path), ("registry_sha256", registry_path)):
+            try:
+                observed[key] = _sha(path) if path.is_file() else None
+            except OSError:
+                observed[key] = "UNREADABLE_CHANGED_INPUT"
+        return observed
+
+    expected_inputs = {"batch_sha256": source["sha256"], "registry_sha256": registry_ref["sha256"]}
+
+    def prepare(item):
+        before, completed = current_inputs(), False
+        try:
+            result = plan(item["instruction"], workspace, registry_path)
+            completed = True
+        except Exception as exc:
+            result = {"schema": "earnalism.orchestrator_plan.v1", "project": None,
+                      "state": "PRIVATE_INPUT_REQUIRED", "blockers": [str(exc)],
+                      "error_type": type(exc).__name__, "private_only": True,
+                      "production_ready": False, "publication_performed": False}
+        path = attempt / "items" / item["id"] / "plan.json"
+        _write(path, result)
+        observed = {"id": item["id"], "before": before, "after": current_inputs(),
+                    "plan_completed": completed, "plan_registry_sha256": result.get("registry_sha256"),
+                    "admitted_project_id": identities[item["id"]],
+                    "planned_project_id": (result.get("project") or {}).get("id"),
+                    "project_matches_admission": result.get("project") == selected.get(identities[item["id"]])}
+        return result, path, observed
+
+    with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="earnalism-plan") as pool:
+        prepared = list(pool.map(prepare, value["items"]))
+    # An input may change and be restored while another worker plans. Final
+    # file hashes alone cannot establish that every actual plan used admission's
+    # registry, so preserve and compare each plan's own binding as well.
+    final_inputs = current_inputs()
+    changed_items = [observed["id"] for _, _, observed in prepared
+                     if observed["before"] != expected_inputs or observed["after"] != expected_inputs
+                     or observed["plan_completed"] and (
+                         observed["plan_registry_sha256"] != expected_inputs["registry_sha256"]
+                         or not observed["project_matches_admission"])]
+    changed = bool(changed_items or final_inputs != expected_inputs)
+    blocker = "batch input or registry changed during preparation; preserve actual plans and explicitly replan"
+    coherence_path = attempt / "input-coherence.json"
+    _write(coherence_path, {"schema": "earnalism.production_batch_coherence.v1",
+                           "state": "HELD_CHANGED_INPUT" if changed else "UNCHANGED_INPUTS",
+                           "expected": expected_inputs, "final": final_inputs,
+                           "changed_items": changed_items,
+                           "items": [observed for _, _, observed in prepared]})
+    summaries = []
+    for item, (action, plan_path, _) in zip(value["items"], prepared):
+        result, result_path = action, None
+        if changed:
+            result = {"schema": "earnalism.orchestrator_result.v1",
+                      "project_id": (action.get("project") or {}).get("id") or identities[item["id"]],
+                      "state": "HELD_CHANGED_INPUT", "blockers": [blocker],
+                      "execution_requested": bool(execute), "production_ready": False,
+                      "private_only": True, "publication_performed": False}
+            result_path = plan_path.parent / "held-input.json"
+            _write(result_path, result)
+        elif execute:
+            project = action.get("project")
+            try:
+                if (_sha(input_path) != source["sha256"]
+                        or (registry_path.is_file() != (registry_ref["sha256"] is not None))
+                        or registry_path.is_file() and _sha(registry_path) != registry_ref["sha256"]):
+                    raise ValueError("batch input or registry changed; preserve reports and replan")
+                if project is not None:
+                    if project["id"] in authorities:
+                        # Keep the caller's exact descriptor binding through
+                        # dispatch, including mutations during another item.
+                        _batch_authorities(mapping, selected, workspace, runtime_context, True)
+                    # Intentionally serial. run() alone owns its original global
+                    # workspace lock, attempts, stage contracts and runtime clock.
+                    result = run(item["instruction"], workspace, registry_path, execute=True,
+                                 authority_path=authorities.get(project["id"]),
+                                 runtime_context=runtime_context)
+            except Exception as exc:
+                result = {"schema": "earnalism.orchestrator_result.v1",
+                          "project_id": (project or {}).get("id"),
+                          "state": "PRIVATE_EXECUTION_HELD_OR_UNKNOWN", "blockers": [str(exc)],
+                          "error_type": type(exc).__name__, "production_ready": False,
+                          "private_only": True, "publication_performed": False,
+                          "next_action": "Inspect the existing project journal; unknown attempts remain consumed."}
+            result_path = plan_path.parent / "result.json"
+            _write(result_path, result)
+        summaries.append(_batch_summary(item, result, plan_path, result_path))
+    ready = execute and all(item["production_ready"] for item in summaries)
+    report = {"schema": "earnalism.production_batch_result.v1", "id": value["id"],
+              "input_sha256": fingerprint, "source": source, "registry": registry_ref,
+              "execution_requested": bool(execute), "preparation_workers": workers,
+              "execution_mode": "SERIAL_EXISTING_RUN_GLOBAL_LOCK" if execute else "PREPARATION_ONLY",
+              "state": "HELD_CHANGED_INPUT" if changed else "GO_LIVE_READY_PRIVATE" if ready
+                       else "PRIVATE_PREPARATION_OR_REVIEW_REQUIRED",
+              "items": summaries, "production_ready": ready, "private_only": True,
+              "input_coherence": _batch_ref(coherence_path), "blockers": [blocker] if changed else [],
+              "publication_performed": False, "codex_api_calls_by_controller": 0,
+              "model_dispatch": "NOT_DISPATCHED_CHANGED_INPUT" if changed else
+                                "EXISTING_RUN_AUTHORITY_AND_ATTEMPT_JOURNALS" if execute else "NOT_REQUESTED",
+              "report_path": str(attempt / "summary.json"),
+              "next_action": "Resolve held inputs and resume this batch; exact project feedback and attempts remain in the existing engine."}
+    _write(attempt / "summary.json", report)
+    return report
+
+
 def feedback(input_path, workspace) -> dict:
     workspace = _private_workspace(workspace)
     path = Path(input_path).expanduser().resolve()
@@ -973,10 +1203,24 @@ def main(argv=None):
     item = commands.add_parser("feedback")
     item.add_argument("--input", type=Path, required=True)
     item.add_argument("--workspace", type=Path, required=True)
+    item = commands.add_parser("batch")
+    item.add_argument("--input", type=Path, required=True)
+    item.add_argument("--workspace", type=Path, required=True)
+    item.add_argument("--registry", type=Path)
+    item.add_argument("--output", type=Path)
+    item.add_argument("--workers", type=int, default=2)
+    item.add_argument("--execute", action="store_true")
+    item.add_argument("--authorities", type=Path,
+                      help="JSON mapping selected project ids to checksum-bound private runtime files")
+    item.add_argument("--runtime-context", type=Path,
+                      help="the shared actual original notebook timer observations")
     args = parser.parse_args(argv)
     try:
         if args.command == "feedback":
             result = feedback(args.input, args.workspace)
+        elif args.command == "batch":
+            result = batch(args.input, args.workspace, args.registry, args.workers, args.execute,
+                           args.authorities, _load(args.runtime_context) if args.runtime_context else None)
         elif args.command == "plan":
             result = plan(args.instruction, args.workspace, args.registry)
         else:

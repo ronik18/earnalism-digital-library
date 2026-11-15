@@ -3468,3 +3468,7 @@ Reuse the existing visual-page navigator for horizontal single-touch swipes. Kee
 ### Sign-in verification recovery — 15 November 2026
 
 Temporary verification failures must not masquerade as logout. Keep unresolved access closed and offer one explicit, deduplicated verification retry using the existing credential. Confirmed terminal rejection still clears authentication; preserve server idle/absolute expiry, roles, session ownership, progress and balance. Ordinary live refresh success does not prove the earlier sign-out trigger; synthetic browser outage/recovery evidence is separate from production evidence.
+
+## Nine-content audiovisual preparation — 2026-11-15
+
+Parallel preparation uses exact registered editions and compact private reports, while model execution retains the original serial writer and scopes. Eight accepted text-source stages ran and reused with zero model reservations. Muchiram’s old human packet omitted twelve chapters; the current fourteen-chapter edition is mandatory. Text-span coverage is not semantic or performed acceptance. Plan identity must survive transient registry changes. Copyright/ASR-qualified reference speech can still receive naturalness rejection; retain that exact scope and do not promote it as a performance target. An actual Rust still exposed an oxygen-arrow endpoint on intact paint; the corrected endpoint was visibly verified on exposed iron. No voice, full audiovisual or publication acceptance was created.

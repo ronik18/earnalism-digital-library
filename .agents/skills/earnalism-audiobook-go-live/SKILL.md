@@ -27,6 +27,14 @@ or expand the worker's credential environment. Preserve the original deadline
 and consumed attempts. Driver lookup and positional-table preparation are
 prerequisites, not evidence of model training or acceptable speech.
 
+
+For voice revision, keep copyright/paired-text qualification separate from a
+reference recording's naturalness and expressive suitability. Record a rejected
+reference against its actual clip/compilation hash and review scope; do not infer
+individual causes, timestamps, accent findings or numerical grades. Preserve its
+licence and split history, but do not promote it as an approved performance target
+or spend on a claimed repair using that unchanged rejected target.
+
 Apply the current title/owner editorial policy. Newly authorized automated jobs
 may use `automated-editorial-2026-11-11` through the existing evaluator/runtime;
 historical receipts, stricter requested targets, Bengali campaign gates and active

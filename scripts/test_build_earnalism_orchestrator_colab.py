@@ -14,6 +14,48 @@ from scripts import build_earnalism_orchestrator_colab as builder
 
 
 class NotebookSourceTests(unittest.TestCase):
+    def test_batch_notebook_uses_parallel_preparation_without_single_run(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.fixture(root)
+            notebook = root/"production.ipynb"
+            builder.build(notebook, root=root, base_revision="a"*40)
+            workspace = root/"private"
+            workspace.mkdir()
+            calls = []
+            engine = types.ModuleType("scripts.earnalism_orchestrator")
+            engine.run = mock.Mock(side_effect=AssertionError("single run must not replace batch"))
+            engine.feedback = mock.Mock()
+            def batch(path, selected, **kwargs):
+                calls.append((path, selected, kwargs))
+                return {"state":"PRIVATE_PREPARATION_OR_REVIEW_REQUIRED", "production_ready":False}
+            engine.batch = batch
+            namespace = {"pathlib":__import__("pathlib"), "json":json, "time":__import__("time"),
+                         "PRIVATE_WORKSPACE":str(workspace), "EXECUTE":False,
+                         "BATCH_PATH":str(workspace/"batch.json"), "PREPARATION_WORKERS":3,
+                         "BATCH_AUTHORITIES_PATH":"", "runtime_context":{}, "FEEDBACK_PATH":"",
+                         "AUTO_DISCONNECT_OWN_RUNTIME":True,
+                         "connect_private_workspace":lambda:(workspace, workspace/"projects.json"),
+                         "prepare_reviewed_software":lambda:root}
+            code = "".join(json.loads(notebook.read_text())["cells"][-1]["source"])
+            with mock.patch.dict("sys.modules", {"scripts.earnalism_orchestrator":engine}), redirect_stdout(io.StringIO()):
+                exec(compile(code, "batch-notebook-fixture", "exec"), namespace)
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(calls[0][2]["workers"], 3)
+            self.assertFalse(calls[0][2]["execute"])
+            self.assertIsNone(calls[0][2]["authorities_path"])
+            self.assertFalse(namespace["result"]["production_ready"])
+            engine.run.assert_not_called()
+
+    def test_rust_and_source_context_are_in_reviewed_capsule(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.fixture(root)
+            receipt = builder.build(root/"production.ipynb", root=root, base_revision="b"*40)
+            self.assertIn("scripts/earnalism_content_context.py", receipt["files"])
+            self.assertIn("skills/earnalism-video/software/metal_rust/contract.json", receipt["files"])
+            self.assertIn("skills/earnalism-video/software/metal_rust/index.tsx", receipt["files"])
+
     def fixture(self, root):
         for name in builder.FILES:
             path = root/name

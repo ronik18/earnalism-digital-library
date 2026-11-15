@@ -29,6 +29,7 @@ SCIENCE = {
     "condensation": ("condensation", "Condensation"),
     "sky-colour": ("sky_colour", "SkyColour"),
     "rainbow": ("rainbow", "Rainbow"),
+    "metal-rust": ("metal_rust", "MetalRust"),
 }
 KINDS = {
     "source": {"book-source"}, "timing": {"measured-timing"},
@@ -482,7 +483,16 @@ def _science(spec, context, workspace):
     if str(SOFTWARE) not in sys.path:
         sys.path.insert(0, str(SOFTWARE))
     validation_module = importlib.import_module(module_name + (".pipeline" if module_name == "rainbow" else ".finish"))
-    validation_module.validate_inputs(root)  # Does not call the old score composer.
+    if module_name == "metal_rust":
+        # Rust preserves the actual branded profile and exact source/timing handoff.
+        # This invokes no model/old score composer and cannot relabel stock B.
+        _scan_refs(_json(root / "voice-binding.json"), workspace, root)
+        _scan_refs(timeline, workspace, root)
+        _, rust_bindings = validation_module.validate_inputs(root)
+        for role, stage in (("manuscript", "source"), ("timing", "timing")):
+            _consume(context, stage, role, rust_bindings[role]["sha256"])
+    else:
+        validation_module.validate_inputs(root)  # Does not call the old score composer.
     if len(set(refs)) != len(refs):
         raise ValueError("Duplicate science project input")
     for name in ("props.json", "shorts-props.json", "clean-shorts-props.json"):
@@ -490,6 +500,8 @@ def _science(spec, context, workspace):
             raise ValueError("Every actual-audio science props file must be hash-bound")
         props = _json(root / name)
         _scan_refs(props, workspace, root)
+        if module_name == "metal_rust":
+            validation_module.validate_props(props, timeline, name)
         # Existing topic renderers validate their exact scene/mark contracts.
         if not props.get("scenes") or props.get("outro") is not True:
             raise ValueError("Actual complete science timeline and approved END required")
@@ -528,7 +540,8 @@ def _science(spec, context, workspace):
     if any(sha(p) != ref["sha256"] for p, ref in zip(refs, project["files"])):
         raise ValueError("Science source inputs changed while rendering")
     outputs = [_bound(root / fmt / "animation.mp4") for fmt in ("landscape", "shorts", "clean-shorts")]
-    return _result(outputs, science=spec["science"], body_only=True, runtime_receipt=runtime_receipt,
+    bindings = rust_bindings if module_name == "metal_rust" else {}
+    return _result(outputs, bindings=bindings, science=spec["science"], body_only=True, runtime_receipt=runtime_receipt,
         scope="Actual silent topic-specific body animations; final compositor must append exact bound END and shared soundtrack")
 
 

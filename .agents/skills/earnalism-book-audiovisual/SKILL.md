@@ -14,6 +14,14 @@ voice, score or motion component. Registered EverydayScience jobs use their actu
 topic adapter, dynamic source-bound score and the common compositor; an unknown
 next episode is a missing queue entry, not permission to invent its identity.
 
+For an explicit multi-content request, use the same notebook's `BATCH_PATH` and
+existing private registry. Prepare independent titles with 1–4 workers; model
+execution remains serial through the same guarded writer. Persist full reports
+privately and return compact references to avoid repeated Codex context. Use the
+lossless content-context index for source spans and reviewed genre exceptions;
+its punctuation candidates are not semantic, timing or performance acceptance.
+Keep a held title independent from healthy preparation on other titles.
+
 Turn a requested Bengali or English book into a complete, reviewable audiovisual
 edition. Coordinate `$earnalism-book-production`, `$earnalism-audiobook-go-live`,
 `$earnalism-audiobook-score` and `$earnalism-video`; read their installed instructions

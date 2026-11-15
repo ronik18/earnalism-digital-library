@@ -29,6 +29,14 @@ Use the existing campaign journal and cumulative counters. Reuse accepted exact
 assets and unchanged evidence; never regenerate healthy audio to satisfy a
 diagnostic warning. Preserve source books, covers, recordings and existing work.
 
+
+For voice revision, keep copyright/paired-text qualification separate from a
+reference recording's naturalness and expressive suitability. Record a rejected
+reference against its actual clip/compilation hash and review scope; do not infer
+individual causes, timestamps, accent findings or numerical grades. Preserve its
+licence and split history, but do not promote it as an approved performance target
+or spend on a claimed repair using that unchanged rejected target.
+
 For newly authorized automated release jobs select
 `editorial_release_policy: "automated-editorial-2026-11-11"` in the manifest and
 the backend QA receipt. Use `scripts/produce_release.py` and

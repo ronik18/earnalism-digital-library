@@ -1,0 +1,62 @@
+{
+  "schema": "earnalism.metal-rust.content.v1",
+  "topic_id": "20-metal-rust",
+  "science": "metal-rust",
+  "script_sha256": "04ee78aaf17f7a35b2627b52af9698185d128d9eb304b0b4aa72b67b44c56abc",
+  "word_count": 98,
+  "normalized_tokens_sha256": "c22730142ca040171d4f148366511d08d88bda938a448469a74d130af97eb1a8",
+  "scenes": [
+    {
+      "id": "gate",
+      "word_start": 0,
+      "word_end": 17
+    },
+    {
+      "id": "wet",
+      "word_start": 17,
+      "word_end": 33
+    },
+    {
+      "id": "rust",
+      "word_start": 33,
+      "word_end": 54
+    },
+    {
+      "id": "salt",
+      "word_start": 54,
+      "word_end": 60
+    },
+    {
+      "id": "paint",
+      "word_start": 60,
+      "word_end": 88
+    },
+    {
+      "id": "callback",
+      "word_start": 88,
+      "word_end": 98
+    }
+  ],
+  "anchors": {
+    "gate": {
+      "drop": 11
+    },
+    "wet": {
+      "water": 18,
+      "oxygen": 22
+    },
+    "rust": {
+      "change": 38
+    },
+    "salt": {
+      "salt": 54
+    },
+    "paint": {
+      "barrier": 74,
+      "scratch": 83
+    },
+    "callback": {
+      "iron": 97
+    }
+  }
+}

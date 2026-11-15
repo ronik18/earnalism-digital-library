@@ -17,6 +17,12 @@ do not relabel stock narration or infer qualification. Resolve “next” from t
 persisted ordered queue, never a directory name or dated proposal. Unsupported
 topics need their own accurate adapter rather than a renamed lunar explanation.
 
+For the registered Metal Rust explanation, use the maintained
+[`metal_rust` adapter](software/metal_rust/README.md): actual source/audio word
+timing, the genuine qualified branded profile, independent aspect layouts and a
+silent body for common score/END assembly. Its illustrative source-test frames
+are not a final video or a successful voice/listening review.
+
 Use the shared Linux/macOS browser resolver for portable Remotion production.
 Render registered science animations as silent body assets; the common
 source-bound compositor consumes the dynamically scored soundtrack and appends the
