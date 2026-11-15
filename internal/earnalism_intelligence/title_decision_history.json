@@ -18162,5 +18162,15 @@
     "source_checks": "357 Reader tests; 46 workflow binding checks; production build and 307 static snapshots passed",
     "release_state": "Candidate only; exact-head CI/review and merged-main deployment pending",
     "production_content_or_audio_changes": false
+  },
+  "shared_auth_verification_recovery_20261115": {
+    "date": "2026-11-15",
+    "event": "shared_auth_transient_verification_recovery",
+    "scope": "Shared reader-user bootstrap, back-forward restore and retry UI; existing credentials only",
+    "finding": "A temporary verification failure was displayed as anonymous despite retained credentials; ordinary current live refresh/direct entry succeeded so the historical trigger is not proven",
+    "correction": "Keep unresolved authentication closed, expose one explicit deduplicated retry; reserve sign-out for confirmed terminal rejection; show checking account while unresolved",
+    "tests": "471 affected tests and isolated synthetic outage/recovery browser flow passed; production build and 307 snapshots passed",
+    "preserved": "Saved positions, existing credentials/session limits, roles, server validators, six consumed observations, both histories; no purchase, reset, transfer or paid Read",
+    "release": "SOURCE_ONLY_PENDING_EXACT_HEAD_CI"
   }
 }

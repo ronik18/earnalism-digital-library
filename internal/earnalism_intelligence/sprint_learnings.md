@@ -3464,3 +3464,7 @@ An expired short lease does not imply an exhausted wallet. Recover once in the f
 ### Reader touch page turns — 15 November 2026
 
 Reuse the existing visual-page navigator for horizontal single-touch swipes. Keep vertical panning and pinch zoom native. Reject short/diagonal/long, cancelled, multi-touch, selected-text, control, modal and loading gestures; invalidate gestures across navigation. Source tests do not establish a physical-device gesture check. No financial or recovery allowance changes.
+
+### Sign-in verification recovery — 15 November 2026
+
+Temporary verification failures must not masquerade as logout. Keep unresolved access closed and offer one explicit, deduplicated verification retry using the existing credential. Confirmed terminal rejection still clears authentication; preserve server idle/absolute expiry, roles, session ownership, progress and balance. Ordinary live refresh success does not prove the earlier sign-out trigger; synthetic browser outage/recovery evidence is separate from production evidence.
