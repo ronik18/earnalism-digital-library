@@ -60,6 +60,56 @@ explicit ready, ordered, unconsumed EverydayScience queue entry. Missing project
 ambiguous editions or unsupported topics produce exact missing-input reports.
 They do not cause another book, voice, mechanism or episode to be guessed.
 
+## Several contents in the same notebook
+
+Set `BATCH_PATH` to a private `earnalism.production_batch.v1` JSON file instead
+of entering one `INSTRUCTION`. Its data is an `id` and `items`, each with a safe
+`id` and an explicit supported instruction. Name each exact book/topic; batches
+reject `next` and duplicate selections before execution. The normal private
+`projects.json` remains the one project registry.
+
+`PREPARATION_WORKERS` (1–4) plans independent contents in parallel. Model work
+then goes serially through the existing `run()` writer, lock and attempt journal;
+this avoids several workers competing for one GPU. The controller makes no
+Codex API calls. It returns compact status/file references while retaining full
+plans/results privately. This removes repeated model-context/report overhead;
+creative interpretation and narration/visual model work retain their actual costs.
+
+```sh
+python3 scripts/earnalism_orchestrator.py batch --input PRIVATE/batch.json \
+  --workspace PRIVATE --workers 3
+```
+
+Preparation is the default. `--execute` may advance available local stages;
+model stages still require their real project-bound scopes. An optional
+`BATCH_AUTHORITIES_PATH` maps project IDs to exact authority file descriptors.
+All supplied scopes are validated before dispatch and preserve one actual
+allocation start/deadline, observed rate and compute cap. Per-title budgets are
+not added together, and prior reservations stay consumed. Missing inputs hold
+their own title. A source/registry change during preparation holds the batch and
+preserves all observed plans, including a transient change later restored.
+
+The existing candidate-bound feedback command remains the correction route.
+Rerunning the same batch reuses valid stage outputs; it does not clear owner
+holds, retrain weights, replay unknown attempts or start speculative retries.
+
+## Whole-work and granular text context
+
+`scripts/earnalism_content_context.py` builds hash-bound whole-work, serialized
+block, sentence-candidate and phrase-candidate spans into bounded private pages.
+UTF-8 bytes, Bengali marks, source order and parent/child coverage are preserved.
+Unchanged context is verified before reuse. HTML/plain-text transformations and
+true authorial paragraph boundaries must be documented separately: blank lines
+in a wrapped source are not automatically literary paragraphs.
+
+Genre notes and source-specific exceptions come from actual editorial reading,
+with their source/hash and review scope. Context packets let a worker retrieve
+the relevant passage, parent context and whole-work direction without repeatedly
+sending a complete long book to Codex. Punctuation splitting does not establish
+semantic understanding, emotion, measured audio timing or a performed caption.
+The index records those as unassessed. Exact voice/score/scene jobs must still
+incorporate the reviewed direction before generation; the index is not a model.
+
 ## Real execution and reuse
 
 The stage graph is source → narration → measured timing → score/visual production
@@ -133,6 +183,15 @@ adapter. Silent science body renders feed the same source-bound compositor as
 books; the bound END is appended exactly once. The lunar studio cannot render
 arbitrary subjects. Independent portrait/landscape layouts and actual body,
 expression, identity/contact, caption and brand review remain necessary.
+
+`metal-rust` now has its own maintained silent-body adapter. It binds the exact
+reviewed script, actual words/scenes/captions, native audio clock and genuine
+trained English profile. The finite topic contract cannot relabel another
+explanation or use an illustrative study clock. Landscape and portrait have
+independent pictorial layouts; the common compositor owns the selected score and
+exact END once. See `skills/earnalism-video/software/metal_rust/README.md`.
+Source fixtures/stills qualify software and visible geometry only. Actual
+narration, measured timing, scoring, complete AV review and release remain separate.
 
 For supported science bodies, validated project inputs admit automatic setup of
 the exact maintained Remotion package lock and its supported browser in an owned

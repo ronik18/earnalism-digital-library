@@ -18172,5 +18172,37 @@
     "tests": "471 affected tests and isolated synthetic outage/recovery browser flow passed; production build and 307 snapshots passed",
     "preserved": "Saved positions, existing credentials/session limits, roles, server validators, six consumed observations, both histories; no purchase, reset, transfer or paid Read",
     "release": "SOURCE_ONLY_PENDING_EXACT_HEAD_CI"
+  },
+  "versatile_av_batch_20261115": {
+    "at": "2026-11-15T18:20:18.586099+00:00",
+    "title": "Nine-content private audiovisual batch",
+    "state": "SOURCE_CONTEXT_AND_SOFTWARE_PREPARED_QUALIFIED_BRANDED_VOICE_REQUIRED",
+    "content_count": 9,
+    "source_checks_completed_and_reused": 8,
+    "models_speech_or_GPU_dispatched": 0,
+    "controller_hosted_Codex_API_calls": 0,
+    "scope": "Source-only preparation, bounded batch software and science adapter; not audiovisual acceptance",
+    "lessons": [
+      "Keep whole-source byte/structure coverage separate from semantic and performed expression acceptance",
+      "Use current controlled editions: Muchiram legacy human packet omits 12 of14 chapters",
+      "Hash-bound independent plans must match admitted recipes even when a changed registry is restored",
+      "Parallel read-only preparation shares existing serial model writer and original runtime bounds",
+      "An open licence and source/ASR match do not establish naturalness of performance references",
+      "Science arrows must terminate on the actual exposed surface; source-only fixture stills remain distinct from real audiovisual candidates"
+    ],
+    "owner_reference_feedback": "Naturalness needs revision; preserve exact reviewed compilation scope, with no invented cause/timestamps/grade",
+    "training_reference_status": "UNAPPROVED_PERFORMANCE_TARGET; copyright facts and data splits preserved",
+    "retained_media": "Selfish Giant stock Cedar/v4 and Bicharak exact selected v4 remain references; Open Window soundtrack/style and all prior holds remain unchanged",
+    "score_learning": "no-new-learning; existing contextual continuity, candidate KEEP and actual-listening distinctions reused",
+    "private_evidence": {
+      "workspace_key": "versatile-production-batch-20261115-v1",
+      "registry_sha256": "75080aac72ec1911e827bf47043f90421841b37d8d02073488a64b72f7d546fd",
+      "batch_sha256": "bf30e6313fd90114350fb4e2fe277379b4dd6b5a277aeb863bb19eebfcffb137",
+      "source_reuse_probe_sha256": "23e20e51d64e6ee22aacf5e831fdf9b8a3cb70bab42b4213b4097487ff0e9780"
+    },
+    "production_ready": false,
+    "published": false,
+    "campaign_counters_rights_and_reader_only_state_changed": false,
+    "next_generated_prompt": "Resolve a genuinely suitable and cleared natural performance reference; keep rejected references and trained voices held. Then qualify the shared voice under fresh explicit compute scope and resume the same nine-item batch with actual source-bound jobs."
   }
 }

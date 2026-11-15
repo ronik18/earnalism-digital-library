@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "https://github.com/ronik18/earnalism-digital-library.git"
 FILES = (
     "scripts/earnalism_orchestrator.py",
+    "scripts/earnalism_content_context.py",
     "scripts/earnalism_voice.py",
     "scripts/earnalism_media_adapters.py",
     "skills/earnalism-video/software/src/render-browser.mjs",
@@ -38,6 +39,14 @@ FILES = (
     "skills/earnalism-video/software/sky_colour/render.mjs",
     "skills/earnalism-video/software/sky_colour/render-batch.mjs",
     "skills/earnalism-video/software/rainbow/render-batch.mjs",
+    "skills/earnalism-video/software/metal_rust/__init__.py",
+    "skills/earnalism-video/software/metal_rust/contract.json",
+    "skills/earnalism-video/software/metal_rust/finish.py",
+    "skills/earnalism-video/software/metal_rust/model.py",
+    "skills/earnalism-video/software/metal_rust/layout.mjs",
+    "skills/earnalism-video/software/metal_rust/render-input.mjs",
+    "skills/earnalism-video/software/metal_rust/render.mjs",
+    "skills/earnalism-video/software/metal_rust/index.tsx",
     ".agents/skills/earnalism-book-audiovisual/SKILL.md",
     ".agents/skills/earnalism-audiobook-score/SKILL.md",
     ".agents/skills/earnalism-audiobook-score/references/learning.md",
@@ -123,6 +132,9 @@ def build(output: Path, *, root: Path = ROOT, base_revision: str | None = None):
     controls = '''# The content instruction is the normal entry point after one-time private setup.
 INSTRUCTION = "Build the GO LIVE ready output for the audiovisual cinematic version for the book - The Selfish Giant" #@param {type:"string"}
 EXECUTE = False #@param {type:"boolean"}
+BATCH_PATH = ""  # Optional private earnalism.production_batch.v1 input instead of INSTRUCTION.
+PREPARATION_WORKERS = 3  # Parallel read-only planning, not concurrent model starts.
+BATCH_AUTHORITIES_PATH = ""  # Optional exact project-bound scopes; never created here.
 
 # Configure these once for your private Earnalism installation.
 PRIVATE_WORKSPACE = "/content/drive/MyDrive/Earnalism/Production"
@@ -301,9 +313,16 @@ try:
                 os.fsync(handle.fileno())
     source_root = prepare_reviewed_software()
     from scripts.earnalism_orchestrator import run, feedback
-    result = run(INSTRUCTION, workspace, registry_path=registry, execute=EXECUTE,
-                 authority_path=admitted_runtime_authority,
-                 runtime_context=runtime_context)
+    if globals().get("BATCH_PATH"):
+        from scripts.earnalism_orchestrator import batch
+        result = batch(pathlib.Path(BATCH_PATH), workspace, registry_path=registry,
+                       workers=PREPARATION_WORKERS, execute=EXECUTE,
+                       authorities_path=pathlib.Path(BATCH_AUTHORITIES_PATH) if BATCH_AUTHORITIES_PATH else None,
+                       runtime_context=runtime_context)
+    else:
+        result = run(INSTRUCTION, workspace, registry_path=registry, execute=EXECUTE,
+                     authority_path=admitted_runtime_authority,
+                     runtime_context=runtime_context)
     if FEEDBACK_PATH:
         feedback_result = feedback(pathlib.Path(FEEDBACK_PATH), workspace)
         print(json.dumps(feedback_result, ensure_ascii=False, indent=2))
