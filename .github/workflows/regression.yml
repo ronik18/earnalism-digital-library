@@ -212,6 +212,12 @@ jobs:
               # Fetch this exact historical tree first. HEAD's bounded commit
               # admission below then restores ancestry past its shallow edge.
               git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_CONTROLLER_SHA"
+              # Admit the separate historical B/A trees before tree:0 can
+              # promise their commits without those trees. A late refetch can
+              # make index-pack request the absent root while lazy fetch is off.
+              if [[ "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+                git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$HISTORICAL_PAIR_BOOTSTRAP_SHA"
+              fi
               [[ "$HISTORICAL_PAIR_APPLICATION_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
               git -c gc.auto=0 fetch --filter=blob:none --no-tags --depth=1 origin "$HISTORICAL_PAIR_APPLICATION_SHA"
               bindings+=("$HISTORICAL_PAIR_APPLICATION_SHA:backend/server.py")
@@ -274,7 +280,6 @@ jobs:
           # Admit that historical pair independently, with no HEAD relabelling.
           if [[ "${PAIR_SOURCE_ONLY:-false}" == true && -n "$pair_bootstrap_pin" && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
             historical_bootstrap_pin="$HISTORICAL_PAIR_BOOTSTRAP_SHA"
-            git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$historical_bootstrap_pin"
             # Both depth-2 role fetches introduce parent shallow edges. Restore
             # only bounded HEAD ancestry before checking historical lineage.
             git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"

@@ -3453,3 +3453,5 @@ Read links must target the Reader route. PREVIEW_REQUIRES_PASS is a server bound
 ## Colab worker prerequisites — 2026-11-15
 
 Qualify an isolated provider driver before interactive storage authentication and large staging. Resolve the actual library and bind its bytes, preserving stripped credentials and the original deadline. Prepare positional capacity before snapshots without changing accepted inference profiles. CPU/mock source checks do not qualify a GPU, a model or narration. Private experiment source and evidence remain on Drive; rejected voices and healthy soundtrack/style remain preserved.
+
+Historical Git role trees must be admitted before commit-only partial-clone ancestry can promise their missing roots. Reorder the existing bounded fetch; retain the same pins, fetch count, offline validation and configuration restoration. Local ordering regression distinguishes this infrastructure boundary from model or voice qualification.
