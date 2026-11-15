@@ -3449,3 +3449,9 @@ The bounded instruction parser keeps the known requested voice separate from the
 
 ## P0 Reader startup — 2026-11-15
 Read links must target the Reader route. PREVIEW_REQUIRES_PASS is a server boundary that eligible signed-in readers can recover through one normal admission, never a transfer/retry. Reader font readiness must not await unrelated global fonts. Listener metadata requests need bounded waits. Source tests do not prove live mobile latency.
+
+## Colab worker prerequisites — 2026-11-15
+
+Qualify an isolated provider driver before interactive storage authentication and large staging. Resolve the actual library and bind its bytes, preserving stripped credentials and the original deadline. Prepare positional capacity before snapshots without changing accepted inference profiles. CPU/mock source checks do not qualify a GPU, a model or narration. Private experiment source and evidence remain on Drive; rejected voices and healthy soundtrack/style remain preserved.
+
+Historical Git role trees must be admitted before commit-only partial-clone ancestry can promise their missing roots. Reorder the existing bounded fetch; retain the same pins, fetch count, offline validation and configuration restoration. Local ordering regression distinguishes this infrastructure boundary from model or voice qualification.

@@ -63,10 +63,14 @@ class HistoryTests(unittest.TestCase):
         self.bin = self.workspace / 'bin'
         self.bin.mkdir()
         wrapper = self.bin / 'git'
-        wrapper.write_text('#!' + sys.executable + '\n' + '''import json,os,sys
+        wrapper.write_text('#!' + sys.executable + '\n' + '''import json,os,subprocess,sys
 with open(os.environ['PAIR_GIT_COMMANDS'],'a') as stream:stream.write(json.dumps(sys.argv[1:])+'\\n')
 if os.environ.get('PAIR_FAIL_TREE_METADATA')=='1' and 'fetch' in sys.argv and '--filter=tree:0' in sys.argv:
  sys.stderr.write('synthetic local metadata transport failure\\n');sys.exit(73)
+if os.environ.get('PAIR_REQUIRED_HISTORICAL_TREE') and 'fetch' in sys.argv and '--filter=tree:0' in sys.argv:
+ result=subprocess.run([os.environ['PAIR_REAL_GIT'],'-c','remote.origin.promisor=false','cat-file','-e',os.environ['PAIR_REQUIRED_HISTORICAL_TREE']],capture_output=True)
+ if result.returncode:
+  sys.stderr.write('historical root must precede commit-only admission\\n');sys.exit(74)
 os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]])
 ''')
         wrapper.chmod(0o755)
@@ -102,7 +106,7 @@ os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]]
             result[key] = p.stdout.strip() if p.returncode == 0 else None
         return result
 
-    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None, retained=None, retained_tree=None):
+    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None, retained=None, retained_tree=None, required_historical_tree=None):
         prefix, pair, blobs = history_parts()
         script = prefix + '''
 bindings=("$PAIR_HISTORICAL_PIN:backend/server.py")
@@ -125,7 +129,8 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'HISTORICAL_PAIR_APPLICATION_SHA': json.loads(self.fixture.git('show',self.fixture.controller+':'+guard.PATH))['application_source_sha'],
             'RETAINED_PAIR_CONTROLLER_SHA': retained or self.fixture.git('rev-parse','HEAD').decode().strip(),
             'RETAINED_PAIR_CONTROLLER_TREE': retained_tree or self.fixture.git('rev-parse',(retained or 'HEAD')+'^{tree}').decode().strip(),
-            'PAIR_FAIL_TREE_METADATA': '1' if fail else '0'}
+            'PAIR_FAIL_TREE_METADATA': '1' if fail else '0',
+            'PAIR_REQUIRED_HISTORICAL_TREE': required_historical_tree or ''}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
         commands = [json.loads(line) for line in self.commands.read_text().splitlines()]
@@ -261,6 +266,39 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertIn('backend/current-only-fixture.py',{x['path'] for x in prepared['files']})
         self.assertFalse(any('--all' in x or '--unshallow' in x for x in commands))
 
+    def test_historical_root_precedes_commit_only_admission(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        historical_tree=self.fixture.git('rev-parse',self.fixture.bootstrap+'^{tree}').decode().strip()
+        metadata=self.workspace/'commit-only-checkout'
+        env={**os.environ,'GIT_NO_LAZY_FETCH':'1','GIT_NO_REPLACE_OBJECTS':'1'}
+        # This is an actual local partial clone: B exists, but its promised root
+        # does not. Ordinary shallow fixtures alone do not establish that state.
+        subprocess.run([GIT,'clone','-q','--no-checkout','--filter=tree:0','--depth=64',
+                        'file://'+str(self.fixture.repo),str(metadata)],
+                       env=env,capture_output=True,check=True,timeout=15)
+        self.assertEqual(self.config(metadata)['remote.origin.promisor'],'true')
+        self.assertTrue(list((metadata/'.git/objects/pack').glob('*.promisor')))
+        for oid,expected in [(self.fixture.bootstrap+'^{commit}',0),(historical_tree,1)]:
+            result=subprocess.run([GIT,'-c','remote.origin.promisor=false','cat-file','-e',oid],
+                                  cwd=metadata,env=env,capture_output=True,timeout=10)
+            self.assertEqual(result.returncode==0,expected==0,result.stderr)
+        clone=self.clone()
+        before=self.config(clone)
+        # Guard the real root's availability at the first tree:0 fetch. This
+        # catches the hazardous ordering without relying on server delta choices
+        # or requiring every supported Git version to emit the same failure.
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,
+            retained=controller,required_historical_tree=historical_tree)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(self.config(clone),before)
+        fetches=[args for args in commands if 'fetch' in args]
+        historical=[i for i,args in enumerate(fetches) if args[-1]==self.fixture.bootstrap
+                    and '--refetch' in args and '--filter=blob:none' in args and '--depth=2' in args]
+        self.assertEqual(len(historical),1)
+        first_metadata=next(i for i,args in enumerate(fetches) if '--filter=tree:0' in args)
+        self.assertLess(historical[0],first_metadata)
+        self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))
+
     def successor_pair_with_diagnostic(self):
         f=self.fixture
         f.write_json(guard.PATH,f.contract)
@@ -289,8 +327,11 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
         self.assertTrue(ancestry)
         self.assertEqual(ancestry[-1][-4:],
             ['merge-base','--is-ancestor',controller,'HEAD'])
-        # A rejection at this boundary must precede A/B body hydration.
-        self.assertFalse(any('fetch' in args and '--depth=2' in args for args in commands))
+        # Only the immutable historical B/A trees may precede this boundary;
+        # current-role admission and all file-body hydration still come later.
+        early_roles=[args for args in commands if 'fetch' in args and '--depth=2' in args]
+        self.assertEqual(early_roles,[['-c','gc.auto=0','fetch','--refetch',
+            '--filter=blob:none','--no-tags','--depth=2','origin',self.fixture.bootstrap]])
         self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args)
                              for args in commands))
         self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))

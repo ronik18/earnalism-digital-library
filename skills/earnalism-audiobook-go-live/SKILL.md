@@ -16,6 +16,14 @@ claim that a branded name qualifies an English/Bengali voice. Retain accepted
 healthy recordings and cumulative failed/unknown attempts. A genuinely authorized
 qualification audition remains distinct from accepted full-title generation.
 
+
+For an isolated Colab voice worker, use the optional pre-Drive driver lookup in
+[the runtime contract](../../docs/earnalism_orchestrator.md) before authentication/transfers.
+Resolve and hash the actual loaded provider library; never guess a driver path
+or expand the worker's credential environment. Preserve the original deadline
+and consumed attempts. Driver lookup and positional-table preparation are
+prerequisites, not evidence of model training or acceptable speech.
+
 Read the current title checkpoint, applicable AGENTS.md and actual owner scope.
 Use the existing campaign journal and cumulative counters. Reuse accepted exact
 assets and unchanged evidence; never regenerate healthy audio to satisfy a

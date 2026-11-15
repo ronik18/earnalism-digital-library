@@ -20,8 +20,11 @@ class NotebookSourceTests(unittest.TestCase):
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text("# public source fixture\n")
         runtime = root/"scripts/earnalism_voice_runtime/inference.py"
-        runtime.parent.mkdir(parents=True)
+        runtime.parent.mkdir(parents=True, exist_ok=True)
         runtime.write_text("# inference fixture\n")
+        (runtime.parent/"pre_drive_loader_entry.py").write_text(
+            "def run(scope, output):\n"
+            "    return {\"state\": \"FRESH_MINIMALENV_DRIVER_LOOKUP_PASS_NOT_TORCH_OR_TTS_QUALIFICATION\", \"scope\": scope}\n")
         (root/"private-voice-weights.bin").write_bytes(b"PRIVATE_MUST_NOT_EMBED")
 
     def test_deterministic_capsule_and_no_private_payload(self):
@@ -161,6 +164,87 @@ class NotebookSourceTests(unittest.TestCase):
             (root/"foreign.py").write_text("# unowned\n")
             with self.assertRaisesRegex(RuntimeError, "foreign.py"):
                 builder.check_base_source(root, {"overlay.py":"unused"})
+
+    def test_pre_storage_hook_is_inert_without_execution_and_opt_in(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root)
+            notebook = root/"production.ipynb"
+            builder.build(notebook, root=root, base_revision="a"*40)
+            source = "".join(json.loads(notebook.read_text())["cells"][5]["source"])
+            for execute, opt_in in [(False, False), (False, True), (True, False)]:
+                namespace = {"EXECUTE":execute, "QUALIFY_PRE_STORAGE_DRIVER":opt_in}
+                exec(compile(source, "pre-storage-definitions", "exec"), namespace)
+                self.assertIsNone(namespace["qualify_pre_storage_driver"]())
+
+    def test_pre_storage_hook_binds_actual_clock_and_live_guard(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root)
+            notebook = root/"production.ipynb"
+            builder.build(notebook, root=root, base_revision="a"*40)
+            source = "".join(json.loads(notebook.read_text())["cells"][5]["source"])
+            clock = {"allocation_started_at":1, "original_deadline_epoch":2}
+            authority = {"owner_authorized":True, **clock, "pre_storage_driver_scope":{
+                "approved":True, "actual_scope_ref":"SOURCE_FIXTURE_ONLY",
+                "observed_units_per_hour":1, "approved_compute_units":3}}
+            guard = mock.Mock(); guard.is_alive.return_value = True
+            namespace = {"EXECUTE":True, "QUALIFY_PRE_STORAGE_DRIVER":True,
+                         "runtime_authority":authority, "runtime_context":clock,
+                         "runtime_guard":guard, "pathlib":__import__("pathlib"), "time":__import__("time")}
+            exec(compile(source, "pre-storage-definitions", "exec"), namespace)
+            receipt = namespace["qualify_pre_storage_driver"]()
+            self.assertEqual(receipt["scope"]["allocation_started_at"], 1)
+            self.assertEqual(receipt["scope"]["original_deadline_epoch"], 2)
+            self.assertTrue(receipt["scope"]["shutdown_guard_armed"])
+            authority["pre_storage_driver_scope"]["original_deadline_epoch"] = 3
+            with self.assertRaisesRegex(RuntimeError, "original allocation clock"):
+                namespace["qualify_pre_storage_driver"]()
+            guard.is_alive.return_value = False
+            with self.assertRaisesRegex(RuntimeError, "shutdown guard"):
+                namespace["qualify_pre_storage_driver"]()
+
+    def test_pre_storage_failed_receipt_blocks_continuation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root)
+            (root/"scripts/earnalism_voice_runtime/pre_drive_loader_entry.py").write_text(
+                "def run(scope, output):\n    return {'state':'PRE_STORAGE_DRIVER_LOOKUP_FAILED_NO_RETRY'}\n")
+            notebook = root/"production.ipynb"
+            builder.build(notebook, root=root, base_revision="a"*40)
+            source = "".join(json.loads(notebook.read_text())["cells"][5]["source"])
+            clock = {"allocation_started_at":1, "original_deadline_epoch":2}
+            guard = mock.Mock(); guard.is_alive.return_value = True
+            namespace = {"EXECUTE":True, "QUALIFY_PRE_STORAGE_DRIVER":True,
+                         "runtime_authority":{"owner_authorized":True, **clock,
+                                              "pre_storage_driver_scope":{"approved":True}},
+                         "runtime_context":clock, "runtime_guard":guard,
+                         "pathlib":__import__("pathlib"), "time":__import__("time")}
+            exec(compile(source, "pre-storage-definitions", "exec"), namespace)
+            with self.assertRaisesRegex(RuntimeError, "Driver lookup failed"):
+                namespace["qualify_pre_storage_driver"]()
+
+    def test_pre_storage_failure_stops_before_mount_and_requests_shutdown(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root)
+            notebook = root/"production.ipynb"
+            builder.build(notebook, root=root, base_revision="a"*40)
+            workspace = root/"unmounted-private-workspace"
+            stopped = []
+            colab = types.ModuleType("google.colab")
+            colab.runtime = types.SimpleNamespace(unassign=lambda:stopped.append(True))
+            mount = mock.Mock(side_effect=AssertionError("Drive connection must not begin"))
+            namespace = {"pathlib":__import__("pathlib"), "json":json, "time":__import__("time"),
+                         "PRIVATE_WORKSPACE":str(workspace), "EXECUTE":True,
+                         "QUALIFY_PRE_STORAGE_DRIVER":True,
+                         "AUTO_DISCONNECT_OWN_RUNTIME":True,
+                         "runtime_context":{"original_deadline_epoch":123},
+                         "connect_private_workspace":mount,
+                         "qualify_pre_storage_driver":mock.Mock(side_effect=RuntimeError("lookup failed"))}
+            source = "".join(json.loads(notebook.read_text())["cells"][-1]["source"])
+            with mock.patch.dict("sys.modules", {"google.colab":colab}), redirect_stdout(io.StringIO()):
+                with self.assertRaisesRegex(RuntimeError, "lookup failed"):
+                    exec(compile(source, "pre-storage-failure", "exec"), namespace)
+            mount.assert_not_called()
+            self.assertEqual(stopped, [True])
+            self.assertFalse(workspace.exists())
 
     def test_foreign_import_cache_is_refused_without_resetting_it(self):
         builder.check_import_namespace(builder.ROOT)
