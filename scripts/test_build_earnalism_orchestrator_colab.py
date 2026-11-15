@@ -14,6 +14,20 @@ from scripts import build_earnalism_orchestrator_colab as builder
 
 
 class NotebookSourceTests(unittest.TestCase):
+    def test_default_image_pins_cp312_without_execution_or_gpu_selection(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.fixture(root)
+            notebook = root/"production.ipynb"
+            receipt = builder.build(notebook, root=root, base_revision="a"*40)
+            value = json.loads(notebook.read_text())
+            self.assertEqual(value["metadata"]["colab"]["runtime_attributes"],
+                             {"runtime_version": "2026.07"})
+            self.assertNotIn("accelerator", value["metadata"])
+            self.assertFalse(receipt["execution_default"])
+            self.assertIn("EXECUTE = False", "".join(value["cells"][1]["source"]))
+            self.assertIn("def qualify_pre_storage_driver()", "".join(value["cells"][5]["source"]))
+
     def test_batch_notebook_uses_parallel_preparation_without_single_run(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

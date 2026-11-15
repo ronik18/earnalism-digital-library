@@ -132,6 +132,11 @@ base files and trained checkpoint parts described by the voice profile before
 runtime qualification. English and Bengali acceptance are independent; training
 on one language does not qualify the other.
 
+Check the [provider's current Python ABI](https://research.google.com/colaboratory/runtime-version-faq.html)
+before allocation. The generated notebook requests `2026.07` (Python 3.12)
+through its runtime metadata. This image pin does not
+replace the actual Linux/Python preflight before storage or model work.
+
 The existing voice controller also registers the retained balanced128 checkpoint
 for the single private Bengali qualification request `8d80e56eeb3b`, amendment
 `bda98868de0d`. This is a separate Darwin arm64, Python 3.11, exact CPU100

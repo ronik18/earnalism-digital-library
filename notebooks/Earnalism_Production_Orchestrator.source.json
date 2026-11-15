@@ -1,8 +1,8 @@
 {
   "schema": "earnalism.orchestrator_notebook_source.v1",
-  "base_revision": "b1411f67b45e60a9a15b04554f28ff9886690a89",
-  "capsule_sha256": "178479a785877385ec980afc7b9b94fc8224bac7890541db763b7ff4c87c8193",
-  "capsule_bytes": 167126,
+  "base_revision": "f8d09f8932a271cca12185e6c9f1a4258d07b9d5",
+  "capsule_sha256": "da2c902f517254653b3e9b38c07bca226910d6e63cf4bf8067fee4e88d9b5426",
+  "capsule_bytes": 167457,
   "files": {
     "scripts/earnalism_orchestrator.py": "ea9583a1549a38d8d52e393d09b74522a2a108f86d29d28f81bc38b8dcec9202",
     "scripts/earnalism_content_context.py": "dfa7b943351c4cea39f0736e22cb97acb57be1df784e56c9fbc4f4db7cbc9115",
@@ -32,10 +32,10 @@
     ".agents/skills/earnalism-book-audiovisual/SKILL.md": "0edd4dc7e0fad50dde1ea8927bc9202899ef9613e25004bad1a459295df71992",
     ".agents/skills/earnalism-audiobook-score/SKILL.md": "a691014e14bc4df0d7711e5f681e5319e3ad17cadd8c879e8801fa5a6e129e7a",
     ".agents/skills/earnalism-audiobook-score/references/learning.md": "20aeddff8643650d72ba3551217f170d8ba6d61f848e52008cc4c2079173d2ce",
-    ".agents/skills/earnalism-audiobook-go-live/SKILL.md": "0933fa35b168ca22a2ed6147f42648de67126f6a8e6c2b97744622cf6a243ec3",
-    "skills/earnalism-audiobook-go-live/SKILL.md": "9e7414b32f1b9b79b463c8ca90536eeadfaa01e2023b5f0e51c69744b608f640",
+    ".agents/skills/earnalism-audiobook-go-live/SKILL.md": "191415567140edca5ab2ec501fd22b6633fc96dfa3d859df2ec98c43a17580a5",
+    "skills/earnalism-audiobook-go-live/SKILL.md": "f1919ef019d29fe655eaeb909a70dc41581bed8913134590b57df50aba56218d",
     "skills/earnalism-video/SKILL.md": "c195c2fd142b5706349e084f67b14b851361793d55610aa5e3c837a7e7896798",
-    "docs/earnalism_orchestrator.md": "28d20a553acfc761a81c21c241cefb1030142f98a53e6dbc2dd1fd6d78f7388b",
+    "docs/earnalism_orchestrator.md": "af839fca5f0328c655464fc967a9e882969028fa5060c361fdf086ec2e985f8a",
     "scripts/earnalism_voice_runtime/darwin.py": "69383e939df5bb6d2e101dc36d6276da4303c363ccf8c15adb3a361f55b65319",
     "scripts/earnalism_voice_runtime/parler.py": "f337490b9ceb1c47c030b1aa9d282aff334dc5ca4f6dc95a918ce786471f884b",
     "scripts/earnalism_voice_runtime/position_table.py": "c2b6f67fb847a5f0004b0ab21ca024ea7a25e8389f3ff3afaba13e177bb73167",
@@ -43,8 +43,8 @@
     "scripts/earnalism_voice_runtime/provider_driver_bootstrap.py": "d1cdf9474e6932ee5fe278b0c6ab2aba12eb8f08ca027a8d46cd4224cf04b9ec",
     "scripts/earnalism_voice_runtime/setup.py": "f48afdd6e3139c22c3ead09ed9c55c0058f138bc93842c43c5ecc46fc33d6bce"
   },
-  "notebook_sha256": "6f53f0fe3a60282f56f4c6cc790582a4e3b09c9824baad55a1ef51a8b262f27c",
-  "builder_sha256": "c9e8803d77d9239a58e01cfed6fa3045443c23afb3a62248f7be795e3e9e9de8",
+  "notebook_sha256": "332ad4c0dab1abb11ac0b6d982c7a56db4f06b7495212da6bc69da31b51c815a",
+  "builder_sha256": "e84354372b4752b8d2191617aee5cc76eb31e78150e700944384b112c74615dd",
   "execution_default": false,
   "private_media_embedded": false,
   "model_or_training_qualification": false
