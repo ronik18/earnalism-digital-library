@@ -353,7 +353,8 @@ finally:
             runtime.unassign()
 '''
     notebook = {"nbformat": 4, "nbformat_minor": 5,
-                "metadata": {"colab": {"name": "Earnalism Production Orchestrator"},
+                "metadata": {"colab": {"name": "Earnalism Production Orchestrator",
+                                       "runtime_attributes": {"runtime_version": "2026.07"}},
                              "kernelspec": {"display_name": "Python 3", "name": "python3"}},
                 "cells": [
                     _cell("markdown", """# The Earnalism · one production orchestrator

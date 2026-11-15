@@ -3481,3 +3481,10 @@ Parallel preparation uses exact registered editions and compact private reports,
 The selected human recording is a delivery/listening reference for the retained Parler caption-only path, not audio conditioning or evidence of speaker transfer. Keep the owner crop separate from the full paired utterance and retain original test exposure. The bounded private comparison fixes the two saved scenes, two takes, 180 seconds total and 32 MiB native output; no optimizer or retries. Its owned CPython3.12 setup/interpreter/preload receipts share one future original clock; an earlier native cutoff creates no new allowance. All199 affected offline tests pass and the real master source-only probe correctly blocks narration without actual runtime authority. No model or GPU ran, no new audio exists, and no purchase/publication occurred. Exact Open Window soundtrack/style, prior voice holds and Bengali reader-only state remain unchanged.
 
 Next generated prompt: Validate the saved private job with execution disabled; use a fresh exact runtime scope before any future setup/transfers/takes/export, then assess both actual scenes against clip2.
+
+
+## Colab image ABI before allocation — 16 November 2026
+
+The actual L4 on image2026.10 returned Python3.13.16 while the frozen English worker requires3.12. Its first guard closed the owned runtime before Drive, transfers, packages or model work; zero new audio exists and its CU charge is unobserved. Verify the current provider runtime-version table before allocating, pin the compatible image and retain the actual pre-storage check. The compatible2026.07 metadata fix preserves every frozen scene/model/source setting and failed output; it creates no replacement authority. Existing counters, original deadline, private soundtrack/style and Bengali reader-only state remain preserved.
+
+Next generated prompt: Use the documented ABI-compatible image and actual first preflight under a valid exact scope; any replacement requires the owner amendment and retains the original clock and aggregate cap.

@@ -30,6 +30,10 @@ assets and unchanged evidence; never regenerate healthy audio to satisfy a
 diagnostic warning. Preserve source books, covers, recordings and existing work.
 
 
+Before allocating Colab, verify the target Python ABI in the provider's current
+runtime-version documentation and pin a compatible image in notebook metadata.
+Retain the actual interpreter preflight before storage or model work.
+
 For voice revision, keep copyright/paired-text qualification separate from a
 reference recording's naturalness and expressive suitability. Record a rejected
 reference against its actual clip/compilation hash and review scope; do not infer

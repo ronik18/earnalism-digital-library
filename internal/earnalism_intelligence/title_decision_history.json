@@ -18296,5 +18296,49 @@
     "existing_rejected_voice_and_Bengali_production_holds_preserved": true,
     "campaign_counters_rights_and_reader_only_state_changed": false,
     "next_generated_prompt": "Validate the frozen two-scene English qualification job in the saved private packet. Keep execution disabled; do not train, allocate compute or generate audio under expired grants. A future run must bind one fresh actual scope to setup, transfers, both dry takes and export, then compare both scenes with clip2 before any soundtrack change."
+  },
+  "english_clip2_actual_allocation_A1_20261116": {
+    "event": "english_clip2_actual_allocation_A1_20261116",
+    "state": "ONE_L4_CLOSED_ABI_PREREQUISITE_FAILED_NO_MODEL_WORK",
+    "actual_gpu": "NVIDIA L4",
+    "selected_image": "2026.10",
+    "actual_Python": "3.13.16",
+    "required_Python": "3.12",
+    "allocations_in_this_grant": 1,
+    "native_model_setup_or_generation_attempts": 0,
+    "new_audio": 0,
+    "new_purchases": 0,
+    "publication": false,
+    "actual_CU_charge": "UNOBSERVED_NOT_ASSUMED_ZERO",
+    "prior_Nov15_scopes": "Closed and preserved, not extended",
+    "clock": {
+      "conservative_start": 1794778726.2568278,
+      "original_deadline": 1794781426.2568278,
+      "new_clock_started": false
+    },
+    "evidenced_reusable_lesson": "Verify the provider image Python ABI from current primary documentation before allocation, then retain actual first-cell preflight before storage or model work. A runtime-version label alone is not ABI evidence.",
+    "cause_owner": "Agent selected image without first verifying documented Python version",
+    "prepared_fix": {
+      "image": "2026.07",
+      "provider_documented_Python": "3.12.13",
+      "actual_runtime_qualification": "STILL_REQUIRED",
+      "primary_source": "https://research.google.com/colaboratory/runtime-version-faq.html"
+    },
+    "soundtrack_and_selected_visual_style": "Unchanged; no media writes",
+    "Bengali_rights_reader_only_state_and_existing_voice_holds": "Unchanged",
+    "release_ready": false,
+    "next_action": "Wait for exact owner amendment before any replacement; preserve original clock and3CUaggregatecap. No model retry is authorized.",
+    "at": "2026-11-16T03:28:22.868384+05:30",
+    "title": "The Earnalism Voice / Open Window two-scene qualification",
+    "private_workspace_key": "english-voice-qualification-execution-20261116-v1",
+    "private_outcome_sha256": "ea9fd135f24a0f02e89a3521768bbe48e41e00151558f7cfe796ddb8a3b586e9",
+    "preserved_media_count": 6,
+    "soundtrack_and_selected_style_actual_hashes_preserved": true,
+    "score_learning": "no-new-learning; exact retained media reused",
+    "video_learning": "no-new-learning; exact selected style preserved",
+    "Bengali_existing_reader_only_state_unchanged": true,
+    "existing_operation_counters_preserved": true,
+    "production_ready": false,
+    "next_generated_prompt": "Use the documented compatible Colab image and actual pre-storage ABI check. Any replacement requires the exact owner amendment, original deadline and3CUaggregatecap; never allocate under an expired scope or replay native model work."
   }
 }
