@@ -390,6 +390,40 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     if (next >= 0 && next < visualTotal) changeAnchor(pagination.pages[next].anchor ?? pagination.pages[next].start);
     else requestPage(direction < 0 ? (previousWindow ?? windowFirst - 1) : (nextWindow ?? windowLast + 1), direction < 0 ? 'end' : 0);
   }, [busy, pagination, visualIndex, visualTotal, publicVisualPreview, changeAnchor, requestPage, layoutError, previousWindow, nextWindow, windowFirst, windowLast]);
+  // Touch-only swipes leave mouse selection, vertical scrolling and pinch zoom
+  // native. Every turn uses the same authorized navigation as the page buttons.
+  const swipeRef = useRef(null);
+  const cancelSwipe = () => { swipeRef.current = null; };
+  useEffect(() => { swipeRef.current = null; }, [page, visualIndex, busy, overlayOpen, pagination.pending, layoutError]);
+  const startSwipe = (event) => {
+    cancelSwipe();
+    if (event.defaultPrevented || event.touches.length !== 1 || busy || overlayOpen || pagination.pending || layoutError
+      || window.getSelection()?.toString() || event.target.closest('a, button, input, textarea, select, [contenteditable], audio, video')) return;
+    const touch = event.touches[0];
+    swipeRef.current = { id: touch.identifier, x: touch.clientX, y: touch.clientY,
+      started: event.timeStamp, page, index: visualIndex };
+  };
+  const moveSwipe = (event) => {
+    const swipe = swipeRef.current;
+    const touch = event.touches[0];
+    if (!swipe) return;
+    if (event.touches.length !== 1 || touch.identifier !== swipe.id
+      || Math.abs(touch.clientY - swipe.y) > 48) cancelSwipe();
+  };
+  const endSwipe = (event) => {
+    const swipe = swipeRef.current;
+    cancelSwipe();
+    if (!swipe || event.defaultPrevented || event.touches.length || busy || overlayOpen || pagination.pending || layoutError
+      || swipe.page !== page || swipe.index !== visualIndex || window.getSelection()?.toString()) return;
+    const touch = Array.from(event.changedTouches).find(item => item.identifier === swipe.id);
+    if (!touch) return;
+    const dx = touch.clientX - swipe.x;
+    const dy = touch.clientY - swipe.y;
+    const elapsed = event.timeStamp - swipe.started;
+    if (elapsed < 0 || elapsed > 700 || Math.abs(dx) < 64 || Math.abs(dy) > 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    if (dx < 0 && !atEnd) turnVisualPage(1);
+    else if (dx > 0 && (windowFirst > 1 || visualIndex > 0)) turnVisualPage(-1);
+  };
   const [pageTurn, setPageTurn] = useState({ page, index: visualIndex, direction: "next" });
   if (pageTurn.page !== page || pageTurn.index !== visualIndex) setPageTurn({ page, index: visualIndex, direction: page < pageTurn.page || (page === pageTurn.page && visualIndex < pageTurn.index) ? "previous" : "next" });
   const canvasRef = useRef(null);
@@ -432,7 +466,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           <div className="reader-v2__layout">
             {pagination.pending && !hasPaginated.current && <div className="reader-v2__pagination-opening"><ReaderOpening embedded book={{ title: model.title, author: model.author }} onLibrary={() => onNavigate?.("library")} onEscapeFocus={focused => { openingHasFocus.current = focused; }} busy={busy} /></div>}
             <div className="reader-v2__page-frame">
-              <article ref={canvasRef} className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
+              <article ref={canvasRef} className="reader-v2__canvas" onTouchStart={startSwipe} onTouchMove={moveSwipe} onTouchEnd={endSwipe} onTouchCancel={cancelSwipe} data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
                 <header className="reader-v2__chapter"><h1 id="reader-v2-title" ref={headingRef} tabIndex={-1}>{referenceSection?.title || model.chapterTitle}</h1></header>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
           <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-transport-chunks={model.transportChunkCount} data-manifest-ms={model.assemblyMetrics?.manifestMs} data-network-ms={model.assemblyMetrics?.networkMs} data-verification-ms={model.assemblyMetrics?.verificationMs} data-fetch-ms={model.assemblyMetrics?.fetchMs} data-assembly-ms={model.assemblyMetrics?.assemblyMs} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-chapter-id={model.authorizedChapter?.plan.chapterId} data-source-page={sourceAnchor?.page} data-source-offset={sourceAnchor?.offset} data-page-start={fragment?.start} data-page-end={fragment?.end} data-book-page-count={bookMap.total ?? undefined} data-book-map-complete={bookMap.complete} data-page-count={visualTotal} data-visual-page-index={visualIndex}>
