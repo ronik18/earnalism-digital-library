@@ -91,6 +91,34 @@ def _verify_balanced_state(model, binding):
         raise ValueError("BALANCED_INFERENCE_STATE_CHANGED")
 
 
+EN_ROUTE = 'balanced128_en_female_linux_v1'
+POSITION_HELPER_SHA256 = 'c2b6f67fb847a5f0004b0ab21ca024ea7a25e8389f3ff3afaba13e177bb73167'
+
+def _en_route(profile):
+    route = profile.get("qualification_route")
+    return isinstance(route, dict) and route.get("id") == EN_ROUTE
+
+def _remaining_frozen_digest(model, excluded):
+    return _tensor_digest({name:value for name,value in model.state_dict().items() if name not in excluded})
+
+def _position_helper():
+    path = Path(__file__).with_name("position_table.py")
+    if _sha(path) != POSITION_HELPER_SHA256:
+        raise ValueError("EXACT_POSITION_HELPER_REQUIRED")
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("_earnalism_fixed_position_helper", path)
+    helper = importlib.util.module_from_spec(spec); spec.loader.exec_module(helper)
+    return helper
+
+def _verify_en_state(bundle, binding):
+    model=bundle["model"]; helper=bundle["position_helper"]; report=bundle["position_preparation"]
+    helper.verify_position_table(model,report,tensor_digest=_tensor_digest)
+    named=dict(model.named_parameters())
+    if (_tensor_digest({name:named[name] for name in _shapes()}) != binding["tensor_sha256"]
+            or _remaining_frozen_digest(model,set(_shapes())|{helper.POSITION_NAME}) != report["remaining_frozen_state"]
+            or any(parameter.requires_grad for parameter in model.parameters())):
+        raise ValueError("ENGLISH_FROZEN_INFERENCE_STATE_CHANGED")
+
 def _load_bundle(profile, root, checkpoint, device, check):
     """Strict original foundation + changed tensors; never an untrained fallback."""
     assets = profile["assets"]
@@ -117,7 +145,7 @@ def _load_bundle(profile, root, checkpoint, device, check):
     sys.path.insert(0, str(source_root))
     if ".".join(map(str, sys.version_info[:2])) != profile["runtime"]["python"]:
         raise ValueError("PINNED_PYTHON_REQUIRED")
-    if profile["checkpoint"]["format"] == BALANCED_FORMAT:
+    if profile["checkpoint"]["format"] == BALANCED_FORMAT and not _en_route(profile):
         installed = {d.metadata["Name"].lower().replace("_", "-").replace(".", "-"): d.version
                      for d in importlib.metadata.distributions(path=[str(source_root)])}
         if installed != profile["runtime"]["packages"]:
@@ -125,6 +153,8 @@ def _load_bundle(profile, root, checkpoint, device, check):
     for name, expected in profile["runtime"]["packages"].items():
         if importlib.metadata.version(name) != expected:
             raise ValueError("PINNED_RUNTIME_VERSION_REQUIRED:" + name)
+    if _en_route(profile) and (sys.platform != "linux" or os.uname().machine != "x86_64" or device != "cuda:0"):
+        raise ValueError("SEPARATE_ENGLISH_LINUX_CUDA_QUALIFICATION_REQUIRED")
     check()
     import torch
     if profile["checkpoint"]["format"] == BALANCED_FORMAT:
@@ -172,10 +202,20 @@ def _load_bundle(profile, root, checkpoint, device, check):
         # native output, so a later failure cannot erase the returned take.
         if _frozen_digest(model) != binding["frozen_sha256"]:
             raise ValueError("EXACT_BALANCED_FROZEN_STATE_REQUIRED")
-    return {"model": model, "prompt_tokenizer": prompt, "description_tokenizer": description,
+    bundle = {"model": model, "prompt_tokenizer": prompt, "description_tokenizer": description,
             "loading_report": {**info, "trained_checkpoint_sha256": binding["sha256"],
                 "trained_tensor_sha256": binding["tensor_sha256"], "training_updates": binding["training_updates"],
-                "supervised_training_scope": scope, "dtype": "float32", "device": device}}, torch
+                "supervised_training_scope": scope, "dtype": "float32", "device": device}}
+    if _en_route(profile):
+        # Verify original full frozen digest above, then prepare only deterministic
+        # positional rows. No learned weights/configuration/RoPE are substituted.
+        helper=_position_helper()
+        report=helper.prepare_position_table(model,torch,required_positions=16384,
+            trainable_names=set(_shapes()),tensor_digest=_tensor_digest,frozen_digest=_remaining_frozen_digest)
+        bundle.update(position_helper=helper,position_preparation=report)
+        bundle["loading_report"]["position_preparation"]=report
+        _verify_en_state(bundle,binding)
+    return bundle, torch
 
 
 class BundleSampler:
@@ -193,6 +233,15 @@ class BundleSampler:
             torch.cuda.manual_seed_all(clip["seed"])
         prompt = self.bundle["prompt_tokenizer"](clip["spoken_text"], return_tensors="pt").to(self.device)
         description = self.bundle["description_tokenizer"](clip["caption_unspoken"], return_tensors="pt").to(self.device)
+        if "position_preparation" in self.bundle:
+            helper=self.bundle["position_helper"]; report=self.bundle["position_preparation"]
+            helper.verify_position_table(self.bundle["model"],report,tensor_digest=_tensor_digest)
+            # Both real tokenizers run without truncation; reserve prompt/cache
+            # positions conservatively, including nine codec channels + margin.
+            prompt_positions=int(prompt.input_ids.shape[-1]); description_positions=int(description.input_ids.shape[-1])
+            if (description_positions > 512
+                    or prompt_positions+description_positions+generation["max_new_tokens"]+9+32 > report["capacity"]):
+                raise ValueError("COMPLETE_UNTRUNCATED_SCENE_EXCEEDS_FIXED_CONTEXT_NO_RETRY")
         class Observer(self.StoppingCriteria):
             calls = 0
             def __call__(self, input_ids, scores, **kwargs):
@@ -269,7 +318,9 @@ def run(plan, profile, authority, output, *, checkpoint_loader, append_event, wr
         # Complete native bytes and source receipt survive a late authority,
         # frozen-state or output-bound failure. Such a take is never replayed.
         check()
-        if profile["checkpoint"]["format"] == BALANCED_FORMAT:
+        if _en_route(profile):
+            _verify_en_state(bundle,profile["checkpoint"])
+        elif profile["checkpoint"]["format"] == BALANCED_FORMAT:
             _verify_balanced_state(bundle["model"], profile["checkpoint"])
         append_event(authority["journal_path"], {"event": "unit_completed", "job_sha256": plan["job_sha256"],
             "fingerprint": fingerprint, "audio_sha256": receipt["sha256"], "token_cap_reached": cap})

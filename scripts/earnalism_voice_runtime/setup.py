@@ -59,7 +59,7 @@ def execute(profile_path, runtime_dir, authority_path):
     profile_path = Path(profile_path).absolute(); root = profile_path.parent
     profile = voice._json(profile_path); authority = voice._setup_authority(authority_path, profile_path, runtime_dir)
     voice._arm_child_containment(authority["absolute_deadline_epoch"])
-    runtime = profile["runtime"]; bootstrap = runtime["bootstrap"]
+    runtime = profile["runtime"]; bootstrap = authority["runtime_bootstrap"] if voice._en_route(profile) else runtime["bootstrap"]
     destination = Path(runtime_dir).absolute(); evidence = destination.parent / (destination.name + ".setup")
     if destination.exists() or evidence.exists():
         raise voice.VoiceBlocked("Prior package setup exists; status-only, no replay")
@@ -69,9 +69,12 @@ def execute(profile_path, runtime_dir, authority_path):
     rows, versions = _read_lock(root, bootstrap["wheel_manifest"])
     if versions != runtime["packages"]:
         raise voice.VoiceBlocked("Complete wheel lock and runtime versions differ")
-    bootstrap_rows, bootstrap_versions = _read_lock(root, bootstrap["bootstrap_wheel_manifest"])
-    if bootstrap_versions.get("virtualenv") != "20.35.4":
-        raise voice.VoiceBlocked("Hash-locked virtualenv20.35.4 bootstrap required")
+    if voice._en_route(profile):
+        bootstrap_rows=[]
+    else:
+        bootstrap_rows, bootstrap_versions = _read_lock(root, bootstrap["bootstrap_wheel_manifest"])
+        if bootstrap_versions.get("virtualenv") != "20.35.4":
+            raise voice.VoiceBlocked("Hash-locked virtualenv20.35.4 bootstrap required")
     unique = {}
     for row in rows + bootstrap_rows:
         prior = unique.get(row["filename"])
@@ -79,6 +82,8 @@ def execute(profile_path, runtime_dir, authority_path):
             raise voice.VoiceBlocked("Conflicting locked wheel artifact")
         unique[row["filename"]] = row
     all_rows = list(unique.values())
+    if voice._en_route(profile) and any(row.get("url") for row in all_rows):
+        raise voice.VoiceBlocked("English restoration uses retained hash-locked local wheels only")
     env = {"PATH": os.defpath, "LANG": "C.UTF-8", "PYTHONNOUSERSITE": "1",
            "PIP_CONFIG_FILE": "/dev/null", "PIP_NO_CACHE_DIR": "1", "PYTHONDONTWRITEBYTECODE": "1",
            "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1", "CUDA_VISIBLE_DEVICES": ""}
@@ -139,6 +144,17 @@ def execute(profile_path, runtime_dir, authority_path):
              "--only-binary=:all:", "--require-hashes", "--no-cache-dir", "--no-compile", "-r", str(requirements)],
             [str(destination / "bin/python"), "-m", "pip", "check"],
         ]
+        if voice._en_route(profile):
+            # Reuse the retained stdlib-venv approach. Existing provider pip's
+            # --python dispatch installs/checks only the owned CP312 venv; no
+            # pip/virtualenv bootstrap download or system-package write.
+            commands = [
+                [str(python),"-I","-m","venv","--without-pip",str(destination)],
+                [sys.executable,"-I","-m","pip","--python",str(destination/"bin/python"),
+                 "install","--no-index","--find-links",str(wheelhouse),"--only-binary=:all:",
+                 "--require-hashes","--no-cache-dir","--no-compile","--disable-pip-version-check","-r",str(requirements)],
+                [sys.executable,"-I","-m","pip","--python",str(destination/"bin/python"),"check"],
+            ]
         for index, command in enumerate(commands):
             voice._append(evidence / "events.jsonl", {"event": "fixed_package_step_intent", "step": index})
             with (evidence / (str(index) + ".log")).open("xb") as log:
@@ -156,6 +172,11 @@ def execute(profile_path, runtime_dir, authority_path):
         result = {"status": "LOCAL_PACKAGES_READY_NOT_MODEL_QUALIFIED", "profile_sha256": voice.digest(profile_path),
                   "python": str(destination / "bin/python"), "package_versions": versions,
                   "original_deadline": authority["absolute_deadline_epoch"], "model_loading": False, "training": False}
+        if voice._en_route(profile):
+            result.update(setup_authority_sha256=voice.digest(authority_path),
+                actual_scope_ref=authority["actual_scope_ref"],provider_runtime_id=authority["provider_runtime_id"],
+                allocation_started_at=authority["allocation_started_at"],journal_path=authority["journal_path"],
+                request_id=voice.EN_REQUEST,job_sha256=authority["job_sha256"],runtime_bootstrap=bootstrap)
         voice._write(evidence / "RESULT.json", result)
         return result
     except BaseException as error:
