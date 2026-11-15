@@ -18154,5 +18154,13 @@
     "model_work_or_capture": false,
     "production_deployed": false,
     "status": "SOURCE_QUALIFICATION_IN_PROGRESS"
+  },
+  "reader_touch_page_turn_20261115": {
+    "date": "2026-11-15",
+    "scope": "All released Reader editions; touch navigation only",
+    "decision": "Use existing authorized visual-page turns for single horizontal swipes; preserve selection, scroll, zoom, overlays, source anchors, financial and historical limits",
+    "source_checks": "357 Reader tests; 46 workflow binding checks; production build and 307 static snapshots passed",
+    "release_state": "Candidate only; exact-head CI/review and merged-main deployment pending",
+    "production_content_or_audio_changes": false
   }
 }

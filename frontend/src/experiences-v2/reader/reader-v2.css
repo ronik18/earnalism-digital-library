@@ -359,3 +359,6 @@
     box-sizing: border-box;
   }
 }
+
+/* Horizontal touch turns use existing page navigation; retain vertical pan and native zoom. */
+.reader-v2__canvas { touch-action: pan-y pinch-zoom; }

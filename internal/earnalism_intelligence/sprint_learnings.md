@@ -3460,3 +3460,7 @@ Historical Git role trees must be admitted before commit-only partial-clone ance
 ### Reader lease and visual preview recovery — 15 November 2026
 
 An expired short lease does not imply an exhausted wallet. Recover once in the foreground through existing settlement and server admission, never transfer or reset counters. A visual preview boundary inside canonical page 1 needs the same bounded admission as a transport-page boundary. Keep protected text hidden until a validated server grant; authentication, balance, preparation and content denials remain closed. Source tests do not prove a production Read.
+
+### Reader touch page turns — 15 November 2026
+
+Reuse the existing visual-page navigator for horizontal single-touch swipes. Keep vertical panning and pinch zoom native. Reject short/diagonal/long, cancelled, multi-touch, selected-text, control, modal and loading gestures; invalidate gestures across navigation. Source tests do not establish a physical-device gesture check. No financial or recovery allowance changes.
