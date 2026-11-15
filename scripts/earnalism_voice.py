@@ -36,7 +36,15 @@ JSON contracts (paths are local, relative to the containing JSON unless absolute
   training_allowed=false,network_allowed=false. This is a binding to actual
   existing authority, not an approval generator or a new allowance.
 
-One fixed child is supervised to the ORIGINAL deadline. Each render and unit is
+The registered balanced128/Darwin CPU100 qualification uses execution_mode
+local_cpu, an actual execution_started_at (no cloud allocation/deadline), the
+exact request/amendment and one load/restore/take. It binds darwin_code_sha256,
+the existing nonempty prior_journal prefix and the resolved venv executable.
+The private source-bound job/profile and execution authority remain separate:
+supporting this contract grants no execution or production acceptance.
+
+Allocation children retain their ORIGINAL deadline; explicit local CPU children
+use a parent-liveness guardian and the existing shared-memory floor. Each render and unit is
   journalled/fsynced before consequential work; unknown outcomes are not replayed.
 The runtime reuses strict retained Parler FP32/eager loading, last-block tensor
 reload and native caption/text sampling, without the training class/optimizer.
@@ -53,6 +61,7 @@ import hashlib
 import json
 import math
 import os
+import platform
 from pathlib import Path
 import re
 import signal
@@ -72,9 +81,28 @@ TRAINED_BINDINGS_SHA256 = "8aca3d7f7323c6dabd7916e7141ecd2f521908857867e1553cf74
 TRAINED_TENSOR_SHA256 = "b0f7a164bb2be21355edf6ee3471f340998259592949fce818b0590425e71341"
 RUNTIME = Path(__file__).with_name("earnalism_voice_runtime") / "parler.py"
 SETUP = RUNTIME.with_name("setup.py")
+DARWIN = RUNTIME.with_name("darwin.py")
 SHA = re.compile(r"[0-9a-f]{64}\Z")
 MIN_PACKAGES = {"torch": "2.6.0", "transformers": "4.46.1",
                 "parler-tts": "0.2.2", "descript-audio-codec": "1.0.0"}
+BALANCED_CHECKPOINT = {
+    "format": "EARNALISM_PARLER_BALANCED_LAST_BLOCK_V1",
+    "sha256": "a61fcc700e0887a9367fd8710d08736130faada0e52ded53daf21ef4d053c17f",
+    "bytes": 201429136, "bindings_sha256": TRAINED_BINDINGS_SHA256,
+    "training_updates": 128, "max_updates": 128, "seed": 20261114,
+    "tensor_sha256": "8d28189f012456c38768c46020e27e360e7546375387e6663999523cb9a85954",
+    "supervised_scope": "BN_EN_MF_BALANCED",
+    "records_sha256": "37cf8e768df7d5140e00d97cd985532b966d190cb6518ebf7890d3a89bbb1c09",
+    "schedule_sha256": "d45f64f0883c03d50de616814e2c133915569ce2a93b81a697bb406a1ec2b6b2",
+    "strata_binding_sha256": "b8c6b9d67dd23313630d9955ab5f5a8280b24e07cc3b44c6446a13bf3aa8b997",
+    "stratum_exposure_counts": {"bn:male": 32, "bn:female": 32, "en:male": 32, "en:female": 32},
+    "frozen_sha256": "9fbd8f34e6d1d53d272df5f6fa6752615a3bcf22031ba31b9959f157ddca76d5",
+}
+CPU100_PACKAGES_SHA256 = "ba5144ccfbe46965f3972b42822a3e0b95055191b81dad0f2a7519a9eb27d53e"
+CPU_REQUEST = "8d80e56eeb3b"
+CPU_AMENDMENT = "bda98868de0d"
+CPU_SOURCE_SHA256 = "d0b3c7b4df1b581ad35368008058a470bb26473d625fa0b55b1cf0b98058b6d8"
+CPU_CAPTION_SHA256 = "5b6591f535c272a4d674bac80075aaa1eefff974ec45da22a406f354a1ecf470"
 
 
 class VoiceBlocked(ValueError):
@@ -130,12 +158,18 @@ def _descriptor(root, item, *, verify=True, require_exists=True):
 
 def _checkpoint(root, item, *, verify=True, destination=None, require_exists=True):
     """Validate whole or ordered parts; optionally materialize only during render."""
+    balanced = isinstance(item, dict) and item.get("format") == BALANCED_CHECKPOINT["format"]
+    if balanced:
+        valid_binding = all(item.get(k) == v for k, v in BALANCED_CHECKPOINT.items())
+    else:
+        valid_binding = isinstance(item, dict) and all(item.get(k) == v for k, v in {
+            "format": "EARNALISM_PARLER_LAST_BLOCK_V1", "training_updates": 130,
+            "sha256": TRAINED_SHA256, "bytes": TRAINED_BYTES,
+            "bindings_sha256": TRAINED_BINDINGS_SHA256, "tensor_sha256": TRAINED_TENSOR_SHA256,
+        }.items())
     if (not isinstance(item, dict) or not SHA.fullmatch(str(item.get("sha256", "")))
             or type(item.get("bytes")) is not int or item["bytes"] <= 0
-            or item.get("format") != "EARNALISM_PARLER_LAST_BLOCK_V1"
-            or item.get("training_updates") != 130 or item.get("sha256") != TRAINED_SHA256
-            or item.get("bytes") != TRAINED_BYTES or item.get("bindings_sha256") != TRAINED_BINDINGS_SHA256
-            or item.get("tensor_sha256") != TRAINED_TENSOR_SHA256):
+            or not valid_binding):
         raise VoiceBlocked("A genuine bound trained checkpoint is required; no base fallback")
     if bool(item.get("path")) == bool(item.get("parts")):
         raise VoiceBlocked("Exactly one whole checkpoint or ordered part list required")
@@ -204,11 +238,30 @@ def _profile(path, language, purpose, *, verify_assets=True):
     if not any(p == model and item["sha256"] == BASE_SHA256 for p, item in zip(paths, files)):
         raise VoiceBlocked("Exact foundation weight must be in inventory")
     _checkpoint(root, profile.get("checkpoint"), verify=bool(verify_assets), require_exists=verify_assets is not None)
+    balanced = profile["checkpoint"]["format"] == BALANCED_CHECKPOINT["format"]
+    if balanced and purpose != "qualification":
+        raise VoiceBlocked("Balanced128 is registered for qualification only; production remains held")
     runtime = profile.get("runtime", {})
     if (not isinstance(runtime, dict) or not re.fullmatch(r"3\.(?:11|12|13)", str(runtime.get("python", "")))
             or not isinstance(runtime.get("packages"), dict)
             or any(runtime["packages"].get(k) != v for k, v in MIN_PACKAGES.items())):
         raise VoiceBlocked("Pinned supported runtime package binding required")
+    if balanced:
+        local = runtime.get("local_cpu", {})
+        if (runtime.get("python") != "3.11" or runtime.get("bootstrap") is not None
+                or object_sha(runtime["packages"]) != CPU100_PACKAGES_SHA256
+                or not isinstance(local, dict) or local.get("system") != "Darwin" or local.get("machine") != "arm64"
+                or not isinstance(local.get("executable"), dict)):
+            raise VoiceBlocked("Exact separate Darwin CPU100 profile required; Linux lock stays unchanged")
+        executable = local["executable"]
+        if not isinstance(executable.get("path"), str) or not executable["path"] or "://" in executable["path"]:
+            raise VoiceBlocked("Bound local CPU interpreter launcher required")
+        _descriptor(root, {**executable, "path": executable.get("resolved_path")},
+                    verify=bool(verify_assets), require_exists=verify_assets is not None)
+        launcher = Path(executable["path"])
+        launcher = launcher if launcher.is_absolute() else root / launcher
+        _path(root, str(launcher.parent))
+        _descriptor(root, local.get("import_evidence"))
     qualification = profile.get("qualification", {})
     if not isinstance(qualification, dict) or not isinstance(qualification.get(language, {}), dict):
         raise VoiceBlocked("Typed per-language qualification record required")
@@ -228,6 +281,7 @@ def _profile(path, language, purpose, *, verify_assets=True):
         "identity": IDENTITY, "backend": BACKEND, "model": BASE_ID,
         "profile_sha256": digest(path), "base": profile["base"],
         "checkpoint_sha256": profile["checkpoint"]["sha256"], "language": language,
+        "checkpoint_format": profile["checkpoint"]["format"],
         "purpose": purpose, "production_accepted": accepted, "blockers": blockers,
         "asset_hashes_verified": verify_assets is True, "model_loaded": False,
         "training_performed": False, "publication_authorized": False}
@@ -312,6 +366,17 @@ def validate_job(job_path):
             "generation": generation, "checkpoint_sha256": profile["checkpoint"]["sha256"]}))
     if job["purpose"] == "production" and end != len(source):
         raise VoiceBlocked("Source must be covered completely once in order")
+    if profile["checkpoint"]["format"] == BALANCED_CHECKPOINT["format"]:
+        if (job.get("request_id") != CPU_REQUEST or job.get("amendment_id") != CPU_AMENDMENT
+                or job["purpose"] != "qualification" or job["device"] != "cpu" or job["language"] != "bn"
+                or len(units) != 1 or units[0]["start"] != 0 or units[0]["end"] != len(source)
+                or job["source"]["sha256"] != CPU_SOURCE_SHA256
+                or hashlib.sha256(units[0]["caption_unspoken"].encode()).hexdigest() != CPU_CAPTION_SHA256
+                or units[0]["seed"] != 20261114
+                or generation != {"do_sample": True, "temperature": 1.0, "top_k": 50,
+                                  "top_p": 1.0, "max_new_tokens": 2601}
+                or limits["max_audio_seconds"] != 30 or limits["max_output_bytes"] > 16 * 1024**2):
+            raise VoiceBlocked("Only the exact held balanced128 single-case qualification is registered")
     return {"job": job, "job_path": str(job_path), "job_sha256": digest(job_path),
             "profile_path": str(profile_path), "binding": binding,
             "unit_fingerprints": fingerprints, "source_coverage":
@@ -346,12 +411,48 @@ def _authority(path, plan):
                 "purpose": job["purpose"], "training_allowed": False, "network_allowed": False,
                 "publication_allowed": False, "allowed_unit_fingerprints": plan["unit_fingerprints"],
             }.items()) or type(authority.get("max_units")) is not int
-            or not len(job["units"]) <= authority["max_units"] <= 1024
+            or not len(job["units"]) <= authority["max_units"] <= 1024):
+        raise VoiceBlocked("Actual exact-job original-scope/deadline authority required")
+    authority["journal_path"] = str(_path(Path(path).absolute().parent, authority.get("journal_path")))
+    if authority.get("execution_mode") == "local_cpu":
+        if (job.get("request_id") != CPU_REQUEST or job.get("amendment_id") != CPU_AMENDMENT
+                or job["device"] != "cpu" or job["purpose"] != "qualification"
+                or plan["binding"]["checkpoint_sha256"] != BALANCED_CHECKPOINT["sha256"]
+                or plan["binding"]["checkpoint_format"] != BALANCED_CHECKPOINT["format"]
+                or any(authority.get(k) != v for k, v in {
+                    "request_id": CPU_REQUEST, "amendment_id": CPU_AMENDMENT,
+                    "max_units": 1, "max_model_loads": 1, "max_restores": 1, "max_generate_calls": 1,
+                    "allocation_allowed": False, "package_setup_allowed": False,
+                    "darwin_code_sha256": digest(DARWIN),
+                }.items())
+                or any(authority.get(k) is not None for k in
+                       ["allocation_started_at", "absolute_deadline_epoch", "original_deadline_epoch"])
+                or not _number(authority.get("execution_started_at"), 1, now)):
+            raise VoiceBlocked("Actual one-case local CPU authority required; no fabricated allocation/deadline")
+        # Bind the carried nonempty journal prefix, not an empty replacement pool.
+        prior = authority.get("prior_journal", {})
+        journal = _path(Path(path).absolute().parent, prior.get("path"))
+        if (str(journal) != authority["journal_path"] or not journal.is_file()
+                or type(prior.get("bytes")) is not int or prior["bytes"] <= 0
+                or journal.stat().st_size < prior["bytes"]
+                or not SHA.fullmatch(str(prior.get("sha256", "")))):
+            raise VoiceBlocked("Existing carried journal prefix required; no counter reset")
+        h = hashlib.sha256()
+        with journal.open("rb") as handle:
+            remaining = prior["bytes"]
+            while remaining:
+                block = handle.read(min(remaining, 1024**2))
+                if not block: raise VoiceBlocked("Carried journal truncated during validation")
+                h.update(block); remaining -= len(block)
+        if h.hexdigest() != prior["sha256"]:
+            raise VoiceBlocked("Carried journal history changed")
+        authority["absolute_deadline_epoch"] = None
+    elif (authority.get("execution_mode") not in {None, "allocation"}
+            or job.get("request_id") == CPU_REQUEST
             or not _number(authority.get("allocation_started_at"), 1, now)
             or not _number(authority.get("absolute_deadline_epoch"), now + 0.01, now + 86400)
             or authority["absolute_deadline_epoch"] <= authority["allocation_started_at"]):
-        raise VoiceBlocked("Actual exact-job original-scope/deadline authority required")
-    authority["journal_path"] = str(_path(Path(path).absolute().parent, authority.get("journal_path")))
+        raise VoiceBlocked("Actual exact-job original allocation deadline required")
     return authority
 
 
@@ -533,11 +634,35 @@ def _journal_lock(journal):
             fcntl.flock(lock, fcntl.LOCK_UN)
 
 
+def _darwin_helper():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("_earnalism_owned_darwin", DARWIN)
+    helper = importlib.util.module_from_spec(spec); spec.loader.exec_module(helper)
+    return helper
+
+
+def _cpu_interpreter(profile, root):
+    if sys.platform != "darwin" or platform.machine() != "arm64":
+        raise VoiceBlocked("Explicit Darwin arm64 CPU profile required; no platform fallback")
+    item = profile["runtime"]["local_cpu"]["executable"]
+    path = Path(item["path"])
+    path = path if path.is_absolute() else root / path
+    # venv launchers are usually symlinks: bind both launcher and resolved file.
+    target = _descriptor(root, {**item, "path": item["resolved_path"]})
+    if path.resolve(strict=True) != target or not os.access(path, os.X_OK):
+        raise VoiceBlocked("CPU interpreter target changed")
+    return str(path)
+
+
 def render(job_path, output_dir, authority_path):
     """Run only fixed local inference in a deadline-supervised fresh child."""
     plan = validate_job(job_path); authority = _authority(authority_path, plan)
     profile = _json(plan["profile_path"])
     python = sys.executable
+    local_cpu = authority.get("execution_mode") == "local_cpu"
+    admission = None
+    if local_cpu:
+        python = _cpu_interpreter(profile, Path(plan["profile_path"]).parent)
     bootstrap = profile["runtime"].get("bootstrap")
     if bootstrap:
         runtime_dir = _path(Path(plan["profile_path"]).parent, bootstrap.get("runtime_dir"))
@@ -555,25 +680,47 @@ def render(job_path, output_dir, authority_path):
                 except (ValueError, TypeError) as error: raise VoiceBlocked("Unknown journal tail; status-only") from error
         if any(e.get("job_sha256") == plan["job_sha256"] and e.get("event") == "render_intent"
                or e.get("fingerprint") in plan["unit_fingerprints"] and e.get("event") == "unit_intent"
+               or e.get("event") == "render_intent" and (
+                   bool(set(e.get("unit_fingerprints", [])) & set(plan["unit_fingerprints"]))
+                   or local_cpu and e.get("request_id") == CPU_REQUEST)
                for e in events):
             raise VoiceBlocked("Consumed or unknown voice attempt; status-only, no replay")
+        if local_cpu:
+            admission = _darwin_helper().observe_resources()
+            if admission["disk_free_bytes"] < plan["job"]["limits"]["max_output_bytes"]:
+                raise VoiceBlocked("Insufficient space for complete private native output")
         output.mkdir(parents=True, exist_ok=False)
         _append(journal, {"event": "render_intent", "job_sha256": plan["job_sha256"],
+                          "authority_sha256": digest(authority_path), "output": str(output),
+                          "parent_pid": os.getpid(),
+                          "unit_fingerprints": plan["unit_fingerprints"],
+                          "request_id": plan["job"].get("request_id"),
+                          "execution_mode": authority.get("execution_mode", "allocation"),
                           "original_deadline": authority["absolute_deadline_epoch"]})
         _write(output / "INTENT.json", {"job_sha256": plan["job_sha256"],
-            "authority_sha256": digest(authority_path), "original_deadline": authority["absolute_deadline_epoch"]})
+            "authority_sha256": digest(authority_path), "original_deadline": authority["absolute_deadline_epoch"],
+            "parent_pid": os.getpid(), "resource_admission": admission})
         env = {"PATH": os.defpath, "LANG": "C.UTF-8", "PYTHONDONTWRITEBYTECODE": "1",
                "PYTHONNOUSERSITE": "1", "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1",
                "HF_HUB_DISABLE_TELEMETRY": "1", "DO_NOT_TRACK": "1", "WANDB_DISABLED": "true"}
-        process = None
+        process = None; read_fd = write_fd = None
         try:
+            extra = []; options = {}
+            if local_cpu:
+                read_fd, write_fd = os.pipe()
+                os.set_inheritable(write_fd, False)
+                extra = ["--lifeline-fd", str(read_fd)]
+                options = {"pass_fds": (read_fd,)}
             with (output / "worker.log").open("xb") as log:
                 process = subprocess.Popen([python, "-I", "-B", str(Path(__file__).absolute()),
                     "_worker", "--job", str(Path(job_path).absolute()), "--output", str(output),
-                    "--authority", str(Path(authority_path).absolute())],
+                    "--authority", str(Path(authority_path).absolute()), *extra],
                     env=env, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
-                    start_new_session=True)
-                code = process.wait(timeout=max(0.01, authority["absolute_deadline_epoch"] - time.time()))
+                    start_new_session=True, **options)
+                if read_fd is not None:
+                    os.close(read_fd); read_fd = None
+                deadline = authority["absolute_deadline_epoch"]
+                code = process.wait(timeout=None if local_cpu else max(0.01, deadline - time.time()))
                 if code:
                     raise VoiceBlocked("Inference failed or unknown; preserve raw output, no replay")
             result = _json(output / "RESULT.json")
@@ -589,26 +736,51 @@ def render(job_path, output_dir, authority_path):
                     "job_sha256": plan["job_sha256"], "error_type": type(error).__name__})
             raise
         finally:
-            _stop_owned_group(process)
+            try:
+                _stop_owned_group(process)
+            finally:
+                for fd in [read_fd, write_fd]:
+                    if fd is not None: os.close(fd)
 
 
-def _worker(job_path, output, authority_path):
+def _worker(job_path, output, authority_path, lifeline_fd=None):
     plan = validate_job(job_path); authority = _authority(authority_path, plan)
-    _arm_child_containment(authority["absolute_deadline_epoch"])
     intent = _json(Path(output) / "INTENT.json")
     if intent.get("job_sha256") != plan["job_sha256"] or intent.get("authority_sha256") != digest(authority_path):
         raise VoiceBlocked("Parent's exact render intent required")
+    reservation = {"event": "render_intent", "job_sha256": plan["job_sha256"],
+                   "authority_sha256": intent["authority_sha256"],
+                   "output": str(Path(output).absolute()), "parent_pid": intent.get("parent_pid")}
+    matches = 0
+    for line in Path(authority["journal_path"]).read_text().splitlines():
+        event = json.loads(line)
+        if not isinstance(event, dict): raise VoiceBlocked("Unknown journal tail; status-only")
+        matches += all(event.get(k) == v for k, v in reservation.items())
+    if matches != 1 or (Path(output) / "WORKER-INTENT.json").exists():
+        raise VoiceBlocked("One original journaled output reservation required; no direct worker replay")
+    local_cpu = authority.get("execution_mode") == "local_cpu"
+    _arm_child_containment(authority["absolute_deadline_epoch"], lifeline_fd=lifeline_fd,
+                           expected_parent_pid=intent.get("parent_pid"), local_cpu=local_cpu)
     profile, _ = _profile(plan["profile_path"], plan["job"]["language"], plan["job"]["purpose"])
     import importlib.util
     spec = importlib.util.spec_from_file_location("_earnalism_fixed_parler_inference", RUNTIME)
     runtime = importlib.util.module_from_spec(spec); spec.loader.exec_module(runtime)
-    return runtime.run(plan, profile, authority, Path(output),
-                       checkpoint_loader=_checkpoint, append_event=_append, write_json=_write)
+    def recheck():
+        fresh = validate_job(job_path)
+        if fresh["job_sha256"] != plan["job_sha256"] or digest(authority_path) != intent["authority_sha256"]:
+            raise VoiceBlocked("Job/authority changed during owned case")
+        _authority(authority_path, fresh)
+    return runtime.run(plan, profile, authority, Path(output), checkpoint_loader=_checkpoint,
+                       append_event=_append, write_json=_write, check_authority=recheck)
 
 
-def _arm_child_containment(deadline):
+def _arm_child_containment(deadline, *, lifeline_fd=None, expected_parent_pid=None, local_cpu=False):
     """Stop an orphaned fixed child too, including during native model calls."""
-    if sys.platform != "linux":
+    if sys.platform == "darwin" and local_cpu:
+        if deadline is not None:
+            raise VoiceBlocked("Local CPU authority must not borrow an allocation deadline")
+        return _darwin_helper().arm(lifeline_fd, expected_parent_pid)
+    if sys.platform != "linux" or local_cpu or lifeline_fd is not None:
         raise VoiceBlocked("Real speech/package children require the supported Linux runtime")
     import ctypes
     parent = os.getppid()
@@ -627,6 +799,7 @@ def main(argv=None):
     parser.add_argument("--purpose", choices=["production", "qualification"], default="production")
     parser.add_argument("--job", type=Path); parser.add_argument("--output", type=Path)
     parser.add_argument("--authority", type=Path); parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--lifeline-fd", type=int)
     args = parser.parse_args(argv)
     try:
         if args.action == "inspect":
@@ -641,7 +814,8 @@ def main(argv=None):
                 result = validate_job(args.job)
             else:
                 if not args.output or not args.authority: parser.error("--output and --authority required")
-                result = (_worker if args.action == "_worker" else render)(args.job, args.output, args.authority)
+                result = (_worker(args.job, args.output, args.authority, args.lifeline_fd)
+                          if args.action == "_worker" else render(args.job, args.output, args.authority))
         print(json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False))
         return 0
     except (VoiceBlocked, OSError, ValueError, KeyError, TypeError) as error:
