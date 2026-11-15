@@ -27,7 +27,7 @@ from backend.domain.editorial_release_policy import (
 )
 
 # The historical native contract stays immutable; current delivery binds its own source.
-CONSUMER_CONTRACT = ROOT / 'internal/earnalism_intelligence/listener_reader_language_text_sync_consumer_20261113.json'
+CONSUMER_CONTRACT = ROOT / 'internal/earnalism_intelligence/listener_reader_recovery_text_sync_consumer_20261115.json'
 FEATURES_OFF = {key: False for key in (
     'read_along', 'highlighting', 'captions', 'text_linked_navigation',
 )}
