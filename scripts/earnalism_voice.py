@@ -82,6 +82,8 @@ TRAINED_TENSOR_SHA256 = "b0f7a164bb2be21355edf6ee3471f340998259592949fce818b0590
 RUNTIME = Path(__file__).with_name("earnalism_voice_runtime") / "parler.py"
 SETUP = RUNTIME.with_name("setup.py")
 DARWIN = RUNTIME.with_name("darwin.py")
+PROVIDER_DRIVER = RUNTIME.with_name("provider_driver_bootstrap.py")
+PROVIDER_DRIVER_SHA256 = 'd1cdf9474e6932ee5fe278b0c6ab2aba12eb8f08ca027a8d46cd4224cf04b9ec'
 SHA = re.compile(r"[0-9a-f]{64}\Z")
 MIN_PACKAGES = {"torch": "2.6.0", "transformers": "4.46.1",
                 "parler-tts": "0.2.2", "descript-audio-codec": "1.0.0"}
@@ -103,6 +105,19 @@ CPU_REQUEST = "8d80e56eeb3b"
 CPU_AMENDMENT = "bda98868de0d"
 CPU_SOURCE_SHA256 = "d0b3c7b4df1b581ad35368008058a470bb26473d625fa0b55b1cf0b98058b6d8"
 CPU_CAPTION_SHA256 = "5b6591f535c272a4d674bac80075aaa1eefff974ec45da22a406f354a1ecf470"
+
+# A separate, source-fixed English qualification; never renews old CPU100 scope.
+EN_ROUTE = 'balanced128_en_female_linux_v1'
+EN_REQUEST = 'en-svarah2-caption-comparison-20261116-v1'
+EN_ROUTE_BINDING = {'id': 'balanced128_en_female_linux_v1', 'language': 'en', 'gender_target': 'female', 'reference_conditioning': False, 'reference_role': 'STYLE_DIRECTION_AND_LATER_LISTENING_ONLY', 'position_helper_sha256': 'c2b6f67fb847a5f0004b0ab21ca024ea7a25e8389f3ff3afaba13e177bb73167'}
+EN_PACKAGES_SHA256 = '6b9dc00e0e9abf5cb2e7a4b3954a976423437be87483a3f802abd44e1536d9fd'
+EN_WHEELS_LOCK_SHA256 = '9727763f54735a874b7b7f050391a27be9966fb791e8506c1574b1a275bba4ef'
+EN_SOURCE_SHA256 = '0704b331e7e1d9bbd8f83b42a9dd728e46ae7a52c252d0c0a2bcec0d649fd8b8'
+EN_UNIT_FINGERPRINTS = ['f3058ae6e94b33ea2f4dbe5f1bfb0c2567d8cda74c1dc214565d46886ebb7354', '4945ee156ba9d7b31b1acaac9ea8d17daff77ae92d07e0566a38b54b3cb52f4a']
+
+def _en_route(profile):
+    route = profile.get("qualification_route")
+    return isinstance(route, dict) and route.get("id") == EN_ROUTE
 
 
 class VoiceBlocked(ValueError):
@@ -246,7 +261,16 @@ def _profile(path, language, purpose, *, verify_assets=True):
             or not isinstance(runtime.get("packages"), dict)
             or any(runtime["packages"].get(k) != v for k, v in MIN_PACKAGES.items())):
         raise VoiceBlocked("Pinned supported runtime package binding required")
-    if balanced:
+    if _en_route(profile) and not balanced:
+        raise VoiceBlocked("English comparison requires the exact balanced128 trained checkpoint")
+    if balanced and _en_route(profile):
+        if (profile.get("qualification_route") != EN_ROUTE_BINDING or language != "en"
+                or purpose != "qualification" or runtime.get("python") != "3.12"
+                or runtime.get("bootstrap") is not None or runtime.get("local_cpu") is not None
+                or object_sha(runtime["packages"]) != EN_PACKAGES_SHA256
+                or runtime.get("qualification_platform") != {"system":"Linux","machine":"x86_64","device":"cuda:0"}):
+            raise VoiceBlocked("Separate exact English-female Linux qualification profile required")
+    elif balanced:
         local = runtime.get("local_cpu", {})
         if (runtime.get("python") != "3.11" or runtime.get("bootstrap") is not None
                 or object_sha(runtime["packages"]) != CPU100_PACKAGES_SHA256
@@ -366,7 +390,14 @@ def validate_job(job_path):
             "generation": generation, "checkpoint_sha256": profile["checkpoint"]["sha256"]}))
     if job["purpose"] == "production" and end != len(source):
         raise VoiceBlocked("Source must be covered completely once in order")
-    if profile["checkpoint"]["format"] == BALANCED_CHECKPOINT["format"]:
+    if _en_route(profile):
+        if (job.get("request_id") != EN_REQUEST or job.get("amendment_id") is not None
+                or job["purpose"] != "qualification" or job["language"] != "en" or job["device"] != "cuda:0"
+                or len(units) != 2 or job["source"]["sha256"] != EN_SOURCE_SHA256
+                or fingerprints != EN_UNIT_FINGERPRINTS
+                or limits != {"max_audio_seconds":180,"max_output_bytes":32*1024**2}):
+            raise VoiceBlocked("Only the fixed two-scene English caption comparison is registered")
+    elif profile["checkpoint"]["format"] == BALANCED_CHECKPOINT["format"]:
         if (job.get("request_id") != CPU_REQUEST or job.get("amendment_id") != CPU_AMENDMENT
                 or job["purpose"] != "qualification" or job["device"] != "cpu" or job["language"] != "bn"
                 or len(units) != 1 or units[0]["start"] != 0 or units[0]["end"] != len(source)
@@ -453,6 +484,18 @@ def _authority(path, plan):
             or not _number(authority.get("absolute_deadline_epoch"), now + 0.01, now + 86400)
             or authority["absolute_deadline_epoch"] <= authority["allocation_started_at"]):
         raise VoiceBlocked("Actual exact-job original allocation deadline required")
+    if job.get("request_id") == EN_REQUEST:
+        shutdown = authority.get("allocation_shutdown_deadline_epoch")
+        if (authority.get("execution_mode") != "allocation"
+                or any(authority.get(k) != v for k,v in {
+                    "request_id":EN_REQUEST,"max_units":2,"max_model_loads":1,"max_restores":1,
+                    "max_generate_calls":2,"package_setup_allowed":False,
+                    "provider":"google_colab","device_type":"L4","purchases_allowed":False,
+                    "max_existing_compute_units":3}.items())
+                or not isinstance(authority.get("provider_runtime_id"),str) or not authority["provider_runtime_id"].strip()
+                or not _number(shutdown,now+0.01,authority["allocation_started_at"]+2700)
+                or authority["absolute_deadline_epoch"] > shutdown-5):
+            raise VoiceBlocked("Fresh bounded original-allocation English authority required; old scopes closed")
     return authority
 
 
@@ -489,9 +532,11 @@ def _stop_owned_group(process):
 def _setup_authority(path, profile_path, runtime_dir):
     """Package capability from the SAME actual owner scope; no new approval."""
     authority = _json(path); now = time.time()
+    english = _en_route(_json(profile_path))
     deadline = authority.get("original_deadline_epoch", authority.get("absolute_deadline_epoch"))
     if (authority.get("schema") != "earnalism.voice_execution.v1" or authority.get("approved") is not True
-            or authority.get("package_setup_allowed") is not True or authority.get("package_network_allowed") is not True
+            or authority.get("package_setup_allowed") is not True
+            or authority.get("package_network_allowed") is not (False if english else True)
             or authority.get("profile_sha256") != digest(profile_path)
             or authority.get("code_sha256") != digest(__file__) or authority.get("setup_code_sha256") != digest(SETUP)
             or not authority.get("actual_scope_ref") or authority.get("training_allowed") is not False
@@ -504,6 +549,15 @@ def _setup_authority(path, profile_path, runtime_dir):
         raise VoiceBlocked("Actual same-scope exact package capability/original deadline required")
     authority["absolute_deadline_epoch"] = deadline
     authority["journal_path"] = str(_path(Path(path).absolute().parent, authority.get("journal_path")))
+    if english:
+        if (authority.get("request_id") != EN_REQUEST or authority.get("provider") != "google_colab"
+                or not isinstance(authority.get("provider_runtime_id"),str) or not authority["provider_runtime_id"].strip()
+                or not SHA.fullmatch(str(authority.get("job_sha256","")))
+                or not isinstance(authority.get("runtime_bootstrap"),dict)
+                or set(authority["runtime_bootstrap"]) != {"runtime_dir","python_executable","wheel_manifest"}
+                or authority["runtime_bootstrap"].get("wheel_manifest",{}).get("sha256") != EN_WHEELS_LOCK_SHA256
+                or deadline > authority["allocation_started_at"]+2695):
+            raise VoiceBlocked("Fresh same-scope fixed English package restoration required")
     return authority
 
 
@@ -517,12 +571,14 @@ def ensure_runtime(profile_path, runtime_dir, authority_path):
     Package readiness does not qualify a GPU, model or narration.
     """
     profile_path = Path(profile_path).absolute()
-    profile, _ = _profile(profile_path, "bn", "qualification", verify_assets=None)
+    raw = _json(profile_path)
+    profile, _ = _profile(profile_path, "en" if _en_route(raw) else "bn", "qualification", verify_assets=None)
     authority = _setup_authority(authority_path, profile_path, runtime_dir)
-    bootstrap = profile.get("runtime", {}).get("bootstrap", {})
+    bootstrap = authority["runtime_bootstrap"] if _en_route(profile) else profile.get("runtime", {}).get("bootstrap", {})
     _descriptor(profile_path.parent, bootstrap.get("python_executable"))
     _descriptor(profile_path.parent, bootstrap.get("wheel_manifest"))
-    _descriptor(profile_path.parent, bootstrap.get("bootstrap_wheel_manifest"))
+    if not _en_route(profile):
+        _descriptor(profile_path.parent, bootstrap.get("bootstrap_wheel_manifest"))
     expected_dir = _path(profile_path.parent, bootstrap.get("runtime_dir"))
     if expected_dir != Path(runtime_dir).absolute():
         raise VoiceBlocked("Profile and authority must bind the same runtime directory")
@@ -654,6 +710,92 @@ def _cpu_interpreter(profile, root):
     return str(path)
 
 
+def _linux_interpreter(profile, plan, authority, root):
+    """Select only the same-scope owned CP312 venv; never the notebook kernel.
+
+    File/metadata checks and a bounded stdlib-only interpreter probe precede
+    native render intent. The existing provider sitecustomize loads only its
+    exact previously resolved library; no credential environment is inherited.
+    """
+    if not _en_route(profile) or sys.platform != "linux" or platform.machine() != "x86_64":
+        raise VoiceBlocked("Actual Linux x86_64 English interpreter bridge required")
+    setup_path = _descriptor(root,authority.get("runtime_setup_authority"))
+    setup = _json(setup_path)
+    bootstrap = setup.get("runtime_bootstrap",{})
+    runtime_dir = _path(Path(plan["profile_path"]).parent,bootstrap.get("runtime_dir"))
+    checked = _setup_authority(setup_path,plan["profile_path"],runtime_dir)
+    if (any(checked.get(k)!=authority.get(k) for k in
+            ["actual_scope_ref","request_id","job_sha256","provider_runtime_id","allocation_started_at","absolute_deadline_epoch","journal_path"])
+            or checked.get("runtime_bootstrap") != authority.get("runtime_bootstrap")):
+        raise VoiceBlocked("Package restoration cannot renew or replace the native scope/clock/journal")
+    result_path = _descriptor(root,authority.get("runtime_setup_receipt"))
+    expected_result = runtime_dir.parent/(runtime_dir.name+".setup")/"RESULT.json"
+    result = _json(result_path)
+    python = runtime_dir/"bin/python"
+    if (result_path != expected_result or any(result.get(k)!=v for k,v in {
+            "status":"LOCAL_PACKAGES_READY_NOT_MODEL_QUALIFIED","profile_sha256":plan["binding"]["profile_sha256"],
+            "python":str(python),"package_versions":profile["runtime"]["packages"],
+            "original_deadline":authority["absolute_deadline_epoch"],"model_loading":False,"training":False,
+            "setup_authority_sha256":digest(setup_path),"actual_scope_ref":authority["actual_scope_ref"],
+            "provider_runtime_id":authority["provider_runtime_id"],"allocation_started_at":authority["allocation_started_at"],
+            "journal_path":authority["journal_path"],"request_id":EN_REQUEST,"runtime_bootstrap":bootstrap}.items())):
+        raise VoiceBlocked("Exact same-allocation runtime restoration result required")
+    if result.get("job_sha256") != plan["job_sha256"]:
+        raise VoiceBlocked("Runtime restoration is not bound to this exact native job")
+    key=object_sha({"profile_sha256":plan["binding"]["profile_sha256"],"runtime_dir":str(runtime_dir)})
+    completed=0; intents=0
+    for line in Path(authority["journal_path"]).read_text().splitlines():
+        event=json.loads(line)
+        if not isinstance(event,dict):raise VoiceBlocked("Unknown original runtime journal tail")
+        if event.get("fingerprint")==key:
+            intents+=event.get("event")=="package_setup_intent"
+            completed+=(event.get("event")=="package_setup_completed" and event.get("result_sha256")==digest(result_path))
+    if intents!=1 or completed!=1:
+        raise VoiceBlocked("One completed original package attempt required; no replay or replacement journal")
+    item = authority.get("runtime_interpreter",{})
+    if not isinstance(item,dict) or item.get("path") != str(python):
+        raise VoiceBlocked("Owned venv interpreter launcher required")
+    target = _descriptor(root,{**item,"path":item.get("resolved_path")})
+    base = _descriptor(Path(plan["profile_path"]).parent,bootstrap.get("python_executable"))
+    if (python.resolve(strict=True) != target or target != base or not os.access(python,os.X_OK)):
+        raise VoiceBlocked("Owned CP312 interpreter target changed")
+    preload = _json(_descriptor(root,authority.get("provider_driver_preload")))
+    if (preload.get("schema")!="earnalism.provider_driver_preload.v1"
+            or preload.get("state")!="EXACT_PROVIDER_DRIVER_PRELOAD_INSTALLED_NOT_CUDA_QUALIFIED"
+            or preload.get("credential_stripped_worker_env")!="UNCHANGED"):
+        raise VoiceBlocked("Exact provider preload installation receipt required")
+    binding=preload.get("provider_binding",{})
+    if (binding.get("schema")!="earnalism.provider_driver_binding.v1"
+            or binding.get("state")!="ACTUAL_PROVIDER_LIBRARY_RESOLVED_NOT_CUDA_QUALIFIED"
+            or binding.get("library_family")!="CUDA_DRIVER" or binding.get("soname")!="libcuda.so.1"):
+        raise VoiceBlocked("Actual provider driver binding required")
+    library=_descriptor(root,binding.get("library")); startup=_descriptor(root,preload.get("bootstrap"))
+    if (library.name!="libcuda.so" and not library.name.startswith("libcuda.so.")):
+        raise VoiceBlocked("Actual libcuda library family required")
+    if startup != runtime_dir/"lib/python3.12/site-packages/sitecustomize.py" or digest(PROVIDER_DRIVER)!=PROVIDER_DRIVER_SHA256:
+        raise VoiceBlocked("Only fixed existing provider startup helper is supported")
+    import importlib.util
+    spec=importlib.util.spec_from_file_location("_earnalism_owned_provider_startup",PROVIDER_DRIVER)
+    helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
+    if startup.read_text()!=helper.render_preload_source(binding["library"]):
+        raise VoiceBlocked("Provider startup code differs from fixed renderer")
+    # Fixed metadata-only code: startup preloads the hash-bound library before
+    # any future Torch import. Its success is not CUDA/model qualification.
+    probe="import sys,json,importlib.metadata; s=sys.modules.get('sitecustomize'); print(json.dumps({'python':'.'.join(map(str,sys.version_info[:2])),'packages':{d.metadata['Name'].lower().replace('_','-').replace('.','-'):d.version for d in importlib.metadata.distributions()},'sitecustomize':getattr(s,'__file__',None),'provider_preloaded':getattr(s,'_EARNALISM_PROVIDER_DRIVER',None) is not None}))"
+    remaining=authority["absolute_deadline_epoch"]-time.time()
+    if remaining<=0:raise VoiceBlocked("Original runtime clock exhausted before metadata probe")
+    current=subprocess.run([str(python),"-I","-B","-c",probe],
+        env={"PATH":os.defpath,"LANG":"C.UTF-8","PYTHONNOUSERSITE":"1","PYTHONDONTWRITEBYTECODE":"1"},
+        stdin=subprocess.DEVNULL,capture_output=True,text=True,check=True,timeout=min(20,remaining),
+        preexec_fn=lambda:_arm_child_containment(authority["absolute_deadline_epoch"]))
+    current=json.loads(current.stdout)
+    if (current.get("python")!="3.12" or current.get("sitecustomize")!=str(startup)
+            or current.get("provider_preloaded") is not True
+            or any(current.get("packages",{}).get(k)!=v for k,v in profile["runtime"]["packages"].items())):
+        raise VoiceBlocked("Selected owned interpreter ABI/packages/provider startup drifted")
+    return str(python)
+
+
 def render(job_path, output_dir, authority_path):
     """Run only fixed local inference in a deadline-supervised fresh child."""
     plan = validate_job(job_path); authority = _authority(authority_path, plan)
@@ -663,6 +805,8 @@ def render(job_path, output_dir, authority_path):
     admission = None
     if local_cpu:
         python = _cpu_interpreter(profile, Path(plan["profile_path"]).parent)
+    elif _en_route(profile):
+        python = _linux_interpreter(profile, plan, authority, Path(authority_path).absolute().parent)
     bootstrap = profile["runtime"].get("bootstrap")
     if bootstrap:
         runtime_dir = _path(Path(plan["profile_path"]).parent, bootstrap.get("runtime_dir"))
@@ -762,6 +906,10 @@ def _worker(job_path, output, authority_path, lifeline_fd=None):
     _arm_child_containment(authority["absolute_deadline_epoch"], lifeline_fd=lifeline_fd,
                            expected_parent_pid=intent.get("parent_pid"), local_cpu=local_cpu)
     profile, _ = _profile(plan["profile_path"], plan["job"]["language"], plan["job"]["purpose"])
+    if _en_route(profile):
+        selected = _linux_interpreter(profile,plan,authority,Path(authority_path).absolute().parent)
+        if Path(sys.executable).absolute() != Path(selected).absolute():
+            raise VoiceBlocked("Owned worker is not the selected English runtime")
     import importlib.util
     spec = importlib.util.spec_from_file_location("_earnalism_fixed_parler_inference", RUNTIME)
     runtime = importlib.util.module_from_spec(spec); spec.loader.exec_module(runtime)

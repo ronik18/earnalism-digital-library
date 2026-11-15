@@ -35,6 +35,13 @@ individual causes, timestamps, accent findings or numerical grades. Preserve its
 licence and split history, but do not promote it as an approved performance target
 or spend on a claimed repair using that unchanged rejected target.
 
+Check how the backend uses a selected voice reference. The current Parler path
+accepts text and unspoken captions; source audio is a comparison target, not an
+audio-conditioning input or proof of speaker transfer. Keep the preferred time
+window, complete paired recording and unseen evaluation separate. Never attach
+a whole-utterance transcript to an incomplete audio crop. Preserve the original
+published test partition when a reference is reused; disclose that exposure.
+
 Apply the current title/owner editorial policy. Newly authorized automated jobs
 may use `automated-editorial-2026-11-11` through the existing evaluator/runtime;
 historical receipts, stricter requested targets, Bengali campaign gates and active

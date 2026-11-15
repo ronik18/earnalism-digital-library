@@ -18229,5 +18229,72 @@
     "published": false,
     "campaign_counters_rights_and_reader_only_state_changed": false,
     "next_generated_prompt": "Use the saved clip2 source-voice preference for bounded English voice-revision preparation; preserve original test labels, model holds and the existing runtime/campaign limits. Freeze a distinct data/control plan before any separately authorized execution."
+  },
+  "english_clip2_revision_preparation_20261116": {
+    "at": "2026-11-16T02:22:56.058985+05:30",
+    "title": "The Earnalism Voice / Open Window private English qualification",
+    "state": "TWO_SCENE_CAPTION_COMPARISON_PREPARED_NOT_EXECUTED",
+    "owner_direction": "Prepare bounded English revision with selected clip2; preserve exact soundtrack/style; private; no purchases",
+    "route": "Retained balanced128 English-female Parler; text and unspoken captions only",
+    "checkpoint_sha256": "a61fcc700e0887a9367fd8710d08736130faada0e52ded53daf21ef4d053c17f",
+    "reference_role": "Selected human source guides performance direction and later listening; no waveform conditioning or speaker-transfer claim",
+    "scenes": [
+      {
+        "name": "saved opening",
+        "words": 84
+      },
+      {
+        "name": "saved fear/flight",
+        "words": 183
+      }
+    ],
+    "prepared_limits": {
+      "native_takes": 2,
+      "aggregate_native_seconds": 180,
+      "native_wav_bytes": 33554432,
+      "model_loads": 1,
+      "checkpoint_restores": 1,
+      "optimizer_updates": 0,
+      "automatic_retries": 0
+    },
+    "future_runtime_proposal_only": {
+      "allocations": 1,
+      "gpu": "L4",
+      "wall_minutes_including_setup_transfers_export": 45,
+      "existing_compute_units_ceiling": 3,
+      "approved": false,
+      "execute": false
+    },
+    "old_runtime_allowances_reused_or_extended": false,
+    "qualification_evidence": {
+      "private_workspace_key": "english-voice-revision-preparation-20261116-v1",
+      "clip2_native_sha256": "ff6a1350955abfdf726d2b4f0dd7b81879e52828de6b4abfead0372d9b987976",
+      "data_roles_sha256": "4bff20856c9316142ea0ee251072e778c37e8bba2e3d9a84e1355f90dece3036",
+      "preservation_packet_sha256": "68b014a1cd461d8be57fc20bd60c6a9363e61a93777934574cd1335d9a989f60",
+      "frozen_scenes_sha256": "a13146c323393633aaa8aeafc22309862f8966c8d397ec448eda1af0bf6df15f"
+    },
+    "lessons": [
+      "Verify actual backend reference capability before choosing a reference route",
+      "Keep preferred crop and complete publisher-paired recording separate; never pair full transcript to incomplete crop",
+      "Preserve original test exposure; this is not unseen evaluation",
+      "Owned package/interpreter/preload receipts share the same original runtime clock; no kernel fallback",
+      "Source/runtime metadata have separate validators; earlier operation cutoff does not renew allocation"
+    ],
+    "actual_preparation": {
+      "retained_assets_locally_COW_staged_and_hashed": 22,
+      "affected_offline_python_tests_passed": 199,
+      "real_master_source_stage": "COMPLETE",
+      "real_master_narration_stage": "BLOCKED_NO_RUNTIME_AUTHORITY_AND_ACTIVE_OWNER_REVISION",
+      "model_stage_reservations": 0
+    },
+    "native_audio_training_GPU_paid_calls_purchases_or_publications": 0,
+    "open_window_exact_soundtrack_and_selected_style_unchanged": true,
+    "score_and_video_learning": "no-new-learning; retained exact media and owner KEEP/style preserved",
+    "production_ready": false,
+    "published": false,
+    "naturalness_accent_reference_similarity_and_scene_fit": "NOT_TESTED_NEW_TAKES_DO_NOT_EXIST",
+    "existing_rejected_voice_and_Bengali_production_holds_preserved": true,
+    "campaign_counters_rights_and_reader_only_state_changed": false,
+    "next_generated_prompt": "Validate the frozen two-scene English qualification job in the saved private packet. Keep execution disabled; do not train, allocate compute or generate audio under expired grants. A future run must bind one fresh actual scope to setup, transfers, both dry takes and export, then compare both scenes with clip2 before any soundtrack change."
   }
 }

@@ -139,6 +139,27 @@ environment; the historical male130/Linux contract is unchanged. The typed job
 fixes the source, unspoken caption, seed, sampling controls and one native take.
 Production remains held for this checkpoint, even if a profile claims acceptance.
 
+A separate balanced128 English-female qualification registers two fixed dry
+scenes on Linux x86_64, Python 3.12 and the retained 111-package closure. It uses
+the same notebook and `trained-voice` adapter with a private qualification
+registry. Its disabled control creates no allocation or model authority. The
+native worker must use the exact owned interpreter and setup receipt bound to
+the same original allocation and scope; it cannot fall back to the notebook's
+interpreter. Setup, transfers and export stay inside the original clock. The
+native cutoff leaves at least five seconds before that allocation's shutdown;
+runtime binaries are checked by the native bridge, outside corpus/cache reads.
+Neither distinction extends the allocation or weakens source/rights checks. The
+prior Darwin CPU100 contract and all balanced128 production holds remain intact.
+
+This comparison fixes two takes, 180 seconds of total native audio and 32 MiB of
+native output, with no optimizer, new weights or automatic retry. Source audio
+guides the unspoken performance brief and later listening comparison; Parler
+does not receive it as waveform conditioning. Keep an owner's selected window
+separate from the complete publisher-paired recording and disclose any original
+test-set exposure. New dry auditions do not replace a retained film soundtrack,
+score or selected visual style. Software checks do not establish accent,
+naturalness, reference similarity or complete scene fit on the future runtime.
+
 Local CPU authority uses a real execution start, rather than an invented cloud
 allocation or extended GPU deadline. It binds the controller, runtime and Darwin
 helper, the existing journal prefix and both the venv launcher and resolved

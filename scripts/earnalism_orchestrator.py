@@ -163,6 +163,17 @@ def _refs(value, base: Path, workspace: Path, *, found=None, seen=None):
                     # before actual inference. Rights/qualification evidence
                     # remains transitive and must still verify on cache reuse.
                     nested = {k: v for k, v in nested.items() if k not in {"assets", "checkpoint"}}
+                elif (isinstance(nested, dict) and nested.get("schema") == "earnalism.voice_execution.v1"
+                      and nested.get("request_id") == "en-svarah2-caption-comparison-20261116-v1"):
+                    # Runtime binaries/provider files are not corpus inputs or
+                    # dependencies of retained audio. Bind the complete receipt
+                    # bytes here; the fixed native bridge verifies these assets,
+                    # their original scope and their real metadata before every
+                    # fresh model launch. Never resolve external runtime paths
+                    # through the private source/corpus file reader.
+                    runtime_only = {"runtime_interpreter", "runtime_bootstrap", "runtime_setup_authority",
+                                    "runtime_setup_receipt", "provider_driver_preload"}
+                    nested = {k: v for k, v in nested.items() if k not in runtime_only}
                 _refs(nested, path.parent, workspace, found=found, seen=seen)
         for child in value.values():
             if isinstance(child, (dict, list)):
@@ -496,6 +507,21 @@ def _number(value, name, low=0, high=10**15):
             or not math.isfinite(value) or not low <= value <= high):
         raise ValueError(f"invalid {name}")
     return value
+
+
+def _worker_original_clock(child):
+    started = child.get("allocation_started_at")
+    deadline = child.get("original_deadline_epoch", child.get("absolute_deadline_epoch"))
+    if (child.get("schema") == "earnalism.voice_execution.v1"
+            and child.get("request_id") == "en-svarah2-caption-comparison-20261116-v1"):
+        shutdown = child.get("allocation_shutdown_deadline_epoch")
+        if (any(type(v) not in (int, float) or not math.isfinite(v) for v in (started, deadline, shutdown))
+                or not started < deadline <= shutdown - 5 or shutdown > started + 2700):
+            raise ValueError("English worker cutoff must remain inside its original allocation clock")
+        # The native operation ends before cleanup; this is an earlier cutoff,
+        # not a replacement start or a renewed provider deadline.
+        deadline = shutdown
+    return started, deadline
 
 
 def _runtime(path, project, workspace, observations):
@@ -854,8 +880,7 @@ def run(instruction, workspace, registry_path=None, execute=False, authority_pat
                     raise ValueError("model stage needs its exact existing worker authority")
                 if exact_authority and runtime:
                     child = _load(Path(exact_authority))
-                    child_started = child.get("allocation_started_at")
-                    child_deadline = child.get("original_deadline_epoch", child.get("absolute_deadline_epoch"))
+                    child_started, child_deadline = _worker_original_clock(child)
                     if child_deadline is None and "wall_seconds" in child and child_started is not None:
                         child_deadline = child_started + child["wall_seconds"]
                     if (child_started != runtime["allocation_started_at"]
