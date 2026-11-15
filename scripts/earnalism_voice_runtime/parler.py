@@ -49,6 +49,48 @@ def _shapes():
     return result
 
 
+BALANCED_FORMAT = "EARNALISM_PARLER_BALANCED_LAST_BLOCK_V1"
+
+
+def _validated_trainable(saved, binding, base_sha256, torch):
+    """Validate saved tensors without applying optimizer, RNG or training state."""
+    shapes = _shapes()
+    balanced = binding["format"] == BALANCED_FORMAT
+    scope = "BN_EN_MF_BALANCED" if balanced else "MALE_BENGALI_ONLY"
+    expected = {"format": binding["format"], "base_sha256": base_sha256,
+                "bindings_sha256": binding["bindings_sha256"],
+                "step": binding["training_updates"], "supervised_scope": scope}
+    if balanced:
+        expected.update({key: binding[key] for key in
+            ("records_sha256", "schedule_sha256", "seed", "max_updates", "stratum_exposure_counts")})
+    if (not isinstance(saved, dict) or any(saved.get(key) != value for key, value in expected.items())
+            or type(saved.get("step")) is not int
+            or balanced and (type(saved.get("max_updates")) is not int or type(saved.get("seed")) is not int)):
+        raise ValueError("EXACT_TRAINED_CHECKPOINT_SCHEMA_REQUIRED_NO_BASE_FALLBACK")
+    tensors = saved.get("trainable")
+    if (not isinstance(tensors, dict) or set(tensors) != set(shapes)
+            or any(tuple(tensors[name].shape) != shape or tensors[name].dtype != torch.float32
+                   or not bool(torch.isfinite(tensors[name]).all().item()) for name, shape in shapes.items())
+            or _tensor_digest(tensors) != binding["tensor_sha256"]):
+        raise ValueError("FINITE_MATCHING_TRAINED_TENSORS_REQUIRED")
+    return tensors, scope
+
+
+def _frozen_digest(model):
+    # Persistent state only, as in the actual retained reload proof. The digest
+    # streams small chunks; it neither copies the complete model nor quantizes it.
+    names = _shapes()
+    return _tensor_digest({name: value for name, value in model.state_dict().items() if name not in names})
+
+
+def _verify_balanced_state(model, binding):
+    named = dict(model.named_parameters())
+    if (_tensor_digest({name: named[name] for name in _shapes()}) != binding["tensor_sha256"]
+            or _frozen_digest(model) != binding["frozen_sha256"]
+            or any(parameter.requires_grad for parameter in model.parameters())):
+        raise ValueError("BALANCED_INFERENCE_STATE_CHANGED")
+
+
 def _load_bundle(profile, root, checkpoint, device, check):
     """Strict original foundation + changed tensors; never an untrained fallback."""
     assets = profile["assets"]
@@ -75,11 +117,18 @@ def _load_bundle(profile, root, checkpoint, device, check):
     sys.path.insert(0, str(source_root))
     if ".".join(map(str, sys.version_info[:2])) != profile["runtime"]["python"]:
         raise ValueError("PINNED_PYTHON_REQUIRED")
+    if profile["checkpoint"]["format"] == BALANCED_FORMAT:
+        installed = {d.metadata["Name"].lower().replace("_", "-").replace(".", "-"): d.version
+                     for d in importlib.metadata.distributions(path=[str(source_root)])}
+        if installed != profile["runtime"]["packages"]:
+            raise ValueError("EXACT_CPU100_DISTRIBUTION_INVENTORY_REQUIRED")
     for name, expected in profile["runtime"]["packages"].items():
         if importlib.metadata.version(name) != expected:
             raise ValueError("PINNED_RUNTIME_VERSION_REQUIRED:" + name)
     check()
     import torch
+    if profile["checkpoint"]["format"] == BALANCED_FORMAT:
+        torch.set_num_threads(2)  # Before construction, copies or digest work.
     if device == "cuda:0" and not torch.cuda.is_available():
         raise ValueError("REQUESTED_CUDA_UNAVAILABLE_NO_CPU_FALLBACK")
     package = importlib.import_module("parler_tts")
@@ -97,14 +146,8 @@ def _load_bundle(profile, root, checkpoint, device, check):
     check()
     saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
     binding = profile["checkpoint"]; shapes = _shapes()
-    if (saved.get("format") != binding["format"] or saved.get("base_sha256") != profile["base"]["sha256"]
-            or saved.get("bindings_sha256") != binding["bindings_sha256"]
-            or type(saved.get("step")) is not int or saved["step"] != binding["training_updates"]
-            or saved.get("supervised_scope") != "MALE_BENGALI_ONLY"
-            or set(saved.get("trainable", {})) != set(shapes)
-            or any(tuple(saved["trainable"][name].shape) != shape for name, shape in shapes.items())
-            or _tensor_digest(saved["trainable"]) != binding["tensor_sha256"]):
-        raise ValueError("EXACT_TRAINED_CHECKPOINT_SCHEMA_REQUIRED_NO_BASE_FALLBACK")
+    tensors, scope = _validated_trainable(saved, binding, profile["base"]["sha256"], torch)
+    del saved  # Saved optimizer/RNG payload is never applied or restored.
     parameters = dict(model.named_parameters())
     if {name for name in parameters if name.startswith("decoder.model.decoder.layers.23.")} != set(shapes):
         raise ValueError("EXACT_TRAINED_DECODER_LAYER_REQUIRED")
@@ -112,10 +155,9 @@ def _load_bundle(profile, root, checkpoint, device, check):
         raise ValueError("ADAPTATION_MUST_DIFFER_FROM_ORIGINAL_BASE")
     with torch.no_grad():
         for name, shape in shapes.items():
-            if (tuple(parameters[name].shape) != shape or saved["trainable"][name].dtype != torch.float32
-                    or not bool(torch.isfinite(saved["trainable"][name]).all().item())):
+            if tuple(parameters[name].shape) != shape or parameters[name].dtype != torch.float32:
                 raise ValueError("FINITE_MATCHING_TRAINED_TENSORS_REQUIRED")
-            parameters[name].copy_(saved["trainable"][name])
+            parameters[name].copy_(tensors[name])
     if _tensor_digest({name: parameters[name] for name in shapes}) != binding["tensor_sha256"]:
         raise ValueError("TRAINED_TENSOR_RELOAD_MISMATCH")
     model.to(device=device, dtype=torch.float32).eval()
@@ -125,10 +167,15 @@ def _load_bundle(profile, root, checkpoint, device, check):
             raise ValueError("EXPLICIT_REAL_DEVICE_REQUIRED")
     if model.config.sampling_rate != 44100:
         raise ValueError("NATIVE_44100_CODEC_REQUIRED")
+    if binding["format"] == BALANCED_FORMAT:
+        # One frozen-state pass before synthesis; the second follows preserved
+        # native output, so a later failure cannot erase the returned take.
+        if _frozen_digest(model) != binding["frozen_sha256"]:
+            raise ValueError("EXACT_BALANCED_FROZEN_STATE_REQUIRED")
     return {"model": model, "prompt_tokenizer": prompt, "description_tokenizer": description,
             "loading_report": {**info, "trained_checkpoint_sha256": binding["sha256"],
                 "trained_tensor_sha256": binding["tensor_sha256"], "training_updates": binding["training_updates"],
-                "supervised_training_scope": "MALE_BENGALI_ONLY", "dtype": "float32", "device": device}}, torch
+                "supervised_training_scope": scope, "dtype": "float32", "device": device}}, torch
 
 
 class BundleSampler:
@@ -173,10 +220,20 @@ def _write_wav(path, samples):
         handle.flush(); os.fsync(handle.fileno())
 
 
-def run(plan, profile, authority, output, *, checkpoint_loader, append_event, write_json):
+def run(plan, profile, authority, output, *, checkpoint_loader, append_event, write_json,
+        check_authority=None):
     job = plan["job"]; root = Path(plan["profile_path"]).parent
+    balanced = profile["checkpoint"]["format"] == BALANCED_FORMAT
+    if balanced and not callable(check_authority):
+        raise ValueError("LIVE_BALANCED_AUTHORITY_CALLBACK_REQUIRED")
     def check():
-        if time.time() >= authority["absolute_deadline_epoch"]:
+        if check_authority is not None:
+            check_authority()
+        deadline = authority.get("absolute_deadline_epoch")
+        if deadline is None:
+            if authority.get("execution_mode") != "local_cpu":
+                raise ValueError("EXPLICIT_LOCAL_CPU_AUTHORITY_REQUIRED")
+        elif not isinstance(deadline, (int, float)) or not math.isfinite(deadline) or time.time() >= deadline:
             raise TimeoutError("ORIGINAL_ALLOCATION_DEADLINE_EXHAUSTED")
     check()
     write_json(output / "WORKER-INTENT.json", {"job_sha256": plan["job_sha256"], "model_loading_started": True})
@@ -191,7 +248,6 @@ def run(plan, profile, authority, output, *, checkpoint_loader, append_event, wr
         append_event(authority["journal_path"], {"event": "unit_intent", "job_sha256": plan["job_sha256"],
                                                 "fingerprint": fingerprint, "unit": unit["id"]})
         samples, cap = sampler.generate(unit, job["generation"])
-        check()
         if not samples or not all(math.isfinite(value) for value in samples):
             raise ValueError("FINITE_NONEMPTY_NATIVE_AUDIO_REQUIRED_NO_RETRY")
         if total_bytes + 44 + len(samples) * 4 > job["limits"]["max_output_bytes"]:
@@ -210,6 +266,11 @@ def run(plan, profile, authority, output, *, checkpoint_loader, append_event, wr
             "seed": unit["seed"], "generation": job["generation"], "token_cap_reached": cap,
             "gain": 1.0, "trimmed": False, "regenerated": False, "fingerprint": fingerprint}
         write_json(output / (unit["id"] + ".json"), receipt); receipts.append(receipt)
+        # Complete native bytes and source receipt survive a late authority,
+        # frozen-state or output-bound failure. Such a take is never replayed.
+        check()
+        if profile["checkpoint"]["format"] == BALANCED_FORMAT:
+            _verify_balanced_state(bundle["model"], profile["checkpoint"])
         append_event(authority["journal_path"], {"event": "unit_completed", "job_sha256": plan["job_sha256"],
             "fingerprint": fingerprint, "audio_sha256": receipt["sha256"], "token_cap_reached": cap})
         if cap or total_bytes > job["limits"]["max_output_bytes"] or total_seconds > job["limits"]["max_audio_seconds"]:

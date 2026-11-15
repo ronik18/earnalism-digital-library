@@ -82,6 +82,23 @@ base files and trained checkpoint parts described by the voice profile before
 runtime qualification. English and Bengali acceptance are independent; training
 on one language does not qualify the other.
 
+The existing voice controller also registers the retained balanced128 checkpoint
+for the single private Bengali qualification request `8d80e56eeb3b`, amendment
+`bda98868de0d`. This is a separate Darwin arm64, Python 3.11, exact CPU100
+environment; the historical male130/Linux contract is unchanged. The typed job
+fixes the source, unspoken caption, seed, sampling controls and one native take.
+Production remains held for this checkpoint, even if a profile claims acceptance.
+
+Local CPU authority uses a real execution start, rather than an invented cloud
+allocation or extended GPU deadline. It binds the controller, runtime and Darwin
+helper, the existing journal prefix and both the venv launcher and resolved
+interpreter. The controller journals the entire case before loading; renaming a
+job or output does not permit replay after a failure or unknown result. A separate
+pre-model guardian follows parent liveness and the existing shared-memory floor
+while native calls run. Resource observations do not prove model memory fit.
+Fake tests prove these source contracts only. This implementation grants no
+activation, training, synthesis, allocation or publication; Bicharak stays held.
+
 Scoring uses the complete source, real narration clock, contextual direction and
 cleared finite stems through `audiobook_score`. Transitions, levels and deliberate
 silence follow the actual content. Accepted KEEP passages remain candidate-bound.

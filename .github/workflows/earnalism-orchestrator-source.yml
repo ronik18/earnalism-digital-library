@@ -55,5 +55,6 @@ jobs:
       - name: Exercise orchestration and inference control without model access
         run: |
           python -m unittest scripts.test_earnalism_orchestrator scripts.test_earnalism_voice scripts.test_earnalism_media_adapters scripts.test_build_earnalism_orchestrator_colab -v
+          python -m unittest scripts.test_earnalism_voice_balanced_runtime scripts.test_earnalism_voice_darwin scripts.test_earnalism_voice_cpu_controller -v
           node skills/earnalism-video/software/src/test_render_browser.mjs
           node skills/earnalism-video/software/src/test_prepare_render_runtime.mjs
