@@ -256,7 +256,28 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     onVisualPageVisibility?.(!overlayOpen && !pagination.pending && fragment && !layoutError && !previewBlocked ? { start: fragment.start, end: fragment.end, media: fragment.media || [], publicPreview: publicPreviewVisible } : null);
     return () => onVisualPageVisibility?.(null);
   }, [fragment, pagination.pending, layoutError, previewBlocked, onVisualPageVisibility, publicPreviewVisible, overlayOpen]);
+  const automaticPreviewAttemptedRef = useRef(false);
   const busy = Boolean(access.busy);
+  useEffect(() => {
+    if (!previewBlocked || pagination.pending || layoutError || busy
+      || model.allowAutomaticPassAdmission !== true || typeof requestProtectedContent !== "function") return undefined;
+    const continueWithPass = () => {
+      if (automaticPreviewAttemptedRef.current || document.visibilityState !== "visible" || !document.hasFocus()) return;
+      // A restored visual position can exceed the preview within canonical
+      // page one. Ask the route for one fresh server grant; retain the paywall
+      // until authorization succeeds, and never retry or transfer on a denial.
+      automaticPreviewAttemptedRef.current = true;
+      requestProtectedContent(sourceAnchor?.page || page, sourceAnchor?.offset || 0, sourceAnchor?.revision, publicPreviewEnd);
+    };
+    continueWithPass();
+    window.addEventListener("focus", continueWithPass);
+    document.addEventListener("visibilitychange", continueWithPass);
+    return () => {
+      window.removeEventListener("focus", continueWithPass);
+      document.removeEventListener("visibilitychange", continueWithPass);
+    };
+  }, [previewBlocked, pagination.pending, layoutError, busy, model.allowAutomaticPassAdmission,
+    requestProtectedContent, sourceAnchor?.page, sourceAnchor?.offset, sourceAnchor?.revision, page, publicPreviewEnd]);
   const matchesCurrentAnchor = (item) => {
     if (typeof item.anchor.offset === 'string') return item.anchor.revision === readingAnchor.revision && (fragment?.structures?.includes(item.anchor.offset) || (item.anchor.offset.startsWith('media:') && fragment?.media?.includes(Number(item.anchor.offset.split(':')[1]))));
     const mapped = model.offsetForSourceAnchor?.(item.page, item.anchor.offset, item.anchor.revision);

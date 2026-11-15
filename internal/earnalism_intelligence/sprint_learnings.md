@@ -3455,3 +3455,8 @@ Read links must target the Reader route. PREVIEW_REQUIRES_PASS is a server bound
 Qualify an isolated provider driver before interactive storage authentication and large staging. Resolve the actual library and bind its bytes, preserving stripped credentials and the original deadline. Prepare positional capacity before snapshots without changing accepted inference profiles. CPU/mock source checks do not qualify a GPU, a model or narration. Private experiment source and evidence remain on Drive; rejected voices and healthy soundtrack/style remain preserved.
 
 Historical Git role trees must be admitted before commit-only partial-clone ancestry can promise their missing roots. Reorder the existing bounded fetch; retain the same pins, fetch count, offline validation and configuration restoration. Local ordering regression distinguishes this infrastructure boundary from model or voice qualification.
+
+
+### Reader lease and visual preview recovery — 15 November 2026
+
+An expired short lease does not imply an exhausted wallet. Recover once in the foreground through existing settlement and server admission, never transfer or reset counters. A visual preview boundary inside canonical page 1 needs the same bounded admission as a transport-page boundary. Keep protected text hidden until a validated server grant; authentication, balance, preparation and content denials remain closed. Source tests do not prove a production Read.

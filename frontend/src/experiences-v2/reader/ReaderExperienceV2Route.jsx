@@ -103,6 +103,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const [lease, setLease] = useState(null);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [expiredContinuation, setExpiredContinuation] = useState(null);
+  const expiryResumeAttemptedRef = useRef(false);
   const [sessionConflict, setSessionConflict] = useState(false);
   const [preparationRetry, setPreparationRetry] = useState(null);
   const preparationWait = preparationRetry?.remaining || 0;
@@ -314,9 +316,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     return positionQueueRef.current;
   }, [slug]);
 
-  const invalidateLease = useCallback((message) => {
+  const invalidateLease = useCallback((message, recoverableExpiry = false) => {
     const current = leaseRef.current;
-    if (current) publishLease({ ...current, status: "Expired" });
+    if (current) {
+      if (recoverableExpiry) setExpiredContinuation(current);
+      publishLease({ ...current, status: "Expired" });
+    }
     if (aliveRef.current) {
       setError(message);
       setPageResult(null);
@@ -360,6 +365,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       } catch (requestError) {
         if (!aliveRef.current || closingRef.current) return;
         if (requestError?.response?.status >= 400 && requestError.response.status < 500) {
+          if (requestError.response.data?.detail?.code === "LEASE_EXPIRED") setExpiredContinuation(current);
           publishLease({ ...current, status: "Expired" });
           setPageResult(null);
           setError(requestMessage(requestError, "Your reading session has ended. Continue when you are ready."));
@@ -444,7 +450,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     if (leaseStatus !== "Running" || !lease?.expiresAt) return undefined;
     const expiry = lease.expiresAt;
     const timeout = window.setTimeout(() => {
-      if (leaseRef.current?.expiresAt === expiry && !runningLease(leaseRef.current)) invalidateLease("Your reading session expired. Continue when you are ready.");
+      if (leaseRef.current?.expiresAt === expiry && !runningLease(leaseRef.current)) invalidateLease("Your reading session expired. Continue when you are ready.", true);
     }, Math.max(0, expiry - Date.now()) + 1);
     return () => window.clearTimeout(timeout);
   }, [leaseStatus, lease?.expiresAt, invalidateLease]);
@@ -501,6 +507,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         setError(requestMessage(failure, failure.message || "This chapter could not be loaded. Please retry."));
         notePreparationFailure(failure);
         if (requestLease) {
+          if (failure?.response?.data?.detail?.code === "LEASE_EXPIRED") setExpiredContinuation(requestLease);
           publishLease({ ...requestLease, status: "Expired" });
           void settleLease("reader_v2_chapter_unavailable");
         }
@@ -596,6 +603,31 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     };
   }, [automaticEntry, usable, error, busy, canonicalPage, search, authorizeAndContinue, pageResult?.code]);
 
+  useEffect(() => {
+    if (!expiredContinuation || expiryResumeAttemptedRef.current || busy || sessionConflict
+      || user?.role !== "user" || (!freeReading && !(displayedBalance > 0))
+      || !validPage || !enabled || preparationWait > 0 || usable) return undefined;
+    const resume = () => {
+      if (expiryResumeAttemptedRef.current || actionRef.current || !aliveRef.current
+        || document.visibilityState !== "visible" || !document.hasFocus()) return;
+      // Expiring a short lease does not exhaust the wallet. One foreground
+      // recovery settles the old session and asks the existing server for a
+      // new grant. Never transfer, extend the old grant or loop on a denial.
+      expiryResumeAttemptedRef.current = true;
+      setExpiredContinuation(null);
+      void authorizeAndContinue(canonicalPage, search.get("a") || 0, search.get("r") || undefined,
+        false, expiredContinuation.protectedTextContinuation === true, expiredContinuation.publicPreviewEnd);
+    };
+    resume();
+    window.addEventListener("focus", resume);
+    document.addEventListener("visibilitychange", resume);
+    return () => {
+      window.removeEventListener("focus", resume);
+      document.removeEventListener("visibilitychange", resume);
+    };
+  }, [expiredContinuation, busy, sessionConflict, user?.role, freeReading, displayedBalance,
+    validPage, enabled, preparationWait, usable, canonicalPage, search, authorizeAndContinue]);
+
   const navigateAfterSettlement = useCallback(async (target, navigationPath) => {
     if (actionRef.current) return;
     actionRef.current = true;
@@ -676,6 +708,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     return {
       slug,
       notebookOwner: identity || "guest",
+      allowAutomaticPassAdmission: user?.role === "user" && displayedBalance > 0,
       onRequestProtectedContent: (target, offset = 0, revision, boundary) => authorizeAndContinue(target, offset, revision, false, true, boundary),
       protectedTextContinuation: lease?.protectedTextContinuation === true,
       publicPreviewEnd: lease?.publicPreviewEnd,

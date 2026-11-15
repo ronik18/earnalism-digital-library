@@ -1265,7 +1265,8 @@ test("device resume reauthorizes a short book's protected visual page inside can
   value.canonical_pages.schema_version = 'isolated-test-segments-v1';
   value.canonical_pages.content_revision = 'isolated-test-manifest-v1';
   await mount('/reader/test-book?p=1&a=120');
-  await click('Continue with Reading Pass'); await click('Next page');
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  await click('Next page');
   const saved = JSON.parse(localStorage.getItem('earnalism:reader-position:test-reader:test-book'));
   expect(saved.requires_protected_text).toBe(true);
   expect(saved.offset).toBeGreaterThan(0);
@@ -1305,4 +1306,62 @@ test('paid reader automatically authorizes an oversized public preview once', as
   expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
   expect(pass.startReadingPassSession.mock.calls[0][0]).toMatchObject({ bookSlug: 'test-book', pageIndex: 1, requireProtectedText: true });
   expect(pass.startReadingPassSession.mock.calls[0][0].transfer).toBeUndefined();
+});
+
+test("a pass holder returning after lease expiry reopens the saved page once through server admission", async () => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 2327 };
+  pass.startReadingPassSession.mockImplementationOnce(async () => response({ balance_seconds: 2327 }))
+    .mockImplementationOnce(async () => response({ session_id: "session-2", balance_seconds: 2327 }));
+  await mount("/reader/test-book?p=5");
+  expect(text()).toContain("Page 5 manuscript.");
+  document.hasFocus.mockReturnValue(false);
+  await act(async () => window.dispatchEvent(new Event("blur")));
+  await tick(60000);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  pass.renewReadingPassLease.mockRejectedValueOnce({ response: { status: 403, data: { detail: { code: "LEASE_EXPIRED", message: "The Reading Pass lease expired." } } } });
+  document.hasFocus.mockReturnValue(true);
+  await act(async () => window.dispatchEvent(new Event("focus")));
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(2);
+  expect(pass.startReadingPassSession.mock.calls[1][0]).toEqual({ bookSlug: "test-book", pageIndex: 5 });
+  expect(pass.endReadingPassSession.mock.invocationCallOrder[0]).toBeLessThan(pass.startReadingPassSession.mock.invocationCallOrder[1]);
+  expect(text()).toContain("Page 5 manuscript.");
+  expect(text()).not.toContain("Reading paused");
+});
+
+test("expired-lease recovery waits for foreground and cannot loop after a denied fresh admission", async () => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 600 };
+  await mount();
+  document.hasFocus.mockReturnValue(false);
+  pass.renewReadingPassLease.mockRejectedValue({ response: { status: 403, data: { detail: { code: "LEASE_EXPIRED", message: "Lease expired" } } } });
+  await tick(10000);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  pass.startReadingPassSession.mockRejectedValueOnce({ response: { status: 409, data: { detail: { code: "SESSION_ACTIVE_ELSEWHERE", message: "Another device owns the pass" } } } });
+  document.hasFocus.mockReturnValue(true);
+  await act(async () => window.dispatchEvent(new Event("focus")));
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(2);
+  expect(text()).toContain("Another device owns the pass");
+  expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+  await act(async () => window.dispatchEvent(new Event("focus")));
+  await tick(60000);
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(2);
+  expect(pass.startReadingPassSession.mock.calls.every(([request]) => request.transfer !== true)).toBe(true);
+});
+
+test.each([[401, "AUTH_REQUIRED"], [403, "BALANCE_EXHAUSTED"], [403, "PREPARATION_EXPIRED"], [403, "CONTENT_NOT_AUTHORIZED"]])("terminal %s/%s never triggers automatic new admission", async (status, code) => {
+  mockUser = { id: "test-reader", role: "user", reading_seconds_balance: 600 };
+  await mount();
+  pass.renewReadingPassLease.mockRejectedValueOnce({ response: { status, data: { detail: { code, message: "Synthetic terminal denial" } } } });
+  await tick(10000);
+  await act(async () => window.dispatchEvent(new Event("focus")));
+  expect(pass.startReadingPassSession).toHaveBeenCalledTimes(1);
+  expect(container.querySelector("article.reader-v2__canvas")).toBeNull();
+});
+
+
+test.each([null, { id: 'admin', role: 'admin', reading_seconds_balance: 600 }, { id: 'empty-reader', role: 'user', reading_seconds_balance: 0 }])('visual preview boundary does not auto-admit ineligible identity %#', async (identity) => {
+  mockUser = identity;
+  manyVisualPreview({ short: true });
+  await mount('/reader/test-book?p=1&a=120');
+  expect(pass.startReadingPassSession).not.toHaveBeenCalled();
+  expect(text()).toContain('Your three-page preview has ended');
 });
