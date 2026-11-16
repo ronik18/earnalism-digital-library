@@ -1689,5 +1689,24 @@
     "publication": false,
     "new_training_inference_compute_or_purchase_authority": false,
     "next_generated_prompt": "Use the retained exact owner rejection and corrected11–18second source mapping to settle the reference identity, then prepare a materially different evidence-based repair. Preserve both rejected takes, original soundtrack/style and consumed scopes; do not generate, train, allocate or publish."
+  },
+  "english_clip2_full_original_owner_selection_20261116": {
+    "event": "english_clip2_full_original_owner_selection_20261116",
+    "at": "2026-11-16T07:09:25.343975+00:00",
+    "state": "FULL_ORIGINAL_CLIP2_SELECTED_BOTH_SYNTHETIC_TAKES_STILL_REJECTED",
+    "reference_seconds": 4.8,
+    "reference_sha256": "ff6a1350955abfdf726d2b4f0dd7b81879e52828de6b4abfead0372d9b987976",
+    "source_compilation_span_seconds": [
+      10.067125,
+      14.867125
+    ],
+    "old_short_crop": "Superseded; preserve as history",
+    "clip3_and_seven_second_composite": "Context only, not selected",
+    "reference_role": "Human performance reference; not waveform conditioning, speaker transfer or synthetic-voice acceptance",
+    "private_selection_receipt_sha256": "965158c065219f1eb09a7fa475a13f6653fa3994c6e5dbd56836721abc9a3ad7",
+    "soundtrack_style_campaign_counters_rights_and_reader_only_state": "Unchanged",
+    "production_ready": false,
+    "new_generation_training_compute_purchase_or_publication_authority": false,
+    "next_generated_prompt": "Diagnose the two owner-rejected recordings offline against complete original4.8secondClip2. Audit retained training/data alignment and decoder/sampler contracts; preserve rejected takes, exact soundtrack/style and consumed scopes. Prepare one materially different repair proposal without execution."
   }
 }

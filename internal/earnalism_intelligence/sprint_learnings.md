@@ -3520,3 +3520,10 @@ Next generated prompt: Adjudicate both exact retained English trial recordings a
 The owner listened to both retained English trials and rejected muffled speech, missing/repeated words, mechanical boring delivery and absent breathing, expression, emotion and naturalness. These are now actual owner findings for the two exact audio hashes, not inferred ASR defects or numerical grades. Preserve the earlier advisory report and both recordings. The corrected00:11–00:18 source window crosses originalClip2 andClip3 at14.867125s; retain whole paired sources separately and clarify identity rather than attach one voice label to the splice. The current caption-only Parler path does not condition on a recording, so expanding the reference crop alone cannot repair the synthesis. No new inference/training/allocation/purchase/publication authority exists; exact soundtrack/style, prior holds and campaign state remain unchanged.
 
 Next generated prompt: Use the retained exact owner rejection and corrected11–18second source mapping to settle the reference identity, then prepare a materially different evidence-based repair. Preserve both rejected takes, original soundtrack/style and consumed scopes; do not generate, train, allocate or publish.
+
+
+## Complete original Clip2 confirmed — 16 November 2026
+
+The owner confirmed the full original4.8-secondClip2 as the performance reference. Retain its exact original PCM; the former shorter crop is superseded history, andClip3/composite11–18secondwindow remain context only. This resolves the source-selection ambiguity without clearing either rejected synthetic take, transferring a speaker identity or authorizing new generation/training/compute/purchases/publication. Exact soundtrack/style and all earlier campaign state remain unchanged.
+
+Next generated prompt: Diagnose the two owner-rejected recordings offline against complete original4.8secondClip2. Audit retained training/data alignment and decoder/sampler contracts; preserve rejected takes, exact soundtrack/style and consumed scopes. Prepare one materially different repair proposal without execution.
