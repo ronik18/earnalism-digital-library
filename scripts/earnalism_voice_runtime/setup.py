@@ -30,6 +30,21 @@ class NoRedirect(HTTPRedirectHandler):
         raise voice.VoiceBlocked("Wheel redirect refused")
 
 
+def _english_install_commands(python, destination, wheelhouse, requirements):
+    # The full local wheel lock already equals the profile's package closure.
+    # Parler's retained metadata contains a VCS dependency: do not ask pip to
+    # resolve it again. Install only the hashed closure, then KEEP pip check.
+    # Missing/incompatible dependencies still fail before package acceptance.
+    return [
+        [str(python), "-I", "-m", "venv", "--without-pip", str(destination)],
+        [sys.executable, "-I", "-m", "pip", "--python", str(destination / "bin/python"),
+         "install", "--no-index", "--find-links", str(wheelhouse), "--only-binary=:all:",
+         "--require-hashes", "--no-deps", "--no-cache-dir", "--no-compile",
+         "--disable-pip-version-check", "-r", str(requirements)],
+        [sys.executable, "-I", "-m", "pip", "--python", str(destination / "bin/python"), "check"],
+    ]
+
+
 def _read_lock(root, descriptor):
     manifest = voice._json(voice._descriptor(root, descriptor))
     rows = manifest.get("wheels")
@@ -148,13 +163,7 @@ def execute(profile_path, runtime_dir, authority_path):
             # Reuse the retained stdlib-venv approach. Existing provider pip's
             # --python dispatch installs/checks only the owned CP312 venv; no
             # pip/virtualenv bootstrap download or system-package write.
-            commands = [
-                [str(python),"-I","-m","venv","--without-pip",str(destination)],
-                [sys.executable,"-I","-m","pip","--python",str(destination/"bin/python"),
-                 "install","--no-index","--find-links",str(wheelhouse),"--only-binary=:all:",
-                 "--require-hashes","--no-cache-dir","--no-compile","--disable-pip-version-check","-r",str(requirements)],
-                [sys.executable,"-I","-m","pip","--python",str(destination/"bin/python"),"check"],
-            ]
+            commands = _english_install_commands(python, destination, wheelhouse, requirements)
         for index, command in enumerate(commands):
             voice._append(evidence / "events.jsonl", {"event": "fixed_package_step_intent", "step": index})
             with (evidence / (str(index) + ".log")).open("xb") as log:

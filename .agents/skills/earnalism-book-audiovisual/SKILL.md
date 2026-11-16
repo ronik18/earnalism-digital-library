@@ -75,6 +75,12 @@ notebook before treating temporary-runtime diagnostics as durable evidence.
 An absent child error leaves the actual cause unknown; CPU reproductions do not
 establish Linux/CUDA or voice qualification.
 
+The English installer consumes the complete hashed local wheel closure and keeps
+`pip check`; Parler's Git dependency metadata does not authorize another fetch.
+Verify saved scope/clock/rate literals before running cells; visible numeric form
+values may not have committed to source. Keep actual setup and voice acceptance
+separate, and preserve consumed scopes plus reusable verified inputs.
+
 Use existing scoring tools with the exact narration, measured clock and cleared
 finite instrumental sources. Preserve purposeful literary silence and liked
 passages; the short science-video default of continuous body music does not

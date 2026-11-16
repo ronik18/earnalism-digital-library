@@ -1506,5 +1506,68 @@
     "new_purchases": false,
     "new_runtime_authority_created": false,
     "next_generated_prompt": "Use the coherently rebound single notebook and private resources only after a fresh exact owner scope; preserve closed allocation evidence, qualify the explicit bootstrap and retain primary receipts before any storage or model work. No automatic retry."
+  },
+  "english_clip2_driver_pass_package_setup_failure_20261116": {
+    "event": "english_clip2_driver_pass_package_setup_failure_20261116",
+    "at": "2026-11-16T05:04:14.700646+00:00",
+    "title": "The Earnalism Voice / private Open Window two-scene qualification",
+    "state": "L4_CLOSED_DRIVER_PASS_EXACT_WHEELS_STAGED_INSTALLER_CORRECTION_NO_AUDIO",
+    "actual_new_scope": {
+      "fresh_L4_allocations_consumed": 1,
+      "allocations_remaining": 0,
+      "approved_minutes": 45,
+      "approved_additional_existing_CU": 3,
+      "observed_account_rate_CU_hour": 2.2,
+      "rate_shortened_seconds_from_original_Connect_clock": 2454,
+      "conservative_fullwindow_CU_bound": 2.9993333333333334,
+      "actual_charge": "UNITEMIZED_NOT_ASSUMED_ZERO",
+      "broad_Drive_connection": "Owner approved and actual mount completed"
+    },
+    "actual_result": {
+      "image": "2026.07",
+      "Python": "3.12.13",
+      "GPU": "NVIDIA L4",
+      "driver_lookup": "PASS_NOT_CUDA_OR_MODEL_QUALIFIED",
+      "four_primary_driver_receipts": "Saved and exact byte/hash verified",
+      "source_files_verified": 38,
+      "verified_transfers": 115,
+      "verified_wheels": 111,
+      "verified_transfer_bytes": 7197234091,
+      "package_setup_attempts": 1,
+      "cause": "Retained Parler wheel metadata names descript-audiotools @ git+https://github.com/descriptinc/audiotools; pip require-hashes refuses VCS resolution",
+      "native_attempts": 0,
+      "model_loads": 0,
+      "checkpoint_restores": 0,
+      "generate_calls": 0,
+      "new_audio": 0,
+      "training_updates": 0,
+      "closure": "Reconnect, disabled disconnect and empty active sessions observed"
+    },
+    "learning": {
+      "source_fix": "English complete local hash closure installs without a second dependency resolver; preserve pip check and installed-version validation. Legacy install behavior unchanged.",
+      "actual_offline_regressions": "Original VCS resolution reproduces; corrected install passes; missing/incompatible dependencies and modified wheel hashes still fail",
+      "validation": "213 source/CPU/mock tests pass; all111 exact-wheel metadata records check172 active dependency edges with0mismatches. Metadata is not full installation/CUDA/model acceptance.",
+      "numeric_UI": "Visible numeric form value did not commit to code. Kernel initially received0.0; corrected exact source before successful admission, retaining actual original clock and same allocation. Verify saved scope/clock/rate source before execution.",
+      "durable_inputs": "Keep completed exact115input transfers in private Drive for future preparation; no new download or runtime is authorized by cache availability."
+    },
+    "private_evidence": {
+      "workspace_key": "english-voice-qualification-approved-v3-20261116",
+      "export_bytes": 30048,
+      "export_sha256": "e31299e0f4bded2c00f65f7cd19bd4eebd5e7d945de2130b071105d8bc4db69c",
+      "closed_notebook_sha256": "9611575ca84b3d267c7cc57ef41ce87ca5621a06faaf380bab4dbd34c87d69c6",
+      "metadata_report_sha256": "8608d0fec481a17814e1435521d05caf8dd8898d834bf5d2fd2a54bfd229c72c"
+    },
+    "frozen_job_profile_checkpoint_scenes_captions_seeds_and_sampler": "UNCHANGED",
+    "all6_actual_media_hashes_preserved": true,
+    "score_learning": "no-new-learning; exact soundtrack preserved",
+    "video_learning": "no-new-learning; selected style and motion/fear/identity holds preserved",
+    "existing_Bengali_rights_reader_only_state_holds_and_operation_counters_preserved": true,
+    "both_scene_reviews": "PENDING_NO_NEW_AUDIO",
+    "source_or_metadata_tests_do_not_create_voice_acceptance": true,
+    "production_ready": false,
+    "publication": false,
+    "purchases": false,
+    "new_execution_authority": false,
+    "next_generated_prompt": "Use the corrected English offline-wheel installer and coherent disabled single notebook/resources after source review and required CI; preserve the closed run, primary receipts and verified Drive inputs. Any further runtime/setup needs a fresh exact owner scope. Keep soundtrack/style, prior holds and source fidelity intact; review both actual scenes only if generated."
   }
 }

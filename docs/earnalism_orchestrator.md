@@ -166,6 +166,20 @@ runtime binaries are checked by the native bridge, outside corpus/cache reads.
 Neither distinction extends the allocation or weakens source/rights checks. The
 prior Darwin CPU100 contract and all balanced128 production holds remain intact.
 
+English restoration installs only the complete hash-locked local wheel set,
+without pip resolving dependencies a second time. The retained Parler metadata
+names a Git dependency that hash-checking mode cannot resolve; its matching
+distribution already exists in the exact closure. Keep `pip check` and installed
+version verification after installation: missing/incompatible dependencies and
+changed hashes still block acceptance. Check the frozen dependency metadata and
+exercise the actual offline installer when this path changes, before another GPU
+allocation. CPU/package checks do not establish model or narration quality.
+
+Verify saved cell literals for the actual scope, Connect timestamp and observed
+rate before running them. A numeric form widget can display a value without
+committing it to the cell source. Correct only pre-admission input within the
+same original clock; never renew a grant or replay an admitted model stage.
+
 This comparison fixes two takes, 180 seconds of total native audio and 32 MiB of
 native output, with no optimizer, new weights or automatic retry. Source audio
 guides the unspoken performance brief and later listening comparison; Parler
