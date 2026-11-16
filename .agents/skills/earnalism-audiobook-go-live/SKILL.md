@@ -33,6 +33,11 @@ bounded primary receipts in saved notebook output before runtime cleanup, then
 verify their bytes. Missing child diagnostics leave the actual cause unknown;
 a CPU reproduction cannot diagnose Colab or qualify CUDA.
 
+For the English complete-wheel restoration, install only the exact hashed local
+closure and retain `pip check` plus installed-version checks; do not re-resolve
+Parler's Git metadata dependency or fetch its unpinned repository. Verify saved
+cell scope/clock/rate literals, since a numeric widget alone may be uncommitted.
+
 
 Before allocating Colab, verify the target Python ABI in the provider's current
 runtime-version documentation and pin a compatible image in notebook metadata.
