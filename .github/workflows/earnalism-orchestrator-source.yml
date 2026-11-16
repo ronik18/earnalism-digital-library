@@ -55,7 +55,7 @@ jobs:
         run: python scripts/build_earnalism_orchestrator_colab.py --check
       - name: Exercise orchestration and inference control without model access
         run: |
-          python -m unittest scripts.test_earnalism_orchestrator scripts.test_earnalism_voice scripts.test_earnalism_media_adapters scripts.test_build_earnalism_orchestrator_colab scripts.test_earnalism_provider_driver_bootstrap scripts.test_earnalism_pre_drive_loader_entry scripts.test_earnalism_position_table scripts.test_earnalism_orchestrator_batch scripts.test_earnalism_content_context scripts.test_earnalism_metal_rust_adapter scripts.test_earnalism_voice_en_qualification scripts.test_earnalism_orchestrator_runtime_inputs -v
+          python -m unittest scripts.test_earnalism_orchestrator scripts.test_earnalism_voice scripts.test_earnalism_media_adapters scripts.test_build_earnalism_orchestrator_colab scripts.test_earnalism_provider_driver_bootstrap scripts.test_earnalism_pre_drive_loader_entry scripts.test_earnalism_pre_drive_failure_evidence scripts.test_earnalism_position_table scripts.test_earnalism_orchestrator_batch scripts.test_earnalism_content_context scripts.test_earnalism_metal_rust_adapter scripts.test_earnalism_voice_en_qualification scripts.test_earnalism_orchestrator_runtime_inputs -v
           python -m unittest scripts.test_earnalism_voice_balanced_runtime scripts.test_earnalism_voice_darwin scripts.test_earnalism_voice_cpu_controller -v
           PYTHONPATH=skills/earnalism-video/software:. python -m unittest metal_rust.test_inputs metal_rust.test_model -v
           node --test skills/earnalism-video/software/metal_rust/test_layout.mjs

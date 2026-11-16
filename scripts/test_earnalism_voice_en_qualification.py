@@ -515,6 +515,8 @@ class EnglishQualificationContracts(unittest.TestCase):
             "schema": "earnalism.provider_driver_preload.v1",
             "state": "EXACT_PROVIDER_DRIVER_PRELOAD_INSTALLED_NOT_CUDA_QUALIFIED",
             "credential_stripped_worker_env": "UNCHANGED",
+            "explicit_bootstrap_mode": helper.EXPLICIT_MODE,
+            "explicit_module_name": helper.OWNED_MODULE,
             "bootstrap": self.absolute_descriptor(startup),
             "provider_binding": {
                 "schema": "earnalism.provider_driver_binding.v1",
@@ -536,7 +538,8 @@ class EnglishQualificationContracts(unittest.TestCase):
         authority_path = self.root / "synthetic-native-authority.json"
         self.write(authority_path, authority)
         current = {"python": "3.12", "packages": deepcopy(LINUX_PACKAGES),
-                   "sitecustomize": str(startup), "provider_preloaded": True}
+                   "provider_bootstrap": str(startup), "provider_preloaded": True,
+                   "provider_spec": self.absolute_descriptor(library),"provider_library":str(library)}
         return SimpleNamespace(plan=plan, authority=authority, authority_path=authority_path,
                                directory=directory, python=python, current=current,
                                result_path=result_path, setup_path=setup_path, journal=journal)
@@ -665,6 +668,40 @@ class EnglishQualificationContracts(unittest.TestCase):
         native.assert_not_called()
         self.assertEqual(fixture.journal.read_bytes(), before)
         self.assertFalse(output.exists())
+
+    def test_owned_worker_preloads_in_process_before_runtime_import_and_stops_on_failure(self):
+        fixture=self.bridge_fixture()
+        output=self.root/'synthetic-owned-worker';output.mkdir()
+        intent={'job_sha256':fixture.plan['job_sha256'],
+            'authority_sha256':voice.digest(fixture.authority_path),'parent_pid':123}
+        self.write(output/'INTENT.json',intent)
+        with fixture.journal.open('a') as journal:
+            journal.write(json.dumps({'event':'render_intent',**intent,'output':str(output)})+'\n')
+        fake_runtime=self.root/'synthetic-runtime.py'
+        fake_runtime.write_text(
+            "import builtins\n"
+            "assert getattr(builtins,'_earnalism_synthetic_worker_preloaded',False), 'runtime imported before owned preload'\n"
+            "def run(*args,**kwargs): return {'state':'SYNTHETIC_WORKER_ORDER_ONLY_NOT_MODEL'}\n")
+        def preload(*args):
+            builtins._earnalism_synthetic_worker_preloaded=True
+        shared=[patch.object(voice,'validate_job',return_value=fixture.plan),
+            patch.object(voice,'_authority',return_value=fixture.authority),
+            patch.object(voice,'_profile',return_value=(self.profile,{})),
+            patch.object(voice,'_arm_child_containment'),
+            patch.object(voice,'_linux_interpreter',return_value=str(fixture.python)),
+            patch.object(voice.sys,'executable',str(fixture.python)),
+            patch.object(voice,'RUNTIME',fake_runtime)]
+        for change in shared:change.start();self.addCleanup(change.stop)
+        with patch.object(builtins,'_earnalism_synthetic_worker_preloaded',False,create=True), \
+                patch.object(voice,'_load_owned_provider_in_this_process',side_effect=preload) as owned:
+            result=voice._worker(self.job_path,output,fixture.authority_path)
+            self.assertEqual(result['state'],'SYNTHETIC_WORKER_ORDER_ONLY_NOT_MODEL')
+            owned.assert_called_once_with(fixture.authority,fixture.authority_path.parent)
+        with patch.object(builtins,'_earnalism_synthetic_worker_preloaded',False,create=True), \
+                patch.object(voice,'_load_owned_provider_in_this_process',
+                    side_effect=ValueError('SYNTHETIC_OWNED_PRELOAD_FAILURE')), \
+                self.assertRaisesRegex(ValueError,'SYNTHETIC_OWNED_PRELOAD_FAILURE'):
+            voice._worker(self.job_path,output,fixture.authority_path)
 
 
 if __name__ == "__main__":

@@ -19,9 +19,9 @@ import types
 import venv
 import zlib
 
-HELPER_BYTES = 6686
-HELPER_SHA256 = 'd1cdf9474e6932ee5fe278b0c6ab2aba12eb8f08ca027a8d46cd4224cf04b9ec'
-HELPER_ZLIB_B64 = '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'
+HELPER_BYTES = 8580
+HELPER_SHA256 = '4c133509eb422598a626c006873c66e176e4961927e9187313dbbe35f5336cf7'
+HELPER_ZLIB_B64 = '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'
 MINIMAL_ENV = {'PATH': os.defpath, 'LANG': 'C.UTF-8', 'PYTHONDONTWRITEBYTECODE': '1',
                'HF_HUB_OFFLINE': '1', 'TRANSFORMERS_OFFLINE': '1',
                'HF_HUB_DISABLE_TELEMETRY': '1'}
@@ -69,9 +69,58 @@ def _write(path, value):
         stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
 
 
-def _fresh_probe(python, timeout):
+def _emit_notebook_evidence(output):
+    """Print exact bounded receipt bytes before a caller can release the VM.
+
+    The four fixed metadata files contain no model/audio/environment dump. The
+    private notebook output is the storage-independent evidence carrier; this
+    function makes no claim that Google Drive or another durable sink saved it.
+    """
+    envelope = {'schema': 'earnalism.pre_storage_notebook_evidence.v1',
+                'runtime_or_CUDA_or_model_qualification': False, 'files': []}
+    total = 0
+    for name in ['INTENT.json', 'PROVIDER-BINDING.json',
+                 'PROVIDER-DRIVER-PRELOAD.json', 'RESULT.json']:
+        item = {'name': name}
+        try:
+            path = Path(output) / name
+            if path.is_symlink() or not path.is_file():
+                item['state'] = 'MISSING_OR_NOT_REGULAR'
+            elif path.stat().st_size > 16384 or total + path.stat().st_size > 32768:
+                item.update(state='OMITTED_EXCEEDS_BOUND', bytes=path.stat().st_size)
+            else:
+                with path.open('rb') as stream:
+                    raw = stream.read(16385)
+                if len(raw) > 16384 or total + len(raw) > 32768:
+                    raise ValueError('Changed metadata exceeded notebook evidence bound')
+                total += len(raw)
+                item.update(state='EXACT_BYTES', bytes=len(raw),
+                            sha256=hashlib.sha256(raw).hexdigest(),
+                            base64=base64.b64encode(raw).decode('ascii'))
+        except Exception as error:
+            item.update(state='EVIDENCE_READ_FAILED', error_type=type(error).__name__)
+        envelope['files'].append(item)
+    print('EARNALISM_PRE_STORAGE_EVIDENCE=' +
+          json.dumps(envelope, sort_keys=True, allow_nan=False), flush=True)
+
+
+def _fresh_probe(python, timeout, *, library, bootstrap):
+    # Execute the fixed exact bootstrap explicitly. Automatic sitecustomize can
+    # be shadowed by the provider/base interpreter. Keep the original basename
+    # lookup gate too; do not infer its success from an absolute loaded handle.
+    code = """import base64,ctypes,hashlib,json,sys,types,zlib
+expected=json.loads(sys.argv[1]); raw=zlib.decompress(base64.b64decode(sys.argv[2],validate=True))
+""" + "if hashlib.sha256(raw).hexdigest() != " + repr(HELPER_SHA256) + ": raise RuntimeError('EXACT_HELPER_CAPSULE_REQUIRED')\n" + """helper=types.ModuleType('_earnalism_exact_child_provider_helper')
+exec(compile(raw,'<exact-provider-helper>','exec'),helper.__dict__)
+owned=helper.load_exact_preload(expected['library'],expected['bootstrap'])
+baseline=sys.modules.get('sitecustomize')
+metadata={'state':'EXACT_PROVIDER_BOOTSTRAP_LOADED_BEFORE_LOOKUP','bootstrap_sha256':expected['bootstrap']['sha256'],'bootstrap_file':owned.__file__,'library_path':owned._EARNALISM_PROVIDER_DRIVER._name,'baseline_sitecustomize_file':getattr(baseline,'__file__',None),'Torch_or_TTS_imports':False}
+print(json.dumps(metadata),flush=True)
+ctypes.CDLL('libcuda.so.1')
+print(json.dumps({'state':'FRESH_MINIMALENV_DRIVER_LOOKUP_PASS','exact_bootstrap_verified':True,'basename_lookup_performed':True,'Torch_or_TTS_imports':False}),flush=True)
+"""
     return subprocess.run([str(python), '-I', '-B', '-c',
-        "import ctypes,json; ctypes.CDLL('libcuda.so.1'); print(json.dumps({'state':'FRESH_MINIMALENV_DRIVER_LOOKUP_PASS','Torch_or_TTS_imports':False}))"],
+        code,json.dumps({'library':library,'bootstrap':bootstrap},sort_keys=True),HELPER_ZLIB_B64],
         env=dict(MINIMAL_ENV), stdin=subprocess.DEVNULL, capture_output=True,
         text=True, timeout=timeout, check=True)
 
@@ -95,7 +144,9 @@ def run(scope, output_dir):
               'Torch_imports': 0, 'TTS_model_loads': 0, 'training_updates': 0,
               'GPU_allocations_created_by_entry': 0, 'CUDA_compute_qualified': False,
               'production_ready': False, 'publication': False}
-    _write(output / 'INTENT.json', {**result, 'actual_scope_ref': scope['actual_scope_ref']})
+    _write(output / 'INTENT.json', {**result, 'actual_scope_ref': scope['actual_scope_ref'],
+        'driver_scope':{key:scope[key] for key in ['approved','actual_scope_ref','allocation_started_at',
+            'original_deadline_epoch','observed_units_per_hour','approved_compute_units','shutdown_guard_armed']}})
     try:
         helper = _load_helper()
         provider = helper.resolve_provider_driver()
@@ -104,12 +155,16 @@ def run(scope, output_dir):
         owned_venv = output / 'python312-venv'
         venv.EnvBuilder(with_pip=False, symlinks=False).create(owned_venv)
         site = owned_venv / 'lib/python3.12/site-packages'
-        helper.install_preload(provider, site, output)
+        preload = helper.install_preload(provider, site, output)
         _scope(scope)
-        probe = _fresh_probe(owned_venv / 'bin/python', min(20, deadline - time.time() - 10))
+        probe = _fresh_probe(owned_venv / 'bin/python', min(20, deadline - time.time() - 10),
+                             library=provider['library'],bootstrap=preload['bootstrap'])
+        # Preserve completed-child diagnostics before parsing can reject an
+        # unexpected final line/state. Such a rejection is not a lookup PASS.
+        result.update(child_stdout=probe.stdout or '',child_stderr=probe.stderr or '',child_returncode=probe.returncode)
         # This exact output comes from the fresh child, not the parent library load.
         stdout = probe.stdout.strip()
-        if json.loads(stdout).get('state') != 'FRESH_MINIMALENV_DRIVER_LOOKUP_PASS':
+        if not stdout or json.loads(stdout.splitlines()[-1]).get('state') != 'FRESH_MINIMALENV_DRIVER_LOOKUP_PASS':
             raise ValueError('FRESH_CHILD_LOOKUP_RECEIPT_REQUIRED')
         result.update(state='FRESH_MINIMALENV_DRIVER_LOOKUP_PASS_NOT_TORCH_OR_TTS_QUALIFICATION',
                       child_stdout=stdout, child_stderr=probe.stderr,
@@ -117,13 +172,21 @@ def run(scope, output_dir):
     except BaseException as error:
         result.update(state='PRE_STORAGE_DRIVER_LOOKUP_FAILED_NO_RETRY',
                       error_type=type(error).__name__, error=str(error)[:250])
-        if isinstance(error, subprocess.CalledProcessError):
-            result['child_stdout'] = (error.stdout or '')[-1000:]
-            result['child_stderr'] = (error.stderr or '')[-1000:]
+        if isinstance(error, (subprocess.CalledProcessError, subprocess.TimeoutExpired)):
+            for key, value in [('child_stdout', error.stdout), ('child_stderr', error.stderr)]:
+                if isinstance(value, bytes):
+                    value = value.decode('utf-8', errors='replace')
+                value = value or ''
+                result[key] = value[-1000:]
+                result[key+'_original_characters'] = len(value)
+                result[key+'_truncated'] = len(value) > 1000
+            if isinstance(error, subprocess.CalledProcessError):
+                result['child_returncode'] = error.returncode
     finally:
         result['finished_epoch'] = time.time()
         receipt = output / 'RESULT.json'
         _write(receipt, result)
+        _emit_notebook_evidence(output)
         # Bounded JSON makes the small actual receipt retainable in notebook output
         # before any interactive storage-authentication prompt is shown.
         summary = {key: result[key] for key in [
