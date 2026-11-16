@@ -18915,5 +18915,37 @@
     "publication": false,
     "production_ready": false,
     "next_generated_prompt": "Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication."
+  },
+  "bounded_retained_role_ancestry_anchor_20261117": {
+    "event": "bounded_retained_role_ancestry_anchor_20261117",
+    "at": "2026-11-16T18:47:09.965308+00:00",
+    "state": "REPRODUCED_HISTORY_FALSE_NEGATIVE_REPAIRED_WITH_UNCHANGED_GATES",
+    "failed_head": "2eda588e9240379e817793ff7854155afb019f5c",
+    "failure": "Required regression stopped before application tests: HEAD depth64 placed the retained controller at edge63 and hid its immediate bootstrap parent at edge64",
+    "actual_reproduction": "Same seven pinned metadata fetches succeeded; retained bootstrap ancestry returned1. One commit-only depth64 fetch anchored at the admitted controller restored ancestry exit0",
+    "change": "Conditionally re-anchor immutable successor-role history after bootstrap readmission; retain original HEAD admission bound and all custody/tree/hash/type/manual checks",
+    "validation": {
+      "history_fixture_tests": 36,
+      "result": "PASS",
+      "new_boundary_test_against_original_workflow": "EXPECTED_FAIL",
+      "new_boundary_test_against_fix": "PASS",
+      "over_bound_custody_type_tree_manual_transport_negatives": "Preserved"
+    },
+    "source_runtime_notebook_scene_reference_and_media_bytes_changed": false,
+    "qualification_software_bindings_changed": false,
+    "metadata_fetch_depth": 64,
+    "unbounded_or_unshallow_fetch": false,
+    "runtime_authority": null,
+    "compute_allowance": null,
+    "owner_authorized": false,
+    "execution_enabled": false,
+    "actual_new_Colab_package_driver_CUDA_TTS_generation_training_operations": 0,
+    "quality_rights_reader_only_counters_and_existing_holds": "Unchanged",
+    "purchases": false,
+    "publication": false,
+    "production_ready": false,
+    "learning": "Hydrate the exact retained-role ancestry from its own admitted immutable anchor; unrelated descendant growth must not turn a real adjacent parent into a false missing-ancestry result. A bounded candidate ancestry limit remains a separate genuine check. Classify failures before retries and reuse unchanged software/media evidence.",
+    "private_workspace_key": "foundation-qualification-runner-implementation-20261116-v1/ci-history-diagnosis",
+    "next_generated_prompt": "Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication."
   }
 }

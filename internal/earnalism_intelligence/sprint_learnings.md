@@ -3578,3 +3578,10 @@ Implemented the separate environment-only operation in the same notebook. It con
 Actual training lineage is retained separately from voice acceptance: Balanced128 exists, but English/Bengali identity, sustained naturalness and full-content performance remain unqualified. Scratch motion research and adaptive score rules do not establish trained general cinematic/music foundations. No new runtime, model, score, video or media-quality outcome occurred. Reconciled newer installed skill guidance without overwriting either source mirror.
 
 Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.
+
+
+## Retained-role history boundary repair (2026-11-17)
+
+Reproduced the source-CI ancestry false negative at HEAD depth64: the admitted retained controller was visible while its immediate bootstrap parent was cut off. Re-anchor commit-only metadata at that immutable controller after bootstrap readmission. Keep the original candidate bound and all custody/type/tree/hash/manual checks. The new boundary fixture fails on the original workflow and passes with the repair; all36 history cases pass, including over-bound and authority negatives. Runtime/notebook/source bindings and all media remain unchanged; no model/provider retry or new quality acceptance.
+
+Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.

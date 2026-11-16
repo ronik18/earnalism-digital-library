@@ -351,6 +351,29 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             self.assertEqual(f.git('show',unrelated+':'+path),f.git('show','HEAD:'+path))
         self.assert_retained_ancestry_rejection(bootstrap,unrelated)
 
+    def test_retained_controller_at_head_depth_edge_keeps_its_bootstrap_parent(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        self.descendants(62)
+        # HEAD depth64 includes retained C at edge63 but hides its immediate B
+        # parent at edge64. C must still prove ancestry/custody before reanchoring.
+        self.assertEqual(int(self.fixture.git('rev-list','--count',controller+'..HEAD')),63)
+        self.assertEqual(int(self.fixture.git('rev-list','--count',bootstrap+'..HEAD')),64)
+        clone=self.clone()
+        before=self.config(clone)
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,retained=controller)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(self.config(clone),before)
+        bootstrap_index=next(i for i,args in enumerate(commands)
+            if 'fetch' in args and '--refetch' in args and '--depth=2' in args
+            and args[-1]==bootstrap)
+        ancestry_index=next(i for i,args in enumerate(commands)
+            if args[-4:]==['merge-base','--is-ancestor',bootstrap,controller])
+        anchored=[i for i,args in enumerate(commands)
+            if 'fetch' in args and '--filter=tree:0' in args and '--depth=64' in args
+            and args[-1]==controller and bootstrap_index<i<ancestry_index]
+        self.assertEqual(len(anchored),1)
+        self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))
+
     def test_retained_controller_beyond_bounded_candidate_history_is_rejected(self):
         bootstrap,controller=self.successor_pair_with_diagnostic()
         self.descendants(70)
