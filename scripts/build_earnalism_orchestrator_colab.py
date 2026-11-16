@@ -26,6 +26,7 @@ FILES = (
     "scripts/earnalism_content_context.py",
     "scripts/earnalism_voice.py",
     "scripts/earnalism_foundation_diagnostic.py",
+    "scripts/earnalism_foundation_qualification.py",
     "scripts/earnalism_media_adapters.py",
     "skills/earnalism-video/software/src/render-browser.mjs",
     "skills/earnalism-video/software/src/render-runtime.mjs",
@@ -55,6 +56,7 @@ FILES = (
     "skills/earnalism-audiobook-go-live/SKILL.md",
     "skills/earnalism-video/SKILL.md",
     "docs/earnalism_orchestrator.md",
+    "docs/earnalism_foundation_qualification.md",
 )
 
 
@@ -135,6 +137,7 @@ INSTRUCTION = "Build the GO LIVE ready output for the audiovisual cinematic vers
 EXECUTE = False #@param {type:"boolean"}
 BATCH_PATH = ""  # Optional private earnalism.production_batch.v1 input instead of INSTRUCTION.
 FOUNDATION_DIAGNOSTIC_PATH = ""  # Optional frozen private proposal; separate from production stages.
+FOUNDATION_QUALIFICATION_PATH = ""  # Optional private environment request; never runs the model diagnostic.
 PREPARATION_WORKERS = 3  # Parallel read-only planning, not concurrent model starts.
 BATCH_AUTHORITIES_PATH = ""  # Optional exact project-bound scopes; never created here.
 
@@ -151,8 +154,11 @@ FEEDBACK_PATH = ""  # Optional exact-candidate feedback JSON in the private work
 runtime_context = {}
 runtime_guard = None
 runtime_authority = None
-if globals().get("FOUNDATION_DIAGNOSTIC_PATH") and (globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH")):
-    raise ValueError("Choose the private diagnostic alone; batch/production feedback are separate operations")
+private_modes = [bool(globals().get(name)) for name in ("FOUNDATION_DIAGNOSTIC_PATH", "FOUNDATION_QUALIFICATION_PATH")]
+if sum(private_modes) > 1 or (any(private_modes) and (globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH"))):
+    raise ValueError("Choose one private diagnostic or qualification operation; batch/production feedback are separate")
+if globals().get("FOUNDATION_QUALIFICATION_PATH") and globals().get("QUALIFY_PRE_STORAGE_DRIVER"):
+    raise ValueError("Qualification has its own provider lookup; do not dispatch the historical lookup entry")
 if EXECUTE:
     authority_file = pathlib.Path(RUNTIME_AUTHORITY_PATH)
     if not authority_file.is_file():
@@ -296,7 +302,26 @@ def retain_notebook_event(kind, payload):
     return {"event_path":str(event_path),"event_sha256":hashlib.sha256(raw).hexdigest()}
 result = None
 try:
-    if EXECUTE and globals().get("QUALIFY_PRE_STORAGE_DRIVER", False):
+    source_root = None
+    if EXECUTE and globals().get("FOUNDATION_QUALIFICATION_PATH"):
+        # Public reviewed software is prepared before Drive. Only the actual
+        # existing provider driver is resolved here; no Torch/package/model work.
+        source_root = prepare_reviewed_software()
+        from scripts import earnalism_orchestrator as qualification_engine
+        from scripts import earnalism_foundation_qualification as qualification
+        original_authority = pathlib.Path(RUNTIME_AUTHORITY_PATH).resolve()
+        early_runtime = qualification_engine._runtime(original_authority,
+                    {"id":runtime_authority["project_id"]}, original_authority.parent, runtime_context)
+        early_receipt = qualification.pre_storage(early_runtime, runtime_context,
+                    pathlib.Path("/content/earnalism-foundation-qualification-prestorage"))
+        early_path = pathlib.Path(early_receipt["path"])
+        early_raw = early_path.read_bytes()
+        if len(early_raw) > 65536:
+            raise ValueError("Primary provider lookup receipt exceeds its notebook evidence bound")
+        runtime_context["foundation_qualification_pre_storage"] = early_receipt
+        print(json.dumps({"qualification_pre_storage":json.loads(early_raw),
+                          "receipt":early_receipt}, indent=2), flush=True)
+    elif EXECUTE and globals().get("QUALIFY_PRE_STORAGE_DRIVER", False):
         qualify_pre_storage_driver()
     workspace, registry = connect_private_workspace()
     admitted_runtime_authority = None
@@ -315,9 +340,17 @@ try:
                 handle.flush()
                 import os
                 os.fsync(handle.fileno())
-    source_root = prepare_reviewed_software()
+    if source_root is None:
+        source_root = prepare_reviewed_software()
     from scripts.earnalism_orchestrator import run, feedback
-    if globals().get("FOUNDATION_DIAGNOSTIC_PATH"):
+    if globals().get("FOUNDATION_QUALIFICATION_PATH"):
+        if globals().get("FOUNDATION_DIAGNOSTIC_PATH") or globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH"):
+            raise ValueError("Qualification cannot dispatch diagnostic, batch or production feedback")
+        from scripts.earnalism_orchestrator import qualify_foundation
+        result = qualify_foundation(pathlib.Path(FOUNDATION_QUALIFICATION_PATH), workspace,
+                      execute=EXECUTE, authority_path=admitted_runtime_authority,
+                      runtime_context=runtime_context)
+    elif globals().get("FOUNDATION_DIAGNOSTIC_PATH"):
         if globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH"):
             raise ValueError("Diagnostic mode cannot run batch or production feedback")
         from scripts.earnalism_orchestrator import diagnose_foundation
@@ -435,9 +468,9 @@ def verify_notebook(output: Path, *, root: Path = ROOT):
             if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "EXECUTE":
                 if ast.literal_eval(node.value) is not False:
                     raise ValueError("Execution default must be false")
-            if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "FOUNDATION_DIAGNOSTIC_PATH":
+            if isinstance(node.targets[0], ast.Name) and node.targets[0].id in {"FOUNDATION_DIAGNOSTIC_PATH", "FOUNDATION_QUALIFICATION_PATH"}:
                 if ast.literal_eval(node.value) != "":
-                    raise ValueError("Diagnostic default must be empty; private input stays outside the capsule")
+                    raise ValueError("Private diagnostic/qualification defaults must be empty; input stays outside the capsule")
             if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "raw_source":
                 if raw is not None:
                     raise ValueError("Ambiguous source capsule")

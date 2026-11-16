@@ -1,9 +1,51 @@
-# Foundation diagnostic: environment qualification preparation
+# Foundation diagnostic: environment qualification
 
 The foundation diagnostic consumes an existing qualified environment; it does
-not install packages. A prepared recipe is not an implemented setup runner,
-runtime evidence, compute authority or voice acceptance. Keep execution disabled
-until the actual scope and applicable runtime prerequisites are satisfied.
+not install packages. The separate `foundation-qualification` operation prepares
+that environment under an actual bounded scope and records its observations.
+A recipe, implementation or software test is not actual runtime evidence,
+compute authority or voice acceptance. Distributed execution remains disabled.
+
+Use the existing notebook's empty `FOUNDATION_QUALIFICATION_PATH` control, or
+inspect the private request without execution:
+
+```bash
+python3 -m scripts.earnalism_orchestrator foundation-qualification \
+  --request /PRIVATE/QUALIFICATION-REQUEST.json --workspace /PRIVATE
+```
+
+This route is outside production stages and never dispatches the two scenes.
+The new request binds the unchanged frozen proposal, original data-only recipe,
+complete wheel manifest and current runner sources. A separate
+`foundation_qualification` capability records one package attempt, one provider
+lookup and one minimal CUDA call, with zero model loads/generation/training.
+The existing runtime envelope still checks the original clock/rate/allowance and
+armed shutdown guard. A qualification capability cannot reserve model work;
+diagnostic/production capabilities cannot substitute for it.
+
+For an authorized future notebook run, reviewed public software and provider
+lookup precede interactive Drive access or large inputs. Its bounded primary
+receipt is printed before mounting Drive and bound to the original scope/clock.
+The durable workspace then retains the qualification intent, raw setup/probe
+logs and exact results. Final packages and preload belong to the owned local
+runtime venv, while private journals survive on Drive. The canonical experiment
+blocks package/probe replay across renamed requests or scopes; verified completed
+results are status-only and do not qualify a new runtime.
+
+Qualification returns actual interpreter/preload/package/CUDA descriptors as
+evidence, without synthesizing another authority. A later selected diagnostic
+independently validates its genuine complete-operation scope and actual files.
+It retains its own one-load/two-call counter. No route automatically accepts a
+voice, changes the soundtrack/style or publishes a candidate.
+
+Plan the runtime lifecycle before allocation. Standalone qualification keeps the
+notebook's default final disconnect. If the actual approved complete operation
+also includes a later selected diagnostic in the same allocation, configure
+`AUTO_DISCONNECT_OWN_RUNTIME=False` before starting and retain the independent
+original-deadline guard. Populate only observed diagnostic descriptors under that
+existing genuine scope, finish its bounded operation and close the runtime.
+Qualification does not restart the clock, grant another allocation or justify
+reconstructing an expired environment from old receipts.
 
 Do not reuse an English restoration request, allocation-specific setup result,
 expired clock or disposable lookup venv as foundation qualification. The English
@@ -61,9 +103,10 @@ Under a future authorized and reviewed runner, the qualification order is:
    cannot authorize dispatch. Only genuine complete-operation authority and
    actual prerequisite evidence can populate the existing diagnostic envelope.
 
-The future runner must itself be reviewed and hash-bound before use. A data-only
-recipe must report `RECIPE_PREPARED_RUNNER_UNBOUND_RUNTIME_UNQUALIFIED`; do not
-describe it as an installed bridge or an admitted runtime. Native WAV bytes are
+Use the reviewed runner's current source binding; preserve historical packets
+and their original states. A data-only recipe still reports
+`RECIPE_PREPARED_RUNNER_UNBOUND_RUNTIME_UNQUALIFIED`; implemented dry planning
+does not populate actual observations or admit a runtime. Native WAV bytes are
 bounded across both scenes; trace limits are per scene. The cumulative audio
 duration threshold is checked after native persistence, so it is an acceptance
 and stop threshold rather than a hard pre-write ceiling. None of these bounds

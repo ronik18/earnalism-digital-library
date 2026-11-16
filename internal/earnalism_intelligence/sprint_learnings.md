@@ -3569,3 +3569,19 @@ Next generated prompt: Review the prepared fresh admission and its exact complet
 Prepared the exact local111 requirements, data-only isolated setup commands, final-venv provider/CUDA evidence requirements and complete-operation resource proposal. The old English setup/request and disposable lookup venv remain allocation-specific history. Known logical inputs total 7,165,450,912 bytes; this excludes installed expansion, scratch, source capsule and export duplication and is not a disk or transfer allowance. Adapted checkpoint parts are excluded. Actual resources/receipts remain unset; recipe prepared, runner unbound, runtime unqualified. No new runtime operation or weight/voice/score/video learning occurred. Preserve full Clip2, exact soundtrack/style, canonical consumed journals, rejected takes and Bengali rights/reader-only/counters.
 
 Next generated prompt: Review and bind a future qualification runner to the prepared exact wheel/setup/provider/CUDA recipe and complete-operation resource proposal. Keep execution disabled; leave authority and runtime observations unset until genuinely supplied. Preserve the frozen two scenes, full Clip2, exact soundtrack/style and consumed journals; no purchases or publication.
+
+
+## Foundation qualification runner and capability readiness (2026-11-16)
+
+Implemented the separate environment-only operation in the same notebook. It consumes exact local111 wheels, uses the final owned local venv, retains pre-Drive driver evidence and checks original clock/interpreter/provider bindings before the tiny CUDA child. Canonical intent prevents automatic package/probe replay; qualification cannot reserve or dispatch model work. The disabled real admission was rejected with zero native effects; 87 focused software tests and independent reviews passed. Preserve the original recipe, full Clip2, exact soundtrack/style, rejected takes and campaign rights/reader-only/counters.
+
+Actual training lineage is retained separately from voice acceptance: Balanced128 exists, but English/Bengali identity, sustained naturalness and full-content performance remain unqualified. Scratch motion research and adaptive score rules do not establish trained general cinematic/music foundations. No new runtime, model, score, video or media-quality outcome occurred. Reconciled newer installed skill guidance without overwriting either source mirror.
+
+Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.
+
+
+## Retained-role history boundary repair (2026-11-17)
+
+Reproduced the source-CI ancestry false negative at HEAD depth64: the admitted retained controller was visible while its immediate bootstrap parent was cut off. Re-anchor commit-only metadata at that immutable controller after bootstrap readmission. Keep the original candidate bound and all custody/type/tree/hash/manual checks. The new boundary fixture fails on the original workflow and passes with the repair; all36 history cases pass, including over-bound and authority negatives. Runtime/notebook/source bindings and all media remain unchanged; no model/provider retry or new quality acceptance.
+
+Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.

@@ -140,6 +140,8 @@ def verify_result(plan, output):
 
 
 def _authority(runtime, plan, workspace):
+    require("foundation_qualification" not in runtime,
+            "Environment-qualification authority cannot dispatch the model diagnostic")
     value = runtime.get("foundation_diagnostic", {})
     require(runtime.get("project_id") == plan["proposal"]["id"]
             and runtime.get("max_model_stage_starts") == 1

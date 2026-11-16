@@ -242,6 +242,11 @@ jobs:
             # Re-admit B/A with their trees: tree:0 may already have their commit
             # IDs, so normal negotiation could otherwise skip promised trees.
             git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=2 origin "$pair_bootstrap_pin"
+            if [[ "${PAIR_SOURCE_ONLY:-false}" == true && "$pair_bootstrap_pin" != "$HISTORICAL_PAIR_BOOTSTRAP_SHA" ]]; then
+              # HEAD admission can end exactly at retained C; restore its own
+              # bounded commit ancestry before checking the immutable B/C pair.
+              git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
+            fi
             git -c remote.origin.promisor=false merge-base --is-ancestor "$pair_bootstrap_pin" "$pair_controller_pin"
             read -r pair_actual_pin pair_parent_pin pair_extra_parent <<< "$(git -c remote.origin.promisor=false rev-list --parents -n 1 "$pair_bootstrap_pin")"
             [[ "$pair_actual_pin" == "$pair_bootstrap_pin" && "$pair_parent_pin" =~ ^[0-9a-f]{40}$ && -z "$pair_extra_parent" ]] || exit 1
