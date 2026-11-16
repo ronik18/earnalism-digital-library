@@ -568,6 +568,8 @@ def _runtime(path, project, workspace, observations):
 def _reserve_model(runtime, stage, fingerprint, workspace):
     if runtime is None:
         raise ValueError("model stage requires an actual guarded runtime envelope and exact worker authority")
+    if (stage == "foundation-diagnostic") != ("foundation_diagnostic" in runtime):
+        raise ValueError("Diagnostic and production model-operation allowances cannot substitute for each other")
     if time.time() >= runtime["original_deadline_epoch"]:
         raise ValueError("original runtime deadline exhausted; no renewal or retry")
     name = hashlib.sha256(runtime["scope_ref"].encode()).hexdigest()

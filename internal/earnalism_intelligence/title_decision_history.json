@@ -18702,5 +18702,36 @@
     "publication": false,
     "purchases": false,
     "next_generated_prompt": "Use the reviewed disabled single orchestrator and exact frozen foundation diagnostic packet. Bind a fresh complete-operation runtime scope before any allocation, setup or generation; preserve full Clip2, rejected takes, exact soundtrack/style and all consumed scopes. No purchases or publication."
+  },
+  "english_foundation_scope_operation_binding_20261116": {
+    "event": "english_foundation_scope_operation_binding_20261116",
+    "at": "2026-11-16T09:28:23.376954+00:00",
+    "state": "BIDIRECTIONAL_SCOPE_BOUNDARY_FIXED_EXECUTION_DISABLED",
+    "finding": "A diagnostic-only envelope could reach a normal model-stage reservation when a registry reused the proposal project ID and the omitted-stage default applied. Separate child gates remained effective; no runtime or misuse occurred.",
+    "fix": "Before ledger reads/writes, require diagnostic operation iff the diagnostic marker is present. Ordinary stage defaults remain unchanged. Invalid/null diagnostic markers cannot substitute a production allowance.",
+    "validation": {
+      "focused_Python_3_12_tests": 158,
+      "new_fake_tests_on_Python_3_11": 25,
+      "result": "PASS_SOURCE_FAKE_ONLY",
+      "reviewed_source_map_sha256": "9d4d4e3a7c5ecacb2cb74ab69dbc17d68f29e9a9be373bbf84b3289de8b194cf",
+      "notebook_sha256": "3038075b068a6565eee81ad1e17e92d8036729b5b82efbbe09cb47caa21be958",
+      "notebook_members": 40,
+      "execution_default": false
+    },
+    "actual_new_model_loads": 0,
+    "actual_new_generation_calls": 0,
+    "actual_training_updates": 0,
+    "actual_Colab_allocations": 0,
+    "runtime_authority": null,
+    "future_allowance": null,
+    "execution_enabled": false,
+    "reference_and_soundtrack_style": "Exact frozen input/full Clip2 and prior preserved media remain unchanged; reuse valid unchanged hash evidence",
+    "Bengali_rights_reader_only_counters_and_existing_holds": "Unchanged",
+    "voice_and_AV_acceptance": "HELD; no actual foundation output or repaired voice exists",
+    "private_workspace_key": "foundation-diagnostic-implementation-20261116-v1/scope-boundary-fix-v2",
+    "production_ready": false,
+    "purchases": false,
+    "publication": false,
+    "next_generated_prompt": "Use the final reviewed execution-disabled notebook and frozen packet; bind a fresh complete-operation runtime scope before any allocation, setup or model generation. Preserve full Clip2, original soundtrack/style, rejected takes and consumed scopes; no purchases or publication."
   }
 }

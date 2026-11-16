@@ -215,6 +215,20 @@ class FrozenFixture(unittest.TestCase):
         self.assertFalse((self.workspace / ".orchestrator/diagnostics.jsonl").exists())
         self.assertFalse((self.workspace / ".orchestrator/authorities").exists())
 
+    def test_diagnostic_scope_cannot_reserve_a_production_stage(self):
+        for marker in [{}, None, {"purpose": "private-diagnostic"}]:
+            with self.subTest(marker=marker):
+                value = {"foundation_diagnostic": marker}
+                for stage in ("narration", "visuals"):
+                    with self.assertRaisesRegex(ValueError, "cannot substitute"):
+                        engine._reserve_model(value, stage, "f" * 64, self.workspace)
+        self.assertFalse((self.workspace / ".orchestrator/authorities").exists())
+
+    def test_production_scope_cannot_reserve_a_diagnostic_operation(self):
+        with self.assertRaisesRegex(ValueError, "cannot substitute"):
+            engine._reserve_model({}, diagnostic.OPERATION, "f" * 64, self.workspace)
+        self.assertFalse((self.workspace / ".orchestrator/authorities").exists())
+
     def test_two_fake_outputs_use_one_reservation_and_verified_reuse_not_replay(self):
         authority, context = self.authority()
         stack, native, stopped = self.fake_execution()
