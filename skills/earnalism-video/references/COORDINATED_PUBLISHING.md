@@ -22,7 +22,7 @@ Reuse accepted factual, rights, voice/listening and unchanged-media evidence. Pr
 
 Choose one main Facebook and one main X video per episode rather than automatically posting both near-identical formats there. Additional cuts, threads, Stories, carousels and duplicate feed posts need a demonstrated purpose and applicable authority. Use supported connected tools or normal browser controls; no undocumented authenticated endpoints, new integrations, subscriptions or boosted posts.
 
-For every destination, keep #earnalism and #learnalism together. Add only relevant topic terms supported by the content; use each platform's actual copy limits and existing HASHTAG_STRATEGY.md. X copy should fit the current account composer without an unapproved paid upgrade; preserve the two brand tags before optional topic tags. Natural topic wording and a clear benefit take priority over hashtag volume. Retain factual qualifications, accessible captions, appropriate source credit and applicable disclosure; do not copy YouTube's full description mechanically to all surfaces.
+For every destination, keep #earnalism #learnalism #theearnalism together. Add only relevant topic terms supported by the content; use each platform's actual copy limits and existing HASHTAG_STRATEGY.md. X copy should fit the current account composer without an unapproved paid upgrade; preserve the three brand tags before optional topic tags. Natural topic wording and a clear benefit take priority over hashtag volume. Retain factual qualifications, accessible captions, appropriate source credit and applicable disclosure; do not copy YouTube's full description mechanically to all surfaces.
 
 ## Preflight and resumable release record
 
@@ -30,7 +30,7 @@ Use a compact project-local table, not sensitive account data embedded in the re
 
 `episode_order | destination | verified_brand_identity | master_sha256 | soundtrack_evidence | cover_sha256 | caption_file_or_track | copy | authority | settings_checked | status | post_id | public_url | playback_evidence | blocker`
 
-Before the consolidated decision: resolve the exact candidate; check destination access/limits, source rights, the complete logo and text under that surface's overlays/crops; prepare copy and both brand tags; record any unavailable cover/caption feature. Do not treat a YouTube SRT as embedded Instagram/Facebook/X subtitles. Do not shorten accepted speech to fit a limit silently: use an approved qualified alternative or leave that destination blocked.
+Before the consolidated decision: resolve the exact candidate; check destination access/limits, source rights, the complete logo and text under that surface's overlays/crops; prepare copy and all three brand tags; record any unavailable cover/caption feature. Do not treat a YouTube SRT as embedded Instagram/Facebook/X subtitles. Do not shorten accepted speech to fit a limit silently: use an approved qualified alternative or leave that destination blocked.
 
 At publication: reconcile existing post IDs/permalinks first. Distinguish prepared, uploaded, processing, private, published-unverified, live-verified and blocked. If Share spins, check a fresh profile/content surface before any retry. A successful Meta cross-post does not prove both destinations: inspect each saved post separately. Never delete/repost to repair a cover without explicit authority.
 
