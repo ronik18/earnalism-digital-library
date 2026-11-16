@@ -81,6 +81,16 @@ Verify saved scope/clock/rate literals before running cells; visible numeric for
 values may not have committed to source. Keep actual setup and voice acceptance
 separate, and preserve consumed scopes plus reusable verified inputs.
 
+For a foundation diagnostic, use the separate environment-qualification operation
+in the existing single orchestrator; see [foundation qualification](../../../docs/earnalism_foundation_qualification.md).
+Bind genuine scope and the original clock, verify the complete local wheel
+closure and `pip check`, and retain the final owned venv's interpreter, fixed
+provider preload and isolated CUDA evidence. Old English setup requests or
+disposable lookup receipts cannot qualify that environment. Preparation, package
+readiness and a tiny CUDA probe do not establish full-model fit, voice quality
+or release acceptance; qualification does not dispatch the two scenes. Keep
+execution disabled unless that exact operation is authorized.
+
 After a restored runtime generates trial audio, verify spoken content separately
 from successful model loading and token-limit receipts. A completed take with
 `token_cap_reached: false` can still carry fidelity warnings. Retain the exact

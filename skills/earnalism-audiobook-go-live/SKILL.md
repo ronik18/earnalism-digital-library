@@ -17,6 +17,16 @@ healthy recordings and cumulative failed/unknown attempts. A genuinely authorize
 qualification audition remains distinct from accepted full-title generation.
 
 
+For original-voice improvement, keep the capability record separate for each
+language/gender profile: cleared data, exact trained checkpoint, observed diction
+and performance, supported controls, and remaining limitations. A pending publisher
+reply blocks only its unqualified corpus, not already-cleared Rasa/SYSPIN work.
+Match prior acceptance by audio/source hashes, not row numbers shared across shards.
+When adaptation worsens diction, preserve it as evidence and test the smallest
+foundation-anchored correction before adding more updates. Qualify dry speech
+before scoring; training/reload success and lower loss do not establish narration
+quality. Bind a finite next experiment and reuse the existing controller/counters.
+
 For an isolated Colab voice worker, use the optional pre-Drive driver lookup in
 [the runtime contract](../../docs/earnalism_orchestrator.md) before authentication/transfers.
 Resolve and hash the actual loaded provider library; never guess a driver path
@@ -40,6 +50,16 @@ Use the existing campaign journal and cumulative counters. Reuse accepted exact
 assets and unchanged evidence; never regenerate healthy audio to satisfy a
 diagnostic warning. Preserve source books, covers, recordings and existing work.
 
+
+For a foundation diagnostic, use the separate environment-qualification operation
+in the existing single orchestrator; see [foundation qualification](../../docs/earnalism_foundation_qualification.md).
+Bind genuine scope and the original clock, verify the complete local wheel
+closure and `pip check`, and retain the final owned venv's interpreter, fixed
+provider preload and isolated CUDA evidence. Old English setup requests or
+disposable lookup receipts cannot qualify that environment. Preparation, package
+readiness and a tiny CUDA probe do not establish full-model fit, voice quality
+or release acceptance; qualification does not dispatch the two scenes. Keep
+execution disabled unless that exact operation is authorized.
 
 After a restored runtime generates trial audio, verify spoken content separately
 from successful model loading and token-limit receipts. A completed take with
@@ -65,6 +85,16 @@ audio-conditioning input or proof of speaker transfer. Keep the preferred time
 window, complete paired recording and unseen evaluation separate. Never attach
 a whole-utterance transcript to an incomplete audio crop. Preserve the original
 published test partition when a reference is reused; disclose that exposure.
+
+For future owner-authorized voice completion jobs, use completion milestones
+and observed progress/credit usage instead of agent-invented trial windows or
+transfer-quota approval loops. Reuse verified staged inputs, qualified environments
+and healthy checkpoints; respect actual provider limits with supported chunking.
+Prepare the full OAuth scope and verify a clean settings cell before allocation.
+Stop and preserve checkpoint/diagnostics on completion or error, retaining the
+primary failure. Legacy scopes keep their original limits and all consumed or
+unknown work. Existing credits are not permission for purchases, new keys or
+unrelated work; rights/access and truthful candidate acceptance still apply.
 
 For newly authorized automated release jobs select
 `editorial_release_policy: "automated-editorial-2026-11-11"` in the manifest and
