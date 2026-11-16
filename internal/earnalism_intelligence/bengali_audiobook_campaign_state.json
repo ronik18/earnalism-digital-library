@@ -1708,5 +1708,53 @@
     "production_ready": false,
     "new_generation_training_compute_purchase_or_publication_authority": false,
     "next_generated_prompt": "Diagnose the two owner-rejected recordings offline against complete original4.8secondClip2. Audit retained training/data alignment and decoder/sampler contracts; preserve rejected takes, exact soundtrack/style and consumed scopes. Prepare one materially different repair proposal without execution."
+  },
+  "english_full_clip2_controlled_repair_proposal_20261116": {
+    "event": "english_full_clip2_controlled_repair_proposal_20261116",
+    "at": "2026-11-16T08:06:11.981893+00:00",
+    "state": "PRIVATE_PROPOSAL_PREPARED_EXECUTION_DISABLED",
+    "reference": {
+      "duration_seconds": 4.8,
+      "sha256": "ff6a1350955abfdf726d2b4f0dd7b81879e52828de6b4abfead0372d9b987976",
+      "role": "Full original human performance reference; not waveform conditioning, training input or speaker transfer"
+    },
+    "learning": "No demonstrated mask, codec, resampling or text-pairing bug was established by retained offline audits. Training coverage and observability gaps are hypotheses, not confirmed causes. Propose two matched unadapted foundation controls against the two retained owner-rejected adapted takes before adding training updates; preserve every consumed fingerprint and separate fidelity from expressive performance.",
+    "proposed_comparison": {
+      "reused_rejected_takes": 2,
+      "future_foundation_controls": 2,
+      "future_training_updates": 0,
+      "same_scenes_captions_seeds_and_settings": true,
+      "causal_limit": "Historical instrumented comparison; an improvement would associate the adapted/restore/preparation path with defects, not prove training causation",
+      "implementation": "Separate foundation diagnostic route is not implemented; existing branded checkpoint contract must remain intact"
+    },
+    "actual_new_work": {
+      "allocations": 0,
+      "model_loads": 0,
+      "generation_calls": 0,
+      "training_updates": 0,
+      "voice_acceptances": 0
+    },
+    "execution_enabled": false,
+    "runtime_authority": null,
+    "future_compute_allowance": null,
+    "exact_soundtrack_sha256": "ce54502bcd93b49a800f645ab19cf754372e12e69cba7399fe43ced097939ccf",
+    "selected_visual_sha256": "9cc3f6a696a18fc29c7a55156c11f9648db28c39707fa6b58916db9c03802ad5",
+    "preservation": "Both exact retained takes and critical soundtrack/style files freshly rehashed unchanged; prior full preservation packet retained",
+    "voice_and_audiovisual_release": "HELD; both actual takes remain owner-rejected",
+    "Bengali_state_rights_reader_only_holds_and_operation_counters": "Unchanged",
+    "score_learning": "No new learning; exact score and KEEP context preserved",
+    "video_learning": "No new learning; selected style and outstanding motion/acting holds preserved",
+    "private_evidence": {
+      "workspace_key": "controlled-voice-repair-proposal-20261116-v1",
+      "proposal_sha256": "fd565bf83f4576a4502a0a48978a0392ad02a7182f8366dc2d7a73b239df3a72",
+      "source_base": "f785bfba0645436eece3d2aafbb9ab49ce7f08ce",
+      "packaged_input_files": 9,
+      "independent_preparation_reviews": 2,
+      "runtime_or_quality_pass": false
+    },
+    "production_ready": false,
+    "publication": false,
+    "purchases": false,
+    "next_generated_prompt": "Review the frozen foundation-comparison proposal and offline bindings. Keep execution disabled; implement and review a separate diagnostic route in the existing orchestrator before requesting any future runtime authority. Preserve fullClip2, rejected takes and exact soundtrack/style."
   }
 }
