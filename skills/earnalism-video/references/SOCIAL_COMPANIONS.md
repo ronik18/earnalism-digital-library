@@ -16,7 +16,7 @@ Use the actual complete Earnalism website-header logo-and-wordmark from an autho
 
 Story 1080×1920 and feed carousel 1080×1350 are useful starting canvases, not universal platform specifications. Compose independently for their crop and interface overlays. Reserve a dedicated clear region for the native link sticker; the visible printed call-to-action is not a clickable link. Check every panel at realistic phone size, including the longest body line, full logo, book-cover attribution and sticker bounds. Do not split one large image across grid posts.
 
-Use verified edition details and actual rights-cleared book covers for library tie-ins. Attribute authors accurately and disclose access requirements where relevant. Do not invent titles, audio availability, library size, testimonials, awards or scientific claims. Reuse current primary research for scientific statements; source new claims in the caption or final slide. Include #earnalism #learnalism together in companion post captions, with relevant topic tags rather than keyword blocks.
+Use verified edition details and actual rights-cleared book covers for library tie-ins. Attribute authors accurately and disclose access requirements where relevant. Do not invent titles, audio availability, library size, testimonials, awards or scientific claims. Reuse current primary research for scientific statements; source new claims in the caption or final slide. Include #earnalism #learnalism #theearnalism together in companion post captions, with relevant topic tags rather than keyword blocks.
 
 ## Approval and publishing
 
