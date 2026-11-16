@@ -331,6 +331,23 @@ fine-tuning remains a separate actual training operation requiring its dataset,
 rights, checkpoint, evaluation and compute scope; feedback storage is not training.
 Improved first-attempt results are the objective, not a promise of perfection.
 
+## Foundation environment qualification
+
+The same notebook exposes `FOUNDATION_QUALIFICATION_PATH`, empty by default,
+for the separate `foundation-qualification` operation. It excludes diagnostic,
+batch and feedback modes. See [the qualification contract](earnalism_foundation_qualification.md)
+for request, evidence and resource requirements. The existing diagnostic still
+consumes an already qualified environment and never installs packages itself.
+
+Dry planning validates the frozen proposal, original recipe, complete wheel lock
+and current source bindings without driver/package/model work. An actual future
+qualification uses its own capability and original runtime clock/guard; resolves
+the provider before Drive; installs the pinned local closure into the final owned
+local venv; and records an isolated tiny CUDA operation. It does not reserve a
+model start, generate either scene, train weights or promote release readiness.
+Qualification receipts are evidence, not a newly created model authority. Keep
+all distributed execution and Drive controls disabled.
+
 ## Build and validate the notebook
 
 ```sh

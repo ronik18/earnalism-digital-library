@@ -568,6 +568,8 @@ def _runtime(path, project, workspace, observations):
 def _reserve_model(runtime, stage, fingerprint, workspace):
     if runtime is None:
         raise ValueError("model stage requires an actual guarded runtime envelope and exact worker authority")
+    if stage not in MODEL_OPERATIONS or "foundation_qualification" in runtime:
+        raise ValueError("Environment qualification cannot reserve a model operation")
     if (stage == "foundation-diagnostic") != ("foundation_diagnostic" in runtime):
         raise ValueError("Diagnostic and production model-operation allowances cannot substitute for each other")
     if time.time() >= runtime["original_deadline_epoch"]:
@@ -1214,6 +1216,27 @@ def feedback(input_path, workspace) -> dict:
             "next_action": "Apply the evidenced bounded correction; unchanged stages remain reusable and spent model attempts stay consumed."}
 
 
+def qualify_foundation(request_path, workspace, execute=False, authority_path=None, runtime_context=None):
+    """Qualify an environment only; no diagnostic/model dispatch or authority creation."""
+    from scripts import earnalism_foundation_qualification as qualification
+    workspace = _private_workspace(workspace)
+    prepared = qualification.validate(request_path, workspace)
+    if not execute:
+        return qualification.summary(prepared)
+    qualification.contained(workspace / ".orchestrator", workspace)
+    with _lock(workspace):
+        output = qualification.result_directory(prepared, workspace)
+        if output.exists():
+            if not (output / "COMPLETED.json").is_file():
+                raise ValueError("Consumed or unknown environment-qualification attempt; no replay")
+            return qualification.verify_result(prepared, output)
+        runtime = _runtime(authority_path, {"id": prepared["frozen"]["proposal"]["id"]},
+                           workspace, runtime_context)
+        if runtime is None:
+            raise ValueError("Fresh guarded environment-qualification authority required")
+        return qualification.qualify(prepared, workspace, runtime, runtime_context)
+
+
 def diagnose_foundation(proposal_path, workspace, execute=False, authority_path=None, runtime_context=None):
     """Explicit private operation; cannot complete narration or a release stage."""
     from scripts import earnalism_foundation_diagnostic as diagnostic
@@ -1259,13 +1282,14 @@ def diagnose_foundation(proposal_path, workspace, execute=False, authority_path=
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    item = commands.add_parser("foundation-diagnostic")
-    item.add_argument("--proposal", type=Path, required=True)
-    item.add_argument("--workspace", type=Path, required=True)
-    item.add_argument("--output", type=Path)
-    item.add_argument("--execute", action="store_true")
-    item.add_argument("--authority", type=Path)
-    item.add_argument("--runtime-context", type=Path)
+    for name, input_name in (("foundation-diagnostic", "proposal"), ("foundation-qualification", "request")):
+        item = commands.add_parser(name)
+        item.add_argument("--" + input_name, type=Path, required=True)
+        item.add_argument("--workspace", type=Path, required=True)
+        item.add_argument("--output", type=Path)
+        item.add_argument("--execute", action="store_true")
+        item.add_argument("--authority", type=Path)
+        item.add_argument("--runtime-context", type=Path)
     for name in ("plan", "run"):
         item = commands.add_parser(name)
         item.add_argument("--instruction", required=True)
@@ -1293,7 +1317,10 @@ def main(argv=None):
                       help="the shared actual original notebook timer observations")
     args = parser.parse_args(argv)
     try:
-        if args.command == "foundation-diagnostic":
+        if args.command == "foundation-qualification":
+            result = qualify_foundation(args.request, args.workspace, args.execute, args.authority,
+                                        _load(args.runtime_context) if args.runtime_context else None)
+        elif args.command == "foundation-diagnostic":
             result = diagnose_foundation(args.proposal, args.workspace, args.execute, args.authority,
                                         _load(args.runtime_context) if args.runtime_context else None)
         elif args.command == "feedback":
@@ -1310,7 +1337,7 @@ def main(argv=None):
             out = _local_path(str(args.output), Path.cwd(), _private_workspace(args.workspace), output=True)
             _write(out, result)
         print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
-        return 0 if args.command in {"plan", "feedback", "foundation-diagnostic"} or not args.execute or result.get("production_ready") else 1
+        return 0 if args.command in {"plan", "feedback", "foundation-diagnostic", "foundation-qualification"} or not args.execute or result.get("production_ready") else 1
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.exit(2, f"Earnalism orchestrator: {exc}\n")
 
