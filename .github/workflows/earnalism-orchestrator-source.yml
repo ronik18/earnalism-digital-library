@@ -7,6 +7,7 @@ on:
       - 'scripts/earnalism_orchestrator.py'
       - 'scripts/earnalism_content_context.py'
       - 'scripts/earnalism_voice.py'
+      - 'scripts/earnalism_foundation_diagnostic.py'
       - 'scripts/earnalism_voice_runtime/**'
       - 'scripts/earnalism_media_adapters.py'
       - 'scripts/test_earnalism_*.py'
@@ -55,6 +56,7 @@ jobs:
         run: python scripts/build_earnalism_orchestrator_colab.py --check
       - name: Exercise orchestration and inference control without model access
         run: |
+          python -m unittest scripts.test_earnalism_foundation_diagnostic scripts.test_earnalism_foundation_runtime -v
           python -m unittest scripts.test_earnalism_orchestrator scripts.test_earnalism_voice scripts.test_earnalism_media_adapters scripts.test_build_earnalism_orchestrator_colab scripts.test_earnalism_provider_driver_bootstrap scripts.test_earnalism_pre_drive_loader_entry scripts.test_earnalism_pre_drive_failure_evidence scripts.test_earnalism_position_table scripts.test_earnalism_orchestrator_batch scripts.test_earnalism_content_context scripts.test_earnalism_metal_rust_adapter scripts.test_earnalism_voice_en_qualification scripts.test_earnalism_voice_wheel_closure scripts.test_earnalism_orchestrator_runtime_inputs -v
           python -m unittest scripts.test_earnalism_voice_balanced_runtime scripts.test_earnalism_voice_darwin scripts.test_earnalism_voice_cpu_controller -v
           PYTHONPATH=skills/earnalism-video/software:. python -m unittest metal_rust.test_inputs metal_rust.test_model -v

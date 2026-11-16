@@ -215,12 +215,67 @@ interpreter and emits a small retainable receipt. These checks do not import
 Torch, load a model, train, allocate a GPU or qualify CUDA compute. Their CPU and
 mock tests do not establish successful execution on a Colab GPU.
 
-The separate opt-in `position_table.py` utility prepares sufficient sinusoidal
-position capacity before snapshots and training/inference, retaining the original
-prefix and frozen state. It is not wired into the existing inference adapter or
-its qualified profiles. Preserve the original frozen experiment source and
-private evidence when promoting reusable helpers; no source refactor renews an
-expired execution scope or qualifies a rejected voice.
+The fixed English qualification route uses `position_table.py` for deterministic
+16384-position preparation, preserving the original stored prefix and remaining
+frozen state. Other profiles retain their original contracts. This is sinusoidal
+preparation, not learned positional training. Preserve the frozen experiment and
+private evidence; a source refactor neither renews a scope nor qualifies a voice.
+
+### Private foundation diagnostic
+
+The same orchestrator supports the explicit `foundation-diagnostic` operation.
+It is outside the production stages and cannot complete narration, qualify the
+branded voice or feed a film/release stage. The existing trained-checkpoint
+adapter remains unchanged; the foundation is never a fallback for it.
+
+Set `FOUNDATION_DIAGNOSTIC_PATH` to the retained private frozen proposal, or inspect
+it locally without execution:
+
+```sh
+python3 -m scripts.earnalism_orchestrator foundation-diagnostic \
+  --proposal /private/workspace/repair/PROPOSAL.NOT-AUTHORITY.json \
+  --workspace /private/workspace
+```
+
+The distributed notebook keeps that path empty and `EXECUTE=False`. Diagnostic
+mode excludes batch and ordinary production feedback. The public source capsule
+contains software and immutable hash bindings only; the proposal, complete
+4.8-second human reference, source text, rejected recordings and weights remain
+private. Clip2 is a performance comparator, not waveform conditioning or speaker
+identity transfer. The frozen comparison reuses the two rejected adapted takes
+and fixes two new foundation controls, their exact scenes/captions/seeds/settings,
+FP32/eager runtime, local asset hashes and deterministic positional preparation.
+
+Execution, if separately authorized later, requires the existing guarded
+`earnalism.orchestrator_runtime.v1` envelope with the proposal ID as `project_id`,
+one model start and `stage_attempt_limits: {"foundation-diagnostic": 1}`. Its
+`foundation_diagnostic` object binds `operation`, `purpose: "private-diagnostic"`,
+`proposal_sha256`, `experiment_sha256`, the exact `software` map returned by the
+controller, `assets_root`, an existing `runtime_interpreter` launcher/resolved
+file descriptor, the fixed `provider_driver_preload` descriptor, and four
+`preserved_media` descriptors in frozen order (two rejected takes, soundtrack,
+selected motion). The finite workload is `model_loads: 1`, `generation_calls: 2`,
+`adapted_restores: 0`, `training_updates: 0`. No authority or allowance is generated
+by inspection. This route installs or downloads nothing; a future runtime must
+already meet the pinned interpreter/package/provider requirements.
+
+The common lock and cumulative runtime reservation apply. A canonical experiment
+intent also survives renamed proposal paths and fresh authority files within the
+same private workspace. Failed or unknown work cannot replay. Retained complete
+results require matching completion and artifact checksums; they remain diagnostic
+evidence. The original allocation deadline supervises a credential-stripped,
+parent-contained worker. Preserve native audio before late deadline, trace or
+frozen-state checks can fail. Native limits remain 180 seconds and 32 MiB total;
+trace storage is separately bounded and creates no compute allowance.
+
+Observational hooks retain raw delayed token rows, actual post-filter codec
+inputs and the real stopping-criterion results while forwarding the same calls
+and return objects. All hooks restore in `finally`. EOS/pad offsets are not audio
+timestamps, and simultaneous true criteria do not establish one unique cause.
+Fake/source checks establish forwarding and RNG-call contracts, not actual CUDA
+equivalence, faithful speech or premium performance. The historical comparison
+cannot prove training causation. Full source and performance assessment remains
+required; exact soundtrack/style and existing owner holds stay unchanged.
 
 Scoring uses the complete source, real narration clock, contextual direction and
 cleared finite stems through `audiobook_score`. Transitions, levels and deliberate

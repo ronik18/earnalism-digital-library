@@ -58,6 +58,7 @@ AREA_STAGES = {
     "rights": {"source", *STAGES}, "technical": {"compose", "review", "release-ready"},
 }
 MODEL_KINDS = {"trained-voice", "wan-batch"}
+MODEL_OPERATIONS = set(STAGES) | {"foundation-diagnostic"}
 FORBIDDEN_KEYS = {"command", "commands", "shell", "callback", "module", "python_code", "executable"}
 HASH = re.compile(r"[a-f0-9]{64}\Z")
 ID = re.compile(r"[a-z0-9][a-z0-9-]{0,99}\Z")
@@ -552,7 +553,7 @@ def _runtime(path, project, workspace, observations):
     if isinstance(maximum, bool) or not isinstance(maximum, int) or not 1 <= maximum <= 256:
         raise ValueError("runtime must bound model-stage starts")
     stage_limits = value.get("stage_attempt_limits", {})
-    if (not isinstance(stage_limits, dict) or set(stage_limits) - set(STAGES)
+    if (not isinstance(stage_limits, dict) or set(stage_limits) - MODEL_OPERATIONS
             or any(isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= maximum
                    for limit in stage_limits.values())):
         raise ValueError("invalid per-stage attempt limits")
@@ -1211,9 +1212,58 @@ def feedback(input_path, workspace) -> dict:
             "next_action": "Apply the evidenced bounded correction; unchanged stages remain reusable and spent model attempts stay consumed."}
 
 
+def diagnose_foundation(proposal_path, workspace, execute=False, authority_path=None, runtime_context=None):
+    """Explicit private operation; cannot complete narration or a release stage."""
+    from scripts import earnalism_foundation_diagnostic as diagnostic
+    workspace = _private_workspace(workspace)
+    frozen = diagnostic.validate(proposal_path, workspace)
+    if not execute:
+        return diagnostic.summary(frozen)
+    diagnostic.contained(workspace / ".orchestrator", workspace)
+    with _lock(workspace):
+        output = diagnostic.result_directory(frozen, workspace)
+        journal = diagnostic.contained(workspace / ".orchestrator/diagnostics.jsonl", workspace)
+        events = [json.loads(line) for line in journal.read_text().splitlines()] if journal.exists() else []
+        if any(not isinstance(event, dict) for event in events):
+            raise ValueError("Unknown diagnostic journal tail; status only")
+        attempted = any(event.get("event") == "foundation_intent" and
+                        event.get("experiment_sha256") == frozen["experiment_sha256"] for event in events)
+        # A crash between common reservation and native intent remains consumed,
+        # even when a later scope has a different authority filename or clock.
+        scopes = diagnostic.contained(workspace / ".orchestrator/authorities", workspace)
+        for path in scopes.glob("*.json"):
+            ledger = _load(diagnostic.contained(path, workspace))
+            if not isinstance(ledger, dict) or not isinstance(ledger.get("starts"), list):
+                raise ValueError("Unknown cumulative scope ledger; status only")
+            attempted = attempted or any(start.get("stage") == diagnostic.OPERATION and
+                start.get("fingerprint") == frozen["experiment_sha256"] for start in ledger["starts"])
+        if attempted or output.exists():
+            if not attempted or not (output / "COMPLETED.json").is_file():
+                raise ValueError("Consumed or unknown diagnostic attempt; no replay")
+            result = diagnostic.verify_result(frozen, output)
+            if diagnostic.read(output / "COMPLETED.json").get("result_sha256") != diagnostic.sha(output / "RESULT.json"):
+                raise ValueError("Completed diagnostic bytes changed; no replay")
+            return {**result, "retained_verified": True}
+        runtime = _runtime(authority_path, {"id": frozen["proposal"]["id"]}, workspace, runtime_context)
+        if runtime is None:
+            raise ValueError("Fresh guarded diagnostic runtime authority required")
+        diagnostic._authority(runtime, frozen, workspace)
+        scope_name = hashlib.sha256(runtime["scope_ref"].encode()).hexdigest() + ".json"
+        diagnostic.contained(workspace / ".orchestrator/authorities" / scope_name, workspace)
+        _reserve_model(runtime, diagnostic.OPERATION, frozen["experiment_sha256"], workspace)
+        return diagnostic.render(frozen, workspace, runtime, runtime_context)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
+    item = commands.add_parser("foundation-diagnostic")
+    item.add_argument("--proposal", type=Path, required=True)
+    item.add_argument("--workspace", type=Path, required=True)
+    item.add_argument("--output", type=Path)
+    item.add_argument("--execute", action="store_true")
+    item.add_argument("--authority", type=Path)
+    item.add_argument("--runtime-context", type=Path)
     for name in ("plan", "run"):
         item = commands.add_parser(name)
         item.add_argument("--instruction", required=True)
@@ -1241,7 +1291,10 @@ def main(argv=None):
                       help="the shared actual original notebook timer observations")
     args = parser.parse_args(argv)
     try:
-        if args.command == "feedback":
+        if args.command == "foundation-diagnostic":
+            result = diagnose_foundation(args.proposal, args.workspace, args.execute, args.authority,
+                                        _load(args.runtime_context) if args.runtime_context else None)
+        elif args.command == "feedback":
             result = feedback(args.input, args.workspace)
         elif args.command == "batch":
             result = batch(args.input, args.workspace, args.registry, args.workers, args.execute,
@@ -1255,7 +1308,7 @@ def main(argv=None):
             out = _local_path(str(args.output), Path.cwd(), _private_workspace(args.workspace), output=True)
             _write(out, result)
         print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
-        return 0 if args.command in {"plan", "feedback"} or not args.execute or result.get("production_ready") else 1
+        return 0 if args.command in {"plan", "feedback", "foundation-diagnostic"} or not args.execute or result.get("production_ready") else 1
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.exit(2, f"Earnalism orchestrator: {exc}\n")
 

@@ -25,6 +25,7 @@ FILES = (
     "scripts/earnalism_orchestrator.py",
     "scripts/earnalism_content_context.py",
     "scripts/earnalism_voice.py",
+    "scripts/earnalism_foundation_diagnostic.py",
     "scripts/earnalism_media_adapters.py",
     "skills/earnalism-video/software/src/render-browser.mjs",
     "skills/earnalism-video/software/src/render-runtime.mjs",
@@ -133,6 +134,7 @@ def build(output: Path, *, root: Path = ROOT, base_revision: str | None = None):
 INSTRUCTION = "Build the GO LIVE ready output for the audiovisual cinematic version for the book - The Selfish Giant" #@param {type:"string"}
 EXECUTE = False #@param {type:"boolean"}
 BATCH_PATH = ""  # Optional private earnalism.production_batch.v1 input instead of INSTRUCTION.
+FOUNDATION_DIAGNOSTIC_PATH = ""  # Optional frozen private proposal; separate from production stages.
 PREPARATION_WORKERS = 3  # Parallel read-only planning, not concurrent model starts.
 BATCH_AUTHORITIES_PATH = ""  # Optional exact project-bound scopes; never created here.
 
@@ -149,6 +151,8 @@ FEEDBACK_PATH = ""  # Optional exact-candidate feedback JSON in the private work
 runtime_context = {}
 runtime_guard = None
 runtime_authority = None
+if globals().get("FOUNDATION_DIAGNOSTIC_PATH") and (globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH")):
+    raise ValueError("Choose the private diagnostic alone; batch/production feedback are separate operations")
 if EXECUTE:
     authority_file = pathlib.Path(RUNTIME_AUTHORITY_PATH)
     if not authority_file.is_file():
@@ -313,7 +317,14 @@ try:
                 os.fsync(handle.fileno())
     source_root = prepare_reviewed_software()
     from scripts.earnalism_orchestrator import run, feedback
-    if globals().get("BATCH_PATH"):
+    if globals().get("FOUNDATION_DIAGNOSTIC_PATH"):
+        if globals().get("BATCH_PATH") or globals().get("FEEDBACK_PATH"):
+            raise ValueError("Diagnostic mode cannot run batch or production feedback")
+        from scripts.earnalism_orchestrator import diagnose_foundation
+        result = diagnose_foundation(pathlib.Path(FOUNDATION_DIAGNOSTIC_PATH), workspace,
+                     execute=EXECUTE, authority_path=admitted_runtime_authority,
+                     runtime_context=runtime_context)
+    elif globals().get("BATCH_PATH"):
         from scripts.earnalism_orchestrator import batch
         result = batch(pathlib.Path(BATCH_PATH), workspace, registry_path=registry,
                        workers=PREPARATION_WORKERS, execute=EXECUTE,
@@ -372,6 +383,8 @@ using the relevant skills. An instruction resolves that durable registry; it doe
 not manufacture missing content, model acceptance, rights or spending authority.
 The trained branded voice is selected by exact lineage and language acceptance.
 A training checkpoint or a synthetic test does not establish premium performance.
+The optional frozen foundation diagnostic is a separate private comparison; its
+outputs never become branded narration or complete production/release stages.
 
 Preparation is the default. Enable execution only within an existing actual
 runtime scope; its original allocation clock includes setup, transfer and export.
@@ -422,6 +435,9 @@ def verify_notebook(output: Path, *, root: Path = ROOT):
             if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "EXECUTE":
                 if ast.literal_eval(node.value) is not False:
                     raise ValueError("Execution default must be false")
+            if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "FOUNDATION_DIAGNOSTIC_PATH":
+                if ast.literal_eval(node.value) != "":
+                    raise ValueError("Diagnostic default must be empty; private input stays outside the capsule")
             if isinstance(node.targets[0], ast.Name) and node.targets[0].id == "raw_source":
                 if raw is not None:
                     raise ValueError("Ambiguous source capsule")
