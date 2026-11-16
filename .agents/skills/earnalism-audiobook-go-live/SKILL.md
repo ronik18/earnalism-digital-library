@@ -39,6 +39,13 @@ Parler's Git metadata dependency or fetch its unpinned repository. Verify saved
 cell scope/clock/rate literals, since a numeric widget alone may be uncommitted.
 
 
+After a restored runtime generates trial audio, verify spoken content separately
+from successful model loading and token-limit receipts. A completed take with
+`token_cap_reached: false` can still carry fidelity warnings. Retain the exact
+audio, captions, fingerprints and raw diagnostics for adjudication; an ASR warning
+is not a confirmed listening defect or permission to regenerate. Preserve active
+owner holds and consumed attempts until the affected evidence is actually resolved.
+
 Before allocating Colab, verify the target Python ABI in the provider's current
 runtime-version documentation and pin a compatible image in notebook metadata.
 Retain the actual interpreter preflight before storage or model work.

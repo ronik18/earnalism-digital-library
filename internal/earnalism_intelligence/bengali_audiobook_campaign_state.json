@@ -1569,5 +1569,144 @@
     "purchases": false,
     "new_execution_authority": false,
     "next_generated_prompt": "Use the corrected English offline-wheel installer and coherent disabled single notebook/resources after source review and required CI; preserve the closed run, primary receipts and verified Drive inputs. Any further runtime/setup needs a fresh exact owner scope. Keep soundtrack/style, prior holds and source fidelity intact; review both actual scenes only if generated."
+  },
+  "english_clip2_actual_two_scene_runtime_20261116": {
+    "event": "english_clip2_actual_two_scene_runtime_20261116",
+    "at": "2026-11-16T06:45:05.407289+00:00",
+    "title": "The Earnalism Voice / private Open Window two-scene comparison",
+    "state": "L4_CLOSED_TWO_NATIVE_TAKES_ADVISORY_FIDELITY_WARNINGS_HELD",
+    "runtime": {
+      "image": "2026.07",
+      "python": "3.12.13",
+      "GPU": "NVIDIA L4",
+      "allocations_consumed": 1,
+      "allocations_remaining": 0,
+      "approved_max_minutes": 45,
+      "approved_additional_existing_CU": 3,
+      "rate_shortened_window_seconds": 2454,
+      "conservative_fullwindow_CU_bound": 2.9993333333333334,
+      "actual_CU_charge": "UNITEMIZED_NOT_ASSUMED_ZERO",
+      "closure": "Observed Reconnect and own notebook absent from active sessions; unrelated older session preserved"
+    },
+    "actual_result": {
+      "source_files_verified": 38,
+      "cached_inputs_stream_verified": 115,
+      "verified_bytes": 7197234091,
+      "network_transfer_intents": 0,
+      "exact_local_wheels_installed": 111,
+      "pip_check_and_exact_versions": "PASS_ACTUAL_L4",
+      "package_setup_attempts": 1,
+      "native_render_attempts": 1,
+      "checkpoint_load_report": "No missing/unexpected/mismatched keys or errors",
+      "generate_calls": 2,
+      "training_updates": 0,
+      "native_audio_seconds": 59.53596371882087,
+      "output_status": "PRIVATE_GENERATED_REQUIRES_QA",
+      "token_cap_reached": [
+        false,
+        false
+      ]
+    },
+    "outputs": [
+      {
+        "unit": "en-opening84-saved-regression-v1",
+        "sha256": "d066562b801b64972d022298208d1c93bdea0207935e96fd6a545508e59c86c6",
+        "bytes": 4755500,
+        "duration_seconds": 26.958367346938775,
+        "fingerprint": "f3058ae6e94b33ea2f4dbe5f1bfb0c2567d8cda74c1dc214565d46886ebb7354"
+      },
+      {
+        "unit": "en-fear-flight183-saved-regression-v1",
+        "sha256": "a6f5c2269f39d8be525bdee2c9fb41b8ce206ea1a5a37416a605564400caded1",
+        "bytes": 5746732,
+        "duration_seconds": 32.57759637188209,
+        "fingerprint": "4945ee156ba9d7b31b1acaac9ea8d17daff77ae92d07e0566a38b54b3cb52f4a"
+      }
+    ],
+    "private_diagnostics": {
+      "ASR": "One completed offline CPU small.en pass, no source prompt, downloads or new GPU; original decode API mismatch retained separately",
+      "finding": "Advisory garbled/repeated opening wording and extended repeated phrase in fear/flight; requires actual audio adjudication, not confirmed listening defects",
+      "fear_script_words": 183,
+      "fear_native_seconds": 32.57759637188209,
+      "quality_scores": null,
+      "first_last_words_and_source_fidelity": "UNACCEPTED",
+      "model_or_performance_repair_in_this_run": false
+    },
+    "learning": "Complete hash-locked installation and successful CUDA/checkpoint/two-take execution qualify this technical path only. Native completion and token-cap false do not prove complete faithful speech, naturalness, accent or release acceptance. Preserve consumed fingerprints and adjudicate the exact retained audio before selecting a repair; no warning-driven automatic regeneration.",
+    "private_evidence": {
+      "workspace_key": "english-voice-qualification-queued-v4-20261116",
+      "export_sha256": "f68d2c6936b69a86283300c9bc03b2176c0558ef9a4f296591f99b303ff55733",
+      "closed_notebook_sha256": "322746813ff92badf0e02b69c784e71a5f6c34675add887ec2d1044d1d92de16",
+      "native_result_sha256": "0941073b16c70a86b2db70fccc8159ca0fd32f785f88ba91e74d8c5fc2eb1774",
+      "ASR_report_sha256": "8171d6b78f5653931aa639f1df337b2acf1ef27ea96ceed45a9f8ea7be9eb57e"
+    },
+    "exact_soundtrack_and_selected_style": "Rehashed after run; unchanged",
+    "score_learning": "no-new-learning; exact soundtrack/KEEP context preserved",
+    "video_learning": "no-new-learning; selected style and existing torso/fear/identity holds preserved",
+    "Bengali_reader_only_rights_holds_and_existing_campaign_counters_unchanged": true,
+    "reference_is_human_comparison_only_not_audio_conditioning_or_speaker_transfer": true,
+    "production_ready": false,
+    "publication": false,
+    "new_purchases": false,
+    "new_runtime_authority": false,
+    "next_generated_prompt": "Adjudicate both exact retained English trial recordings against their frozen source text and clip2 delivery reference; record timestamped fidelity, repetition, accent, naturalness and expression findings. Keep the voice and audiovisual release held, soundtrack/style unchanged, and all consumed scopes closed; no new inference, training or publication."
+  },
+  "english_clip2_owner_rejection_reference_correction_20261116": {
+    "event": "english_clip2_owner_rejection_reference_correction_20261116",
+    "at": "2026-11-16T06:55:52.732268+00:00",
+    "title": "The Earnalism Voice / Open Window private scene review",
+    "state": "BOTH_ACTUAL_TAKES_OWNER_REJECTED_CONFIRMED_DEFECTS",
+    "reviewed_audio_sha256": [
+      "d066562b801b64972d022298208d1c93bdea0207935e96fd6a545508e59c86c6",
+      "a6f5c2269f39d8be525bdee2c9fb41b8ce206ea1a5a37416a605564400caded1"
+    ],
+    "review_scope": "Both full trial recordings; no defect timestamps supplied",
+    "owner_confirmed_findings": [
+      "muffled speech",
+      "words missing or repeatedly spoken",
+      "boring mechanical delivery",
+      "absent breathing/expression/emotion/naturalness"
+    ],
+    "numerical_scores": null,
+    "earlier_ASR_warning": "Owner now confirms missing/repeated words in these exact recordings; retain earlier diagnostic state as history",
+    "reference_correction": {
+      "owner_window_seconds": [
+        11,
+        18
+      ],
+      "owner_instruction": "Use entire Clip2 from original eight-clip source audition and pick clearest part",
+      "actual_boundary_mapping": "Window crosses Clip2(row2211/f3140 chunk7), ending14.867125s, and Clip3(row2210/f3276 chunk1), beginning14.867125s; do not silently treat them as one identity",
+      "old_short_crop": "Historical; superseded selection preserved",
+      "new_identity_or_clarity_acceptance": "NOT_INFERRED; prepare source-bound choices for clarification"
+    },
+    "backend_capability": "Current Parler uses text plus unspoken captions, not reference waveform conditioning or speaker transfer; a longer reference alone does not repair rejected synthesis",
+    "generation_fingerprints": "Both frozen takes remain consumed; no automatic retry",
+    "exact_soundtrack_and_selected_visual_style": "Unchanged; no replacement narration or film mix",
+    "Bengali_reader_only_rights_existing_holds_and_operation_counters": "Unchanged",
+    "private_evidence_workspace": "english-voice-qualification-queued-v4-20261116",
+    "owner_receipt_sha256": "25131c1fa0ccb5f83fb19c9f7356ddf75b0317576d9b18611fca2df3422838f6",
+    "production_ready": false,
+    "publication": false,
+    "new_training_inference_compute_or_purchase_authority": false,
+    "next_generated_prompt": "Use the retained exact owner rejection and corrected11–18second source mapping to settle the reference identity, then prepare a materially different evidence-based repair. Preserve both rejected takes, original soundtrack/style and consumed scopes; do not generate, train, allocate or publish."
+  },
+  "english_clip2_full_original_owner_selection_20261116": {
+    "event": "english_clip2_full_original_owner_selection_20261116",
+    "at": "2026-11-16T07:09:25.343975+00:00",
+    "state": "FULL_ORIGINAL_CLIP2_SELECTED_BOTH_SYNTHETIC_TAKES_STILL_REJECTED",
+    "reference_seconds": 4.8,
+    "reference_sha256": "ff6a1350955abfdf726d2b4f0dd7b81879e52828de6b4abfead0372d9b987976",
+    "source_compilation_span_seconds": [
+      10.067125,
+      14.867125
+    ],
+    "old_short_crop": "Superseded; preserve as history",
+    "clip3_and_seven_second_composite": "Context only, not selected",
+    "reference_role": "Human performance reference; not waveform conditioning, speaker transfer or synthetic-voice acceptance",
+    "private_selection_receipt_sha256": "965158c065219f1eb09a7fa475a13f6653fa3994c6e5dbd56836721abc9a3ad7",
+    "soundtrack_style_campaign_counters_rights_and_reader_only_state": "Unchanged",
+    "production_ready": false,
+    "new_generation_training_compute_purchase_or_publication_authority": false,
+    "next_generated_prompt": "Diagnose the two owner-rejected recordings offline against complete original4.8secondClip2. Audit retained training/data alignment and decoder/sampler contracts; preserve rejected takes, exact soundtrack/style and consumed scopes. Prepare one materially different repair proposal without execution."
   }
 }

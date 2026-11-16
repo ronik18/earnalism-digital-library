@@ -3506,3 +3506,24 @@ The approved L4 passed the explicit driver lookup and retained all four primary 
 A numeric widget showed the Connect timestamp while code/kernel still held0.0. Exact source was corrected before successful admission within the same allocation and original clock. Verify saved literals before running; never renew an allowance or replay an admitted stage. Preserve the verified private Drive inputs for later preparation. Exact six media hashes, checkpoint/job/profile/settings, earlier findings and all Bengali counters/rights/reader-only state remain unchanged. No new audio, training, purchases or publication.
 
 Next generated prompt: Finish reviewed source integration and the coherent disabled private notebook/resource update; require a fresh exact runtime scope before any later setup or generation.
+
+
+## Actual restored voice runtime and retained fidelity warnings — 16 November 2026
+
+The approved single L4 completed the frozen English comparison after all115 cached inputs and111 exact local packages passed their actual gates. One checkpoint load and two generate calls produced unchanged native26.958s/32.578s takes; no optimizer, generation retry, purchase or publication occurred. The allocation is confirmed closed and actual CU charge remains unitemized. This establishes the restored technical path, not faithful speech or premium performance. Offline CPU ASR flagged garbled/repeated wording in the opening and a repeated phrase in the fear scene. Keep these advisory findings separate from actual listening or confirmed defects; token-cap false does not establish source completeness. Retain both takes, raw diagnostics, consumed fingerprints and existing voice/motion holds before choosing any authorized repair. Exact soundtrack/style hashes were rechecked unchanged; Bengali state, rights and counters remain intact.
+
+Next generated prompt: Adjudicate both exact retained English trial recordings against their frozen source text and clip2 delivery reference; record timestamped fidelity, repetition, accent, naturalness and expression findings. Keep the voice and audiovisual release held, soundtrack/style unchanged, and all consumed scopes closed; no new inference, training or publication.
+
+
+## Owner-confirmed trial rejection and corrected source reference — 16 November 2026
+
+The owner listened to both retained English trials and rejected muffled speech, missing/repeated words, mechanical boring delivery and absent breathing, expression, emotion and naturalness. These are now actual owner findings for the two exact audio hashes, not inferred ASR defects or numerical grades. Preserve the earlier advisory report and both recordings. The corrected00:11–00:18 source window crosses originalClip2 andClip3 at14.867125s; retain whole paired sources separately and clarify identity rather than attach one voice label to the splice. The current caption-only Parler path does not condition on a recording, so expanding the reference crop alone cannot repair the synthesis. No new inference/training/allocation/purchase/publication authority exists; exact soundtrack/style, prior holds and campaign state remain unchanged.
+
+Next generated prompt: Use the retained exact owner rejection and corrected11–18second source mapping to settle the reference identity, then prepare a materially different evidence-based repair. Preserve both rejected takes, original soundtrack/style and consumed scopes; do not generate, train, allocate or publish.
+
+
+## Complete original Clip2 confirmed — 16 November 2026
+
+The owner confirmed the full original4.8-secondClip2 as the performance reference. Retain its exact original PCM; the former shorter crop is superseded history, andClip3/composite11–18secondwindow remain context only. This resolves the source-selection ambiguity without clearing either rejected synthetic take, transferring a speaker identity or authorizing new generation/training/compute/purchases/publication. Exact soundtrack/style and all earlier campaign state remain unchanged.
+
+Next generated prompt: Diagnose the two owner-rejected recordings offline against complete original4.8secondClip2. Audit retained training/data alignment and decoder/sampler contracts; preserve rejected takes, exact soundtrack/style and consumed scopes. Prepare one materially different repair proposal without execution.
