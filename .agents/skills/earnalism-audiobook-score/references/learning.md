@@ -99,6 +99,21 @@ explicit. No new paid review loop follows from using this skill.
 
 The full Open Window/Sredni review (`open_window_sredni_full_context_signal_review_20261114`) also corrected a3.01dB reference mismatch from comparing mono narration RMS with stereo music. For balance checks, use the renderer’s actual narration channel mapping, resampling and gain, state window/activity definitions, and inspect voice onsets, pauses and tails before diagnosing masking from a short level ratio. No heard defect or automatic repair followed from those diagnostic transients.
 
+### Audibility beneath narration
+
+**Evidence:** Tides owner feedback on 15 November 2026 praised the narration but
+reported no audible background score. Matched-reference measurements found the
+existing music present but strongly attenuated during speech. The repaired mix
+still needed listening; signal evidence did not establish heard balance.
+
+**Reusable lesson:** Nonzero music coverage and full-mix loudness do not prove
+that accompaniment is audible beneath speech. Compare pre/post-duck stems with
+the narrator as actually mixed, using the same channel mapping and gain and
+explicit active-window definitions. When this supports a listening complaint,
+make a bounded, content-specific music-level or ducking repair, preserve the voice
+and timing, and retain new-mix listening as pending. Do not copy one episode’s
+gains, activity thresholds or ducking settings into general defaults.
+
 ## Preserve the master during an isolated level correction
 
 **Evidence:** Owner-requested Bicharak v3-to-v4 piano softening, `bicharak_owner_piano_softening_20261113` in title history. A calibrated retained instrumental stem supported a smooth local music delta; independent checks confirmed unchanged PCM outside the correction and the requested reduction. The owner subsequently confirmed, “The piano rise at 18:36 sounds good now,” and selected the unchanged v4 as the final private version (`bicharak_final_private_v4_20261113`). This is an owner-accepted example of a focused music-only repair with the narration and surrounding score preserved; its6dB reduction and3.4-second envelope remain specific to that performance.

@@ -12,6 +12,11 @@ Historical palettes are not automatically continuous. Each new job must select o
 
 This default governs new jobs; it does not rewrite historical candidates or grant their current edits listening/publication approval. Refresh affected audio evidence and use the existing single final candidate decision.
 
+A nonzero bed and healthy full-mix loudness do not establish audibility beneath
+speech. Use [audibility/transition checks](MUSIC_AUDIBILITY.md) with the actual
+mixed voice’s channel mapping, gain and active-window definitions before a
+bounded music-only repair; qualify the new mix by listening.
+
 ## Historical Moon orchestration — preserve existing candidates
 
 The archived Moon edition uses `acoustic_editorial_v12`, dispatched by `score.compose` to `editorial_score.py` over `final_chamber_score.py`. Registered version: `moon-score-v12-editorial-orchestration`. Preserve the original D–A–E–F question, harp answer, reversed F–E–A–D return and open D–A–E resolution. Use restrained recurring identity, acoustic textures, written phrase spacing and intentional silence. Its motif, timings and intentional silence are historical choices; future subjects follow the continuous accompaniment default above.

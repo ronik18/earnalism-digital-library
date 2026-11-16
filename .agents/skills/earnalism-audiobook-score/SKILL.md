@@ -93,3 +93,5 @@ title facts in title history. When there is no new supported lesson, record
 Future invocations must read and apply the retained lessons. This improves
 instructions and editorial choices; it does not train model weights, guarantee
 perfect scoring or turn an applied fix into listening acceptance.
+
+Resolve the Earnalism repository and its current AGENTS.md before running the repository commands above. Prefer `/tmp/earnalism-main-approved-integration`; if occupied or unavailable, preserve it and use the current progress-preserving reconciliation policy. Run commands from the repository root, not this installed skill directory.

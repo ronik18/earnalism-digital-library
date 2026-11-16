@@ -18,7 +18,7 @@ At a new brief, reuse the selected project's `evidence/current-growth-review.jso
 - Keep rights-cleared music below intelligibility, with deliberate phrasing and silence. Louder music, more cuts and faster speech are not evidence of stronger engagement.
 - Preserve the exact approved emblem/watermark and ending, no added tagline, original notebooks and production records. A platform-generated label is distinct from an added brand slogan.
 - Retain synchronized actual-audio captions and transcript/source access. Design for interface masks, profile crops and narrow players; do not hide factual qualifications to look premium.
-- One relevant invitation after useful value. Preserve **#earnalism #learnalism** together, plus only relevant topic terms/tags within the actual composer limit.
+- One relevant invitation after useful value. Preserve **#earnalism #learnalism #theearnalism** together, plus only relevant topic terms/tags within the actual composer limit.
 - Authority remains scoped: no account-setting changes, messages, paid distribution, uploads or publication merely because a strategy recommends them.
 
 ## Choose the intervention from the measured bottleneck
@@ -84,7 +84,7 @@ Priorities are conditional, not a revenue forecast. Fix a real delivery defect b
 
 - Title: specific truthful curiosity or useful question, important subject early. Cover/frame: readable subject and accurate promise for profile/search surfaces; it cannot repair a weak feed opening.
 - Use native English captions or the reviewed burned-caption delivery strategy without accidental double layers. Verify processed audio, captions, cover and disclosure settings.
-- Description: concise learning promise, relevant sources/context, one next lesson/library route and **#earnalism #learnalism**. Tags mainly help spelling variants; do not keyword-stuff.
+- Description: concise learning promise, relevant sources/context, one next lesson/library route and **#earnalism #learnalism #theearnalism**. Tags mainly help spelling variants; do not keyword-stuff.
 - Use the actual Related video control for an available complementary destination with verified ID. If both formats contain the same explanation, call it a format choice, not extra depth.
 - A related-video link enables a journey; it does not prove cross-format conversion. Publish a private destination only with the existing final release authority.
 - Treat a successful Short as a complete learning experience. A linked landscape version needs a truthful reason to choose that format or added depth when it actually exists; never promise a fuller lesson that is the same explanation. Cross-format watching is possible, not assured.
@@ -162,7 +162,7 @@ Checked **2026-11-04**. Help pages are undated unless a date is stated; access d
 
 ## Hashtag selection at packaging and delivery
 
-Use [platform-specific hashtag selection](HASHTAG_STRATEGY.md): retain #earnalism #learnalism together, choose accurate topic tags separately for Instagram and YouTube, respect current composer limits, verify saved copy and evaluate optional-tag experiments without viral guarantees. Hashtag research is not another release approval.
+Use [platform-specific hashtag selection](HASHTAG_STRATEGY.md): retain #earnalism #learnalism #theearnalism together, choose accurate topic tags separately for Instagram and YouTube, respect current composer limits, verify saved copy and evaluate optional-tag experiments without viral guarantees. Hashtag research is not another release approval.
 
 
 ## Transfer classroom craft by platform, not creator popularity
@@ -183,6 +183,6 @@ Apply these techniques during packaging, using the existing final review and des
 - **Support revisiting.** For a genuinely sectioned longer YouTube lesson, draft manual learning-oriented chapters from final audio timing, not a copied template. Current official requirements checked 8 November 2026: start at 00:00, at least three ascending timestamps, each chapter at least ten seconds. Keep automatic chapters disabled under the existing owner setting; manually reviewed chapters are a separate conditional choice. Do not impose chapters on every 90-second video. A library companion may offer a concise original diagram, transcript, source list or safe application task using existing capabilities; do not promise unavailable interactivity or copyrighted resources.
 - **Make corrections usable.** If a verified non-critical published error can be addressed without making the lesson misleading, prepare a concise timestamped correction and verify its saved visibility under existing edit authority. A description correction cannot clear an essential wrong graphic/audio claim that still misleads viewers; follow the existing primary-quality hold/escalation. Never copy a creator's obsolete platform instructions, sponsorship claims or algorithm commentary as current policy.
 
-Compact copy pattern: `specific puzzle/learning benefit → concise accurate context → one available next step → sources/material qualification/disclosure → #earnalism #learnalism + relevant topic tags`. Retain platform limits and saved-cover/caption verification. A useful continuing lesson is a relationship-building hypothesis; measure actual returning viewers/conversion through the established feedback loop. No guaranteed recommendation placement, posting time, algorithm trick, new publication authority or automatic account change follows from this guidance.
+Compact copy pattern: `specific puzzle/learning benefit → concise accurate context → one available next step → sources/material qualification/disclosure → #earnalism #learnalism #theearnalism + relevant topic tags`. Retain platform limits and saved-cover/caption verification. A useful continuing lesson is a relationship-building hypothesis; measure actual returning viewers/conversion through the established feedback loop. No guaranteed recommendation placement, posting time, algorithm trick, new publication authority or automatic account change follows from this guidance.
 
 Official references: [YouTube content performance](https://support.google.com/youtube/answer/16559650?hl=en), [manual chapters](https://support.google.com/youtube/answer/9884579?hl=en), [Shorts related videos](https://support.google.com/youtube/answer/14075157?hl=en), checked 8 November 2026; publication dates not displayed. Creator observation: [neural-network lesson](https://www.youtube.com/watch?v=aircAruvnKk), published 5 October 2017. Its educational structure informs the craft; lifetime popularity does not identify causal growth effects or current policy.
