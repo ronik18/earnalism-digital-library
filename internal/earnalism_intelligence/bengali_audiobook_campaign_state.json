@@ -1569,5 +1569,86 @@
     "purchases": false,
     "new_execution_authority": false,
     "next_generated_prompt": "Use the corrected English offline-wheel installer and coherent disabled single notebook/resources after source review and required CI; preserve the closed run, primary receipts and verified Drive inputs. Any further runtime/setup needs a fresh exact owner scope. Keep soundtrack/style, prior holds and source fidelity intact; review both actual scenes only if generated."
+  },
+  "english_clip2_actual_two_scene_runtime_20261116": {
+    "event": "english_clip2_actual_two_scene_runtime_20261116",
+    "at": "2026-11-16T06:45:05.407289+00:00",
+    "title": "The Earnalism Voice / private Open Window two-scene comparison",
+    "state": "L4_CLOSED_TWO_NATIVE_TAKES_ADVISORY_FIDELITY_WARNINGS_HELD",
+    "runtime": {
+      "image": "2026.07",
+      "python": "3.12.13",
+      "GPU": "NVIDIA L4",
+      "allocations_consumed": 1,
+      "allocations_remaining": 0,
+      "approved_max_minutes": 45,
+      "approved_additional_existing_CU": 3,
+      "rate_shortened_window_seconds": 2454,
+      "conservative_fullwindow_CU_bound": 2.9993333333333334,
+      "actual_CU_charge": "UNITEMIZED_NOT_ASSUMED_ZERO",
+      "closure": "Observed Reconnect and own notebook absent from active sessions; unrelated older session preserved"
+    },
+    "actual_result": {
+      "source_files_verified": 38,
+      "cached_inputs_stream_verified": 115,
+      "verified_bytes": 7197234091,
+      "network_transfer_intents": 0,
+      "exact_local_wheels_installed": 111,
+      "pip_check_and_exact_versions": "PASS_ACTUAL_L4",
+      "package_setup_attempts": 1,
+      "native_render_attempts": 1,
+      "checkpoint_load_report": "No missing/unexpected/mismatched keys or errors",
+      "generate_calls": 2,
+      "training_updates": 0,
+      "native_audio_seconds": 59.53596371882087,
+      "output_status": "PRIVATE_GENERATED_REQUIRES_QA",
+      "token_cap_reached": [
+        false,
+        false
+      ]
+    },
+    "outputs": [
+      {
+        "unit": "en-opening84-saved-regression-v1",
+        "sha256": "d066562b801b64972d022298208d1c93bdea0207935e96fd6a545508e59c86c6",
+        "bytes": 4755500,
+        "duration_seconds": 26.958367346938775,
+        "fingerprint": "f3058ae6e94b33ea2f4dbe5f1bfb0c2567d8cda74c1dc214565d46886ebb7354"
+      },
+      {
+        "unit": "en-fear-flight183-saved-regression-v1",
+        "sha256": "a6f5c2269f39d8be525bdee2c9fb41b8ce206ea1a5a37416a605564400caded1",
+        "bytes": 5746732,
+        "duration_seconds": 32.57759637188209,
+        "fingerprint": "4945ee156ba9d7b31b1acaac9ea8d17daff77ae92d07e0566a38b54b3cb52f4a"
+      }
+    ],
+    "private_diagnostics": {
+      "ASR": "One completed offline CPU small.en pass, no source prompt, downloads or new GPU; original decode API mismatch retained separately",
+      "finding": "Advisory garbled/repeated opening wording and extended repeated phrase in fear/flight; requires actual audio adjudication, not confirmed listening defects",
+      "fear_script_words": 183,
+      "fear_native_seconds": 32.57759637188209,
+      "quality_scores": null,
+      "first_last_words_and_source_fidelity": "UNACCEPTED",
+      "model_or_performance_repair_in_this_run": false
+    },
+    "learning": "Complete hash-locked installation and successful CUDA/checkpoint/two-take execution qualify this technical path only. Native completion and token-cap false do not prove complete faithful speech, naturalness, accent or release acceptance. Preserve consumed fingerprints and adjudicate the exact retained audio before selecting a repair; no warning-driven automatic regeneration.",
+    "private_evidence": {
+      "workspace_key": "english-voice-qualification-queued-v4-20261116",
+      "export_sha256": "f68d2c6936b69a86283300c9bc03b2176c0558ef9a4f296591f99b303ff55733",
+      "closed_notebook_sha256": "322746813ff92badf0e02b69c784e71a5f6c34675add887ec2d1044d1d92de16",
+      "native_result_sha256": "0941073b16c70a86b2db70fccc8159ca0fd32f785f88ba91e74d8c5fc2eb1774",
+      "ASR_report_sha256": "8171d6b78f5653931aa639f1df337b2acf1ef27ea96ceed45a9f8ea7be9eb57e"
+    },
+    "exact_soundtrack_and_selected_style": "Rehashed after run; unchanged",
+    "score_learning": "no-new-learning; exact soundtrack/KEEP context preserved",
+    "video_learning": "no-new-learning; selected style and existing torso/fear/identity holds preserved",
+    "Bengali_reader_only_rights_holds_and_existing_campaign_counters_unchanged": true,
+    "reference_is_human_comparison_only_not_audio_conditioning_or_speaker_transfer": true,
+    "production_ready": false,
+    "publication": false,
+    "new_purchases": false,
+    "new_runtime_authority": false,
+    "next_generated_prompt": "Adjudicate both exact retained English trial recordings against their frozen source text and clip2 delivery reference; record timestamped fidelity, repetition, accent, naturalness and expression findings. Keep the voice and audiovisual release held, soundtrack/style unchanged, and all consumed scopes closed; no new inference, training or publication."
   }
 }

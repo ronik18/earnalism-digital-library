@@ -81,6 +81,13 @@ Verify saved scope/clock/rate literals before running cells; visible numeric for
 values may not have committed to source. Keep actual setup and voice acceptance
 separate, and preserve consumed scopes plus reusable verified inputs.
 
+After a restored runtime generates trial audio, verify spoken content separately
+from successful model loading and token-limit receipts. A completed take with
+`token_cap_reached: false` can still carry fidelity warnings. Retain the exact
+audio, captions, fingerprints and raw diagnostics for adjudication; an ASR warning
+is not a confirmed listening defect or permission to regenerate. Preserve active
+owner holds and consumed attempts until the affected evidence is actually resolved.
+
 Use existing scoring tools with the exact narration, measured clock and cleared
 finite instrumental sources. Preserve purposeful literary silence and liked
 passages; the short science-video default of continuous body music does not
