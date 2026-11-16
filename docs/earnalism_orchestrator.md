@@ -137,6 +137,16 @@ before allocation. The generated notebook requests `2026.07` (Python 3.12)
 through its runtime metadata. This image pin does not
 replace the actual Linux/Python preflight before storage or model work.
 
+The pre-storage probe and actual native worker explicitly load the fixed,
+hash-verified provider bootstrap before Torch. Automatic `sitecustomize` lookup
+can select a different file even in an isolated venv; a successful metadata child
+does not preload the later native process. Preserve the existing basename driver
+lookup gate and stripped environment. Before shutdown, the pre-storage entry
+prints bounded SHA/length-bound copies of its four primary receipts into notebook
+output. Retrieve and verify the saved notebook to establish durable retention.
+Missing child diagnostics leave an actual runtime failure's cause unknown; a
+reproduction on another CPU host does not diagnose Colab or qualify CUDA.
+
 The existing voice controller also registers the retained balanced128 checkpoint
 for the single private Bengali qualification request `8d80e56eeb3b`, amendment
 `bda98868de0d`. This is a separate Darwin arm64, Python 3.11, exact CPU100

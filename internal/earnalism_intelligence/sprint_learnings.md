@@ -3488,3 +3488,12 @@ Next generated prompt: Validate the saved private job with execution disabled; u
 The actual L4 on image2026.10 returned Python3.13.16 while the frozen English worker requires3.12. Its first guard closed the owned runtime before Drive, transfers, packages or model work; zero new audio exists and its CU charge is unobserved. Verify the current provider runtime-version table before allocating, pin the compatible image and retain the actual pre-storage check. The compatible2026.07 metadata fix preserves every frozen scene/model/source setting and failed output; it creates no replacement authority. Existing counters, original deadline, private soundtrack/style and Bengali reader-only state remain preserved.
 
 Next generated prompt: Use the documented ABI-compatible image and actual first preflight under a valid exact scope; any replacement requires the owner amendment and retains the original clock and aggregate cap.
+
+
+## Explicit provider bootstrap and retained failure evidence — 16 November 2026
+
+The fresh L4 reached the required Python3.12.13 image but closed on its pre-storage child driver lookup, before Drive, package setup or model work. No revised audio was produced; the CU charge remains unitemized. Only a truncated error summary survived: the full child stderr and return code were lost, so the actual Colab cause remains unknown.
+
+A real isolated CPython3.12.13 Darwin CPU venv independently reproduced automatic sitecustomize selecting a foreign baseline file. Explicitly verify and load the fixed owned bootstrap in each process before Torch while preserving baseline customization, the stripped environment and original basename gate. The metadata child is a separate process. Print bounded SHA/length-bound copies of all four primary pre-storage receipts before shutdown, then verify the saved notebook bytes. CPU evidence is neither a Colab diagnosis nor CUDA/voice acceptance. The seven-file correction passes81 source/CPU/mock tests, including six actual CPU regression cases; new GPU execution remains unauthorized. Frozen narration settings, exact soundtrack/style, previous findings and Bengali campaign counters/rights/reader-only state are unchanged.
+
+Next generated prompt: Rebuild coherent notebook/resource/driver source pins from reviewed merged source; retain the failed raw notebook and use a fresh exact owner scope before any future allocation.

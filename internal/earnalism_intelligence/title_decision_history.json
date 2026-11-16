@@ -18340,5 +18340,65 @@
     "existing_operation_counters_preserved": true,
     "production_ready": false,
     "next_generated_prompt": "Use the documented compatible Colab image and actual pre-storage ABI check. Any replacement requires the exact owner amendment, original deadline and3CUaggregatecap; never allocate under an expired scope or replay native model work."
+  },
+  "english_clip2_fresh_L4_pre_storage_failure_20261116": {
+    "event": "english_clip2_fresh_L4_pre_storage_failure_20261116",
+    "at": "2026-11-16T03:48:24.966556+00:00",
+    "title": "The Earnalism Voice / Open Window private two-scene qualification",
+    "state": "FRESH_L4_CLOSED_PRE_STORAGE_FAILURE_ZERO_MODEL_WORK_SOURCE_CORRECTION",
+    "fresh_scope": {
+      "allocations_consumed": 1,
+      "wall_minutes_ceiling_including_setup_transfers_export": 45,
+      "additional_existing_CU_cap": 3,
+      "broad_Drive_connection_approved_but_not_reached": true,
+      "old_expired_replacement_scope_reused": false
+    },
+    "actual_runtime": {
+      "gpu": "NVIDIA L4",
+      "image": "2026.07",
+      "Python": "3.12.13",
+      "observed_CU_per_hour": 1.94,
+      "closure": "Observed Reconnect and empty active sessions",
+      "CU_charge": "UNITEMIZED_NOT_ASSUMED_ZERO"
+    },
+    "actual_result": {
+      "driver_probe": "PRE_STORAGE_DRIVER_LOOKUP_FAILED_NO_RETRY",
+      "child_error": "CalledProcessError",
+      "underlying_cause": "UNKNOWN_PRIMARY_STDERR_NOT_RETAINED",
+      "full_ephemeral_RESULT_bytes_reported": 1170,
+      "full_ephemeral_RESULT_sha256_reported": "c86befc878af6d99b12e05daefbf183c5278b7d1b9a3f4331fed4b774f659a19",
+      "Drive_connections": 0,
+      "package_setups": 0,
+      "requested_model_or_package_downloads": 0,
+      "native_model_attempts": 0,
+      "model_loads": 0,
+      "checkpoint_restores": 0,
+      "generate_calls": 0,
+      "new_audio": 0,
+      "training_updates": 0
+    },
+    "source_correction": {
+      "explicit_hash_bound_preload": "Fixed helper/bootstrap in pre-storage probe, metadata child and actual native worker before Torch; original basename lookup and stripped environment retained",
+      "primary_evidence": "Print bounded hash/length-bound four receipt capsules before cleanup; require saved-notebook raw verification",
+      "CPU_observation": "CPython3.12.13 Darwin isolated venv selected foreign baseline sitecustomize; explicit owned bootstrap works without replacing baseline",
+      "actual_Colab_cause": "Still unknown; CPU reproduction is not diagnosis or CUDA/model qualification",
+      "frozen_job_profile_checkpoint_reference_captions_seeds_sampler_unchanged": true
+    },
+    "evidence": {
+      "private_workspace_key": "english-voice-qualification-fresh-v2-20261116",
+      "actual_outcome_sha256": "e3e7d13a7d99b06bbbfa9eb49040778ef5a8d2053abd4f3b7e6480d66796773c",
+      "closed_notebook_sha256": "985f01ecc291e1ef6416c72a7e6d20296a6b0ff095005642163fbd98d9675823",
+      "raw_readback_verified_evidence_zip_sha256": "a8f25790a071945d0c33d445f53fe64bc1ec6e2fb63dcc28681bcac7bb0a08f5"
+    },
+    "soundtrack_and_selected_visual_style": "Exact retained bytes unchanged; no media write",
+    "score_learning": "no-new-learning; exact retained score preserved",
+    "video_learning": "no-new-learning; selected style and outstanding torso/fear/identity review holds preserved",
+    "existing_Bengali_reader_only_state_voice_holds_counters_rights_and_budgets_preserved": true,
+    "source_tests_are_not_scene_reviews": true,
+    "production_ready": false,
+    "published": false,
+    "new_purchases": false,
+    "new_runtime_authority_created": false,
+    "next_generated_prompt": "Use the coherently rebound single notebook and private resources only after a fresh exact owner scope; preserve closed allocation evidence, qualify the explicit bootstrap and retain primary receipts before any storage or model work. No automatic retry."
   }
 }

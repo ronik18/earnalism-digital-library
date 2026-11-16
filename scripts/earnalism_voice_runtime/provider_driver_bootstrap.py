@@ -10,8 +10,11 @@ import hashlib
 import json
 import os
 import sys
+import types
 
 _LOADED_PROVIDER_HANDLES=[]
+EXPLICIT_MODE='EXPLICIT_FIXED_HASH_BOUND_BOOTSTRAP_V1'
+OWNED_MODULE='_earnalism_provider_driver'
 
 
 def sha(path):
@@ -102,11 +105,41 @@ try:
     if _h.hexdigest()!=_spec['sha256']:
         raise ValueError('sha256')
     _EARNALISM_PROVIDER_DRIVER=_ctypes.CDLL(str(_path),mode=_ctypes.RTLD_GLOBAL)
-except BaseException:
-    _sys.stderr.write('EARNALISM_EXACT_PROVIDER_DRIVER_PRELOAD_FAILED\\n')
+except BaseException as _error:
+    _sys.stderr.write('EARNALISM_EXACT_PROVIDER_DRIVER_PRELOAD_FAILED:'+type(_error).__name__+':'+str(_error)[:400]+'\\n')
     _sys.stderr.flush()
     _os._exit(73)
 '''
+
+
+def load_exact_preload(library,bootstrap):
+    """Explicitly execute only the fixed hash-bound renderer, before Torch.
+
+    Automatic sitecustomize import can resolve a provider/base module first.
+    Preserve that module; do not infer our preload from its name or presence.
+    This function verifies exact source and library identity and retains the
+    resulting handle in a unique module in THIS process.
+    """
+    expected=render_preload_source(library)
+    render_preload_source(bootstrap)  # Exact ordinary descriptor validation.
+    path=Path(bootstrap['path'])
+    if (path.is_symlink() or str(path.resolve(strict=True))!=bootstrap['path']
+            or not path.is_file() or path.stat().st_size!=bootstrap['bytes'] or sha(path)!=bootstrap['sha256']
+            or path.read_text()!=expected):
+        raise ValueError('Exact fixed provider bootstrap source required')
+    existing=sys.modules.get(OWNED_MODULE)
+    if existing is not None:
+        if (getattr(existing,'__file__',None)!=str(path)
+                or getattr(existing,'_EARNALISM_EXPLICIT_BOOTSTRAP_SHA256',None)!=bootstrap['sha256']
+                or getattr(existing,'_spec',None)!=library
+                or getattr(getattr(existing,'_EARNALISM_PROVIDER_DRIVER',None),'_name',None)!=library['path']):
+            raise ValueError('Preserve foreign or changed owned provider module')
+        return existing
+    owned=types.ModuleType(OWNED_MODULE);owned.__file__=str(path)
+    exec(compile(expected,str(path),'exec'),owned.__dict__)
+    owned._EARNALISM_EXPLICIT_BOOTSTRAP_SHA256=bootstrap['sha256']
+    sys.modules[OWNED_MODULE]=owned
+    return owned
 
 
 def install_preload(binding,venv_site,evidence_dir):
@@ -133,6 +166,7 @@ def install_preload(binding,venv_site,evidence_dir):
             'state':'EXACT_PROVIDER_DRIVER_PRELOAD_INSTALLED_NOT_CUDA_QUALIFIED',
             'provider_binding':binding,
             'bootstrap':{'path':str(target),'bytes':target.stat().st_size,'sha256':sha(target)},
+            'explicit_bootstrap_mode':EXPLICIT_MODE,'explicit_module_name':OWNED_MODULE,
             'credential_stripped_worker_env':'UNCHANGED',
             'frozen_phase_model_profile_data_scene_and_schedule_bytes':'UNCHANGED',
             'fresh_actual_minimalenv_GPU_probe':'REQUIRED_BEFORE_TRAIN_INTENT',

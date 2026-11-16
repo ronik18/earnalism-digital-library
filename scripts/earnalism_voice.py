@@ -83,7 +83,7 @@ RUNTIME = Path(__file__).with_name("earnalism_voice_runtime") / "parler.py"
 SETUP = RUNTIME.with_name("setup.py")
 DARWIN = RUNTIME.with_name("darwin.py")
 PROVIDER_DRIVER = RUNTIME.with_name("provider_driver_bootstrap.py")
-PROVIDER_DRIVER_SHA256 = 'd1cdf9474e6932ee5fe278b0c6ab2aba12eb8f08ca027a8d46cd4224cf04b9ec'
+PROVIDER_DRIVER_SHA256 = '4c133509eb422598a626c006873c66e176e4961927e9187313dbbe35f5336cf7'
 SHA = re.compile(r"[0-9a-f]{64}\Z")
 MIN_PACKAGES = {"torch": "2.6.0", "transformers": "4.46.1",
                 "parler-tts": "0.2.2", "descript-audio-codec": "1.0.0"}
@@ -710,12 +710,31 @@ def _cpu_interpreter(profile, root):
     return str(path)
 
 
+def _owned_provider_helper():
+    if digest(PROVIDER_DRIVER)!=PROVIDER_DRIVER_SHA256:
+        raise VoiceBlocked("Exact provider helper source required")
+    import importlib.util
+    spec=importlib.util.spec_from_file_location("_earnalism_owned_provider_startup",PROVIDER_DRIVER)
+    helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
+    return helper
+
+
+def _load_owned_provider_in_this_process(authority,root):
+    preload=_json(_descriptor(root,authority.get("provider_driver_preload")))
+    helper=_owned_provider_helper()
+    if (preload.get("explicit_bootstrap_mode")!=helper.EXPLICIT_MODE
+            or preload.get("explicit_module_name")!=helper.OWNED_MODULE):
+        raise VoiceBlocked("Explicit exact provider bootstrap receipt required")
+    return helper.load_exact_preload(preload["provider_binding"]["library"],preload["bootstrap"])
+
+
 def _linux_interpreter(profile, plan, authority, root):
     """Select only the same-scope owned CP312 venv; never the notebook kernel.
 
     File/metadata checks and a bounded stdlib-only interpreter probe precede
-    native render intent. The existing provider sitecustomize loads only its
-    exact previously resolved library; no credential environment is inherited.
+    native render intent. A fixed explicit bootstrap loads only the exact
+    previously resolved library; baseline customization and the stripped child
+    environment are preserved.
     """
     if not _en_route(profile) or sys.platform != "linux" or platform.machine() != "x86_64":
         raise VoiceBlocked("Actual Linux x86_64 English interpreter bridge required")
@@ -774,23 +793,34 @@ def _linux_interpreter(profile, plan, authority, root):
         raise VoiceBlocked("Actual libcuda library family required")
     if startup != runtime_dir/"lib/python3.12/site-packages/sitecustomize.py" or digest(PROVIDER_DRIVER)!=PROVIDER_DRIVER_SHA256:
         raise VoiceBlocked("Only fixed existing provider startup helper is supported")
-    import importlib.util
-    spec=importlib.util.spec_from_file_location("_earnalism_owned_provider_startup",PROVIDER_DRIVER)
-    helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
+    helper=_owned_provider_helper()
+    if (preload.get("explicit_bootstrap_mode")!=helper.EXPLICIT_MODE
+            or preload.get("explicit_module_name")!=helper.OWNED_MODULE):
+        raise VoiceBlocked("Explicit exact provider bootstrap receipt required")
     if startup.read_text()!=helper.render_preload_source(binding["library"]):
         raise VoiceBlocked("Provider startup code differs from fixed renderer")
-    # Fixed metadata-only code: startup preloads the hash-bound library before
-    # any future Torch import. Its success is not CUDA/model qualification.
-    probe="import sys,json,importlib.metadata; s=sys.modules.get('sitecustomize'); print(json.dumps({'python':'.'.join(map(str,sys.version_info[:2])),'packages':{d.metadata['Name'].lower().replace('_','-').replace('.','-'):d.version for d in importlib.metadata.distributions()},'sitecustomize':getattr(s,'__file__',None),'provider_preloaded':getattr(s,'_EARNALISM_PROVIDER_DRIVER',None) is not None}))"
+    # Fixed metadata-only code explicitly preloads the hash-bound library;
+    # automatic sitecustomize precedence is not assumed. This separate child
+    # is not evidence that the later native worker has already preloaded it.
+    probe="""import hashlib,importlib.metadata,importlib.util,json,pathlib,sys
+p=pathlib.Path(sys.argv[1])
+if hashlib.sha256(p.read_bytes()).hexdigest()!=sys.argv[2]:raise RuntimeError('EXACT_PROVIDER_HELPER_REQUIRED')
+spec=importlib.util.spec_from_file_location('_earnalism_exact_probe_helper',p)
+helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
+expected=json.loads(sys.argv[3]); owned=helper.load_exact_preload(expected['library'],expected['bootstrap'])
+print(json.dumps({'python':'.'.join(map(str,sys.version_info[:2])),'packages':{d.metadata['Name'].lower().replace('_','-').replace('.','-'):d.version for d in importlib.metadata.distributions()},'provider_bootstrap':owned.__file__,'provider_preloaded':getattr(owned,'_EARNALISM_PROVIDER_DRIVER',None) is not None,'provider_spec':getattr(owned,'_spec',None),'provider_library':getattr(getattr(owned,'_EARNALISM_PROVIDER_DRIVER',None),'_name',None)}))
+"""
     remaining=authority["absolute_deadline_epoch"]-time.time()
     if remaining<=0:raise VoiceBlocked("Original runtime clock exhausted before metadata probe")
-    current=subprocess.run([str(python),"-I","-B","-c",probe],
+    current=subprocess.run([str(python),"-I","-B","-c",probe,str(PROVIDER_DRIVER),PROVIDER_DRIVER_SHA256,
+        json.dumps({'library':binding['library'],'bootstrap':preload['bootstrap']},sort_keys=True)],
         env={"PATH":os.defpath,"LANG":"C.UTF-8","PYTHONNOUSERSITE":"1","PYTHONDONTWRITEBYTECODE":"1"},
         stdin=subprocess.DEVNULL,capture_output=True,text=True,check=True,timeout=min(20,remaining),
         preexec_fn=lambda:_arm_child_containment(authority["absolute_deadline_epoch"]))
     current=json.loads(current.stdout)
-    if (current.get("python")!="3.12" or current.get("sitecustomize")!=str(startup)
+    if (current.get("python")!="3.12" or current.get("provider_bootstrap")!=str(startup)
             or current.get("provider_preloaded") is not True
+            or current.get("provider_spec")!=binding['library'] or current.get("provider_library")!=binding['library']['path']
             or any(current.get("packages",{}).get(k)!=v for k,v in profile["runtime"]["packages"].items())):
         raise VoiceBlocked("Selected owned interpreter ABI/packages/provider startup drifted")
     return str(python)
@@ -910,6 +940,9 @@ def _worker(job_path, output, authority_path, lifeline_fd=None):
         selected = _linux_interpreter(profile,plan,authority,Path(authority_path).absolute().parent)
         if Path(sys.executable).absolute() != Path(selected).absolute():
             raise VoiceBlocked("Owned worker is not the selected English runtime")
+        # The metadata probe is a different process. Load the same exact
+        # bootstrap in this owned native worker BEFORE runtime/Torch imports.
+        _load_owned_provider_in_this_process(authority,Path(authority_path).absolute().parent)
     import importlib.util
     spec = importlib.util.spec_from_file_location("_earnalism_fixed_parler_inference", RUNTIME)
     runtime = importlib.util.module_from_spec(spec); spec.loader.exec_module(runtime)

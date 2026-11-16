@@ -69,6 +69,12 @@ credential-stripped worker environment. A CPU shared-library test or successful
 driver lookup is not Torch/CUDA compute, model, training or narration acceptance.
 See the [runtime contract](../../../docs/earnalism_orchestrator.md) for the entry.
 
+The isolated probe and native worker explicitly load the fixed hash-bound
+bootstrap before Torch. Verify the bounded primary receipts in the saved
+notebook before treating temporary-runtime diagnostics as durable evidence.
+An absent child error leaves the actual cause unknown; CPU reproductions do not
+establish Linux/CUDA or voice qualification.
+
 Use existing scoring tools with the exact narration, measured clock and cleared
 finite instrumental sources. Preserve purposeful literary silence and liked
 passages; the short science-video default of continuous body music does not

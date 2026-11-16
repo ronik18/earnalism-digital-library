@@ -26,7 +26,7 @@ class PreDriveEntryTests(unittest.TestCase):
 
     def test_exact_capsule(self):
         raw = ENTRY._capsule()
-        self.assertEqual(len(raw), 6686)
+        self.assertEqual(len(raw), ENTRY.HELPER_BYTES)
         self.assertEqual(hashlib.sha256(raw).hexdigest(), ENTRY.HELPER_SHA256)
         self.assertEqual(raw, (HERE/'provider_driver_bootstrap.py').read_bytes())
 
@@ -62,6 +62,8 @@ class PreDriveEntryTests(unittest.TestCase):
                 self.assert_site = site
                 if not site.is_dir(): raise AssertionError('owned site required')
                 (site/'sitecustomize.py').write_text('# SOURCE_MOCK_ONLY\n')
+                target=site/'sitecustomize.py'
+                return {'bootstrap':{'path':str(target),'bytes':target.stat().st_size,'sha256':hashlib.sha256(target.read_bytes()).hexdigest()}}
         class FakeBuilder:
             def __init__(self, **kwargs):
                 if kwargs != {'with_pip': False, 'symlinks': False}: raise AssertionError(kwargs)
@@ -70,10 +72,10 @@ class PreDriveEntryTests(unittest.TestCase):
                 (destination/'lib/python3.12/site-packages').mkdir(parents=True)
                 (destination/'bin').mkdir()
                 (destination/'bin/python').write_text('SOURCE_MOCK_ONLY')
-        def probe(python, timeout):
+        def probe(python, timeout, *, library, bootstrap):
             order.append('fresh_minimalenv_lookup')
             self.assertGreater(timeout, 0)
-            return type('Receipt', (), {'stdout': '{"state":"FRESH_MINIMALENV_DRIVER_LOOKUP_PASS"}', 'stderr': ''})()
+            return type('Receipt', (), {'stdout': '{"state":"EXACT_PROVIDER_BOOTSTRAP_LOADED_BEFORE_LOOKUP"}\n{"state":"FRESH_MINIMALENV_DRIVER_LOOKUP_PASS"}', 'stderr': '', 'returncode':0})()
         with tempfile.TemporaryDirectory() as tmp, \
              mock.patch.object(ENTRY, '_runtime_supported', return_value=True), \
              mock.patch.object(ENTRY, '_load_helper', return_value=FakeHelper()), \
@@ -90,10 +92,14 @@ class PreDriveEntryTests(unittest.TestCase):
     def test_fresh_child_exact_stripped_env_and_no_skip_site(self):
         completed = type('Receipt', (), {'stdout': '', 'stderr': ''})()
         with mock.patch.object(ENTRY.subprocess, 'run', return_value=completed) as run:
-            ENTRY._fresh_probe(Path('/SOURCE_MOCK_ONLY/python'), 12)
+            ENTRY._fresh_probe(Path('/SOURCE_MOCK_ONLY/python'), 12,
+                library={'path':'/SOURCE_MOCK_ONLY/libcuda.so.1','bytes':1,'sha256':'0'*64},
+                bootstrap={'path':'/SOURCE_MOCK_ONLY/sitecustomize.py','bytes':1,'sha256':'0'*64})
         args, kwargs = run.call_args
         self.assertEqual(args[0][1:4], ['-I', '-B', '-c'])
         self.assertNotIn('-S', args[0])
+        self.assertIn("ctypes.CDLL('libcuda.so.1')",args[0][4])
+        self.assertIn('load_exact_preload',args[0][4])
         self.assertEqual(kwargs['env'], ENTRY.MINIMAL_ENV)
         self.assertNotIn('LD_LIBRARY_PATH', kwargs['env'])
         self.assertFalse(any('TOKEN' in key or 'KEY' in key for key in kwargs['env']))

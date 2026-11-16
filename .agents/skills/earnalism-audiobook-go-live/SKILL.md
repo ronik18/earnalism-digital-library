@@ -27,6 +27,12 @@ or expand the worker's credential environment. Preserve the original deadline
 and consumed attempts. Driver lookup and positional-table preparation are
 prerequisites, not evidence of model training or acceptable speech.
 
+Use the fixed hash-verified bootstrap explicitly in each isolated process before
+Torch; automatic `sitecustomize` lookup can select a different file. Retain the
+bounded primary receipts in saved notebook output before runtime cleanup, then
+verify their bytes. Missing child diagnostics leave the actual cause unknown;
+a CPU reproduction cannot diagnose Colab or qualify CUDA.
+
 
 Before allocating Colab, verify the target Python ABI in the provider's current
 runtime-version documentation and pin a compatible image in notebook metadata.
