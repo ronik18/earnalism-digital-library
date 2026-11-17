@@ -47,6 +47,12 @@ runtime venv, while private journals survive on Drive. The canonical experiment
 blocks package/probe replay across renamed requests or scopes; verified completed
 results are status-only and do not qualify a new runtime.
 
+A successful setup or CUDA command can produce an empty log. Completed-result
+verification retains and checks its exact zero-byte log and checksum; missing,
+changed or redirected logs still fail. Other qualification inputs remain nonempty.
+Test the producer-to-result-verifier path before spending on a runtime; a passing
+producer alone does not prove that its retained result can pass the later handoff.
+
 Qualification returns actual interpreter/preload/package/CUDA descriptors as
 evidence, without synthesizing another authority. A later selected diagnostic
 independently validates its genuine complete-operation scope and actual files.
