@@ -48,6 +48,9 @@ jobs:
       # Retained current A/B controller; never recovery qualification of CI HEAD.
       RETAINED_PAIR_CONTROLLER_SHA: e547d0163fa8d1f59891724e2717fb1526fd4ed6
       RETAINED_PAIR_CONTROLLER_TREE: 347a5952c2869ad9aa743a967aef2e5702c93586
+      # Reviewed PR719 main bridge; source ancestry only, never recovery authority.
+      RETAINED_PAIR_BRIDGE_SHA: 1365d3043a94edbda230954cc191fdbf43693f31
+      RETAINED_PAIR_BRIDGE_TREE: c14df22d94dd4111f11eb4b8e84900e27e6ec407
       # Avoid retaining a second wheel/download copy beside the isolated UAT environment.
       PIP_NO_CACHE_DIR: "1"
       npm_config_cache: ${{ github.workspace }}/.npm-cache
@@ -109,6 +112,65 @@ jobs:
             fi
           }
           trap restore_fetch_config EXIT
+          bounded_pair_ancestor() {
+            # At most 63 parent edges, 4096 unique nodes and 1 MiB per commit. Read metadata
+            # only; pre-existing objects do not enlarge either policy leg.
+            python3 - "$1" "$2" <<'PYBOUNDEDPAIR'
+          import collections, os, re, subprocess, sys
+          ancestor, head = sys.argv[1:]
+          if not all(re.fullmatch('[0-9a-f]{40}', value) for value in (ancestor, head)):
+              raise SystemExit(2)
+          env = dict(os.environ, GIT_NO_LAZY_FETCH='1', GIT_NO_REPLACE_OBJECTS='1')
+          process = None
+          queue, seen, status = collections.deque([(head,0)]), set(), 1
+          try:
+              process = subprocess.Popen(['git','-c','remote.origin.promisor=false','cat-file','--batch'],
+                  stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, env=env)
+              while queue:
+                  oid, depth = queue.popleft()
+                  if oid in seen:
+                      continue
+                  seen.add(oid)
+                  if len(seen) > 4096:
+                      raise ValueError('commit node limit')
+                  if oid == ancestor:
+                      status = 0
+                      break
+                  if depth == 63:
+                      continue
+                  process.stdin.write(oid.encode()+b'\n'); process.stdin.flush()
+                  header = process.stdout.readline(256).split()
+                  if len(header) != 3 or header[0] != oid.encode() or header[1] != b'commit':
+                      raise ValueError('missing or untyped commit metadata')
+                  size = int(header[2])
+                  if not 0 < size <= 1024**2:
+                      raise ValueError('commit metadata byte limit')
+                  raw = process.stdout.read(size+1)
+                  if len(raw) != size+1 or raw[-1:] != b'\n':
+                      raise ValueError('incomplete commit metadata')
+                  for line in raw[:-1].split(b'\n\n',1)[0].splitlines():
+                      if line.startswith(b'parent '):
+                          parent = line[7:].decode('ascii')
+                          if not re.fullmatch('[0-9a-f]{40}', parent):
+                              raise ValueError('invalid parent metadata')
+                          queue.append((parent,depth+1))
+          except Exception as error:
+              print('bounded parent proof failed: '+str(error), file=sys.stderr)
+              status = 2
+          finally:
+              if process is not None:
+                  try:
+                      process.stdin.close()
+                  except OSError:
+                      status = 2
+                  try:
+                      if process.wait(timeout=10) != 0:
+                          status = 2
+                  except subprocess.TimeoutExpired:
+                      process.kill(); process.wait(); status = 2
+          sys.exit(status)
+          PYBOUNDEDPAIR
+          }
           bindings=()
           pair_bootstrap_pin=''
           for source_pin in \
@@ -181,6 +243,7 @@ jobs:
           consumer_contract=internal/earnalism_intelligence/listener_text_sync_consumer.json
           [[ "$(sha256sum "$consumer_contract" | awk '{print $1}')" == '6f1ebb978201f85fbaf1675a567000db074412ab2066ca15ff3481771c02ff18' ]] || exit 1
           [[ "$RETAINED_PAIR_CONTROLLER_SHA" == 'e547d0163fa8d1f59891724e2717fb1526fd4ed6' ]] || exit 1
+          [[ "$RETAINED_PAIR_BRIDGE_SHA" == '1365d3043a94edbda230954cc191fdbf43693f31' && "$RETAINED_PAIR_BRIDGE_TREE" == 'c14df22d94dd4111f11eb4b8e84900e27e6ec407' ]] || exit 1
           [[ "$(jq -er '.sources | length' "$consumer_contract")" == 12 ]] || exit 1
           bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:$consumer_contract")
           bindings+=("$RETAINED_PAIR_CONTROLLER_SHA:internal/legal/sredni_reader_retirement_owner_instruction.json")
@@ -232,7 +295,30 @@ jobs:
               git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$RETAINED_PAIR_CONTROLLER_SHA"
               # Restore bounded ancestry after the exact-tree fetch introduces a shallow edge.
               git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$pair_controller_pin"
-              git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_CONTROLLER_SHA" HEAD
+              direct_status=0
+              git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_CONTROLLER_SHA" HEAD || direct_status=$?
+              if (( direct_status == 0 )); then
+                bounded_pair_ancestor "$RETAINED_PAIR_CONTROLLER_SHA" "$(git rev-parse HEAD)" || direct_status=$?
+              fi
+              if (( direct_status != 0 )); then
+                # One pinned bridge explicitly permits up to 126 total parent edges,
+                # with at most 63 on either leg; no recursion or wider fetch depth.
+                (( direct_status == 1 )) || exit "$direct_status"
+                [[ "${RETAINED_PAIR_BRIDGE_SHA:-}" =~ ^[0-9a-f]{40}$ && "${RETAINED_PAIR_BRIDGE_TREE:-}" =~ ^[0-9a-f]{40}$ ]] || exit 1
+                # Prove this leg before any bridge fetch can change shallow state.
+                git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_BRIDGE_SHA" HEAD
+                bounded_pair_ancestor "$RETAINED_PAIR_BRIDGE_SHA" "$(git rev-parse HEAD)"
+                git -c gc.auto=0 fetch --refetch --filter=blob:none --no-tags --depth=1 origin "$RETAINED_PAIR_BRIDGE_SHA"
+                [[ "$(git rev-parse "$RETAINED_PAIR_BRIDGE_SHA^{tree}")" == "$RETAINED_PAIR_BRIDGE_TREE" ]] || exit 1
+                for custody_path in internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json; do
+                  [[ "$(git rev-parse "$RETAINED_PAIR_BRIDGE_SHA:$custody_path")" == "$(git rev-parse "$RETAINED_PAIR_CONTROLLER_SHA:$custody_path")" ]] || exit 1
+                  [[ "$(git rev-parse "$RETAINED_PAIR_BRIDGE_SHA:$custody_path")" == "$(git rev-parse "HEAD:$custody_path")" ]] || exit 1
+                done
+                git -c gc.auto=0 fetch --filter=tree:0 --no-tags --depth=64 origin "$RETAINED_PAIR_BRIDGE_SHA"
+                git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_CONTROLLER_SHA" "$RETAINED_PAIR_BRIDGE_SHA"
+                bounded_pair_ancestor "$RETAINED_PAIR_CONTROLLER_SHA" "$RETAINED_PAIR_BRIDGE_SHA"
+                git -c remote.origin.promisor=false merge-base --is-ancestor "$RETAINED_PAIR_CONTROLLER_SHA" HEAD
+              fi
               [[ "$(git rev-parse "$RETAINED_PAIR_CONTROLLER_SHA^{tree}")" == "$RETAINED_PAIR_CONTROLLER_TREE" ]] || exit 1
               for custody_path in internal/legal/purchase_guard_source.json internal/legal/purchase_guard_owner_acceptance.json; do
                 [[ "$(git rev-parse "$RETAINED_PAIR_CONTROLLER_SHA:$custody_path")" == "$(git rev-parse "HEAD:$custody_path")" ]] || exit 1

@@ -65,6 +65,10 @@ class HistoryTests(unittest.TestCase):
         wrapper = self.bin / 'git'
         wrapper.write_text('#!' + sys.executable + '\n' + '''import json,os,subprocess,sys
 with open(os.environ['PAIR_GIT_COMMANDS'],'a') as stream:stream.write(json.dumps(sys.argv[1:])+'\\n')
+if os.environ.get('PAIR_FAIL_PARENT_METADATA')=='1' and 'cat-file' in sys.argv and '--batch' in sys.argv:
+ sys.exit(73)
+if os.environ.get('PAIR_FAIL_ANCESTRY')=='1' and 'merge-base' in sys.argv:
+ sys.stderr.write('synthetic ancestry failure\\n');sys.exit(73)
 if os.environ.get('PAIR_FAIL_TREE_METADATA')=='1' and 'fetch' in sys.argv and '--filter=tree:0' in sys.argv:
  sys.stderr.write('synthetic local metadata transport failure\\n');sys.exit(73)
 if os.environ.get('PAIR_REQUIRED_HISTORICAL_TREE') and 'fetch' in sys.argv and '--filter=tree:0' in sys.argv:
@@ -106,7 +110,7 @@ os.execv(os.environ['PAIR_REAL_GIT'],[os.environ['PAIR_REAL_GIT'],*sys.argv[1:]]
             result[key] = p.stdout.strip() if p.returncode == 0 else None
         return result
 
-    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None, retained=None, retained_tree=None, required_historical_tree=None):
+    def run_admission(self, clone, *, pin=None, fail=False, source_only=False, reference=None, reference_tree=None, retained=None, retained_tree=None, required_historical_tree=None, bridge=None, bridge_tree=None, ancestry_failure=False, metadata_failure=False):
         prefix, pair, blobs = history_parts()
         script = prefix + '''
 bindings=("$PAIR_HISTORICAL_PIN:backend/server.py")
@@ -130,7 +134,11 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             'RETAINED_PAIR_CONTROLLER_SHA': retained or self.fixture.git('rev-parse','HEAD').decode().strip(),
             'RETAINED_PAIR_CONTROLLER_TREE': retained_tree or self.fixture.git('rev-parse',(retained or 'HEAD')+'^{tree}').decode().strip(),
             'PAIR_FAIL_TREE_METADATA': '1' if fail else '0',
-            'PAIR_REQUIRED_HISTORICAL_TREE': required_historical_tree or ''}
+            'PAIR_REQUIRED_HISTORICAL_TREE': required_historical_tree or '',
+            'PAIR_FAIL_ANCESTRY': '1' if ancestry_failure else '0',
+            'PAIR_FAIL_PARENT_METADATA': '1' if metadata_failure else '0',
+            'RETAINED_PAIR_BRIDGE_SHA': bridge or '',
+            'RETAINED_PAIR_BRIDGE_TREE': bridge_tree or (self.fixture.git('rev-parse',bridge+'^{tree}').decode().strip() if bridge else '')}
         result = subprocess.run(['bash', '-c', script], cwd=clone, env=env,
             capture_output=True, text=True, timeout=30)
         commands = [json.loads(line) for line in self.commands.read_text().splitlines()]
@@ -373,6 +381,127 @@ printf '%s\\0' "${bindings[@]}" > "$PAIR_BINDINGS_RESULT"
             and args[-1]==controller and bootstrap_index<i<ancestry_index]
         self.assertEqual(len(anchored),1)
         self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))
+
+    def bridge_fixture(self, controller_edges=63, head_edges=1):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        self.descendants(controller_edges-1)
+        bridge=self.fixture.git('rev-parse','HEAD').decode().strip()
+        self.descendants(head_edges)
+        return bootstrap,controller,bridge
+
+    def assert_no_unfiltered_bodies(self, commands):
+        self.assertFalse(any('fetch' in args and not any(x.startswith('--filter=') for x in args)
+                             for args in commands))
+        self.assertFalse(any('--all' in args or '--unshallow' in args for args in commands))
+
+    def test_pinned_bridge_accepts_controller_leg_at_63_edges(self):
+        bootstrap,controller,bridge=self.bridge_fixture()
+        clone=self.clone();before=self.config(clone)
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,retained=controller,bridge=bridge)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(self.config(clone),before)
+        proof=next(i for i,a in enumerate(commands) if a[-4:]==['merge-base','--is-ancestor',bridge,'HEAD'])
+        hydration=next(i for i,a in enumerate(commands) if 'fetch' in a and a[-1]==bridge)
+        self.assertLess(proof,hydration)
+        self.assertTrue(any('fetch' in a and '--filter=tree:0' in a and '--depth=64' in a and a[-1]==bridge for a in commands))
+        self.assertFalse(any('--all' in a or '--unshallow' in a for a in commands))
+
+    def test_pinned_bridge_accepts_head_leg_at_63_edges(self):
+        bootstrap,controller,bridge=self.bridge_fixture(controller_edges=1,head_edges=63)
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,bridge=bridge)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertFalse(any('--all' in a or '--unshallow' in a for a in commands))
+
+    def test_bridge_head_leg_at_64_edges_fails_before_bridge_fetch(self):
+        bootstrap,controller,bridge=self.bridge_fixture(controller_edges=1,head_edges=64)
+        clone=self.clone()
+        # The bridge commit is already known, but remains outside HEAD's 63-edge
+        # proof. Distinguish this negative from an unknown-object fatal error.
+        subprocess.run([GIT,'fetch','--filter=tree:0','--no-tags','--depth=1','origin',bridge],
+            cwd=clone,capture_output=True,check=True,timeout=15)
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,retained=controller,bridge=bridge)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assertFalse(any('fetch' in a and a[-1]==bridge for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_bridge_controller_leg_at_64_edges_fails_before_bodies(self):
+        bootstrap,controller,bridge=self.bridge_fixture(controller_edges=64)
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,bridge=bridge)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_raw_hop_bound_ignores_extra_existing_objects(self):
+        target=self.fixture.git('rev-parse','HEAD').decode().strip()
+        self.descendants(63)
+        prefix,_,_=history_parts()
+        env={**os.environ,'PATH':str(self.bin)+os.pathsep+os.environ['PATH'],
+             'PAIR_GIT_COMMANDS':str(self.commands),'PAIR_REAL_GIT':GIT,'ANCESTOR':target}
+        for expected in (0,1):
+            self.fixture.git('merge-base','--is-ancestor',target,'HEAD')
+            result=subprocess.run(['bash','-c',prefix+'\nbounded_pair_ancestor "$ANCESTOR" "$(git rev-parse HEAD)"'],
+                cwd=self.fixture.repo,env=env,capture_output=True,text=True,timeout=15)
+            self.assertEqual(result.returncode,expected,result.stderr)
+            if expected==0:self.descendants(1)
+
+    def test_invalid_bridge_fails_before_bridge_fetch(self):
+        bootstrap,controller,bridge=self.bridge_fixture()
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,
+            bridge='not-a-pin',bridge_tree='a'*40)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assertFalse(any('fetch' in a and a[-1]=='not-a-pin' for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_unrelated_bridge_fails_before_bridge_fetch(self):
+        bootstrap,controller,bridge=self.bridge_fixture()
+        f=self.fixture;branch=f.git('symbolic-ref','--short','HEAD').decode().strip()
+        f.git('switch','-q','-c','unrelated-bridge-fixture',controller)
+        f.write('unrelated-bridge.txt',b'fixture')
+        unrelated=f.commit('unrelated bridge with unchanged custody')
+        f.git('switch','-q',branch)
+        clone=self.clone()
+        subprocess.run([GIT,'fetch','--filter=tree:0','--no-tags','--depth=1','origin',unrelated],
+            cwd=clone,capture_output=True,check=True,timeout=15)
+        result,commands=self.run_admission(clone,pin=bootstrap,source_only=True,retained=controller,bridge=unrelated)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assertFalse(any('fetch' in a and a[-1]==unrelated for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_wrong_bridge_tree_fails_before_bridge_history(self):
+        bootstrap,controller,bridge=self.bridge_fixture()
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,
+            bridge=bridge,bridge_tree='0'*40)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assertFalse(any('fetch' in a and '--filter=tree:0' in a and a[-1]==bridge for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_changed_bridge_custody_fails_before_bridge_history(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        self.descendants(61);f=self.fixture
+        original=f.git('show',controller+':'+f.receipt_path)
+        f.write(f.receipt_path,b'{}');bridge=f.commit('changed bridge custody fixture')
+        f.write(f.receipt_path,original);f.commit('restore head custody fixture')
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,bridge=bridge)
+        self.assertEqual(result.returncode,1,result.stderr)
+        self.assertFalse(any('fetch' in a and '--filter=tree:0' in a and a[-1]==bridge for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_fatal_direct_ancestry_error_never_enters_bridge_fallback(self):
+        bootstrap,controller,bridge=self.bridge_fixture()
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,
+            bridge=bridge,ancestry_failure=True)
+        self.assertEqual(result.returncode,73,result.stderr)
+        self.assertFalse(any('fetch' in a and a[-1]==bridge for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
+
+    def test_fatal_raw_parent_metadata_error_never_enters_bridge_fallback(self):
+        bootstrap,controller=self.successor_pair_with_diagnostic()
+        bridge=self.fixture.git('rev-parse','HEAD').decode().strip()
+        self.descendants(1)
+        result,commands=self.run_admission(self.clone(),pin=bootstrap,source_only=True,retained=controller,
+            bridge=bridge,metadata_failure=True)
+        self.assertEqual(result.returncode,2,result.stderr)
+        self.assertFalse(any('fetch' in a and a[-1]==bridge for a in commands))
+        self.assert_no_unfiltered_bodies(commands)
 
     def test_retained_controller_beyond_bounded_candidate_history_is_rejected(self):
         bootstrap,controller=self.successor_pair_with_diagnostic()

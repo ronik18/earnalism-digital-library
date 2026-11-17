@@ -2109,5 +2109,47 @@
       "single_block_source_fixture": "PASS_SAVED_CELL_LITERAL_BINDINGS_ONLY; hard-stop fixture never executed",
       "runtime_or_model_qualification_conferred": false
     }
+  },
+  "retained_controller_explicit_bounded_bridge_policy_20261117": {
+    "event": "retained_controller_explicit_bounded_bridge_policy_20261117",
+    "at": "2026-11-17T09:46:41.943641+00:00",
+    "state": "EXPLICIT_SOURCE_CI_ANCESTRY_POLICY_CHANGE_VALIDATED_LOCALLY",
+    "trigger": "The retained controller is now 64 parent edges from the tested candidate, beyond the original depth64 range of 0 through 63 edges. This is a genuine policy boundary, distinct from the earlier adjacent bootstrap hydration failure.",
+    "change": "Preserve direct admission under a strict 63-edge proof. When direct admission returns an ordinary negative, permit exactly one immutable previously reviewed main bridge, with two independent proofs of at most 63 edges each. This explicitly changes total admitted reach; it does not claim the former absolute controller-to-HEAD distance bound remains unchanged.",
+    "bridge_sha": "1365d3043a94edbda230954cc191fdbf43693f31",
+    "bridge_tree": "c14df22d94dd4111f11eb4b8e84900e27e6ec407",
+    "proof_order": "Prove bridge-to-HEAD before bridge hydration; verify pinned bridge tree and controller/bridge/HEAD custody; fetch only bounded bridge metadata, prove controller-to-bridge, then require actual controller-to-HEAD ancestry.",
+    "strict_metadata_bounds": {
+      "maximum_parent_edges_per_leg": 63,
+      "maximum_unique_commit_nodes_per_leg": 4096,
+      "maximum_bytes_per_commit": 1048576,
+      "lazy_fetch": false,
+      "recursive_bridges": false,
+      "unbounded_or_unshallow_fetch": false
+    },
+    "error_semantics": "Only ordinary ancestry or bounded-hop negative status1 may enter the bridge path. Fatal, missing metadata, transport, parsing or unknown failures propagate and stop.",
+    "validation": {
+      "distinct_history_fixture_cases": 47,
+      "full_initial_run_passes": 46,
+      "corrected_new_fixture_rerun_passes": 1,
+      "correction": "A new 64-edge negative fixture pre-stages only its bridge commit metadata to distinguish a known-object ordinary bound failure from unknown-object fatal128. Workflow unchanged by this fixture correction.",
+      "unchanged_passing_cases_reused": true,
+      "actual_failed_history_pins_reproduction": "PASS_EXPLICIT_TWO_LEG_POLICY",
+      "old_manual_type_tree_custody_body_and_over_bound_without_valid_bridge_gates": "Preserved"
+    },
+    "learning": "Classify a true candidate ancestry-bound failure before changing policy. Keep any policy amendment explicit, separately committed and tested at each boundary, including fully known extra objects; metadata fetch depth alone cannot enforce a hop bound.",
+    "runtime_model_and_media_bytes_changed": false,
+    "runtime_authority": null,
+    "compute_allowance": null,
+    "owner_authorized": false,
+    "execution_enabled": false,
+    "new_Colab_package_driver_CUDA_model_generation_training_operations": 0,
+    "full_original_reference_exact_soundtrack_selected_style": "Preserved",
+    "prior_allocation": "Consumed and closed; no replacement or retry authorized",
+    "Bengali_rights_reader_only_counters_and_quality_holds": "Unchanged",
+    "purchases": false,
+    "publication": false,
+    "production_ready": false,
+    "next_generated_prompt": "Review exact-head CI and the saved-source binding correction. Keep the consumed runtime closed and all execution disabled; a fresh allocation needs a new explicit owner decision. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication."
   }
 }

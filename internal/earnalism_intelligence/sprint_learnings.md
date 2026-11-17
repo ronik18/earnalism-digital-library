@@ -3601,3 +3601,11 @@ Execution, Drive connection and private mode selectors are disabled. Four operat
 Next prompt: Prepare and review the offline notebook correction with final saved-byte and order-aware uniqueness checks after the last edit. Preserve disabled execution and the consumed allocation. Any fresh execution requires a new explicit owner decision; retain the original reference, exact soundtrack/style and existing quality holds.
 
 The local saved-cell checker now rejects duplicate bindings and syntactic reads before the unique literal assignment. Seventeen focused regressions passed. It rejected the retained actual duplicated cell and accepted a single-block source fixture without executing it. These are source-binding checks only; no runtime, voice or release acceptance is conferred.
+
+## 2026-11-17: Explicit bounded ancestry bridge policy
+
+The retained controller reached 64 parent edges from the candidate, beyond the former admitted range of 0 through 63. This is a genuine source-CI policy boundary. A separate policy commit permits exactly one pinned, previously reviewed main bridge, with independently bounded proofs of at most 63 edges per leg (up to 126 total). Preserve direct admission, actual ancestry, exact tree and controller/bridge/HEAD custody, all existing role/manual/type/body gates, and fatal-error propagation. Prove the first leg before bridge hydration. Raw parent metadata proofs enforce hop limits even when extra objects already exist; no recursion, unshallow or unlimited metadata walk is permitted.
+
+All 47 distinct history cases were validated: 46 passed the initial full run; one new fixture was corrected to make its bridge object known and passed its focused rerun. The actual failed history pins pass the explicit two-leg policy reproduction. Keep this local source validation separate from exact-head CI and from runtime/model/voice acceptance. The consumed L4 remains closed, all execution stays disabled, and full Clip2, exact soundtrack/style, existing rights/counters/quality holds remain unchanged.
+
+Next prompt: Review exact-head CI and the saved-source binding correction. Keep the consumed runtime closed; any fresh allocation needs a new explicit owner decision. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication.
