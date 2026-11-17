@@ -47,6 +47,23 @@ runtime venv, while private journals survive on Drive. The canonical experiment
 blocks package/probe replay across renamed requests or scopes; verified completed
 results are status-only and do not qualify a new runtime.
 
+For a separately authorized fresh environment after a completed, closed runtime,
+the request and its qualification capability must contain the same
+`fresh_allocation` object (`earnalism.foundation_fresh_allocation.v1`). It binds
+exact `prior_result` and `prior_closure` file descriptors, resolved against the
+existing private workspace. This is planned admission data, not an execution grant.
+Preparation leaves the owner authority, runtime observations and execution unset.
+
+The fresh receipt stays beneath the same canonical experiment at
+`allocations/<prior-result-sha256>/`. Renaming a request or scope cannot create
+another successor for that completed receipt. The original result, closure and
+cumulative journals remain intact. Execution verifies the registered completed
+history and exact shutdown evidence, rejects failed or unknown attempts and a
+previously recorded provider, and requires the actual new provider and original
+clock after the shutdown observation. A completed successor is status-only; a
+partial successor cannot be replayed. The default legacy route remains unchanged.
+The diagnostic's experiment-wide model reservation is separate and never reset.
+
 A successful setup or CUDA command can produce an empty log. Completed-result
 verification retains and checks its exact zero-byte log and checksum; missing,
 changed or redirected logs still fail. Other qualification inputs remain nonempty.

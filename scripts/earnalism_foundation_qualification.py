@@ -4,6 +4,7 @@ This operation never allocates, downloads, loads TTS models, generates speech,
 trains, purchases, publishes or manufactures a diagnostic runtime authority.
 """
 import argparse
+from datetime import datetime
 import hashlib
 import importlib.metadata
 import json
@@ -12,12 +13,14 @@ from pathlib import Path
 import platform
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import time
 
 OPERATION = "foundation-qualification"
 REQUEST_SCHEMA = "earnalism.foundation_qualification_request.v1"
+FRESH_SCHEMA = "earnalism.foundation_fresh_allocation.v1"
 EXPERIMENT_SHA256 = "d685d47127b3172f502b6bbae49f50daeb7d34d1882c5c407a04d3878cb4e515"
 RECIPE_SHA256 = "2baaf85b6f99de7b4bee8096ceace3532075fcfcb2b71fa04fe7f3ca6b3aaf47"
 WHEELS_SHA256 = "9727763f54735a874b7b7f050391a27be9966fb791e8506c1574b1a275bba4ef"
@@ -93,6 +96,34 @@ def software():
     return {name: sha(ROOT / name) for name in SOFTWARE}
 
 
+def _fresh_spec(value):
+    require(isinstance(value, dict) and set(value) == {"schema", "prior_result", "prior_closure"}
+            and value["schema"] == FRESH_SCHEMA, "Exact fresh-allocation predecessor bindings required")
+    for key in ("prior_result", "prior_closure"):
+        item = value[key]
+        require(isinstance(item, dict) and set(item) == {"path", "bytes", "sha256"}
+                and isinstance(item["path"], str) and item["path"].strip()
+                and type(item["bytes"]) is int and item["bytes"] > 0
+                and re.fullmatch("[0-9a-f]{64}", str(item["sha256"])),
+                "Exact predecessor result and closure descriptors required")
+    return value
+
+
+def _fresh_request(plan, workspace):
+    request = plan.get("request", {})
+    if "fresh_allocation" not in request:
+        return None
+    value = _fresh_spec(request["fresh_allocation"])
+    canonical = result_directory({"experiment_sha256": plan["experiment_sha256"]}, workspace)
+    prior = contained(Path(workspace) / value["prior_result"]["path"], workspace)
+    require(prior == canonical / "RESULT.json" or
+            (prior.name == "RESULT.json" and prior.parent.parent == canonical / "allocations"
+             and re.fullmatch("[0-9a-f]{64}", prior.parent.name)),
+            "Prior result must retain its canonical experiment registration")
+    contained(Path(workspace) / value["prior_closure"]["path"], workspace)
+    return value
+
+
 def validate(request_path, workspace):
     from scripts import earnalism_foundation_diagnostic as diagnostic
     path = contained(request_path, workspace); request = read(path)
@@ -121,9 +152,11 @@ def validate(request_path, workspace):
                            for w in wheels)
     require(hashlib.sha256(requirements.encode()).hexdigest() == REQUIREMENTS_SHA256,
             "Exact requirements derivation required")
-    return {"request_path": str(path), "request_sha256": sha(path), "request": request,
+    plan = {"request_path": str(path), "request_sha256": sha(path), "request": request,
             "frozen": frozen, "experiment_sha256": EXPERIMENT_SHA256,
             "wheels": wheels, "packages": packages, "requirements": requirements}
+    _fresh_request(plan, workspace)  # Shape/address only; historic bytes need mounted execute authority.
+    return plan
 
 
 def summary(plan):
@@ -131,6 +164,7 @@ def summary(plan):
             "state": "IMPLEMENTED_PRIVATE_EXECUTION_DISABLED_RUNTIME_UNQUALIFIED",
             "experiment_sha256": plan["experiment_sha256"], "request_sha256": plan["request_sha256"],
             "proposed_counts": COUNTS, "execution_enabled": False, "runtime_authority": None,
+            "fresh_allocation_planned": "fresh_allocation" in plan.get("request", {}),
             "compute_allowance": None, "runtime_qualified": False, "model_ready": False,
             "production_ready": False, "reference": "Full original 4.8-second Clip2; human comparator only"}
 
@@ -155,6 +189,10 @@ def _common(runtime, context):
             and all(type(q.get(k)) is int and q[k] == v for k, v in COUNTS.items())
             and isinstance(q.get("provider_runtime_id"), str) and q["provider_runtime_id"].strip(),
             "Exact fixed qualification capability/counts required")
+    if "fresh_allocation" in q:
+        _fresh_spec(q["fresh_allocation"])
+        require(q["provider_runtime_id"] == socket.gethostname(),
+                "Fresh qualification must bind the actual provider container")
     require(runtime.get("purchases_allowed") is False and runtime.get("publication_allowed") is False
             and runtime.get("max_model_stage_starts") == 1
             and runtime.get("stage_attempt_limits") == {"foundation-diagnostic": 1},
@@ -243,9 +281,54 @@ def pre_storage(runtime, context, evidence_root):
 
 def result_directory(plan, workspace):
     path = Path(workspace).resolve() / ".orchestrator/qualifications" / plan["experiment_sha256"]
+    if "fresh_allocation" in plan.get("request", {}):
+        fresh = _fresh_spec(plan["request"]["fresh_allocation"])
+        path = path / "allocations" / fresh["prior_result"]["sha256"]
     resolved = contained(path, workspace)
     require(resolved == path, "Preserve redirected canonical qualification evidence")
     return path
+
+
+def _admit_fresh(runtime, plan, workspace, fresh):
+    canonical = result_directory({"experiment_sha256": plan["experiment_sha256"]}, workspace)
+    folders = [canonical]
+    allocations = canonical / "allocations"
+    if allocations.exists():
+        require(allocations.is_dir() and not allocations.is_symlink()
+                and allocations.resolve() == allocations, "Preserve canonical allocation history")
+        for folder in sorted(allocations.iterdir()):
+            require(folder.is_dir() and not folder.is_symlink()
+                    and re.fullmatch("[0-9a-f]{64}", folder.name), "Unknown allocation history; no fresh setup")
+            folders.append(folder)
+    history = {}
+    for folder in folders:
+        require((folder / "COMPLETED.json").is_file() and not (folder / "FAILURE.json").exists(),
+                "Failed or unknown qualification history; no fresh setup")
+        history[folder / "RESULT.json"] = verify_result(plan, folder)
+    for path, result in history.items():
+        require(isinstance(result.get("provider_runtime_id"), str) and result["provider_runtime_id"].strip(),
+                "Historic provider identity required; never reconstruct it")
+        if path.parent != canonical:
+            predecessor = _fresh_spec(result.get("fresh_allocation"))["prior_result"]
+            registered = contained(Path(workspace) / predecessor["path"], workspace)
+            require(path.parent.name == predecessor["sha256"] and registered in history
+                    and exact_file(predecessor, Path(workspace)) == registered,
+                    "Allocation history must retain its exact registered predecessor")
+    prior_path = exact_file(fresh["prior_result"], Path(workspace))
+    require(prior_path in history, "Exact registered completed predecessor required")
+    prior = history[prior_path]
+    require(runtime["foundation_qualification"]["provider_runtime_id"] not in
+            {result["provider_runtime_id"] for result in history.values()}
+            and runtime["scope_ref"] not in {result.get("scope_ref") for result in history.values()},
+            "This provider allocation or scope was already recorded; no renamed replay")
+    closure = read(exact_file(fresh["prior_closure"], Path(workspace)), 65536)
+    observed = datetime.fromisoformat(closure["recorded_at"])
+    require(observed.tzinfo is not None and closure.get("followup_manage_sessions") == "No active sessions"
+            and closure.get("original_deadline_epoch") == prior.get("original_deadline_epoch")
+            and all(type(closure.get(key)) is int and closure[key] == 0
+                    for key in ("model_loads", "generation_calls", "training_updates"))
+            and prior["allocation_started_at"] <= observed.timestamp() < runtime["allocation_started_at"],
+            "Exact prior closure observation must precede this genuine fresh allocation")
 
 
 def authority(runtime, plan, workspace, context):
@@ -253,6 +336,10 @@ def authority(runtime, plan, workspace, context):
     require(q.get("request_sha256") == plan["request_sha256"]
             and runtime.get("project_id") == plan["frozen"]["proposal"]["id"],
             "Current request/project-bound qualification scope required")
+    fresh = _fresh_request(plan, workspace)
+    require(q.get("fresh_allocation") == fresh, "Request and owner capability fresh admission differ")
+    if fresh is not None:
+        _admit_fresh(runtime, plan, workspace, fresh)
     for key in ("wheelhouse", "assets_root"):
         contained(q[key], workspace)
     venv = Path(q["venv"])
@@ -362,6 +449,8 @@ def qualify(plan, workspace, runtime, runtime_context):
               "provider_runtime_id": q["provider_runtime_id"], "at": time.time(),
               "allocation_started_at": runtime["allocation_started_at"],
               "original_deadline_epoch": runtime["original_deadline_epoch"], "model_loads": 0}
+    if "fresh_allocation" in plan.get("request", {}):
+        intent["fresh_allocation"] = plan["request"]["fresh_allocation"]
     write(output / "INTENT.json", intent)
     check = lambda: _check(runtime, runtime_context)
     try:

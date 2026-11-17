@@ -1,5 +1,7 @@
 """Software/fixture qualification tests only; no actual native or model operation."""
 import builtins
+import copy
+from datetime import datetime, timezone
 from contextlib import ExitStack
 import importlib.util
 import json
@@ -204,7 +206,7 @@ class QualificationTests(unittest.TestCase):
                 q._run([str(self.python), "-I"], self.workspace / "timeout.log", self.runtime, self.context)
         self.assertEqual(q.read(self.workspace / "timeout.log.failure.json")["error_type"], "TimeoutExpired")
 
-    def test_mocked_complete_flow_creates_only_evidence_not_authority_or_model(self):
+    def complete_flow_fixture(self):
         self.pre_storage(); original_authority = self.authority_path.read_bytes()
         def run(argv, log, runtime, context, **kwargs):
             Path(log).write_bytes(b"" if Path(log).name in ("0.log", "CUDA-probe.log")
@@ -228,7 +230,11 @@ class QualificationTests(unittest.TestCase):
              patch.object(q.shutil, "disk_usage", return_value=types.SimpleNamespace(total=10**11, used=0, free=10**11)), \
              patch.object(voice, "_owned_provider_helper", return_value=helper):
             result = q.qualify(self.plan, self.workspace, self.runtime, self.context)
-        self.assertEqual(runner.call_count, 5)
+        return result, runner.call_count, original_authority
+
+    def test_mocked_complete_flow_creates_only_evidence_not_authority_or_model(self):
+        result, call_count, original_authority = self.complete_flow_fixture()
+        self.assertEqual(call_count, 5)
         self.assertEqual(self.authority_path.read_bytes(), original_authority)
         self.assertEqual([result[k] for k in ("model_loads", "generation_calls", "training_updates")], [0, 0, 0])
         self.assertFalse(result["authority_created_or_modified"])
@@ -295,6 +301,122 @@ class QualificationTests(unittest.TestCase):
             "provider_preload": preload}
         path = output / "PROBE-INPUT.json"; q.write(path, probe)
         return path, launcher
+
+    def fresh_fixture(self):
+        prior, _, _ = self.complete_flow_fixture()
+        canonical = q.result_directory(self.plan, self.workspace)
+        before = {path.relative_to(canonical): path.read_bytes() for path in canonical.rglob("*") if path.is_file()}
+        old_start = prior["allocation_started_at"]
+        closure = self.workspace / "prior-closure.json"
+        closure.write_text(json.dumps({"recorded_at": datetime.fromtimestamp(old_start + 0.1, timezone.utc).isoformat(),
+            "followup_manage_sessions": "No active sessions", "original_deadline_epoch": prior["original_deadline_epoch"],
+            "model_loads": 0, "generation_calls": 0, "training_updates": 0}))
+        def relative(path):
+            return {**q.descriptor(path), "path": str(path.relative_to(self.workspace))}
+        fresh = {"schema": q.FRESH_SCHEMA, "prior_result": relative(canonical / "RESULT.json"),
+                 "prior_closure": relative(closure)}
+        self.plan["request"] = {"fresh_allocation": copy.deepcopy(fresh)}
+        self.plan["request_sha256"] = "c" * 64
+        self.capability.update(fresh_allocation=copy.deepcopy(fresh), request_sha256="c" * 64,
+                               provider_runtime_id="FRESH_FIXTURE_NOT_ACTUAL_RUNTIME")
+        self.stack.enter_context(patch.object(q, "PRE_STORAGE_ROOT", self.workspace / "fresh-provider-local"))
+        self.stack.enter_context(patch.object(q, "LOCAL_RUNTIME_ROOT", self.workspace / "fresh-local-runtime"))
+        self.capability["venv"] = str(q.LOCAL_RUNTIME_ROOT / q.EXPERIMENT_SHA256 / "venv")
+        self.raw.update(scope_ref="fresh-fixture-scope", allocation_started_at=old_start + 0.2,
+                        original_deadline_epoch=old_start + 120.2)
+        self.context = {"shutdown_guard_armed": True, "allocation_started_at": self.raw["allocation_started_at"],
+                        "original_deadline_epoch": self.raw["original_deadline_epoch"]}
+        self.authority_path = self.workspace / "fresh-authority.json"; self.save_authority()
+        return canonical, before
+
+    def test_fresh_dry_shape_and_registration_need_no_historic_artifact_reads(self):
+        canonical, _ = self.fresh_fixture()
+        with patch.object(q, "exact_file", side_effect=AssertionError("Historic bytes require mounted execute authority")):
+            self.assertEqual(q._fresh_request(self.plan, self.workspace), self.plan["request"]["fresh_allocation"])
+            report = q.summary(self.plan)
+        self.assertTrue(report["fresh_allocation_planned"])
+        self.assertFalse(report["execution_enabled"])
+        self.assertIsNone(report["runtime_authority"])
+        self.assertEqual(q.result_directory(self.plan, self.workspace),
+                         canonical / "allocations" / self.plan["request"]["fresh_allocation"]["prior_result"]["sha256"])
+        self.plan["request"]["fresh_allocation"]["prior_result"]["path"] = "copied/RESULT.json"
+        with self.assertRaisesRegex(ValueError, "canonical experiment"):
+            q._fresh_request(self.plan, self.workspace)
+
+    def test_fresh_producer_to_verified_handoff_preserves_history_and_renames_are_status_only(self):
+        canonical, before = self.fresh_fixture()
+        with patch.object(q.socket, "gethostname", return_value=self.capability["provider_runtime_id"]):
+            result, calls, original_authority = self.complete_flow_fixture()
+            capability = q._common(self.runtime, self.context)
+        output = q.result_directory(self.plan, self.workspace)
+        retained = q.verify_result(self.plan, output)
+        self.assertEqual(calls, 5)
+        self.assertEqual(retained["authority_sha256"], self.runtime["sha256"])
+        self.assertEqual(retained["provider_runtime_id"], capability["provider_runtime_id"])
+        self.assertEqual(retained["fresh_allocation"], self.plan["request"]["fresh_allocation"])
+        self.assertEqual(retained["runtime_interpreter"]["path"], str(Path(capability["venv"]) / "bin/python"))
+        self.assertFalse(retained["current_runtime_admitted"])
+        self.assertFalse(retained["diagnostic_dispatched"])
+        self.assertEqual(self.authority_path.read_bytes(), original_authority)
+        for relative, raw in before.items():
+            self.assertEqual((canonical / relative).read_bytes(), raw)
+        self.plan["request_path"] = str(self.workspace / "renamed-request.json")
+        self.plan["request_sha256"] = "d" * 64
+        with patch.object(q, "validate", return_value=self.plan), \
+             patch.object(engine, "_runtime", side_effect=AssertionError("Status must not create fresh authority")), \
+             patch.object(q, "qualify", side_effect=AssertionError("No renamed package/probe replay")), \
+             patch.object(engine, "_reserve_model", side_effect=AssertionError("No model reservation")):
+            status = engine.qualify_foundation(self.workspace / "renamed-request.json", self.workspace, execute=True)
+        self.assertTrue(status["status_only"])
+        self.capability["request_sha256"] = self.plan["request_sha256"]
+        self.raw["scope_ref"] = "renamed-fixture-scope"; self.save_authority()
+        with patch.object(q.socket, "gethostname", return_value=self.capability["provider_runtime_id"]):
+            with self.assertRaisesRegex(ValueError, "already recorded"):
+                q.authority(self.runtime, self.plan, self.workspace, self.context)
+
+    def test_fresh_requires_both_exact_request_and_owner_capability(self):
+        self.fresh_fixture()
+        fresh = self.capability.pop("fresh_allocation"); self.save_authority()
+        with self.assertRaisesRegex(ValueError, "fresh admission differ"):
+            q.authority(self.runtime, self.plan, self.workspace, self.context)
+        self.capability["fresh_allocation"] = fresh
+        self.plan["request"] = {}; self.save_authority()
+        with patch.object(q.socket, "gethostname", return_value=self.capability["provider_runtime_id"]):
+            with self.assertRaisesRegex(ValueError, "fresh admission differ"):
+                q.authority(self.runtime, self.plan, self.workspace, self.context)
+
+    def test_fresh_unknown_or_failed_history_denied_before_setup(self):
+        canonical, _ = self.fresh_fixture()
+        unknown = canonical / "allocations" / ("f" * 64); unknown.mkdir(parents=True)
+        (unknown / "INTENT.json").write_text("{}")
+        with patch.object(q.socket, "gethostname", return_value=self.capability["provider_runtime_id"]), \
+             patch.object(q, "_run", side_effect=AssertionError("No package or CUDA call")):
+            with self.assertRaisesRegex(ValueError, "Failed or unknown"):
+                q.authority(self.runtime, self.plan, self.workspace, self.context)
+            (unknown / "COMPLETED.json").write_text("{}")
+            (unknown / "FAILURE.json").write_text("{}")
+            with self.assertRaisesRegex(ValueError, "Failed or unknown"):
+                q.authority(self.runtime, self.plan, self.workspace, self.context)
+        self.assertFalse(q.result_directory(self.plan, self.workspace).exists())
+
+    def test_fresh_provider_and_exact_prior_closure_required(self):
+        self.fresh_fixture()
+        with patch.object(q.socket, "gethostname", return_value="DIFFERENT_FIXTURE_PROVIDER"):
+            with self.assertRaisesRegex(ValueError, "actual provider"):
+                q._common(self.runtime, self.context)
+        fresh = self.plan["request"]["fresh_allocation"]
+        closure_path = self.workspace / fresh["prior_closure"]["path"]
+        original_closure = json.loads(closure_path.read_text())
+        for change in ({"original_deadline_epoch": 1}, {"generation_calls": 1},
+                       {"followup_manage_sessions": "UNKNOWN"},
+                       {"recorded_at": datetime.fromtimestamp(self.raw["allocation_started_at"] + 1, timezone.utc).isoformat()}):
+            closure_path.write_text(json.dumps({**original_closure, **change}))
+            ref = {**q.descriptor(closure_path), "path": str(closure_path.relative_to(self.workspace))}
+            fresh["prior_closure"] = ref
+            self.capability["fresh_allocation"] = copy.deepcopy(fresh); self.save_authority()
+            with patch.object(q.socket, "gethostname", return_value=self.capability["provider_runtime_id"]):
+                with self.assertRaisesRegex(ValueError, "prior closure observation"):
+                    q.authority(self.runtime, self.plan, self.workspace, self.context)
 
     def test_isolated_probe_preloads_before_torch_and_executes_only_one_fixture_sum(self):
         path, launcher = self.probe_fixture(); output = path.parent

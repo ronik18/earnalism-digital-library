@@ -2285,5 +2285,14 @@
     "new_training_updates": 0,
     "production_ready": false,
     "existing_language_quality_and_rights_holds": "Unchanged"
+  },
+  "english_foundation_fresh_admission_prepared_20261118": {
+    "decision_ledger_event": "english_foundation_fresh_admission_prepared_20261118",
+    "state": "FRESH_ENVIRONMENT_ADMISSION_IMPLEMENTED_PRIVATE_PREPARATION_EXECUTION_DISABLED",
+    "execution_enabled": false,
+    "runtime_authority": null,
+    "new_runtime_operations": 0,
+    "prior_scope_and_quality_holds": "Preserved",
+    "production_ready": false
   }
 }
