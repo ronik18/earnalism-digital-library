@@ -81,6 +81,12 @@ Verify saved scope/clock/rate literals before running cells; visible numeric for
 values may not have committed to source. Keep actual setup and voice acceptance
 separate, and preserve consumed scopes plus reusable verified inputs.
 
+After the final edit to a notebook admission cell, fetch its saved bytes and run the
+[read-only control checker](https://github.com/ronik18/earnalism-digital-library/blob/main/scripts/check_colab_scope.py) locally
+against independently observed expected literals. Reject duplicate or nonliteral
+bindings even when the last assignment looks correct; appended placeholder blocks
+can fail before later values are reached. Recheck after any further edit.
+
 For a foundation diagnostic, use the separate environment-qualification operation
 in the existing single orchestrator; see [foundation qualification](../../../docs/earnalism_foundation_qualification.md).
 Bind genuine scope and the original clock, verify the complete local wheel

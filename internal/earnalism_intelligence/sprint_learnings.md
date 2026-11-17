@@ -3585,3 +3585,19 @@ Next generated prompt: Review the saved qualification runner, disabled admission
 Reproduced the source-CI ancestry false negative at HEAD depth64: the admitted retained controller was visible while its immediate bootstrap parent was cut off. Re-anchor commit-only metadata at that immutable controller after bootstrap readmission. Keep the original candidate bound and all custody/type/tree/hash/manual checks. The new boundary fixture fails on the original workflow and passes with the repair; all36 history cases pass, including over-bound and authority negatives. Runtime/notebook/source bindings and all media remain unchanged; no model/provider retry or new quality acceptance.
 
 Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.
+
+## 2026-11-17: Reject duplicate admission blocks after the final edit
+
+Event: `english_foundation_duplicate_admission_cell_closed_20261117`.
+
+The saved admission cell contains two full admission blocks. The first assigns unset observation placeholders and a `False` device flag, then fails its explicit flag assertion before reaching the second block with the intended actual observations. The saved AST and runtime traceback agree. An earlier last-value-only assignment map masked the duplicate first block by replacing its entries with later literals. Appended content was observed in this editor operation; no general browser or kernel defect is inferred.
+
+After the final operator edit, save and independently read back the exact selected cell bytes. Verify one complete admission block and exactly one assignment of each required observation before its dependent assertions. Preserve assignment order and reject duplicates. A last-value-only dictionary or visible editor change is insufficient. Capture the actual admission result before dependent work.
+
+Failure occurred before authority writing, the original guard, Drive access, package setup, CUDA, model loading or speech generation. The approved allocation was consumed. The runtime was disconnected and deleted through ordinary controls, and zero active sessions were subsequently observed. No replacement or retry occurred. Per-run billing remains unknown; account balance movement is not an itemized run charge.
+
+Execution, Drive connection and private mode selectors are disabled. Four operator cells are retired. The failed duplicate snapshot is preserved privately; the retired admission cell retains the single intended block, and the other three retired operator bodies remain verbatim. The standalone disconnect default is restored. Saved-byte syntax and preserved core-source checks passed without execution. The attempted runtime software and source capsule were unchanged. The complete original reference, exact soundtrack, selected style, rejected synthetic controls, Bengali reader-only state and existing quality holds remain unchanged. No new voice, model or release acceptance was established; no purchases or publication occurred.
+
+Next prompt: Prepare and review the offline notebook correction with final saved-byte and order-aware uniqueness checks after the last edit. Preserve disabled execution and the consumed allocation. Any fresh execution requires a new explicit owner decision; retain the original reference, exact soundtrack/style and existing quality holds.
+
+The local saved-cell checker now rejects duplicate bindings and syntactic reads before the unique literal assignment. Seventeen focused regressions passed. It rejected the retained actual duplicated cell and accepted a single-block source fixture without executing it. These are source-binding checks only; no runtime, voice or release acceptance is conferred.
