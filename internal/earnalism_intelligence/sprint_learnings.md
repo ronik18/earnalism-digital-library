@@ -3585,3 +3585,57 @@ Next generated prompt: Review the saved qualification runner, disabled admission
 Reproduced the source-CI ancestry false negative at HEAD depth64: the admitted retained controller was visible while its immediate bootstrap parent was cut off. Re-anchor commit-only metadata at that immutable controller after bootstrap readmission. Keep the original candidate bound and all custody/type/tree/hash/manual checks. The new boundary fixture fails on the original workflow and passes with the repair; all36 history cases pass, including over-bound and authority negatives. Runtime/notebook/source bindings and all media remain unchanged; no model/provider retry or new quality acceptance.
 
 Next generated prompt: Review the saved qualification runner, disabled admission and complete-operation resource proposal. Keep execution disabled until genuine scope and observed runtime prerequisites are supplied. Preserve full Clip2, the two frozen scenes, exact soundtrack/style and consumed attempts; no purchases or publication.
+
+## 2026-11-17: Reject duplicate admission blocks after the final edit
+
+Event: `english_foundation_duplicate_admission_cell_closed_20261117`.
+
+The saved admission cell contains two full admission blocks. The first assigns unset observation placeholders and a `False` device flag, then fails its explicit flag assertion before reaching the second block with the intended actual observations. The saved AST and runtime traceback agree. An earlier last-value-only assignment map masked the duplicate first block by replacing its entries with later literals. Appended content was observed in this editor operation; no general browser or kernel defect is inferred.
+
+After the final operator edit, save and independently read back the exact selected cell bytes. Verify one complete admission block and exactly one assignment of each required observation before its dependent assertions. Preserve assignment order and reject duplicates. A last-value-only dictionary or visible editor change is insufficient. Capture the actual admission result before dependent work.
+
+Failure occurred before authority writing, the original guard, Drive access, package setup, CUDA, model loading or speech generation. The approved allocation was consumed. The runtime was disconnected and deleted through ordinary controls, and zero active sessions were subsequently observed. No replacement or retry occurred. Per-run billing remains unknown; account balance movement is not an itemized run charge.
+
+Execution, Drive connection and private mode selectors are disabled. Four operator cells are retired. The failed duplicate snapshot is preserved privately; the retired admission cell retains the single intended block, and the other three retired operator bodies remain verbatim. The standalone disconnect default is restored. Saved-byte syntax and preserved core-source checks passed without execution. The attempted runtime software and source capsule were unchanged. The complete original reference, exact soundtrack, selected style, rejected synthetic controls, Bengali reader-only state and existing quality holds remain unchanged. No new voice, model or release acceptance was established; no purchases or publication occurred.
+
+Next prompt: Prepare and review the offline notebook correction with final saved-byte and order-aware uniqueness checks after the last edit. Preserve disabled execution and the consumed allocation. Any fresh execution requires a new explicit owner decision; retain the original reference, exact soundtrack/style and existing quality holds.
+
+The local saved-cell checker now rejects duplicate bindings and syntactic reads before the unique literal assignment. Seventeen focused regressions passed. It rejected the retained actual duplicated cell and accepted a single-block source fixture without executing it. These are source-binding checks only; no runtime, voice or release acceptance is conferred.
+
+## 2026-11-17: Explicit bounded ancestry bridge policy
+
+The retained controller reached 64 parent edges from the candidate, beyond the former admitted range of 0 through 63. This is a genuine source-CI policy boundary. A separate policy commit permits exactly one pinned, previously reviewed main bridge, with independently bounded proofs of at most 63 edges per leg (up to 126 total). Preserve direct admission, actual ancestry, exact tree and controller/bridge/HEAD custody, all existing role/manual/type/body gates, and fatal-error propagation. Prove the first leg before bridge hydration. Raw parent metadata proofs enforce hop limits even when extra objects already exist; no recursion, unshallow or unlimited metadata walk is permitted.
+
+All 47 distinct history cases were validated: 46 passed the initial full run; one new fixture was corrected to make its bridge object known and passed its focused rerun. The actual failed history pins pass the explicit two-leg policy reproduction. Keep this local source validation separate from exact-head CI and from runtime/model/voice acceptance. The consumed L4 remains closed, all execution stays disabled, and full Clip2, exact soundtrack/style, existing rights/counters/quality holds remain unchanged.
+
+Next prompt: Review exact-head CI and the saved-source binding correction. Keep the consumed runtime closed; any fresh allocation needs a new explicit owner decision. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication.
+
+## 2026-11-17: Pin reviewed unlocked frontend tools
+
+The exact public-input frontend build passed build/SEO/packaging, then the identity gate correctly rejected csstype 3.2.4 against reviewed 3.2.3. Installed package sets both contained 1487 entries, with zero locked-identity changes and the two already-reviewed platform omissions. The other three unlocked tools matched. This was real version/URL/integrity drift; retain the strict gate and accepted identity baseline.
+
+The public-only qualification recipe now derives all four exact tool pins from the unchanged reviewed inventory, uses no-save, and keeps the application lock enabled. Preserve the historical non-public recipe, immutable frontend source, lock bytes, reference, actual inventory and final clean-source checks. Two focused helper/test-method checks passed in an AST-isolated namespace; only fresh exact-head Linux CI can establish the resulting package identities and source cleanliness. Do not normalize away real dependency upgrades or blindly refresh acceptance.
+
+The consumed L4 stays closed. Full Clip2, exact soundtrack/style, existing rights/counters and voice/AV holds remain unchanged; no new runtime, model, purchases or publication.
+
+Next prompt: Complete exact-head CI and reviewed source integration with every identity gate intact. Keep execution disabled; any new diagnostic allocation needs fresh explicit owner scope. Preserve full Clip2 and exact soundtrack/style.
+
+## 2026-11-17: Verify the effective public build configuration
+
+The earlier project-setting pin was overridden by exact frontend/vercel.json. The actual log still ran the floating install command, and both failed dependency inventories are byte-identical. This does not establish an npm-flag defect. Check effective inputs and actual commands before retrying configuration intent.
+
+For public-only technical qualification, retain a complete external config copy and replace only the installCommand string token with the four reviewed pins. Pass its absolute local-config path to pinned CLI 63.1.2, retain both config hashes/bytes and actual argv/cwd, and require a hash-bound actual install-log match. This is an openly declared additional changed build input; frozen-build-input equivalence and production applicability are not established. Preserve immutable F, lockfiles, the identity reference/gate, source cleanliness and historical argv/context.
+
+The exact published CLI source and a config-only prefix probe confirm selection/root-directory behavior; eight helper/test-method checks, actual-F preservation and real old-log rejection passed without CLI/build/install execution. Only fresh exact-head Linux CI can establish the complete resulting dependency identity and source cleanliness. Full Clip2, exact soundtrack/style, closed allocation and every quality/rights/counter hold remain unchanged.
+
+Next prompt: Complete exact-head technical CI and the verified private source/Drive handoff. Keep the consumed runtime closed and execution disabled; any fresh diagnostic allocation needs new explicit owner scope. No purchases or publication.
+
+## 2026-11-17: Constrain every effective npm resolution stage
+
+The explicit public config and four-pin command ran, yet final dependency identity still reported csstype 3.2.4. A later install stage occurs after the static build. Pinned Node-builder/build-utils source confirms an ordinary npm install with environment forwarding; exact package overwrite attribution lacks an intermediate inventory. Do not repair node_modules after the build to manufacture acceptance.
+
+Official publication data provides a valid fixed cutoff. With exact Node 20.20.2/npm 10.8.2 on Darwin arm64, fresh lockfile-only fixtures (scripts disabled, no node_modules) select 3.2.4 without the cutoff and match all four reviewed version/URL/integrity identities with NPM_CONFIG_BEFORE=2026-11-17T00:00:00.000Z. These tools are platform neutral; this is real resolution evidence, not full Linux/Vercel qualification.
+
+Only the public build child receives this fixed date, retained from its actual environment as an additional changed build input. Preserve private tooling/historical behavior, F, application locks, accepted identities, exact command-log matching and final source/identity gates. Nine retained helper/behavior checks passed before a redundant AST-test deletion; unchanged outcomes were reused. Fresh exact-head CI must establish the complete result. Full Clip2, exact soundtrack/style, the closed consumed allocation and all quality/rights/counter holds remain intact; no new Colab, model, purchases or publication.
+
+Next prompt: Complete exact-head technical CI and verify effective inputs, full identity and clean source before merge/private handoff. Keep execution disabled; any fresh diagnostic allocation requires new explicit owner scope.
