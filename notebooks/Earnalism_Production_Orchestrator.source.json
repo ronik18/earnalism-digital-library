@@ -1,8 +1,8 @@
 {
   "schema": "earnalism.orchestrator_notebook_source.v1",
-  "base_revision": "caf21f6fcfafffd008e1238be9463b654d9fba8d",
-  "capsule_sha256": "7fd16a0b396afc12a734050ebb5023abb676e35eb3006f10ba5cea55870838da",
-  "capsule_bytes": 204383,
+  "base_revision": "b0b64ca447ca7dc729c30eea0db3e1ee43010d11",
+  "capsule_sha256": "6d97a34406f891a772fe24cb99acd7b39ba0b79078c5deb4ce5dc69ad65cd7dc",
+  "capsule_bytes": 204467,
   "files": {
     "scripts/earnalism_orchestrator.py": "f214d413968f91ccf24e259fd110037f9afaa168f02553e58880ca67861a0f89",
     "scripts/earnalism_content_context.py": "dfa7b943351c4cea39f0736e22cb97acb57be1df784e56c9fbc4f4db7cbc9115",
@@ -36,7 +36,7 @@
     ".agents/skills/earnalism-audiobook-score/references/learning.md": "374593524435252de5c41952d24c198febf571794fea6c7626e1197976ee8cf2",
     ".agents/skills/earnalism-audiobook-go-live/SKILL.md": "dfecd897de30678b639e94373cbb6066be7296fc43afeeb0142dd2f96dd35cd6",
     "skills/earnalism-audiobook-go-live/SKILL.md": "2bf883c605708d04e361e4e5efac6d943853e88ff7682f1ddeecb5d123b24047",
-    "skills/earnalism-video/SKILL.md": "c195c2fd142b5706349e084f67b14b851361793d55610aa5e3c837a7e7896798",
+    "skills/earnalism-video/SKILL.md": "8a9b5c75c6e90bb1e6a4e6845edf5e3692d3c1ad28b88648fb7101e75503313f",
     "docs/earnalism_orchestrator.md": "97ac11aa77e4f8b6abebf84bd4e89e7ca27de8b0587fb8792a02a148a918013c",
     "docs/earnalism_foundation_qualification.md": "f041ae68b684ad585268a05f57a38bbd11f44ea106ba59f06a1c158a39306fdb",
     "scripts/earnalism_voice_runtime/darwin.py": "69383e939df5bb6d2e101dc36d6276da4303c363ccf8c15adb3a361f55b65319",
@@ -47,7 +47,7 @@
     "scripts/earnalism_voice_runtime/provider_driver_bootstrap.py": "4c133509eb422598a626c006873c66e176e4961927e9187313dbbe35f5336cf7",
     "scripts/earnalism_voice_runtime/setup.py": "dbfd5c9ff569137eac5d09dc7fa715037f41062e095b468e4b03826fdb0063de"
   },
-  "notebook_sha256": "4f7de8694aeb645bcf190007f689d35181c7f1b543f45cdb5f9f16140705dc16",
+  "notebook_sha256": "cdcb2263a0fa798ed1c627cf3d0c0222b1d2fb1cc1e0290d8c205e198add6396",
   "builder_sha256": "7da0e43db5888c55dd7bfb49a782a41fe235754591e29af826e2969a5ac1e811",
   "execution_default": false,
   "private_media_embedded": false,
