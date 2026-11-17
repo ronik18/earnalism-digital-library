@@ -6,6 +6,21 @@ that environment under an actual bounded scope and records its observations.
 A recipe, implementation or software test is not actual runtime evidence,
 compute authority or voice acceptance. Distributed execution remains disabled.
 
+After editing an admission cell, fetch the final saved notebook before running
+that cell. Check its observation literals locally without executing notebook code:
+
+```bash
+python3 scripts/check_colab_scope.py \
+  --notebook /PRIVATE/saved-notebook.ipynb \
+  --cell-id SAVED_CELL_ID --expected-json /PRIVATE/observed-controls.json
+```
+
+The expected JSON is an independently observed name-to-literal map. The checker
+requires one simple top-level binding per name and rejects duplicates, nested or
+nonliteral assignments, prior syntactic reads and type mismatches. A later correct assignment cannot
+hide an earlier placeholder. Any subsequent edit invalidates the saved-byte check.
+This verifies source bindings only, with no compute grant or runtime acceptance.
+
 Use the existing notebook's empty `FOUNDATION_QUALIFICATION_PATH` control, or
 inspect the private request without execution:
 

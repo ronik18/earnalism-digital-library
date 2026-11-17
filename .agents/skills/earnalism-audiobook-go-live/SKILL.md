@@ -48,6 +48,12 @@ closure and retain `pip check` plus installed-version checks; do not re-resolve
 Parler's Git metadata dependency or fetch its unpinned repository. Verify saved
 cell scope/clock/rate literals, since a numeric widget alone may be uncommitted.
 
+After the final edit to a notebook admission cell, fetch its saved bytes and run the
+[read-only control checker](https://github.com/ronik18/earnalism-digital-library/blob/main/scripts/check_colab_scope.py) locally
+against independently observed expected literals. Reject duplicate or nonliteral
+bindings even when the last assignment looks correct; appended placeholder blocks
+can fail before later values are reached. Recheck after any further edit.
+
 
 For a foundation diagnostic, use the separate environment-qualification operation
 in the existing single orchestrator; see [foundation qualification](../../../docs/earnalism_foundation_qualification.md).
