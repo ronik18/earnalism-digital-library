@@ -1,5 +1,6 @@
 {
-  "duration_seconds": 90,
+  "duration_seconds": null,
+  "duration_policy": "learning-job-and-natural-narration",
   "language": "English",
   "speaker": "Ryan",
   "fps": 30,

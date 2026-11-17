@@ -1,7 +1,7 @@
 # Supplied English/Bengali audiobook → private visual production
 
 Use this route when the input is an existing audio/audiobook. It overrides the
-ordinary English/~90-second/new-B explainer defaults: retain the supplied language,
+ordinary new-script language/voice defaults: retain the supplied language,
 narrator, complete selected recording, score, rests and duration. Never silently
 translate, condense, synthesize a new voice or change speed/gain to fit pictures.
 Select an excerpt only when the brief calls for one, recording its original sample

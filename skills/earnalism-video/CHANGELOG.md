@@ -1,5 +1,17 @@
 # Reusable source changes
 
+## 17 November 2026 — learning-led duration and measured growth
+
+- Let one complete learning job and natural narration determine duration; remove the
+  fixed 90-second target from current policy metadata and the matching contract.
+  Preserve selected source-audio duration, actual audio/frame clocks and the exact END.
+- Carry an unchanged spoken premise forward instead of repeating it when comprehension
+  permits. Distinguish observable change, physical cause and explanatory payoff.
+- Preserve current native view/co-view definitions, eligible thumbnail-impression scope
+  and retention uncertainty; separate initial choice, continued viewing and conversion.
+- Keep growth effects as measured hypotheses. No account-specific analytics, recordings,
+  new approval gates, compute authority or publication authority enter this source update.
+
 ## 14 November 2026 — supplied-audio visual pipeline
 
 - Route supplied English/Bengali recordings ahead of short English/B narrator defaults;

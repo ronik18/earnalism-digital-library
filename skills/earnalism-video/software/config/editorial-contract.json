@@ -3,7 +3,8 @@
   "owner_decisions_as_of": "2026-11-10",
   "defaults": {
     "language": "English",
-    "duration_seconds": 90,
+    "duration_seconds": null,
+    "duration_policy": "learning-job-and-natural-narration",
     "primary_format": "landscape",
     "primary_aspect_ratio": "16:9",
     "landscape": [
