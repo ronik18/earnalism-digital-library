@@ -3647,3 +3647,11 @@ The authorized private environment qualification passed exact wheel/asset hashin
 Accept exact zero-byte .log artifacts only in the completed-result verifier; preserve positive-size inputs/assets and every size/hash/file/root check. Producer-to-verifier tests include silent setup and CUDA output plus missing, changed, redirected and malformed evidence. All42 affected tests passed. The retained actual21-artifact result, with only copied local paths/completion digest rebased, passes status-only verification; its historical evidence is unchanged and no runtime admission is conferred.
 
 Decision ledger event: english_foundation_silent_log_handoff_closed_20261118. Next prompt: Review the corrected source and closed-run evidence with execution disabled; no consumed operation may be replayed and any fresh runtime needs specific owner authority.
+
+## 2026-11-18: Admit a fresh environment without replaying history
+
+A completed canonical environment result is historical status after shutdown. Returning it before checking a new scope correctly avoids replay, but cannot recreate the next local environment. A renamed request or blank workspace must not reset the experiment.
+
+The optional fresh-allocation request/capability now binds the exact registered predecessor and shutdown evidence, with one deterministic successor per predecessor hash. Preserve every old artifact, legacy status-only behavior, failed/unknown holds and the separate diagnostic model reservation. Actual future execution still requires current source/request/owner/clock binding and a new observed provider. Forty-seven software tests and the disabled notebook source check passed. The retained actual 21-artifact copy passes status-only verification; no current runtime is inferred.
+
+All work in this preparation is private or generic source. No new allocation, provider lookup, setup, CUDA, model, generation, training, purchase or publication occurred. Full Clip2 and exact soundtrack/style remain preserved. Decision ledger event: english_foundation_fresh_admission_prepared_20261118. Next prompt: Review the corrected private admission with execution disabled; no consumed scope or current-environment fact is renewed.
