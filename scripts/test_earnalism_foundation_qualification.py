@@ -164,6 +164,17 @@ class QualificationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             q.result_directory(self.plan, self.workspace)
 
+    def test_empty_inputs_and_assets_still_require_positive_exact_bytes(self):
+        for name in ("empty.log", "empty-asset.json"):
+            path = self.workspace / name; path.write_bytes(b"")
+            ref = q.descriptor(path)
+            with self.assertRaises(ValueError):
+                q.exact_file(ref, self.workspace)
+            for invalid in (False, -1, 0.0):
+                with self.assertRaises(ValueError):
+                    q.exact_file({**ref, "bytes": invalid}, self.workspace)
+        self.assertEqual(q.exact_file(q.descriptor(self.python), self.workspace), self.python)
+
     def test_fixed_subprocess_environment_and_failed_raw_log(self):
         process = Mock(); process.wait.return_value = 9; process.poll.return_value = 9
         calls = []
@@ -196,7 +207,8 @@ class QualificationTests(unittest.TestCase):
     def test_mocked_complete_flow_creates_only_evidence_not_authority_or_model(self):
         self.pre_storage(); original_authority = self.authority_path.read_bytes()
         def run(argv, log, runtime, context, **kwargs):
-            Path(log).write_text("FIXTURE: no command executed\n")
+            Path(log).write_bytes(b"" if Path(log).name in ("0.log", "CUDA-probe.log")
+                                 else b"FIXTURE: no command executed\n")
             if "venv" in argv:
                 venv = Path(argv[-1]); (venv / "bin").mkdir(parents=True)
                 shutil.copyfile(self.python, venv / "bin/python")
@@ -221,12 +233,46 @@ class QualificationTests(unittest.TestCase):
         self.assertEqual([result[k] for k in ("model_loads", "generation_calls", "training_updates")], [0, 0, 0])
         self.assertFalse(result["authority_created_or_modified"])
         self.assertFalse(result["diagnostic_dispatched"])
-        retained = q.verify_result(self.plan, q.result_directory(self.plan, self.workspace))
+        output = q.result_directory(self.plan, self.workspace)
+        silent = output / "0.log"
+        self.assertEqual({Path(row["path"]).name for row in result["actual_artifacts"] if row["bytes"] == 0},
+                         {"0.log", "CUDA-probe.log"})
+        retained = q.verify_result(self.plan, output)
         self.assertTrue(retained["status_only"])
         self.assertFalse(retained["current_runtime_admitted"])
-        artifact = Path(result["actual_artifacts"][0]["path"]); artifact.write_text("tampered")
+        completed = output / "COMPLETED.json"; original_completed = completed.read_bytes()
+        completed.write_text(json.dumps({"result_sha256": "f" * 64}))
         with self.assertRaises(ValueError):
-            q.verify_result(self.plan, q.result_directory(self.plan, self.workspace))
+            q.verify_result(self.plan, output)
+        completed.write_bytes(original_completed)
+        silent.write_bytes(b"tampered")
+        with self.assertRaises(ValueError):
+            q.verify_result(self.plan, output)
+        silent.unlink()
+        with self.assertRaises(ValueError):
+            q.verify_result(self.plan, output)
+        silent.symlink_to(self.library)
+        with self.assertRaises(ValueError):
+            q.verify_result(self.plan, output)
+        silent.unlink(); silent.write_bytes(b"")
+        original_result = (output / "RESULT.json").read_bytes()
+        empty_asset = output / "unexpected-empty.json"; empty_asset.write_bytes(b"")
+        with tempfile.TemporaryDirectory() as outside:
+            escaped = Path(outside) / "empty.log"; escaped.write_bytes(b"")
+            for bad_ref in ({**q.descriptor(silent), "sha256": "f" * 64},
+                            q.descriptor(empty_asset), q.descriptor(escaped)):
+                changed = json.loads(original_result)
+                changed["actual_artifacts"].append(bad_ref)
+                (output / "RESULT.json").write_text(json.dumps(changed))
+                completed.write_text(json.dumps({"result_sha256": q.sha(output / "RESULT.json")}))
+                with self.assertRaises(ValueError):
+                    q.verify_result(self.plan, output)
+        (output / "RESULT.json").write_bytes(original_result)
+        completed.write_bytes(original_completed)
+        artifact = Path(next(row["path"] for row in result["actual_artifacts"] if row["bytes"] > 0))
+        artifact.write_text("tampered")
+        with self.assertRaises(ValueError):
+            q.verify_result(self.plan, output)
 
     def probe_fixture(self):
         self.pre_storage()

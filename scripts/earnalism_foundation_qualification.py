@@ -73,8 +73,10 @@ def descriptor(path):
     return {"path": str(path), "bytes": path.stat().st_size, "sha256": sha(path)}
 
 
-def exact_file(item, root=None, check=lambda: None):
-    require(isinstance(item, dict) and type(item.get("bytes")) is int and item["bytes"] > 0
+def exact_file(item, root=None, check=lambda: None, *, allow_empty_log=False):
+    require(isinstance(item, dict) and type(item.get("bytes")) is int
+            and (item["bytes"] > 0 or (allow_empty_log and item["bytes"] == 0
+                 and Path(str(item.get("path", ""))).suffix == ".log"))
             and re.fullmatch("[0-9a-f]{64}", str(item.get("sha256", ""))), "Exact file descriptor required")
     path = Path(item["path"])
     if root is not None:
@@ -442,7 +444,8 @@ def verify_result(plan, output):
             and result.get("production_ready") is False and result.get("diagnostic_dispatched") is False,
             "Completed exact qualification evidence required; no replay or model acceptance")
     for row in result["actual_artifacts"]:
-        exact_file(row, output)
+        # Silent successful logs are evidence; consumed inputs still require bytes > 0.
+        exact_file(row, output, allow_empty_log=True)
     return {**result, "retained_verified": True, "status_only": True, "current_runtime_admitted": False}
 
 
