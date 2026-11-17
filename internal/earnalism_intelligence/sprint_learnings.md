@@ -3629,3 +3629,13 @@ For public-only technical qualification, retain a complete external config copy 
 The exact published CLI source and a config-only prefix probe confirm selection/root-directory behavior; eight helper/test-method checks, actual-F preservation and real old-log rejection passed without CLI/build/install execution. Only fresh exact-head Linux CI can establish the complete resulting dependency identity and source cleanliness. Full Clip2, exact soundtrack/style, closed allocation and every quality/rights/counter hold remain unchanged.
 
 Next prompt: Complete exact-head technical CI and the verified private source/Drive handoff. Keep the consumed runtime closed and execution disabled; any fresh diagnostic allocation needs new explicit owner scope. No purchases or publication.
+
+## 2026-11-17: Constrain every effective npm resolution stage
+
+The explicit public config and four-pin command ran, yet final dependency identity still reported csstype 3.2.4. A later install stage occurs after the static build. Pinned Node-builder/build-utils source confirms an ordinary npm install with environment forwarding; exact package overwrite attribution lacks an intermediate inventory. Do not repair node_modules after the build to manufacture acceptance.
+
+Official publication data provides a valid fixed cutoff. With exact Node 20.20.2/npm 10.8.2 on Darwin arm64, fresh lockfile-only fixtures (scripts disabled, no node_modules) select 3.2.4 without the cutoff and match all four reviewed version/URL/integrity identities with NPM_CONFIG_BEFORE=2026-11-17T00:00:00.000Z. These tools are platform neutral; this is real resolution evidence, not full Linux/Vercel qualification.
+
+Only the public build child receives this fixed date, retained from its actual environment as an additional changed build input. Preserve private tooling/historical behavior, F, application locks, accepted identities, exact command-log matching and final source/identity gates. Nine retained helper/behavior checks passed before a redundant AST-test deletion; unchanged outcomes were reused. Fresh exact-head CI must establish the complete result. Full Clip2, exact soundtrack/style, the closed consumed allocation and all quality/rights/counter holds remain intact; no new Colab, model, purchases or publication.
+
+Next prompt: Complete exact-head technical CI and verify effective inputs, full identity and clean source before merge/private handoff. Keep execution disabled; any fresh diagnostic allocation requires new explicit owner scope.

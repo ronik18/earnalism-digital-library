@@ -19127,5 +19127,46 @@
     "publication": false,
     "production_ready": false,
     "next_generated_prompt": "Complete exact-head technical CI and verified source/Drive handoff with effective-input evidence and strict identity gates. Keep the consumed runtime closed and execution disabled. Any new diagnostic allocation needs fresh explicit owner scope; preserve full Clip2 and exact soundtrack/style, with no purchases or publication."
+  },
+  "public_build_resolution_cutoff_20261117": {
+    "event": "public_build_resolution_cutoff_20261117",
+    "at": "2026-11-17T10:46:50.959407+00:00",
+    "state": "PUBLIC_ONLY_FIXED_RESOLUTION_DATE_LOCAL_PROBE_PASS_FULL_CI_REQUIRED",
+    "observed_failure": "The explicit external config and four-pin install command were selected and the actual-command log gate passed, but the final inventory still contained csstype3.2.4. A later dependency-install stage appears after the successful static build. Pinned Node-builder source establishes an ordinary later npm install and environment forwarding; exact package overwrite attribution was not measured with an intermediate inventory.",
+    "published_versions": "Official registry metadata places reviewed csstype3.2.3 and the other three tool versions before the fixed cutoff, while csstype3.2.4 was published during this session after that cutoff.",
+    "change": "Add fixed NPM_CONFIG_BEFORE=2026-11-17T00:00:00.000Z only to the public build child environment, and retain the value from the actual child mapping as an additional changed build input. Keep the explicit four pins, actual install-command match, full identity and source-clean gates. Historical capture environment/argv/context and private tooling installation remain unchanged.",
+    "fixed_cutoff_UTC": "2026-11-17T00:00:00.000Z",
+    "additional_changed_public_build_input": true,
+    "frozen_build_input_equivalence_claimed": false,
+    "production_applicability": "NOT_ESTABLISHED",
+    "validation": {
+      "real_resolution_probe": {
+        "Node": "20.20.2",
+        "npm": "10.8.2",
+        "host": "Darwin arm64",
+        "packages": "Four platform-neutral reviewed type tools",
+        "control": "Fresh fixture selects transitive csstype3.2.4",
+        "cutoff": "Identical fixture with only the fixed before value matches all four reviewed version/resolved/integrity tuples",
+        "mode": "package-lock-only; ignore-scripts; no node_modules or application install/build"
+      },
+      "pinned_later_stage_source": "Environment spreads preserve NPM_CONFIG_BEFORE through the ordinary later npm install; source-supported, not intermediate-inventory measurement",
+      "focused_behavior_and_existing_helper_tests": 9,
+      "full_Linux_Vercel_identity": "PENDING_REQUIRED_EXACT_HEAD_CI"
+    },
+    "learning": "Pin every effective dependency-resolution stage. Verify a public time constraint with a real exact-toolchain resolution probe and official publication data before another full build. Do not restore dependencies after build to manufacture an accepted inventory, or weaken version/URL/integrity checks.",
+    "F_application_locks_reference_identity_gate_or_notebook_capsule_changed": false,
+    "post_build_dependency_repair": false,
+    "runtime_authority": null,
+    "compute_allowance": null,
+    "owner_authorized": false,
+    "execution_enabled": false,
+    "new_Colab_package_driver_CUDA_model_generation_training_operations": 0,
+    "prior_allocation": "Consumed and closed; no replacement or retry authorized",
+    "full_original_reference_exact_soundtrack_selected_style": "Preserved",
+    "Bengali_rights_reader_only_counters_and_quality_holds": "Unchanged",
+    "purchases": false,
+    "publication": false,
+    "production_ready": false,
+    "next_generated_prompt": "Complete exact-head technical CI and verify retained effective inputs, all dependency identities and clean source before merge/private handoff. Keep the consumed runtime closed and execution disabled; any new diagnostic allocation needs fresh explicit owner scope. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication."
   }
 }

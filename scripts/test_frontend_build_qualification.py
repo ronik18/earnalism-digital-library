@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest import mock
 
-from scripts.qualify_frontend_build_only import (build_settings, local_build_command, private_environment,
+from scripts.qualify_frontend_build_only import (build_environment, build_settings, local_build_command, private_environment,
                                                 public_local_config, record_public_install_log, selected_inventory)
 from scripts.test_manual_production_release_workflow import ROOT, REGRESSION, parse_workflow
 
@@ -75,6 +75,20 @@ class BuildQualificationBoundaryTests(unittest.TestCase):
         self.assertEqual(public, historical)
         historical['settings']['installCommand'] = 'fixture-only mutation'
         self.assertEqual(build_settings(False)['settings']['installCommand'], 'npm install --legacy-peer-deps')
+
+    def test_cutoff_is_only_an_explicit_public_build_child_input(self):
+        env = private_environment(Path('/fixture'))
+        before = dict(env)
+        generated = Path('/fixture/generated-seo')
+        historical = build_environment(env, generated)
+        self.assertEqual(historical, {**env, 'NPM_CONFIG_SAVE': 'false',
+                                     'SEO_ASSETS_OUTPUT_DIR': str(generated)})
+        self.assertNotIn('NPM_CONFIG_BEFORE', env)
+        self.assertNotIn('NPM_CONFIG_BEFORE', historical)
+        public = build_environment(env, generated, True)
+        self.assertEqual(public.pop('NPM_CONFIG_BEFORE'), '2026-11-17T00:00:00.000Z')
+        self.assertEqual(public, historical)
+        self.assertEqual(env, before)
 
     def test_public_external_config_preserves_original_bytes_and_every_other_field(self):
         with tempfile.TemporaryDirectory() as temp:

@@ -15,6 +15,7 @@ from scripts.capture_prebuilt_bundle import seal, preserve_failure
 
 FRONTEND_SHA = 'b3998d72f2e93bd99ffb1563c906c77e78aa5b49'
 SELECTOR_SHA256 = 'ee658256471efee8112a31cb9ec884ad9933dc33cca8941cbda3b7df7710e7c6'
+PUBLIC_NPM_BEFORE = '2026-11-17T00:00:00.000Z'
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -103,6 +104,14 @@ def private_environment(directory):
         'VERCEL_TELEMETRY_DISABLED': '1', 'DO_NOT_TRACK': '1',
         'REACT_APP_BACKEND_URL': '', 'REACT_APP_API_URL': '', 'SEO_API_BASE_URL': '',
     }
+
+
+def build_environment(env, generated, public_profile=False):
+    child = {**env, 'NPM_CONFIG_SAVE': 'false', 'SEO_ASSETS_OUTPUT_DIR': str(generated)}
+    if public_profile:
+        # Keep later Node-builder resolution on the reviewed type-tool versions.
+        child['NPM_CONFIG_BEFORE'] = PUBLIC_NPM_BEFORE
+    return child
 
 
 def selected_inventory(root, manifest):
@@ -207,13 +216,15 @@ def main(controller, directory, public_profile=False):
             raise ValueError('Pinned CLI/selector identity mismatch')
         generated = directory / 'generated-seo'
         prepare(artifact, generated, FRONTEND_SHA)
-        build_env = {**env, 'NPM_CONFIG_SAVE': 'false', 'SEO_ASSETS_OUTPUT_DIR': str(generated)}
+        build_env = build_environment(env, generated, public_profile)
         local_config = None
         if public_profile:
             local_config, config_evidence = public_local_config(artifact, reports, settings)
         build_command = local_build_command(cli, local_config)
         if public_profile:
-            config_evidence.update(build_argv=build_command, build_cwd=str(artifact))
+            config_evidence.update(build_argv=build_command, build_cwd=str(artifact),
+                                   additional_changed_build_environment={
+                                       'NPM_CONFIG_BEFORE': build_env['NPM_CONFIG_BEFORE']})
             write(reports / 'public-build-config-evidence.json', config_evidence)
         run(build_command, 'local-build-only', cwd=artifact, child_env=build_env)
         if public_profile:
