@@ -40,6 +40,56 @@ def build_settings(public_profile=False):
     return settings
 
 
+def public_local_config(artifact, reports, settings):
+    """Retain an explicit public-build input outside the unchanged exact-F tree."""
+    artifact, reports = artifact.resolve(), reports.resolve()
+    if reports.is_relative_to(artifact) or artifact.is_relative_to(reports):
+        raise ValueError('Public local config must be outside exact-F source')
+    original = (artifact / 'frontend/vercel.json').read_bytes()
+    parsed = json.loads(original)
+    matches = list(re.finditer(rb'"installCommand"\s*:\s*("(?:[^"\\]|\\.)*")', original))
+    if len(matches) != 1 or json.loads(matches[0].group(1)) != parsed['installCommand']:
+        raise ValueError('Expected one exact-F installCommand string')
+    token = matches[0]
+    command = settings['settings']['installCommand']
+    effective = original[:token.start(1)] + json.dumps(command).encode() + original[token.end(1):]
+    expected = {**parsed, 'installCommand': command}
+    changed_keys = sorted(key for key in expected if parsed[key] != expected[key])
+    if json.loads(effective) != expected or changed_keys != ['installCommand']:
+        raise ValueError('Public config changed another exact-F field')
+    original_path = reports / 'public-build-original-vercel.json'
+    effective_path = reports / 'public-build-effective-vercel.json'
+    original_path.write_bytes(original)
+    effective_path.write_bytes(effective)
+    evidence = {'schema': 'reader-public-local-config.v1', 'frontend': FRONTEND_SHA,
+                'original_path': 'frontend/vercel.json',
+                'original_sha256': hashlib.sha256(original).hexdigest(),
+                'effective_sha256': hashlib.sha256(effective).hexdigest(),
+                'changed_keys': changed_keys, 'all_other_fields_preserved': True,
+                'outside_value_bytes_preserved': True, 'install_command': command,
+                'additional_changed_build_input': True,
+                'scope': 'New public-profile technical qualification; not frozen-input equivalence or release authority.'}
+    return effective_path, evidence
+
+
+def local_build_command(cli, local_config=None):
+    command = ['node', str(cli / 'dist/vc.js'), 'build', '--prod', '--yes']
+    if local_config is not None:
+        command += ['--local-config', str(local_config.resolve())]
+    return command
+
+
+def record_public_install_log(log, evidence, evidence_path):
+    data = log.read_bytes()
+    commands = re.findall(r'^Running "install" command: `(.*)`\.\.\.$', data.decode(), re.MULTILINE)
+    matched = commands == [evidence['install_command']]
+    evidence.update(install_log_sha256=hashlib.sha256(data).hexdigest(),
+                    observed_install_commands=commands, exact_install_command_match=matched)
+    write(evidence_path, evidence)
+    if not matched:
+        raise ValueError('Actual public build did not run the reviewed install command')
+
+
 def private_environment(directory):
     """Only these non-secret values reach npm, build scripts and file selectors."""
     return {
@@ -158,8 +208,17 @@ def main(controller, directory, public_profile=False):
         generated = directory / 'generated-seo'
         prepare(artifact, generated, FRONTEND_SHA)
         build_env = {**env, 'NPM_CONFIG_SAVE': 'false', 'SEO_ASSETS_OUTPUT_DIR': str(generated)}
-        run(['node', str(cli / 'dist/vc.js'), 'build', '--prod', '--yes'],
-            'local-build-only', cwd=artifact, child_env=build_env)
+        local_config = None
+        if public_profile:
+            local_config, config_evidence = public_local_config(artifact, reports, settings)
+        build_command = local_build_command(cli, local_config)
+        if public_profile:
+            config_evidence.update(build_argv=build_command, build_cwd=str(artifact))
+            write(reports / 'public-build-config-evidence.json', config_evidence)
+        run(build_command, 'local-build-only', cwd=artifact, child_env=build_env)
+        if public_profile:
+            record_public_install_log(reports / 'local-build-only.log', config_evidence,
+                                      reports / 'public-build-config-evidence.json')
         write(reports / 'seo-attestation.json', verify(artifact, generated, FRONTEND_SHA))
         inspector = directory / 'inspect-files.mjs'
         inspector.write_text(
@@ -201,6 +260,9 @@ def main(controller, directory, public_profile=False):
                    'build_command': ['node', 'vercel/dist/vc.js', 'build', '--prod', '--yes'],
                    'project_settings': settings, 'build_semantics': 'REVIEWED_PUBLIC_PROJECTION' if public_profile else 'UNCHANGED_T_EMPTY_APP_ENV_STATIC_SETTINGS',
                    'production_applicability': 'NOT_ESTABLISHED', 'independent_content_review': 'PENDING'}
+        if public_profile:
+            context.update(build_command=build_command, build_cwd=str(artifact),
+                           public_build_config=config_evidence)
         write(reports / 'capture-context.json', context)
         seal(artifact, reports, prebuilt, context, directory / 'upload')
     except Exception as error:

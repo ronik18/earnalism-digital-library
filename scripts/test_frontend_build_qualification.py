@@ -8,7 +8,8 @@ import tempfile
 import unittest
 from unittest import mock
 
-from scripts.qualify_frontend_build_only import build_settings, private_environment, selected_inventory
+from scripts.qualify_frontend_build_only import (build_settings, local_build_command, private_environment,
+                                                public_local_config, record_public_install_log, selected_inventory)
 from scripts.test_manual_production_release_workflow import ROOT, REGRESSION, parse_workflow
 
 
@@ -74,6 +75,72 @@ class BuildQualificationBoundaryTests(unittest.TestCase):
         self.assertEqual(public, historical)
         historical['settings']['installCommand'] = 'fixture-only mutation'
         self.assertEqual(build_settings(False)['settings']['installCommand'], 'npm install --legacy-peer-deps')
+
+    def test_public_external_config_preserves_original_bytes_and_every_other_field(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            artifact, reports = root / 'artifact-F', root / 'reports'
+            (artifact / 'frontend').mkdir(parents=True)
+            reports.mkdir()
+            original = (b'{\n  "installCommand": "npm install --legacy-peer-deps",\n'
+                        b'  "framework":"create-react-app", "headers":[{"source":"/(.*)"}],\n'
+                        b'  "redirects":[{"source":"/old","destination":"/new"}],\n'
+                        b'  "rewrites":[{"source":"/reader","destination":"/index.html"}],\n'
+                        b'  "functions":{"api/index.py":{"maxDuration":60}}\n}\n')
+            source = artifact / 'frontend/vercel.json'
+            source.write_bytes(original)
+            settings = build_settings(True)
+            config, evidence = public_local_config(artifact, reports, settings)
+            command = settings['settings']['installCommand']
+            self.assertFalse(config.is_relative_to(artifact))
+            self.assertEqual(config.read_bytes(), original.replace(
+                b'"npm install --legacy-peer-deps"', json.dumps(command).encode(), 1))
+            self.assertEqual(source.read_bytes(), original)
+            self.assertEqual((reports / 'public-build-original-vercel.json').read_bytes(), original)
+            self.assertEqual(set(json.loads(config.read_bytes())), set(json.loads(original)))
+            expected = {**json.loads(original), 'installCommand': command}
+            self.assertEqual(json.loads(config.read_bytes()), expected)
+            self.assertEqual(evidence['changed_keys'], ['installCommand'])
+            self.assertTrue(evidence['additional_changed_build_input'])
+            self.assertEqual(evidence['original_sha256'], hashlib.sha256(original).hexdigest())
+            self.assertEqual(evidence['effective_sha256'], hashlib.sha256(config.read_bytes()).hexdigest())
+            cli = root / 'tooling/node_modules/vercel'
+            self.assertEqual(local_build_command(cli, config),
+                             ['node', str(cli / 'dist/vc.js'), 'build', '--prod', '--yes',
+                              '--local-config', str(config.resolve())])
+
+    def test_historical_build_argv_has_no_external_config_and_context_is_unchanged(self):
+        cli = Path('/fixture/tooling/node_modules/vercel')
+        self.assertEqual(local_build_command(cli),
+                         ['node', str(cli / 'dist/vc.js'), 'build', '--prod', '--yes'])
+        source = (ROOT / 'scripts/qualify_frontend_build_only.py').read_text()
+        tree = ast.parse(source)
+        main = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'main')
+        context = next(node.value for node in ast.walk(main) if isinstance(node, ast.Assign)
+                       and any(isinstance(target, ast.Name) and target.id == 'context' for target in node.targets))
+        command = next(value for key, value in zip(context.keys, context.values)
+                       if isinstance(key, ast.Constant) and key.value == 'build_command')
+        self.assertEqual(ast.literal_eval(command), ['node', 'vercel/dist/vc.js', 'build', '--prod', '--yes'])
+        self.assertIn('if public_profile:\n            context.update(build_command=build_command', source)
+
+    def test_public_actual_install_command_is_required_and_its_log_is_hash_bound(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            log, report = root / 'build.log', root / 'config-evidence.json'
+            expected = build_settings(True)['settings']['installCommand']
+            log.write_text('Running "install" command: `' + expected + '`...\nBuild completed\n')
+            record_public_install_log(log, {'install_command': expected}, report)
+            evidence = json.loads(report.read_text())
+            self.assertTrue(evidence['exact_install_command_match'])
+            self.assertEqual(evidence['observed_install_commands'], [expected])
+            self.assertEqual(evidence['install_log_sha256'], hashlib.sha256(log.read_bytes()).hexdigest())
+            log.write_text('Running "install" command: `npm install --legacy-peer-deps`...\n')
+            with self.assertRaisesRegex(ValueError, 'did not run'):
+                record_public_install_log(log, {'install_command': expected}, report)
+            evidence = json.loads(report.read_text())
+            self.assertFalse(evidence['exact_install_command_match'])
+            self.assertEqual(evidence['observed_install_commands'], ['npm install --legacy-peer-deps'])
+            self.assertEqual(evidence['install_log_sha256'], hashlib.sha256(log.read_bytes()).hexdigest())
 
     def test_child_environment_discards_credentials_and_disables_live_api(self):
         with mock.patch.dict(os.environ, {'VERCEL_TOKEN': 'never-forward',

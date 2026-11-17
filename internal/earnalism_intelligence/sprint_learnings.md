@@ -3619,3 +3619,13 @@ The public-only qualification recipe now derives all four exact tool pins from t
 The consumed L4 stays closed. Full Clip2, exact soundtrack/style, existing rights/counters and voice/AV holds remain unchanged; no new runtime, model, purchases or publication.
 
 Next prompt: Complete exact-head CI and reviewed source integration with every identity gate intact. Keep execution disabled; any new diagnostic allocation needs fresh explicit owner scope. Preserve full Clip2 and exact soundtrack/style.
+
+## 2026-11-17: Verify the effective public build configuration
+
+The earlier project-setting pin was overridden by exact frontend/vercel.json. The actual log still ran the floating install command, and both failed dependency inventories are byte-identical. This does not establish an npm-flag defect. Check effective inputs and actual commands before retrying configuration intent.
+
+For public-only technical qualification, retain a complete external config copy and replace only the installCommand string token with the four reviewed pins. Pass its absolute local-config path to pinned CLI 63.1.2, retain both config hashes/bytes and actual argv/cwd, and require a hash-bound actual install-log match. This is an openly declared additional changed build input; frozen-build-input equivalence and production applicability are not established. Preserve immutable F, lockfiles, the identity reference/gate, source cleanliness and historical argv/context.
+
+The exact published CLI source and a config-only prefix probe confirm selection/root-directory behavior; eight helper/test-method checks, actual-F preservation and real old-log rejection passed without CLI/build/install execution. Only fresh exact-head Linux CI can establish the complete resulting dependency identity and source cleanliness. Full Clip2, exact soundtrack/style, closed allocation and every quality/rights/counter hold remain unchanged.
+
+Next prompt: Complete exact-head technical CI and the verified private source/Drive handoff. Keep the consumed runtime closed and execution disabled; any fresh diagnostic allocation needs new explicit owner scope. No purchases or publication.
