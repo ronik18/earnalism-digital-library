@@ -2,12 +2,13 @@ import ast
 import hashlib
 import json
 import os
+import shlex
 from pathlib import Path
 import tempfile
 import unittest
 from unittest import mock
 
-from scripts.qualify_frontend_build_only import private_environment, selected_inventory
+from scripts.qualify_frontend_build_only import build_settings, private_environment, selected_inventory
 from scripts.test_manual_production_release_workflow import ROOT, REGRESSION, parse_workflow
 
 
@@ -47,6 +48,32 @@ class BuildQualificationBoundaryTests(unittest.TestCase):
         self.assertEqual(workflow['concurrency']['cancel-in-progress'],
                          "${{ github.event_name != 'workflow_dispatch' || !inputs.build_only }}")
         self.assertNotIn('reader-manual-frontend-production', REGRESSION)
+
+    def test_public_install_pins_the_actual_reviewed_tools_without_disabling_lock(self):
+        reference_path = ROOT / 'scripts/frontend_build_dependency_reference.json'
+        before = reference_path.read_bytes()
+        reviewed = json.loads(before)['observed_unlocked_tools']
+        command = shlex.split(build_settings(True)['settings']['installCommand'])
+        self.assertEqual(command[:2], ['npm', 'install'])
+        self.assertIn('--legacy-peer-deps', command)
+        self.assertIn('--no-save', command)
+        self.assertIn('--package-lock=true', command)
+        self.assertNotIn('--package-lock=false', command)
+        actual = dict(arg.rsplit('@', 1) for arg in command[2:] if not arg.startswith('--'))
+        expected = {name.removeprefix('node_modules/'): identity['version']
+                    for name, identity in reviewed.items()}
+        self.assertEqual(len(actual), 4)
+        self.assertEqual(actual, expected)
+        self.assertEqual(reference_path.read_bytes(), before)
+
+    def test_historical_build_recipe_and_other_settings_remain_unchanged(self):
+        historical = build_settings(False)
+        public = build_settings(True)
+        self.assertEqual(historical['settings']['installCommand'], 'npm install --legacy-peer-deps')
+        public['settings']['installCommand'] = historical['settings']['installCommand']
+        self.assertEqual(public, historical)
+        historical['settings']['installCommand'] = 'fixture-only mutation'
+        self.assertEqual(build_settings(False)['settings']['installCommand'], 'npm install --legacy-peer-deps')
 
     def test_child_environment_discards_credentials_and_disables_live_api(self):
         with mock.patch.dict(os.environ, {'VERCEL_TOKEN': 'never-forward',

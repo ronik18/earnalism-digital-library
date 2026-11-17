@@ -2151,5 +2151,48 @@
     "publication": false,
     "production_ready": false,
     "next_generated_prompt": "Review exact-head CI and the saved-source binding correction. Keep the consumed runtime closed and all execution disabled; a fresh allocation needs a new explicit owner decision. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication."
+  },
+  "reviewed_frontend_unlocked_tool_resolution_pin_20261117": {
+    "event": "reviewed_frontend_unlocked_tool_resolution_pin_20261117",
+    "at": "2026-11-17T10:05:43.230289+00:00",
+    "state": "EXPLICIT_REVIEWED_TOOL_RECIPE_REPAIR_FULL_CI_REQUIRED",
+    "failure": "The public-input frontend build, SEO and packaging steps passed before the dependency identity gate rejected an unlocked build tool: csstype resolved to 3.2.4 instead of reviewed 3.2.3. This is real version/tarball/integrity drift, not a formatting difference.",
+    "comparison": {
+      "reviewed_and_actual_installed_count": 1487,
+      "changed_locked_identities": 0,
+      "reviewed_platform_omissions": 2,
+      "unlocked_build_tools": 4,
+      "mismatched_unlocked_tool": "csstype",
+      "reviewed_version": "3.2.3",
+      "observed_version": "3.2.4",
+      "other_unlocked_tools_match": true
+    },
+    "change": "For public-profile technical qualification only, derive four exact tool versions from the unchanged reviewed inventory and pass them explicitly to npm with no-save and the application lock enabled. Preserve the historical non-public install command.",
+    "reviewed_pins": {
+      "typescript": "4.9.5",
+      "@types/react": "19.3.0",
+      "@types/react-dom": "19.3.0",
+      "csstype": "3.2.3"
+    },
+    "immutable_frontend_source_application_locks_reference_and_identity_gate_changed": false,
+    "learning": "An unlocked transitive build-tool upgrade is a real identity change. Preserve the reviewed package set and pin the recipe; do not normalize away differing versions, source URLs or integrity, refresh the accepted baseline blindly, or retry an unchanged drifting recipe.",
+    "evidence_scope": "Retained failed-job logs and archive, exact inventory comparison, independent source/recipe review and focused tests. Exact-head CI must still prove the new recipe restores the reviewed identities and clean source.",
+    "runtime_authority": null,
+    "compute_allowance": null,
+    "owner_authorized": false,
+    "execution_enabled": false,
+    "new_Colab_package_driver_CUDA_model_generation_training_operations": 0,
+    "prior_allocation": "Consumed and closed; no replacement or retry authorized",
+    "full_original_reference_exact_soundtrack_selected_style": "Preserved",
+    "Bengali_rights_reader_only_counters_and_quality_holds": "Unchanged",
+    "purchases": false,
+    "publication": false,
+    "production_ready": false,
+    "next_generated_prompt": "Complete exact-head CI and reviewed source integration, preserving all dependency identity gates. Keep the consumed runtime closed and execution disabled; any new diagnostic allocation needs fresh explicit owner scope. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication.",
+    "focused_source_tests": {
+      "count": 2,
+      "result": "PASS_ACTUAL_HELPER_AND_NEW_TEST_METHODS_IN_AST_ISOLATED_NAMESPACE",
+      "full_build": "Not performed locally; required exact-head CI remains pending"
+    }
   }
 }

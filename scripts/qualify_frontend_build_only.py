@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import shlex
 import subprocess
 import sys
 
@@ -19,6 +20,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def write(path, data):
     path.write_text(json.dumps(data, indent=2) + '\n')
+
+
+def build_settings(public_profile=False):
+    settings = {'projectId': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
+                'orgId': 'team_HAGNRSEiW5MZXY2AhV0cQvE0', 'settings': {
+                    'framework': 'create-react-app', 'rootDirectory': 'frontend',
+                    'installCommand': 'npm install --legacy-peer-deps',
+                    'buildCommand': 'npm run build', 'outputDirectory': 'build', 'nodeVersion': '24.x'}}
+    if public_profile:
+        from scripts.verify_build_dependency_identity import REFERENCE
+        tools = json.loads(REFERENCE.read_text())['observed_unlocked_tools']
+        pins = [name.removeprefix('node_modules/') + '@' + identity['version']
+                for name, identity in sorted(tools.items())]
+        # Keep the application lock enabled and unchanged; make reviewed build
+        # tools explicit instead of allowing the builder to resolve them later.
+        settings['settings']['installCommand'] = shlex.join(
+            ['npm', 'install', '--legacy-peer-deps', '--no-save', '--package-lock=true', *pins])
+    return settings
 
 
 def private_environment(directory):
@@ -122,11 +141,7 @@ def main(controller, directory, public_profile=False):
         artifact = directory / 'artifact-F'
         run(['git', 'worktree', 'add', '--detach', str(artifact), FRONTEND_SHA], 'exact-F-worktree')
         exact_clean_source(artifact, FRONTEND_SHA)
-        settings = {'projectId': 'prj_kxPN55TOJ23lDgoXIXrvqHtzy607',
-                    'orgId': 'team_HAGNRSEiW5MZXY2AhV0cQvE0', 'settings': {
-                        'framework': 'create-react-app', 'rootDirectory': 'frontend',
-                        'installCommand': 'npm install --legacy-peer-deps',
-                        'buildCommand': 'npm run build', 'outputDirectory': 'build', 'nodeVersion': '24.x'}}
+        settings = build_settings(public_profile)
         for path in (artifact / '.vercel', artifact / 'frontend/.vercel'):
             path.mkdir()
             (path / '.env.production.local').write_text('')

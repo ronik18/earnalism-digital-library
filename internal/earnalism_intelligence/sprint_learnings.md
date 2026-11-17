@@ -3609,3 +3609,13 @@ The retained controller reached 64 parent edges from the candidate, beyond the f
 All 47 distinct history cases were validated: 46 passed the initial full run; one new fixture was corrected to make its bridge object known and passed its focused rerun. The actual failed history pins pass the explicit two-leg policy reproduction. Keep this local source validation separate from exact-head CI and from runtime/model/voice acceptance. The consumed L4 remains closed, all execution stays disabled, and full Clip2, exact soundtrack/style, existing rights/counters/quality holds remain unchanged.
 
 Next prompt: Review exact-head CI and the saved-source binding correction. Keep the consumed runtime closed; any fresh allocation needs a new explicit owner decision. Preserve full Clip2 and exact soundtrack/style, with no purchases or publication.
+
+## 2026-11-17: Pin reviewed unlocked frontend tools
+
+The exact public-input frontend build passed build/SEO/packaging, then the identity gate correctly rejected csstype 3.2.4 against reviewed 3.2.3. Installed package sets both contained 1487 entries, with zero locked-identity changes and the two already-reviewed platform omissions. The other three unlocked tools matched. This was real version/URL/integrity drift; retain the strict gate and accepted identity baseline.
+
+The public-only qualification recipe now derives all four exact tool pins from the unchanged reviewed inventory, uses no-save, and keeps the application lock enabled. Preserve the historical non-public recipe, immutable frontend source, lock bytes, reference, actual inventory and final clean-source checks. Two focused helper/test-method checks passed in an AST-isolated namespace; only fresh exact-head Linux CI can establish the resulting package identities and source cleanliness. Do not normalize away real dependency upgrades or blindly refresh acceptance.
+
+The consumed L4 stays closed. Full Clip2, exact soundtrack/style, existing rights/counters and voice/AV holds remain unchanged; no new runtime, model, purchases or publication.
+
+Next prompt: Complete exact-head CI and reviewed source integration with every identity gate intact. Keep execution disabled; any new diagnostic allocation needs fresh explicit owner scope. Preserve full Clip2 and exact soundtrack/style.
