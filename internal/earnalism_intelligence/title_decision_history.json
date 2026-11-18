@@ -19188,5 +19188,18 @@
     "new_runtime_operations": 0,
     "prior_scope_and_quality_holds": "Preserved",
     "production_ready": false
+  },
+  "english_foundation_v3_terminal_20261118": {
+    "decision_ledger_event": "english_foundation_v3_terminal_20261118",
+    "state": "TERMINAL_INCONCLUSIVE_TECHNICAL_PASS_RUNTIME_CLOSED",
+    "terminal_outcome": "INCONCLUSIVE",
+    "technical_execution": "PASS",
+    "execution_enabled": false,
+    "current_runtime_authority": null,
+    "remaining_allocations": 0,
+    "automatic_next_admission_or_retry": false,
+    "voice_and_AV_acceptance": false,
+    "prior_scope_and_quality_holds": "Preserved",
+    "production_ready": false
   }
 }

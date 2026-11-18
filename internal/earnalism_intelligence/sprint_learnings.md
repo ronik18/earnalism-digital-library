@@ -3655,3 +3655,13 @@ A completed canonical environment result is historical status after shutdown. Re
 The optional fresh-allocation request/capability now binds the exact registered predecessor and shutdown evidence, with one deterministic successor per predecessor hash. Preserve every old artifact, legacy status-only behavior, failed/unknown holds and the separate diagnostic model reservation. Actual future execution still requires current source/request/owner/clock binding and a new observed provider. Forty-seven software tests and the disabled notebook source check passed. The retained actual 21-artifact copy passes status-only verification; no current runtime is inferred.
 
 All work in this preparation is private or generic source. No new allocation, provider lookup, setup, CUDA, model, generation, training, purchase or publication occurred. Full Clip2 and exact soundtrack/style remain preserved. Decision ledger event: english_foundation_fresh_admission_prepared_20261118. Next prompt: Review the corrected private admission with execution disabled; no consumed scope or current-environment fact is renewed.
+
+## Open Window v3: terminal execution recorded — 18 November 2026
+
+One approved L4 completed the fresh qualification, strict foundation handoff and two frozen scene calls, then closed before the original deadline. The 23 qualification files, 12 diagnostic files, native WAVs/traces and small ephemeral receipts were retained and independently checksum-verified. The single notebook was restored to its exact disabled preimage.
+
+Technical execution passed; the terminal qualification outcome is INCONCLUSIVE because exact spoken fidelity and natural performance remain unassessed. EOS completion, unchanged inputs and valid native audio do not qualify the trained Earnalism Voice, Bengali or a full audiovisual release. Actual itemized compute charge remains unknown; account balance movement is not a run invoice.
+
+The corrected successful producer-to-verifier path has now passed on an actual fresh L4, including silent logs and live handoff. Native receipts remain necessary when post-disconnect browser output is empty. Preserve the one consumed allocation and all prior quality/rights holds. No automatic retry, successor admission, training or publication follows. Decision ledger event: english_foundation_v3_terminal_20261118.
+
+Next prompt: Optional read-only assessment of the two retained recordings against full original Clip2 and frozen text; no new runtime, generation, training, retry or publication.
